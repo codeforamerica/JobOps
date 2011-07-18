@@ -43,9 +43,12 @@ ActiveRecord::Schema.define(:version => 20110718190127) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "city"
     t.string   "state"
     t.string   "phone"
+    t.string   "goal"
     t.string   "relocate"
     t.string   "desired_salary"
   end
