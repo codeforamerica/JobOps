@@ -26,9 +26,11 @@ gem 'devise', '1.4.2'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  gem 'simplecov'
 end
 
 group :test do
   gem 'rspec-rails', '2.6.1'
+  gem 'simplecov'
   gem 'webrat', '0.7.1'
 end

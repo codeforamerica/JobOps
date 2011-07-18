@@ -105,6 +105,9 @@ GEM
       railties (~> 3.1.0.rc1)
       sass (>= 3.1.4)
       sprockets (>= 2.0.0.beta.9)
+    simplecov (0.4.2)
+      simplecov-html (~> 0.4.4)
+    simplecov-html (0.4.5)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -135,6 +138,7 @@ DEPENDENCIES
   rails (= 3.1.0.rc4)
   rspec-rails (= 2.6.1)
   sass-rails (~> 3.1.0.rc)
+  simplecov
   sqlite3
   uglifier
   webrat (= 0.7.1)
