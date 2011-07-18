@@ -8,8 +8,28 @@
 <h2>Basic Info</h2>
 <table>
   <tr>
-    <td>
-        <%= @user.city %>
-    </td>
+	<td>Name: </td>
+	<td><%= @user.first_name %>&nbsp;<%= @user.last_name %>
   </tr>
+  <tr>
+    <td>Location:</td>
+	<td><%= @user.city %>, <%= @user.state %></td>
+  </tr>
+  <tr>
+	<td>Phone: </td>
+	<td><%= @user.phone %></td>
+  </tr>
+  <tr>
+	<td>Current Goal: </td>
+	<td><%= @user.goal%>
+  </tr>
+  <tr>
+	<td>Willingness to relocate: </td>
+	<td><%= @user.relocate%>
+  </tr>
+  <tr>
+	<td>Desired Salary: </td>
+	<td><%= @user.desired_salary %>
+  </tr>
+
 </table>
