@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  resources :job_histories
+
   root :to => "home#index"
 
   devise_for :admins
