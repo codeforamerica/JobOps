@@ -1,4 +1,7 @@
 class JobHistoriesController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /job_histories
   # GET /job_histories.json
   def index
