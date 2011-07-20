@@ -43,7 +43,7 @@ class SkillsController < ApplicationController
   # POST /skills
   # POST /skills.json
   def create
-    @skill = Skill.new(params[:skill])
+    @skill = User.find_by_id(current_user.id).skills.new(params[:skill])
 
     respond_to do |format|
       if @skill.save
