@@ -4,7 +4,7 @@ describe EducationsController do
 
   login_user
  
-  before(:each) do
+  before do
     @user = Factory(:user)
   end
  
