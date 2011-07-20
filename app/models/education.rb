@@ -3,4 +3,10 @@ class Education < ActiveRecord::Base
   has_one :user
   
   validates_presence_of :school_name
+  
+  def valid_year(check_year)
+    if not check_year.nil?
+      check_year.year
+    end
+  end
 end
