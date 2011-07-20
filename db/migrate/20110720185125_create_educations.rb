@@ -8,6 +8,7 @@ class CreateEducations < ActiveRecord::Migration
       t.date :end_date
       t.text :activities
       t.text :notes
+      t.integer :user_id
 
       t.timestamps
     end

@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110720185125) do
     t.date     "end_date"
     t.text     "activities"
     t.text     "notes"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
