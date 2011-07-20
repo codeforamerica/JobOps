@@ -8,6 +8,18 @@ describe JobHistoriesController do
     @user = Factory(:user)
   end
   
+  describe "#show" do
+    before do
+      post :create, :job_history => Factory.attributes_for(:job_history), :user_id => @user.id
+    end
+    
+    it "should render the show template" do
+      @job_histories = JobHistory.find(:first)
+      get :show, :id => @job_histories
+      response.should render_template("job_histories/show")
+    end
+  end
+  
   describe '#create' do
     before do
       post :create, :job_history => Factory.attributes_for(:job_history), :user_id => @user.id
