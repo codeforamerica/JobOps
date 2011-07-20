@@ -33,5 +33,18 @@ describe JobHistoriesController do
     it "should update the organization name" do
       @job_history.reload.org_name.should == "Pandas R Us"
     end
+  end
+  
+  describe '#destroy' do
+    before do
+      @job_history = Factory(:job_history)
+      @job_history_count = JobHistory.all.size
+      delete :destroy, :id => @job_history.id
+    end
+
+    it "should destroy a job history" do
+      JobHistory.all.size.should == @job_history_count - 1
+      expect{@job_history.reload}.to raise_error ActiveRecord::RecordNotFound
+    end
   end  
 end
