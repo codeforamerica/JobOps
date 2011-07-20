@@ -73,5 +73,9 @@ describe JobHistoriesController do
       JobHistory.all.size.should == @job_history_count - 1
       expect{@job_history.reload}.to raise_error ActiveRecord::RecordNotFound
     end
+    
+    it "should redirect to that job_histories_url" do
+         @response.should redirect_to(job_histories_url)
+    end
   end  
 end
