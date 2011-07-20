@@ -59,6 +59,11 @@ describe EducationsController do
     it "should update the school name" do
       @educations.reload.school_name.should == "Civic Commons"
     end
+    
+    it "should update the correct education" do
+      @educations.reload.id.should == 1
+    end
+    
   end
   
   describe '#destroy' do
