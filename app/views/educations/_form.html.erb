@@ -25,11 +25,21 @@
   </div>
   <div class="field">
     <%= f.label :start_date %><br />
-    <%= f.date_select :start_date %>
+    <%= f.date_select :start_date,
+		:start_year => Time.now.year - 50,
+		:discard_day => true,
+		:discard_month => true,
+		:include_blank => true	
+	%>
   </div>
   <div class="field">
     <%= f.label :end_date %><br />
-    <%= f.date_select :end_date %>
+    <%= f.date_select :end_date,
+		:start_year => Time.now.year - 50,
+		:discard_day => true,
+		:discard_month => true,
+		:include_blank => true
+	%>
   </div>
   <div class="field">
     <%= f.label :activities %><br />
