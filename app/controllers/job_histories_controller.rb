@@ -43,7 +43,7 @@ class JobHistoriesController < ApplicationController
   # POST /job_histories
   # POST /job_histories.json
   def create
-    @job_history = JobHistory.new(params[:job_history].merge(:user_id => current_user.id))
+    @job_history = User.find(current_user.id).job_histories.new(params[:job_history])
 
     respond_to do |format|
       if @job_history.save
@@ -62,7 +62,7 @@ class JobHistoriesController < ApplicationController
     @job_history = JobHistory.find(params[:id])
 
     respond_to do |format|
-      if @job_history.update_attributes(params[:job_history].merge(:user_id => current_user.id))
+      if @job_history.update_attributes(params[:job_history])
         format.html { redirect_to @job_history, notice: 'Job history was successfully updated.' }
         format.json { head :ok }
       else
