@@ -1,4 +1,7 @@
 class EducationsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /educations
   # GET /educations.json
   def index
@@ -40,7 +43,7 @@ class EducationsController < ApplicationController
   # POST /educations
   # POST /educations.json
   def create
-    @education = Education.new(params[:education])
+    @education = User.find_by_id(current_user.id).educations.new(params[:education])
 
     respond_to do |format|
       if @education.save
