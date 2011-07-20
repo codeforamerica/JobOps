@@ -8,15 +8,30 @@ describe JobHistoriesController do
     @user = Factory(:user)
   end
   
-  describe "#show" do
+  describe "#index" do
+    it "should render the index template" do
+      get :index
+      response.should render_template("job_histories/index")
+    end
+    
+  end
+  
+  describe "#show and #edit" do
     before do
-      post :create, :job_history => Factory.attributes_for(:job_history)
+      Factory(:job_history)
+      @job_histories = JobHistory.find(:first)
     end
     
     it "should render the show template" do
-      @job_histories = JobHistory.find(:first)
       get :show, :id => @job_histories
       response.should render_template("job_histories/show")
+    end
+    
+    describe "edit action should render edit template" do
+      it "should be successful" do
+        get :edit, :id => @job_histories
+        response.should render_template("job_histories/edit")
+      end
     end
   end
   
