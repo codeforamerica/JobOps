@@ -10,7 +10,7 @@ describe JobHistoriesController do
   
   describe "#show" do
     before do
-      post :create, :job_history => Factory.attributes_for(:job_history), :user_id => @user.id
+      post :create, :job_history => Factory.attributes_for(:job_history)
     end
     
     it "should render the show template" do
@@ -22,7 +22,7 @@ describe JobHistoriesController do
   
   describe '#create' do
     before do
-      post :create, :job_history => Factory.attributes_for(:job_history), :user_id => @user.id
+      post :create, :job_history => Factory.attributes_for(:job_history)
       @job_histories = JobHistory.find(:first)
       @response = response
     end
@@ -39,7 +39,7 @@ describe JobHistoriesController do
   describe '#update' do
     before do
       @job_history = Factory(:job_history)
-      put :update, :id => @job_history.id, :job_history => { :org_name => "Pandas R Us" }, :user_id => @user.id
+      put :update, :id => @job_history.id, :job_history => { :org_name => "Pandas R Us" }
     end
 
     it "should update the organization name" do
