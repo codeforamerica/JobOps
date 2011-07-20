@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 
   has_many :job_histories
   has_many :educations
+  has_many :skills
 end
