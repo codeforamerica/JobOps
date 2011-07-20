@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  resources :educations
+
   resources :job_histories
 
   root :to => "home#index"

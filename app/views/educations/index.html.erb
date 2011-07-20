@@ -1,0 +1,35 @@
+<h1>Listing educations</h1>
+
+<table>
+  <tr>
+    <th>School name</th>
+    <th>Degree</th>
+    <th>Study field</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Activities</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @educations.each do |education| %>
+  <tr>
+    <td><%= education.school_name %></td>
+    <td><%= education.degree %></td>
+    <td><%= education.study_field %></td>
+    <td><%= education.start_date %></td>
+    <td><%= education.end_date %></td>
+    <td><%= education.activities %></td>
+    <td><%= education.notes %></td>
+    <td><%= link_to 'Show', education %></td>
+    <td><%= link_to 'Edit', edit_education_path(education) %></td>
+    <td><%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Education', new_education_path %>

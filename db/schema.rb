@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110719222816) do
+ActiveRecord::Schema.define(:version => 20110720185125) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(:version => 20110719222816) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+
+  create_table "educations", :force => true do |t|
+    t.string   "school_name"
+    t.string   "degree"
+    t.string   "study_field"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "activities"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "job_histories", :force => true do |t|
     t.string   "org_name"
