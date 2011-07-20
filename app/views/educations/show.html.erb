@@ -17,12 +17,13 @@
 
 <p>
   <b>Start date:</b>
-  <%= @education.start_date.year %>
+  <%= @education.valid_year(@education.start_date) %>
 </p>
 
 <p>
   <b>End date:</b>
-  <%= @education.end_date.year %>
+  <%= @education.valid_year(@education.end_date)
+  %>
 </p>
 
 <p>
