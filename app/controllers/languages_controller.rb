@@ -1,4 +1,7 @@
 class LanguagesController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /languages
   # GET /languages.json
   def index
