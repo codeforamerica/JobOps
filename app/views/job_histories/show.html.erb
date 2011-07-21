@@ -17,7 +17,7 @@
 
 <p>
   <b>End date:</b>
-  <%= @job_history.end_date %>
+  <%= @job_history.check_present(@job_history.end_date) %>
 </p>
 
 <p>

@@ -17,7 +17,7 @@
     <td><%= job_history.org_name %></td>
     <td><%= job_history.title %></td>
     <td><%= job_history.start_date %></td>
-    <td><%= job_history.end_date %></td>
+    <td><%= job_history.check_present(job_history.end_date) %></td>
     <td><%= job_history.summary %></td>
     <td><%= link_to 'Show', job_history %></td>
     <td><%= link_to 'Edit', edit_job_history_path(job_history) %></td>
