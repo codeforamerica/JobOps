@@ -43,8 +43,8 @@ class LanguagesController < ApplicationController
   # POST /languages
   # POST /languages.json
   def create
-    @language = Language.new(params[:language])
-
+    @language = User.find_by_id(current_user.id).languages.new(params[:language])
+    
     respond_to do |format|
       if @language.save
         format.html { redirect_to @language, notice: 'Language was successfully created.' }
