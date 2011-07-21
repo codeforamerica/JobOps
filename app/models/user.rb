@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :certifications
   has_many :job_histories
   has_many :educations
+  has_many :languages
   has_many :skills
   has_many :trainings
 end
