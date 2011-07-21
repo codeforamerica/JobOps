@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  resources :languages
+
   resources :trainings
 
   resources :certifications
