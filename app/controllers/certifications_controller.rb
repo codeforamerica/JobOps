@@ -40,7 +40,7 @@ class CertificationsController < ApplicationController
   # POST /certifications
   # POST /certifications.json
   def create
-    @certification = Certification.new(params[:certification])
+    @certification = User.find(current_user.id).certifications.new(params[:certification])
 
     respond_to do |format|
       if @certification.save
