@@ -43,7 +43,7 @@ class TrainingsController < ApplicationController
   # POST /trainings
   # POST /trainings.json
   def create
-    @training = Training.new(params[:training])
+    @training = User.find_by_id(current_user.id).trainings.new(params[:training])
 
     respond_to do |format|
       if @training.save
