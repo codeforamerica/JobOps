@@ -4,4 +4,9 @@ Factory.define(:user) do |u|
   u.password_confirmation "123456"
   u.first_name "GI"
   u.last_name "Joe"
+  u.service_branch "Coast Gaurd"
+  u.moc "10A"
+  u.rank "E220"
+  u.disability "n/a"
+  u.security_clearance "No Clerances" 
 end
