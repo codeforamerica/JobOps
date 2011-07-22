@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  resources :wars
+
   resources :languages
 
   resources :trainings

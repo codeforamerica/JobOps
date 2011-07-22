@@ -1,0 +1,23 @@
+<h1>Listing wars</h1>
+
+<table>
+  <tr>
+    <th>War</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wars.each do |war| %>
+  <tr>
+    <td><%= war.war %></td>
+    <td><%= link_to 'Show', war %></td>
+    <td><%= link_to 'Edit', edit_war_path(war) %></td>
+    <td><%= link_to 'Destroy', war, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New War', new_war_path %>
