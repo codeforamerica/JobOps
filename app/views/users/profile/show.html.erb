@@ -51,8 +51,26 @@
 	<td><%= @user.rank %>
   </tr>
   <tr>
+	<td>Unit: </td>
+	<td><%= @user.unit %>
+  </tr>
+  <tr>
 	<td>Disability: </td>
 	<td><%= @user.disability %>
+  </tr>
+  <tr>
+	<td>Wars:</td>
+	<td> 
+	<% @user.wars.each do |wars| %>
+	<%= wars.war %>,
+	<% end %></td>
+  </tr>
+  <tr>
+	<td>Awards:</td>
+	<td> 
+	<% @user.awards.each do |awards| %>
+	<%= awards.award %>,
+	<% end %></td>
   </tr>
 </table>
 <h2>Skills & Education</h2>
