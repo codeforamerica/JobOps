@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
   has_many :languages
   has_many :skills
   has_many :trainings
+  has_many :wars
 end
