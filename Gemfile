@@ -6,9 +6,15 @@ gem 'devise'
 gem 'jquery-rails'
 
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
 gem 'coffee-script'
+gem 'sass-rails', '~> 3.1.0.rc'
+gem 'therubyracer', :platforms => :ruby
 gem 'uglifier'
+
+platforms :jruby do
+  gem 'jruby-openssl'
+  gem 'therubyrhino'
+end
 
 group :development, :test do
   gem 'rspec-rails'
