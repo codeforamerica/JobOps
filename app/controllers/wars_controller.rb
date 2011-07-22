@@ -1,4 +1,7 @@
 class WarsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /wars
   # GET /wars.json
   def index
