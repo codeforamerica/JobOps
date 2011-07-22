@@ -43,7 +43,7 @@ class WarsController < ApplicationController
   # POST /wars
   # POST /wars.json
   def create
-    @war = War.new(params[:war])
+    @war = User.find(current_user.id).wars.new(params[:war])
 
     respond_to do |format|
       if @war.save
