@@ -160,6 +160,33 @@
 <% end %>
 </table>
 
+<h3>Experience</h3>
+<table>
+  <tr>
+    <th>Org name</th>
+    <th>Title</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Summary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.job_histories.each do |job_history| %>
+  <tr>
+    <td><%= job_history.org_name %></td>
+    <td><%= job_history.title %></td>
+    <td><%= job_history.start_date %></td>
+    <td><%= job_history.check_present(job_history.end_date) %></td>
+    <td><%= job_history.summary %></td>
+    <td><%= link_to 'Show', job_history %></td>
+    <td><%= link_to 'Edit', edit_job_history_path(job_history) %></td>
+    <td><%= link_to 'Destroy', job_history, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
 <h2>Personal Info</h2>
 <table>
   <tr>
