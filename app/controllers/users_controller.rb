@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   
   before_filter :authenticate_user!
   
+  def index
+    @user = User.find_by_id(current_user.id)
+    render :template => 'users/profile/show'
+  end
+  
   def show
     @user = User.find(params[:id])
     render :template => 'users/profile/show'
