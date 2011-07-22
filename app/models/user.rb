@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance
 
+  has_many :awards
   has_many :certifications
   has_many :job_histories
   has_many :educations
