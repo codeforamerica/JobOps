@@ -43,7 +43,7 @@ class AwardsController < ApplicationController
   # POST /awards
   # POST /awards.json
   def create
-    @award = Award.new(params[:award])
+    @award = User.find_by_id(current_user.id).awards.new(params[:award])
 
     respond_to do |format|
       if @award.save
