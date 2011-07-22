@@ -55,6 +55,93 @@
 	<td><%= @user.disability %>
   </tr>
 </table>
+<h2>Skills & Education</h2>
+
+<h3>Education</h3>
+<table>
+  <tr>
+    <th>School name</th>
+    <th>Degree</th>
+    <th>Study field</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Activities</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.educations.each do |education| %>
+  <tr>
+    <td><%= education.school_name %></td>
+    <td><%= education.degree %></td>
+    <td><%= education.study_field %></td>
+    <td><%= education.start_date %></td>
+    <td><%= education.end_date %></td>
+    <td><%= education.activities %></td>
+    <td><%= education.notes %></td>
+    <td><%= link_to 'Show', education %></td>
+    <td><%= link_to 'Edit', edit_education_path(education) %></td>
+    <td><%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h3>Skills</h3>
+<% @user.skills.each do |skills| %>
+<%= skills.skill %>,
+<% end %>
+
+<h3>Languages</h3>
+<% @user.languages.each do |languages| %>
+<%= languages.language %>,
+<% end %>
+
+<h3>Trainings</h3>
+<table>
+  <tr>
+    <th>Training</th>
+    <th>Training date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.trainings.each do |training| %>
+  <tr>
+    <td><%= training.training %></td>
+    <td><%= training.training_date %></td>
+    <td><%= link_to 'Show', training %></td>
+    <td><%= link_to 'Edit', edit_training_path(training) %></td>
+    <td><%= link_to 'Destroy', training, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Institution</th>
+    <th>Date acquired</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<h3>Certifications</h3>
+<% @user.certifications.each do |certification| %>
+  <tr>
+    <td><%= certification.name %></td>
+    <td><%= certification.institution %></td>
+    <td><%= certification.date_acquired %></td>
+    <td><%= link_to 'Show', certification %></td>
+    <td><%= link_to 'Edit', edit_certification_path(certification) %></td>
+    <td><%= link_to 'Destroy', certification, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
 <h2>Personal Info</h2>
 <table>
   <tr>
