@@ -1,4 +1,7 @@
 class AwardsController < ApplicationController
+  
+ before_filter :authenticate_user!
+  
   # GET /awards
   # GET /awards.json
   def index
