@@ -55,5 +55,5 @@ Copyright
 Copyright (c) 2011 Code for America Laboratories
 See [LICENSE](https://github.com/codeforamerica/JobOps/blob/master/LICENSE.mkd) for details.
 
-[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/shortstack.png)](http://stats.codeforamerica.org/projects/shortstack)
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/JobOps.png)](http://stats.codeforamerica.org/projects/JobOps)
 
