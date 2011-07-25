@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  get "account/index"
+
   resources :awards
 
   resources :wars
