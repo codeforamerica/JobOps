@@ -1,3 +1,28 @@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	//When page loads...
+	$(".tab_content").hide(); //Hide all content
+	$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+	$(".tab_content:first").show(); //Show first tab content
+
+	//On Click Event
+	$("ul.tabs li").click(function() {
+
+		$("ul.tabs li").removeClass("active"); //Remove any "active" class
+		$(this).addClass("active"); //Add "active" class to selected tab
+		$(".tab_content").hide(); //Hide all tab content
+
+		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+		$(activeTab).fadeIn(); //Fade in the active ID content
+		return false;
+	});
+
+});
+
+</script>
+
 <h1>Edit Profile</h2>
 <ul>
 	<li><%= link_to "Edit Profile", edit_user_path(@user.id) %></li>
@@ -5,15 +30,16 @@
 	<li>Resume Builder</li>
 </ul>
 
-<ul>
-	<li>Basic Info</li>
-	<li>Military Info</li>
-	<li>Career Survey</li>
-	<li>Skills & Education</li>
-	<li>Experience</li>
-	<li>Personal Info</li>
+<ul class="tabs">
+	<li><a href="#basic_info">Basic Info</a></li>
+	<li><a href="#military_info">Military Info</a></li>
+	<li><a href="#career_survey">Career Survey</a></li>
+	<li><a href="#skills_edu">Skills & Education</a></li>
+	<li><a href="#exp">Experience</a></li>
+	<li><a href="#personal_info">Personal Info</a></li>
 </ul>
-
+<div class="tab_container">
+<div id="basic_info" class="tab_content">
 <h2>Basic Info</h2>
 <table>
   <tr>
@@ -41,6 +67,9 @@
 	<td><%= @user.desired_salary %>
   </tr>
 </table>
+</div>
+
+<div id="military_info" class="tab_content">
 <h2>Military Info</h2>
 <table>
   <tr>
@@ -82,7 +111,10 @@
 	<% end %></td>
   </tr>
 </table>
+</div>
+<div id="skills_edu" class="tab_content">
 <h2>Skills & Education</h2>
+
 
 <h3>Education</h3>
 <table>
@@ -114,6 +146,7 @@
   </tr>
 <% end %>
 </table>
+
 
 <h3>Skills</h3>
 <% @user.skills.each do |skills| %>
@@ -168,7 +201,9 @@
   </tr>
 <% end %>
 </table>
+</div>
 
+<div id="exp" class="tab_content">
 <h3>Experience</h3>
 <table>
   <tr>
@@ -195,7 +230,8 @@
   </tr>
 <% end %>
 </table>
-
+</div>
+<div id="personal_info" class="tab_content">
 <h2>Personal Info</h2>
 <table>
   <tr>
@@ -215,3 +251,5 @@
 	<td><%= @user.family %>
   </tr>
 </table>
+</div>
+</div>
