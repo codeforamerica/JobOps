@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe AccountController do
-
-  describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
+  login_user
+  
+  describe "#index" do
+    it "should render the index template" do
+      get :index
+      response.should render_template("account/index")
     end
   end
 
