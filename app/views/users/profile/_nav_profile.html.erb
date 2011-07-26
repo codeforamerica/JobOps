@@ -1,5 +1,5 @@
 <ul>
 	<li><%= link_to "Edit Profile", edit_user_path(@user.id) %></li>
-	<li>Account Settings</li>
+	<li><%= link_to "Account Settings", :controller => "account", :action => "index" %></li>
 	<li>Resume Builder</li>
 </ul>
