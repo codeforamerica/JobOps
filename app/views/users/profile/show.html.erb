@@ -24,11 +24,7 @@ $(document).ready(function() {
 </script>
 
 <h1>Edit Profile</h2>
-<ul>
-	<li><%= link_to "Edit Profile", edit_user_path(@user.id) %></li>
-	<li>Account Settings</li>
-	<li>Resume Builder</li>
-</ul>
+<%= render 'users/profile/nav_profile'%>
 
 <ul class="tabs">
 	<li><a href="#basic_info">Basic Info</a></li>
