@@ -1,6 +1,8 @@
 <h1>Account#index</h1>
 <p>Find me in app/views/account/index.html.erb</p>
 
+<%= render 'users/profile/nav_profile'%>
+
 <ul>
 	<li>Account Info</li>
 	<li>Privacy Settings</li>
@@ -10,7 +12,7 @@
 <h2>Account Info</h2>
 <p>
   <b>Name:</b>
-  <%= @user.first_name + " " + @user.last_name %>
+  <%= @user.full_name %>
 </p>
 <p>
   <b>Email:</b>
