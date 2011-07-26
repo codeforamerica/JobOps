@@ -133,7 +133,7 @@ $(document).ready(function() {
     <td><%= education.degree %></td>
     <td><%= education.study_field %></td>
     <td><%= education.start_date %></td>
-    <td><%= education.end_date %></td>
+    <td><%= check_present(education.end_date) %></td>
     <td><%= education.activities %></td>
     <td><%= education.notes %></td>
     <td><%= link_to 'Show', education %></td>
@@ -218,7 +218,7 @@ $(document).ready(function() {
     <td><%= job_history.org_name %></td>
     <td><%= job_history.title %></td>
     <td><%= job_history.start_date %></td>
-    <td><%= job_history.check_present(job_history.end_date) %></td>
+    <td><%= check_present(job_history.end_date) %></td>
     <td><%= job_history.summary %></td>
     <td><%= link_to 'Show', job_history %></td>
     <td><%= link_to 'Edit', edit_job_history_path(job_history) %></td>
