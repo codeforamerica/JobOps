@@ -1,2 +1,6 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if user_signed_in? %>
+	<h1>Welcome, <%= resource.first_name %>!</h1>
+<% else %>
+	<h1>Welcome!</h1>
+<% end %>
+<p>Let's find some jobs!</p>
