@@ -1,7 +1,6 @@
 JobOps::Application.routes.draw do
-  get "resume/index"
-  
-  get "resume/edit"
+
+  resources :resume, :only => [:index, :edit, :update]
 
   get "account/index"
 
