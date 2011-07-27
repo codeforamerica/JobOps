@@ -1,7 +1,7 @@
 class ResumeController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   def index
     @user = User.find_by_id(current_user.id)
   end
@@ -14,8 +14,8 @@ class ResumeController < ApplicationController
   # PUT /resumes/1
   # PUT /resumes/1.json
   def update
-    @user = User.find_by_id(current_user.id)
-    
+    @user = User.find(params[:id])
+
     respond_to do |format|
          if @user.update_attributes(params[:user])
            format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
