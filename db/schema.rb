@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110722021509) do
+ActiveRecord::Schema.define(:version => 20110726220728) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(:version => 20110722021509) do
     t.datetime "updated_at"
   end
 
+  create_table "resumes", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "resume_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "skills", :force => true do |t|
     t.string   "skill"
     t.integer  "user_id"
@@ -125,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20110722021509) do
     t.string   "disability"
     t.string   "security_clearance"
     t.string   "unit"
+    t.text     "resume"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
