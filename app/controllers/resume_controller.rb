@@ -1,6 +1,6 @@
 class ResumeController < ApplicationController
   def index
-
+    @user = User.find_by_id(current_user.id)
   end
 
   # GET /resumes/1/edit
