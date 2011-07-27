@@ -9,4 +9,5 @@ Factory.define(:user) do |u|
   u.rank "E220"
   u.disability "n/a"
   u.security_clearance "No Clerances" 
+  u.resume "This is my Resume"
 end
