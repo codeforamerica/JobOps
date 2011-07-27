@@ -43,5 +43,8 @@ module JobOps
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    #CKEditor configuration file
+    config.autoload_paths += %W( #{config.root}/app/models/ckeditor )
   end
 end
