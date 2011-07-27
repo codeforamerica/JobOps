@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-
+<% if @user.resume.nil? %>
 <textarea id="user_resume_text_editor" name="user[resume]">
 
 <h1><%= @user.full_name	%></h1>
@@ -80,6 +80,11 @@
 </script>
 
 <%= ckeditor_ajax_script %>
+<% else %>
+
+<%= f.cktext_area :resume, :toolbar=>'Full' %>
+
+<% end %>
 
 <div class="actions">
   <%= f.submit %>
