@@ -1,5 +1,7 @@
 JobOps::Application.routes.draw do
   get "resume/index"
+  
+  get "resume/edit"
 
   get "account/index"
 
