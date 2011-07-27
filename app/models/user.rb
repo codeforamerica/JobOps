@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, 
                   :last_name, :city, :state, :goal, :relocate, :desired_salary, :gender,
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
-                  :rank, :disability, :security_clearance
+                  :rank, :disability, :security_clearance, :unit, :resume
 
   has_many :awards
   has_many :certifications
