@@ -1,4 +1,6 @@
 JobOps::Application.routes.draw do
+  get "resume/index"
+
   get "account/index"
 
   resources :awards
