@@ -1,0 +1,87 @@
+<%= javascript_include_tag 'ckeditor/ckeditor' %>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resume.errors.count, "error") %> prohibited this resume from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<textarea id="user_resume_text_editor" name="user[resume]">
+
+<h1><%= @user.full_name	%></h1>
+<p><%= @user.city %>, <%= @user.state %></p>
+<p><%= @user.phone %> | <%= @user.email %></p>
+<br/>
+<h2>Education</h2>
+<% @user.educations.each do |education| %>
+<p><strong><%= education.school_name %> -&nbsp;</strong><%= education.start_date %> - <%= check_present(education.end_date) %></p>
+<p><%= education.degree %>&nbsp;<%= education.study_field %></p>
+<% end %>
+<h2>Job History</h2>
+<% @user.job_histories.each do |job_history| %>
+<p><%= job_history.org_name %>&nbsp;<%= job_history.start_date %> -  <%= check_present(job_history.end_date) %></p>
+<p><%= job_history.title %></p>
+<ul>
+	<li><%= job_history.summary %></li>
+</ul>
+<% end %>
+<h2>Military Info</h2>
+<p>Military Status: <%= @user.military_status %></p>
+<p>Service Branch: <%= @user.service_branch %></p>
+<p>MOC: <%= @user.moc %></p>
+<p>Rank: <%= @user.rank %></p>
+<p>Unit:<%= @user.unit %></p>
+<p>Disability: <%= @user.disability %></p>
+<p>Wars:</p>
+	<ul>
+	<% @user.wars.each do |wars| %>
+	<li><%= wars.war %></li>
+	<% end %>
+	</ul>
+<p>Awards:</p>
+	<ul>
+	<% @user.awards.each do |awards| %>
+	<li><%= awards.award %></li>
+	<% end %>
+	</ul>
+	<h3>Skills</h3>
+	<% @user.skills.each do |skills| %>
+	<%= skills.skill %>,
+	<% end %>
+
+<h3>Languages</h3>
+<% @user.languages.each do |languages| %>
+<%= languages.language %>&nbsp;
+<% end %>
+
+<h3>Trainings</h3>
+<% @user.trainings.each do |training| %>
+<p><%= training.training %> - <%= training.training_date %></p>
+<% end %>
+
+<h3>Certifications</h3>
+<% @user.certifications.each do |certification| %>
+<p><%= certification.name %>&nbsp;<%= certification.institution %>&nbsp;<%= certification.date_acquired %></p>
+<% end %>
+
+</textarea>
+
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'user[resume]' );
+</script>
+
+<%= ckeditor_ajax_script %>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
