@@ -1,25 +1,29 @@
-h1.logo {
+h1.logo{
   float: left;
   overflow: hidden;
-  background-color: blue; }
+  background-color: blue;
+}
 
-ul.user {
+ul.user{
   float: right;
   list-style: none;
   margin: 0 0 2em;
   padding: 1.5em;
-  background-color: red; }
-
-ul.user li {
-  display: inline; }
-
+  background-color: red;
+//  display: block;
+//  overflow: hidden;
+}
+ul.user li{
+  display: inline;
+}
 ul.nav {
   list-style: none;
   margin: 0 0 2em;
   padding: 0;
   clear: both;
   float: right;
-  display: block; }
-
+  display: block;
+}
 ul.nav li {
-  display: inline; }
+  display: inline;
+}
