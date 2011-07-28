@@ -1,7 +1,6 @@
 h1.logo{
   float: left;
   overflow: hidden;
-  background-color: blue;
 }
 
 ul.user{
@@ -9,7 +8,6 @@ ul.user{
   list-style: none;
   margin: 0 0 2em;
   padding: 1.5em;
-  background-color: red;
 //  display: block;
 //  overflow: hidden;
 }
@@ -26,4 +24,27 @@ ul.nav {
 }
 ul.nav li {
   display: inline;
+}
+#home{
+  clear:both;
+  margin: 0 auto;
+}
+#profile{
+  clear: both;
+  margin: 0 auto;
+  .profile_nav{
+    float: right;
+    ul{
+      list-style: none;
+    }
+    li{
+      display: inline;
+    }
+  }
+  .tabs{
+    float: left;
+  }
+  .tab_container{
+    float: right;
+  }
 }

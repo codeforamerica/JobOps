@@ -1,3 +1,4 @@
+<div id="profile">
 <h1>Edit Profile</h2>
 <%= render 'users/profile/nav_profile'%>
 
@@ -69,14 +70,14 @@
   </tr>
   <tr>
 	<td>Wars:</td>
-	<td> 
+	<td>
 	<% @user.wars.each do |wars| %>
 	<%= wars.war %>,
 	<% end %></td>
   </tr>
   <tr>
 	<td>Awards:</td>
-	<td> 
+	<td>
 	<% @user.awards.each do |awards| %>
 	<%= awards.award %>,
 	<% end %></td>
@@ -222,5 +223,6 @@
 	<td><%= @user.family %>
   </tr>
 </table>
+</div>
 </div>
 </div>

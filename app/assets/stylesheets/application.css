@@ -1,14 +1,12 @@
 h1.logo {
   float: left;
-  overflow: hidden;
-  background-color: blue; }
+  overflow: hidden; }
 
 ul.user {
   float: right;
   list-style: none;
   margin: 0 0 2em;
-  padding: 1.5em;
-  background-color: red; }
+  padding: 1.5em; }
 
 ul.user li {
   display: inline; }
@@ -23,3 +21,21 @@ ul.nav {
 
 ul.nav li {
   display: inline; }
+
+#home {
+  clear: both;
+  margin: 0 auto; }
+
+#profile {
+  clear: both;
+  margin: 0 auto; }
+  #profile .profile_nav {
+    float: right; }
+    #profile .profile_nav ul {
+      list-style: none; }
+    #profile .profile_nav li {
+      display: inline; }
+  #profile .tabs {
+    float: left; }
+  #profile .tab_container {
+    float: right; }
