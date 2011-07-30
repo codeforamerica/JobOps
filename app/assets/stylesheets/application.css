@@ -1,26 +1,29 @@
 h1.logo {
-  float: left;
-  overflow: hidden; }
+  float: left; }
 
 ul.user {
   float: right;
   list-style: none;
   margin: 0 0 2em;
-  padding: 1.5em; }
+  padding: 1.5em;
+  font-size: .75em; }
 
 ul.user li {
-  display: inline; }
+  display: inline;
+  padding: 0 1em; }
 
 ul.nav {
   list-style: none;
   margin: 0 0 2em;
+  font-size: 1em;
   padding: 0;
   clear: both;
   float: right;
   display: block; }
 
 ul.nav li {
-  display: inline; }
+  display: inline;
+  padding: 0 1em; }
 
 #home {
   clear: both;
@@ -29,13 +32,32 @@ ul.nav li {
 #profile {
   clear: both;
   margin: 0 auto; }
+  #profile #name {
+    float: left; }
   #profile .profile_nav {
-    float: right; }
+    float: right;
+    font-size: 1.5em; }
     #profile .profile_nav ul {
       list-style: none; }
     #profile .profile_nav li {
-      display: inline; }
+      display: inline;
+      padding: 0 1em; }
   #profile .tabs {
-    float: left; }
+    clear: both;
+    float: left;
+    width: 20%;
+    list-style: none; }
+    #profile .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #profile .tabs .active {
+      background-color: black;
+      color: white; }
+      #profile .tabs .active a {
+        color: white; }
+    #profile .tabs a {
+      color: black; }
   #profile .tab_container {
-    float: right; }
+    float: right;
+    width: 75%; }
