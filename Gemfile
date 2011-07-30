@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
 
-gem 'ckeditor', '3.4.2.pre'
+gem 'ckeditor'
 gem 'devise'
 gem 'jquery-rails'
 

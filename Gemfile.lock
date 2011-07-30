@@ -35,8 +35,9 @@ GEM
     bcrypt-ruby (2.1.4-java)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.0)
-    ckeditor (3.4.2.pre)
-      mime-types (>= 1.16)
+    ckeditor (3.6.0)
+      mime-types (~> 1.16)
+      orm_adapter (~> 0.0.5)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -149,7 +150,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ckeditor (= 3.4.2.pre)
+  ckeditor
   coffee-script
   devise
   factory_girl_rails
