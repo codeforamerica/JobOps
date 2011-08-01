@@ -37,19 +37,20 @@ ul.nav li {
   clear: both;
   margin: 0 auto; }
 
+.profile_nav {
+  float: right;
+  font-size: 1.5em; }
+  .profile_nav ul {
+    list-style: none; }
+  .profile_nav li {
+    display: inline;
+    padding: 0 1em; }
+
 #profile {
   clear: both;
   margin: 0 auto; }
   #profile #name {
     float: left; }
-  #profile .profile_nav {
-    float: right;
-    font-size: 1.5em; }
-    #profile .profile_nav ul {
-      list-style: none; }
-    #profile .profile_nav li {
-      display: inline;
-      padding: 0 1em; }
   #profile .tabs {
     clear: both;
     float: left;
@@ -69,3 +70,7 @@ ul.nav li {
   #profile .tab_container {
     float: right;
     width: 75%; }
+
+#account_settings {
+  clear: both;
+  margin: 0 auto; }

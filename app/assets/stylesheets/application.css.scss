@@ -40,22 +40,22 @@ ul.nav li {
   clear:both;
   margin: 0 auto;
 }
+.profile_nav{
+  float:right;
+  font-size: 1.5em;
+  ul{
+    list-style: none;
+  }
+  li{
+    display: inline;
+    padding: 0 1em;
+  }
+}
 #profile{
   clear: both;
   margin: 0 auto;
   #name{
     float: left;
-  }
-  .profile_nav{
-    float: right;
-    font-size: 1.5em;
-    ul{
-      list-style: none;
-    }
-    li{
-      display: inline;
-      padding: 0 1em;
-    }
   }
   .tabs{
     clear: both;
@@ -82,4 +82,8 @@ ul.nav li {
     float: right;
     width: 75%;
   }
+}
+#account_settings{
+  clear:both;
+  margin: 0 auto;
 }
