@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
   def full_name
     self.first_name + ' ' +  self.last_name
   end
+
+  def age(dob)
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
 end
