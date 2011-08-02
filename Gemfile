@@ -5,6 +5,7 @@ gem 'rails', '3.1.0.rc5'
 gem 'ckeditor'
 gem 'devise'
 gem 'jquery-rails'
+gem "paperclip", "~> 2.3"
 
 # Asset template engines
 gem 'coffee-script'
