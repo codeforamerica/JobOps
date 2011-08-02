@@ -211,7 +211,11 @@
 	<td><%= @user.dob %>
   </tr>
   <tr>
-    <td>Gender:</td>
+	<td>Age: </td>
+	<td><%= @user.age(@user.dob) %>
+  </tr>
+  <tr>
+  <td>Gender:</td>
 	<td><%= @user.gender %></td>
   </tr>
   <tr>
