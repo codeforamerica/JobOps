@@ -10,12 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
-
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
@@ -43,6 +37,10 @@
   <div class="field">
     <%= f.label :desired_salary %><br />
     <%= f.text_field :desired_salary %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>
