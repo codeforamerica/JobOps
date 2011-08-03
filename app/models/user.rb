@@ -8,9 +8,13 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name,
                   :last_name, :city, :state, :goal, :relocate, :desired_salary, :gender,
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
-                  :rank, :disability, :security_clearance, :unit, :resume, :avatar
+                  :rank, :disability, :security_clearance, :unit, :resume, :avatar,
+                  :privacy_settings, :email_settings
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  serialize :email_settings
+  serialize :privacy_settings
 
   has_many :awards
   has_many :certifications
