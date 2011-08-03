@@ -8,6 +8,7 @@ Factory.define(:user) do |u|
   u.moc "10A"
   u.rank "E220"
   u.disability "n/a"
-  u.security_clearance "No Clerances" 
+  u.security_clearance "No Clerances"
   u.resume "This is my Resume"
+  u.email_settings ["dinosaurs", "lasers"]
 end
