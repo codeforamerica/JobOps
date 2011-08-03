@@ -214,7 +214,10 @@
   </tr>
   <tr>
 	<td>Age: </td>
-	<td><%= @user.age(@user.dob) %>
+  <td>
+    <% if not @user.dob.nil? %>
+      <%= @user.age(@user.dob) %>
+    <% end %>
   </tr>
   <tr>
   <td>Gender:</td>
