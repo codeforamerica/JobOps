@@ -1,23 +1,30 @@
 require 'spec_helper'
 
 describe UsersController do
-  
+
   login_user
-  
+
+  describe "GET 'index'" do
+    it "should be successful" do
+      get 'index'
+      response.should be_success
+    end
+  end
+
   describe "show action should render show template" do
     it "should be successful" do
       get :show, :id => @user.id
       response.should render_template("users/profile/show")
     end
   end
-  
+
   describe "edit action should render show template" do
     it "should be successful" do
       get :edit, :id => @user.id
       response.should render_template("users/profile/edit")
     end
   end
-  
+
   describe '#update' do
     before do
       @user = Factory(:user)
@@ -36,8 +43,8 @@ describe UsersController do
       @user.reload.military_status.should == "Active"
       @user.reload.service_branch.should == "Army"
       @user.reload.moc.should == "22b"
-      @user.reload.rank.should == "032" 
-      @user.reload.disability.should == "None" 
+      @user.reload.rank.should == "032"
+      @user.reload.disability.should == "None"
       @user.reload.security_clearance.should == "Top Secret"
     end
   end
