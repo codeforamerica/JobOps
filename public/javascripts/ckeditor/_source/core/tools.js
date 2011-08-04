@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -346,19 +346,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		},
 
 		/**
-		 * Replace characters can't be represented through CSS Selectors string
-		 * by CSS Escape Notation where the character escape sequence consists
-		 * of a backslash character (\) followed by the orginal characters.
-		 * Ref: http://www.w3.org/TR/css3-selectors/#grammar
-		 * @param cssSelectText
-		 * @return the escaped selector text.
-		 */
-		escapeCssSelector : function( cssSelectText )
-		{
-			return cssSelectText.replace( /[\s#:.,$*^\[\]()~=+>]/g, '\\$&' );
-		},
-
-		/**
 		 * Gets a unique number for this CKEDITOR execution session. It returns
 		 * progressive numbers starting at 1.
 		 * @function
@@ -651,7 +638,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			return functions.push( function()
 				{
-					fn.apply( scope || this, arguments );
+					return fn.apply( scope || this, arguments );
 				}) - 1;
 		},
 
@@ -693,12 +680,41 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 */
 		cssLength : (function()
 		{
-			var decimalRegex = /^\d+(?:\.\d+)?$/;
 			return function( length )
 			{
-				return length + ( decimalRegex.test( length ) ? 'px' : '' );
+				return length + ( !length || isNaN( Number( length ) ) ? '' : 'px' );
 			};
 		})(),
+
+		/**
+		 * Convert the specified CSS length value to the calculated pixel length inside this page.
+		 * <strong>Note:</strong> Percentage based value is left intact.
+		 * @param {String} cssLength CSS length value.
+		 */
+		convertToPx : ( function ()
+			{
+				var calculator;
+
+				return function( cssLength )
+				{
+					if ( !calculator )
+					{
+						calculator = CKEDITOR.dom.element.createFromHtml(
+								'<div style="position:absolute;left:-9999px;' +
+								'top:-9999px;margin:0px;padding:0px;border:0px;"' +
+								'></div>', CKEDITOR.document );
+						CKEDITOR.document.getBody().append( calculator );
+					}
+
+					if ( !(/%$/).test( cssLength ) )
+					{
+						calculator.setStyle( 'width', cssLength );
+						return calculator.$.clientWidth;
+					}
+
+					return cssLength;
+				};
+			} )(),
 
 		/**
 		 * String specified by {@param str} repeats {@param times} times.

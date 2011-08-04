@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -136,7 +136,7 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 
 						getStyle : function( name, defaultValue )
 						{
-							var match = this.getValue().match( new RegExp( name + '\\s*:\s*([^;]*)', 'i') );
+							var match = this.getValue().match( new RegExp( name + '\\s*:\\s*([^;]*)', 'i') );
 							return match ? match[ 1 ] : defaultValue;
 						},
 
@@ -159,7 +159,7 @@ CKEDITOR.plugins.add( 'dialogadvtab',
 								styles += name + ': ' + value;
 							}
 
-							this.setValue( styles, true );
+							this.setValue( styles, 1 );
 
 						},
 
