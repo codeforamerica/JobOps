@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+                    :storage => :s3,
+                    :bucket => 'jobops',
+                    :s3_credentials => {
+                      :access_key_id => ENV['S3_KEY'],
+                      :secret_access_key => ENV['S3_SECRET']
+                      }
 
   has_many :awards
   has_many :certifications
