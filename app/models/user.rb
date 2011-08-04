@@ -10,7 +10,15 @@ class User < ActiveRecord::Base
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  if Rails.env  == 'development'
+    has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100"}
+  elsif Rails.env  == 'production'
+    has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :storage => :s3,
+                    :bucket => 'jobops',
+                    :s3_credentials => {:access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']}
+  end
 
   has_many :awards
   has_many :certifications
