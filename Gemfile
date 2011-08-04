@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'aws-s3'
 gem 'ckeditor'
 gem 'devise'
 gem 'jquery-rails'
