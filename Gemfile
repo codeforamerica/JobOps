@@ -8,10 +8,11 @@ gem 'jquery-rails'
 gem "paperclip", "~> 2.3"
 
 # Asset template engines
-gem 'coffee-script'
-gem 'sass-rails', '~> 3.1.0.rc'
-gem 'therubyracer', :platforms => :ruby
-gem 'uglifier'
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-script'
+  gem 'uglifier'
+ end
 
 platforms :jruby do
   gem 'jruby-openssl'
