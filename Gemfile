@@ -2,17 +2,17 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc5'
 
-gem 'ckeditor'
-gem 'devise'
-gem 'jquery-rails'
-gem "paperclip", "~> 2.3"
-
 # Asset template engines
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
   gem 'coffee-script'
   gem 'uglifier'
- end
+end
+
+gem 'ckeditor'
+gem 'devise'
+gem 'jquery-rails'
+gem "paperclip", "~> 2.3"
 
 platforms :jruby do
   gem 'jruby-openssl'
