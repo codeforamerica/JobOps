@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar
 
-
   if Rails.env  == 'development'
     has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100"}
   elsif Rails.env  == 'production'
