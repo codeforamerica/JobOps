@@ -3,9 +3,9 @@ Job Ops
 
 National Veterans Job Platform - One job one veteran at a time
 
-Does your project or organization use this projects?
-------------------------------------------
-Add it to the [apps](http://github.com/codeforamerica/JobOps/wiki/apps) wiki!
+Continuous Integration
+----------------------
+[![Build Status](https://secure.travis-ci.org/codeforamerica/JobOps.png)](http://travis-ci.org/codeforamerica/JobOps)
 
 Installation
 ------------
