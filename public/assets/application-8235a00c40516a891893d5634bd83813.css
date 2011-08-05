@@ -1,0 +1,80 @@
+h1.logo {
+  float: left; }
+
+ul.user {
+  float: right;
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 1.5em;
+  font-size: .75em; }
+
+ul.user li {
+  display: inline;
+  padding: 0 1em; }
+
+ul.nav {
+  list-style: none;
+  margin: 0 0 2em;
+  font-size: 1em;
+  padding: 0;
+  clear: both;
+  float: right;
+  display: block; }
+
+ul.nav li {
+  display: inline;
+  padding: 0 1em; }
+
+#home {
+  clear: both;
+  margin: 0 auto; }
+
+#sign_up {
+  clear: both;
+  margin: 0 auto; }
+
+#sign_in {
+  clear: both;
+  margin: 0 auto; }
+
+.profile_nav {
+  float: right;
+  font-size: 1.5em; }
+  .profile_nav ul {
+    list-style: none; }
+  .profile_nav li {
+    display: inline;
+    padding: 0 1em; }
+
+#profile {
+  clear: both;
+  margin: 0 auto; }
+  #profile #name {
+    float: left; }
+  #profile .tabs {
+    clear: both;
+    float: left;
+    width: 20%;
+    list-style: none; }
+    #profile .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #profile .tabs .active {
+      background-color: black;
+      color: white; }
+      #profile .tabs .active a {
+        color: white; }
+    #profile .tabs a {
+      color: black; }
+  #profile .tab_container {
+    float: right;
+    width: 75%; }
+
+#account {
+  clear: both;
+  margin: 0 auto; }
+
+#edit_profile {
+  clear: both;
+  margin: 0 auto; }
