@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -16,7 +16,7 @@ CKEDITOR.plugins.add( 'panel',
  * @constant
  * @example
  */
-CKEDITOR.UI_PANEL = 'panel';
+CKEDITOR.UI_PANEL = 2;
 
 CKEDITOR.ui.panel = function( document, definition )
 {
@@ -31,7 +31,7 @@ CKEDITOR.ui.panel = function( document, definition )
 			css : []
 		});
 
-	this.id = CKEDITOR.tools.getNextId();
+	this.id = CKEDITOR.tools.getNextNumber();
 	this.document = document;
 
 	this._ =
@@ -73,7 +73,7 @@ CKEDITOR.ui.panel.prototype =
 	 */
 	render : function( editor, output )
 	{
-		var id = this.id;
+		var id = 'cke_' + this.id;
 
 		output.push(
 			'<div class="', editor.skinClass ,'"' +
@@ -130,12 +130,18 @@ CKEDITOR.ui.panel.prototype =
 		{
 			if ( this.forceIFrame || this.css.length )
 			{
-				var iframe = this.document.getById( this.id + '_frame' ),
+				var iframe = this.document.getById( 'cke_' + this.id + '_frame' ),
 					parentDiv = iframe.getParent(),
 					dir = parentDiv.getAttribute( 'dir' ),
 					className = parentDiv.getParent().getAttribute( 'class' ),
 					langCode = parentDiv.getParent().getAttribute( 'lang' ),
 					doc = iframe.getFrameDocument();
+				// Initialize the IFRAME document body.
+				doc.$.open();
+
+				// Support for custom document.domain in IE.
+				if ( CKEDITOR.env.isCustomDomain() )
+					doc.$.domain = document.domain;
 
 				var onLoad = CKEDITOR.tools.addFunction( CKEDITOR.tools.bind( function( ev )
 					{
@@ -144,7 +150,7 @@ CKEDITOR.ui.panel.prototype =
 							this.onLoad();
 					}, this ) );
 
-				var data =
+				doc.$.write(
 					'<!DOCTYPE html>' +
 					'<html dir="' + dir + '" class="' + className + '_container" lang="' + langCode + '">' +
 						'<head>' +
@@ -156,20 +162,18 @@ CKEDITOR.ui.panel.prototype =
 						// after <body>, so it (body) becames immediatelly
 						// available. (#3031)
 						CKEDITOR.tools.buildStyleHtml( this.css ) +
-					'<\/html>';
-
-				doc.write( data );
+					'<\/html>' );
+				doc.$.close();
 
 				var win = doc.getWindow();
 
 				// Register the CKEDITOR global.
 				win.$.CKEDITOR = CKEDITOR;
 
-				// Arrow keys for scrolling is only preventable with 'keypress' event in Opera (#4534).
-				doc.on( 'key' + ( CKEDITOR.env.opera? 'press':'down' ), function( evt )
+				doc.on( 'keydown', function( evt )
 					{
 						var keystroke = evt.data.getKeystroke(),
-							dir = this.document.getById( this.id ).getAttribute( 'dir' );
+							dir = this.document.getById( 'cke_' + this.id ).getAttribute( 'dir' );
 
 						// Delegate key processing to block.
 						if ( this._.onKeyDown && this._.onKeyDown( keystroke ) === false )
@@ -182,17 +186,16 @@ CKEDITOR.ui.panel.prototype =
 						if ( keystroke == 27 || keystroke == ( dir == 'rtl' ? 39 : 37 ) )
 						{
 							if ( this.onEscape && this.onEscape( keystroke ) === false )
-								evt.data.preventDefault();
+								evt.data.preventDefault( );
 						}
 					},
 					this );
 
 				holder = doc.getBody();
 				holder.unselectable();
-				CKEDITOR.env.air && CKEDITOR.tools.callFunction( onLoad );
 			}
 			else
-				holder = this.document.getById( this.id );
+				holder = this.document.getById( 'cke_' + this.id );
 
 			this._.holder = holder;
 		}
@@ -222,7 +225,7 @@ CKEDITOR.ui.panel.prototype =
 			block = blocks[ name ],
 			current = this._.currentBlock,
 			holder = this.forceIFrame ?
-				this.document.getById( this.id + '_frame' )
+				this.document.getById( 'cke_' + this.id + '_frame' )
 				: this._.holder;
 
 		// Disable context menu for block panel.
@@ -314,7 +317,7 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 
 			// Safari need focus on the iframe window first(#3389), but we need
 			// lock the blur to avoid hiding the panel.
-			if ( CKEDITOR.env.webkit || CKEDITOR.env.opera )
+			if ( CKEDITOR.env.webkit )
 				item.getDocument().getWindow().focus();
 			item.focus();
 
@@ -380,12 +383,11 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 					return false;
 
 				case 'click' :
-				case 'mouseup' :
 					index = this._.focusIndex;
 					link = index >= 0 && this.element.getElementsByTag( 'a' ).getItem( index );
 
 					if ( link )
-						link.$[ keyAction ] ? link.$[ keyAction ]() : link.$[ 'on' + keyAction ]();
+						link.$.click ? link.$.click() : link.$.onclick();
 
 					return false;
 			}
@@ -394,10 +396,3 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 		}
 	}
 });
-
-/**
- * Fired when a panel is added to the document
- * @name CKEDITOR#ariaWidget
- * @event
- * @param {Object} holder The element wrapping the panel
- */

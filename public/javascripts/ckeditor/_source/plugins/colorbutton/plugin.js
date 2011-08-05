@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -22,7 +22,6 @@ CKEDITOR.plugins.add( 'colorbutton',
 
 		function addButton( name, type, title )
 		{
-			var colorBoxId = CKEDITOR.tools.getNextId() + '_colorBox';
 			editor.ui.add( name, CKEDITOR.UI_PANELBUTTON,
 				{
 					label : title,
@@ -40,11 +39,9 @@ CKEDITOR.plugins.add( 'colorbutton',
 					{
 						block.autoSize = true;
 						block.element.addClass( 'cke_colorblock' );
-						block.element.setHtml( renderColors( panel, type, colorBoxId ) );
+						block.element.setHtml( renderColors( panel, type ) );
 						// The block should not have scrollbars (#5933, #6056)
 						block.element.getDocument().getBody().setStyle( 'overflow', 'hidden' );
-
-						CKEDITOR.ui.fire( 'ready', this );
 
 						var keys = block.keys;
 						var rtl = editor.lang.dir == 'rtl';
@@ -55,37 +52,12 @@ CKEDITOR.plugins.add( 'colorbutton',
 						keys[ 38 ]	= 'prev';					// ARROW-UP
 						keys[ CKEDITOR.SHIFT + 9 ]	= 'prev';	// SHIFT + TAB
 						keys[ 32 ]	= 'click';					// SPACE
-					},
-
-					// The automatic colorbox should represent the real color (#6010)
-					onOpen : function()
-					{
-						var selection = editor.getSelection(),
-							block = selection && selection.getStartElement(),
-							path = new CKEDITOR.dom.elementPath( block ),
-							color;
-
-						// Find the closest block element.
-						block = path.block || path.blockLimit || editor.document.getBody();
-
-						// The background color might be transparent. In that case, look up the color in the DOM tree.
-						do
-						{
-							color = block && block.getComputedStyle( type == 'back' ? 'background-color' : 'color' ) || 'transparent';
-						}
-						while ( type == 'back' && color == 'transparent' && block && ( block = block.getParent() ) );
-
-						// The box should never be transparent.
-						if ( !color || color == 'transparent' )
-							color = '#ffffff';
-
-						this._.panel._.iframe.getFrameDocument().getById( colorBoxId ).setStyle( 'background-color', color );
 					}
 				});
 		}
 
 
-		function renderColors( panel, type, colorBoxId )
+		function renderColors( panel, type )
 		{
 			var output = [],
 				colors = config.colorButton_colors.split( ',' ),
@@ -115,7 +87,8 @@ CKEDITOR.plugins.add( 'colorbutton',
 
 					editor.focus();
 
-					panel.hide( false );
+					panel.hide();
+
 
 					editor.fire( 'saveSnapshot' );
 
@@ -127,18 +100,10 @@ CKEDITOR.plugins.add( 'colorbutton',
 						var colorStyle = config['colorButton_' + type + 'Style'];
 
 						colorStyle.childRule = type == 'back' ?
-							function( element )
-							{
-								// It's better to apply background color as the innermost style. (#3599)
-								// Except for "unstylable elements". (#6103)
-								return isUnstylable( element );
-							}
-							:
-							function( element )
-							{
-								// Fore color style must be applied inside links instead of around it.
-								return element.getName() != 'a' || isUnstylable( element );
-							};
+							// It's better to apply background color as the innermost style. (#3599)
+							function(){ return false; } :
+							// Fore color style must be applied inside links instead of around it.
+							function( element ){ return element.getName() != 'a'; };
 
 						new CKEDITOR.style( colorStyle, { color : color } ).apply( editor.document );
 					}
@@ -156,7 +121,7 @@ CKEDITOR.plugins.add( 'colorbutton',
 					'<table role="presentation" cellspacing=0 cellpadding=0 width="100%">' +
 						'<tr>' +
 							'<td>' +
-								'<span class="cke_colorbox" id="', colorBoxId, '"></span>' +
+								'<span class="cke_colorbox" style="background-color:#000"></span>' +
 							'</td>' +
 							'<td colspan=7 align=center>',
 								lang.auto,
@@ -196,7 +161,7 @@ CKEDITOR.plugins.add( 'colorbutton',
 			}
 
 			// Render the "More Colors" button.
-			if ( config.colorButton_enableMore === undefined || config.colorButton_enableMore )
+			if ( config.colorButton_enableMore )
 			{
 				output.push(
 					'</tr>' +
@@ -209,29 +174,24 @@ CKEDITOR.plugins.add( 'colorbutton',
 								' role="option" aria-posinset="', total, '" aria-setsize="', total, '">',
 								lang.more,
 							'</a>' +
-						'</td>' );	// tr is later in the code.
+						'</td>' );	// It is later in the code.
 			}
 
 			output.push( '</tr></table>' );
 
 			return output.join( '' );
 		}
-
-		function isUnstylable( ele )
-		{
-			return ( ele.getAttribute( 'contentEditable' ) == 'false' ) || ele.getAttribute( 'data-nostyle' );
-		}
 	}
 });
 
 /**
  * Whether to enable the "More Colors..." button in the color selectors.
- * @name CKEDITOR.config.colorButton_enableMore
- * @default true
+ * @default false
  * @type Boolean
  * @example
  * config.colorButton_enableMore = false;
  */
+CKEDITOR.config.colorButton_enableMore = true;
 
 /**
  * Defines the colors to be displayed in the color selectors. It's a string
@@ -240,7 +200,6 @@ CKEDITOR.plugins.add( 'colorbutton',
  * Since 3.3: A name may be optionally defined by prefixing the entries with the
  * name and the slash character. For example, "FontColor1/FF9900" will be
  * displayed as the color #FF9900 in the selector, but will be outputted as "FontColor1".
- * @name CKEDITOR.config.colorButton_colors
  * @type String
  * @default '000,800000,8B4513,2F4F4F,008080,000080,4B0082,696969,B22222,A52A2A,DAA520,006400,40E0D0,0000CD,800080,808080,F00,FF8C00,FFD700,008000,0FF,00F,EE82EE,A9A9A9,FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF'
  * @example
@@ -258,7 +217,6 @@ CKEDITOR.config.colorButton_colors =
 
 /**
  * Holds the style definition to be used to apply the text foreground color.
- * @name CKEDITOR.config.colorButton_foreStyle
  * @type Object
  * @example
  * // This is basically the default setting value.
@@ -277,7 +235,6 @@ CKEDITOR.config.colorButton_foreStyle =
 
 /**
  * Holds the style definition to be used to apply the text background color.
- * @name CKEDITOR.config.colorButton_backStyle
  * @type Object
  * @example
  * // This is basically the default setting value.

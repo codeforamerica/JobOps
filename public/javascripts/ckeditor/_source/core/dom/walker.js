@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -261,7 +261,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 */
 			previous : function()
 			{
-				return iterate.call( this, 1 );
+				return iterate.call( this, true );
 			},
 
 			/**
@@ -271,7 +271,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 */
 			checkForward : function()
 			{
-				return iterate.call( this, 0, 1 ) !== false;
+				return iterate.call( this, false, true ) !== false;
 			},
 
 			/**
@@ -281,7 +281,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 */
 			checkBackward : function()
 			{
-				return iterate.call( this, 1, 1 ) !== false;
+				return iterate.call( this, true, true ) !== false;
 			},
 
 			/**
@@ -303,7 +303,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 */
 			lastBackward : function()
 			{
-				return iterateToLast.call( this, 1 );
+				return iterateToLast.call( this, true );
 			},
 
 			reset : function()
@@ -334,17 +334,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		'table-column' : 1,
 		'table-cell' : 1,
 		'table-caption' : 1
-	};
+	},
+	blockBoundaryNodeNameMatch = { hr : 1 };
 
 	CKEDITOR.dom.element.prototype.isBlockBoundary = function( customNodeNames )
 	{
-		var nodeNameMatches = customNodeNames ?
-			CKEDITOR.tools.extend( {}, CKEDITOR.dtd.$block, customNodeNames || {} ) :
-			CKEDITOR.dtd.$block;
+		var nodeNameMatches = CKEDITOR.tools.extend( {},
+													blockBoundaryNodeNameMatch, customNodeNames || {} );
 
-		// Don't consider floated formatting as block boundary, fall back to dtd check in that case. (#6297)
-		return this.getComputedStyle( 'float' ) == 'none' && blockBoundaryDisplayMatch[ this.getComputedStyle( 'display' ) ]
-				|| nodeNameMatches[ this.getName() ];
+		return blockBoundaryDisplayMatch[ this.getComputedStyle( 'display' ) ] ||
+			nodeNameMatches[ this.getName() ];
 	};
 
 	CKEDITOR.dom.walker.blockBoundary = function( customNodeNames )
@@ -375,7 +374,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			return ( node && node.getName
 					&& node.getName() == 'span'
-					&& node.data( 'cke-bookmark' ) );
+					&& node.hasAttribute('_cke_bookmark') );
 		}
 
 		return function( node )
@@ -386,7 +385,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						&& isBookmarkNode( parent ) );
 			// Is bookmark node?
 			isBookmark = contentOnly ? isBookmark : isBookmark || isBookmarkNode( node );
-			return !! ( isReject ^ isBookmark );
+			return isReject ^ isBookmark;
 		};
 	};
 
@@ -400,7 +399,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			var isWhitespace = node && ( node.type == CKEDITOR.NODE_TEXT )
 							&& !CKEDITOR.tools.trim( node.getText() );
-			return !! ( isReject ^ isWhitespace );
+			return isReject ^ isWhitespace;
 		};
 	};
 
@@ -419,38 +418,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// 'offsetHeight' instead of 'offsetWidth' for properly excluding
 			// all sorts of empty paragraph, e.g. <br />.
 			var isInvisible = whitespace( node ) || node.is && !node.$.offsetHeight;
-			return !! ( isReject ^ isInvisible );
-		};
-	};
-
-	CKEDITOR.dom.walker.nodeType = function( type, isReject )
-	{
-		return function( node )
-		{
-			return !! ( isReject ^ ( node.type == type ) );
+			return isReject ^ isInvisible;
 		};
 	};
 
 	var tailNbspRegex = /^[\t\r\n ]*(?:&nbsp;|\xa0)$/,
-		isWhitespaces = CKEDITOR.dom.walker.whitespaces(),
-		isBookmark = CKEDITOR.dom.walker.bookmark(),
-		toSkip = function( node )
+		isNotWhitespaces = CKEDITOR.dom.walker.whitespaces( true ),
+		isNotBookmark = CKEDITOR.dom.walker.bookmark( false, true ),
+		fillerEvaluator = function( element )
 		{
-			return isBookmark( node )
-					|| isWhitespaces( node )
-					|| node.type == CKEDITOR.NODE_ELEMENT
-					&& node.getName() in CKEDITOR.dtd.$inline
-					&& !( node.getName() in CKEDITOR.dtd.$empty );
+			return isNotBookmark( element ) && isNotWhitespaces( element );
 		};
 
 	// Check if there's a filler node at the end of an element, and return it.
-	CKEDITOR.dom.element.prototype.getBogus = function()
+	CKEDITOR.dom.element.prototype.getBogus = function ()
 	{
-		// Bogus are not always at the end, e.g. <p><a>text<br /></a></p> (#7070).
-		var tail = this;
-		do { tail = tail.getPreviousSourceNode(); }
-		while ( toSkip( tail ) )
-
+		var tail = this.getLast( fillerEvaluator );
 		if ( tail && ( !CKEDITOR.env.ie ? tail.is && tail.is( 'br' )
 				: tail.getText && tailNbspRegex.test( tail.getText() ) ) )
 		{

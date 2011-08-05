@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -36,8 +36,7 @@ CKEDITOR.plugins.add( 'listblock',
 					keys[ 9 ]	= 'next';					// TAB
 					keys[ 38 ]	= 'prev';					// ARROW-UP
 					keys[ CKEDITOR.SHIFT + 9 ]	= 'prev';	// SHIFT + TAB
-					keys[ 32 ]	= CKEDITOR.env.ie ? 'mouseup' : 'click';					// SPACE
-					CKEDITOR.env.ie && ( keys[ 13 ] = 'mouseup' );		// Manage ENTER, since onclick is blocked in IE (#8041).
+					keys[ 32 ]	= 'click';					// SPACE
 
 					this._.pendingHtml = [];
 					this._.items = {};
@@ -82,7 +81,7 @@ CKEDITOR.plugins.add( 'listblock',
 					add : function( value, html, title )
 					{
 						var pendingHtml = this._.pendingHtml,
-							id = CKEDITOR.tools.getNextId();
+							id = 'cke_' + CKEDITOR.tools.getNextNumber();
 
 						if ( !this._.started )
 						{
@@ -94,12 +93,11 @@ CKEDITOR.plugins.add( 'listblock',
 						this._.items[ value ] = id;
 
 						pendingHtml.push(
-							'<li id=', id, ' class=cke_panel_listItem role=presentation>' +
+							'<li id=', id, ' class=cke_panel_listItem>' +
 								'<a id="', id, '_option" _cke_focus=1 hidefocus=true' +
 									' title="', title || value, '"' +
-									' href="javascript:void(\'', value, '\')" ' +
-									( CKEDITOR.env.ie ? 'onclick="return false;" onmouseup' : 'onclick' ) +		// #188
-										'="CKEDITOR.tools.callFunction(', this._.getClick(), ',\'', value, '\'); return false;"',
+									' href="javascript:void(\'', value, '\')"' +
+									' onclick="CKEDITOR.tools.callFunction(', this._.getClick(), ',\'', value, '\'); return false;"',
 									' role="option"' +
 									' aria-posinset="' + ++this._.size + '">',
 									html || value,
@@ -111,7 +109,7 @@ CKEDITOR.plugins.add( 'listblock',
 					{
 						this._.close();
 
-						var id = CKEDITOR.tools.getNextId();
+						var id = 'cke_' + CKEDITOR.tools.getNextNumber();
 
 						this._.groups[ title ] = id;
 
@@ -203,14 +201,8 @@ CKEDITOR.plugins.add( 'listblock',
 
 					unmark : function( value )
 					{
-						var doc = this.element.getDocument(),
-							itemId = this._.items[ value ],
-							item = doc.getById( itemId );
-
-						item.removeClass( 'cke_selected' );
-						doc.getById( itemId + '_option' ).removeAttribute( 'aria-selected' );
-
-						this.onUnmark && this.onUnmark( item );
+						this.element.getDocument().getById( this._.items[ value ] ).removeClass( 'cke_selected' );
+						this.onUnmark && this.onUnmark( this._.items[ value ] );
 					},
 
 					unmarkAll : function()
@@ -220,10 +212,7 @@ CKEDITOR.plugins.add( 'listblock',
 
 						for ( var value in items )
 						{
-							var itemId = items[ value ];
-
-							doc.getById( itemId ).removeClass( 'cke_selected' );
-							doc.getById( itemId + '_option' ).removeAttribute( 'aria-selected' );
+							doc.getById( items[ value ] ).removeClass( 'cke_selected' );
 						}
 
 						this.onUnmark && this.onUnmark();

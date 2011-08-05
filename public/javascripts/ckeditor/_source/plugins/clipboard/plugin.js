@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2011, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -16,10 +16,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var doc = editor.document,
 			body = doc.getBody();
 
-		var enabled = 0;
+		var	enabled = false;
 		var onExec = function()
 		{
-			enabled = 1;
+			enabled = true;
 		};
 
 		// The following seems to be the only reliable way to detect that
@@ -49,7 +49,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				try
 				{
 					// Other browsers throw an error if the command is disabled.
-					return editor.document.$.execCommand( type, false, null );
+					return editor.document.$.execCommand( type );
 				}
 				catch( e )
 				{
@@ -61,8 +61,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	var cutCopyCmd = function( type )
 	{
 		this.type = type;
-		this.canUndo = this.type == 'cut';		// We can't undo copy to clipboard.
-		this.startDisabled = true;
+		this.canUndo = ( this.type == 'cut' );		// We can't undo copy to clipboard.
 	};
 
 	cutCopyCmd.prototype =
@@ -158,24 +157,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		}
 	};
 
-	function cancel( evt ) { evt.cancel(); }
-
 	// Allow to peek clipboard content by redirecting the
 	// pasting content into a temporary bin and grab the content of it.
 	function getClipboardData( evt, mode, callback )
 	{
 		var doc = this.document;
 
-		// Avoid recursions on 'paste' event or consequent paste too fast. (#5730)
-		if ( doc.getById( 'cke_pastebin' ) )
+		// Avoid recursions on 'paste' event for IE.
+		if ( CKEDITOR.env.ie && doc.getById( 'cke_pastebin' ) )
 			return;
 
 		// If the browser supports it, get the data directly
-		if ( mode == 'text' && evt.data && evt.data.$.clipboardData )
+		if (mode == 'text' && evt.data && evt.data.$.clipboardData)
 		{
 			// evt.data.$.clipboardData.types contains all the flavours in Mac's Safari, but not on windows.
 			var plain = evt.data.$.clipboardData.getData( 'text/plain' );
-			if ( plain )
+			if (plain)
 			{
 				evt.data.preventDefault();
 				callback( plain );
@@ -210,11 +207,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		var bms = sel.createBookmarks();
 
-		this.on( 'selectionChange', cancel, null, null, 0 );
-
 		// Turn off design mode temporarily before give focus to the paste bin.
 		if ( mode == 'text' )
-			pastebin.$.focus();
+		{
+			if ( CKEDITOR.env.ie )
+			{
+				var ieRange = doc.getBody().$.createTextRange();
+				ieRange.moveToElementText( pastebin.$ );
+				ieRange.execCommand( 'Paste' );
+				evt.data.preventDefault();
+			}
+			else
+			{
+				doc.$.designMode = 'off';
+				pastebin.$.focus();
+			}
+		}
 		else
 		{
 			range.setStartAt( pastebin, CKEDITOR.POSITION_AFTER_START );
@@ -222,13 +230,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			range.select( true );
 		}
 
-		var editor  = this;
 		// Wait a while and grab the pasted contents
 		window.setTimeout( function()
 		{
-			mode == 'text' && CKEDITOR.env.gecko && editor.focusGrabber.focus();
+			mode == 'text' && !CKEDITOR.env.ie && ( doc.$.designMode = 'on' );
 			pastebin.remove();
-			editor.removeListener( 'selectionChange', cancel );
 
 			// Grab the HTML contents.
 			// We need to look for a apple style wrapper on webkit it also adds
@@ -248,7 +254,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	// Cutting off control type element in IE standards breaks the selection entirely. (#4881)
 	function fixCut( editor )
 	{
-		if ( !CKEDITOR.env.ie || CKEDITOR.env.quirks )
+		if ( !CKEDITOR.env.ie || editor.document.$.compatMode == 'BackCompat' )
 			return;
 
 		var sel = editor.getSelection();
@@ -275,34 +281,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		}
 	}
 
-	var depressBeforeEvent;
-	function stateFromNamedCommand( command, editor )
-	{
-		// IE Bug: queryCommandEnabled('paste') fires also 'beforepaste(copy/cut)',
-		// guard to distinguish from the ordinary sources( either
-		// keyboard paste or execCommand ) (#4874).
-		CKEDITOR.env.ie && ( depressBeforeEvent = 1 );
-
-		var retval = CKEDITOR.TRISTATE_OFF;
-		try { retval = editor.document.$.queryCommandEnabled( command ) ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED; }catch( er ){}
-
-		depressBeforeEvent = 0;
-		return retval;
-	}
-
-	var inReadOnly;
-	function setToolbarStates()
-	{
-		if ( this.mode != 'wysiwyg' )
-			return;
-
-		this.getCommand( 'cut' ).setState( inReadOnly ? CKEDITOR.TRISTATE_DISABLED : stateFromNamedCommand( 'Cut', this ) );
-		this.getCommand( 'copy' ).setState( stateFromNamedCommand( 'Copy', this ) );
-		var pasteState = inReadOnly ? CKEDITOR.TRISTATE_DISABLED :
-						CKEDITOR.env.webkit ? CKEDITOR.TRISTATE_OFF : stateFromNamedCommand( 'Paste', this );
-		this.fire( 'pasteState', pasteState );
-	}
-
 	// Register the plugin.
 	CKEDITOR.plugins.add( 'clipboard',
 		{
@@ -319,8 +297,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						else if ( data[ 'text' ] )
 							editor.insertText( data[ 'text' ] );
 
-						setTimeout( function () { editor.fire( 'afterPaste' ); }, 0 );
-
 					}, null, null, 1000 );
 
 				editor.on( 'pasteDialog', function( evt )
@@ -330,11 +306,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							// Open default paste dialog.
 							editor.openDialog( 'paste' );
 						}, 0 );
-					});
-
-				editor.on( 'pasteState', function( evt )
-					{
-						editor.getCommand( 'paste' ).setState( evt.data );
 					});
 
 				function addButtonCommand( buttonName, commandName, command, ctxMenuOrder )
@@ -369,65 +340,59 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				editor.on( 'key', onKey, editor );
 
+				var mode = editor.config.forcePasteAsPlainText ? 'text' : 'html';
+
 				// We'll be catching all pasted content in one line, regardless of whether the
 				// it's introduced by a document command execution (e.g. toolbar buttons) or
 				// user paste behaviors. (e.g. Ctrl-V)
 				editor.on( 'contentDom', function()
 				{
 					var body = editor.document.getBody();
-					body.on( CKEDITOR.env.webkit ? 'paste' : 'beforepaste', function( evt )
+					body.on( ( (mode == 'text' && CKEDITOR.env.ie) || CKEDITOR.env.webkit ) ? 'paste' : 'beforepaste',
+						function( evt )
 						{
 							if ( depressBeforeEvent )
 								return;
 
-							// Fire 'beforePaste' event so clipboard flavor get customized
-							// by other plugins.
-							var eventData =  { mode : 'html' };
-							editor.fire( 'beforePaste', eventData );
-
-							getClipboardData.call( editor, evt, eventData.mode, function ( data )
+							getClipboardData.call( editor, evt, mode, function ( data )
 							{
 								// The very last guard to make sure the
 								// paste has successfully happened.
-								if ( !( data = CKEDITOR.tools.trim( data.replace( /<span[^>]+data-cke-bookmark[^<]*?<\/span>/ig,'' ) ) ) )
+								if ( !data )
 									return;
 
 								var dataTransfer = {};
-								dataTransfer[ eventData.mode ] = data;
+								dataTransfer[ mode ] = data;
 								editor.fire( 'paste', dataTransfer );
 							} );
 						});
 
-					// Dismiss the (wrong) 'beforepaste' event fired on context menu open. (#7953)
-					body.on( 'contextmenu', function()
-					{
-						depressBeforeEvent = 1;
-						setTimeout( function() { depressBeforeEvent = 0; }, 10 );
-					});
-
 					body.on( 'beforecut', function() { !depressBeforeEvent && fixCut( editor ); } );
-
-					body.on( 'mouseup', function(){ setTimeout( function(){ setToolbarStates.call( editor ); }, 0 ); }, editor );
-					body.on( 'keyup', setToolbarStates, editor );
-				});
-
-				// For improved performance, we're checking the readOnly state on selectionChange instead of hooking a key event for that.
-				editor.on( 'selectionChange', function( evt )
-				{
-					inReadOnly = evt.data.selection.getRanges()[ 0 ].checkReadOnly();
-					setToolbarStates.call( editor );
 				});
 
 				// If the "contextmenu" plugin is loaded, register the listeners.
 				if ( editor.contextMenu )
 				{
+					var depressBeforeEvent;
+					function stateFromNamedCommand( command )
+					{
+						// IE Bug: queryCommandEnabled('paste') fires also 'beforepaste(copy/cut)',
+						// guard to distinguish from the ordinary sources( either
+						// keyboard paste or execCommand ) (#4874).
+						CKEDITOR.env.ie && ( depressBeforeEvent = 1 );
+
+						var retval = editor.document.$.queryCommandEnabled( command ) ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED;
+						depressBeforeEvent = 0;
+						return retval;
+					}
+
 					editor.contextMenu.addListener( function( element, selection )
 						{
-							var readOnly = selection.getRanges()[ 0 ].checkReadOnly();
+							var readOnly = selection.getCommonAncestor().isReadOnly();
 							return {
-								cut : !readOnly && stateFromNamedCommand( 'Cut', editor ),
-								copy : stateFromNamedCommand( 'Copy', editor ),
-								paste : !readOnly && ( CKEDITOR.env.webkit ? CKEDITOR.TRISTATE_OFF : stateFromNamedCommand( 'Paste', editor ) )
+								cut : !readOnly && stateFromNamedCommand( 'Cut' ),
+								copy : stateFromNamedCommand( 'Copy' ),
+								paste : !readOnly && ( CKEDITOR.env.webkit ? CKEDITOR.TRISTATE_OFF : stateFromNamedCommand( 'Paste' ) )
 							};
 						});
 				}
@@ -444,10 +409,4 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @event
  * @param {String} [data.html] The HTML data to be pasted. If not available, e.data.text will be defined.
  * @param {String} [data.text] The plain text data to be pasted, available when plain text operations are to used. If not available, e.data.html will be defined.
- */
-
-/**
- * Internal event to open the Paste dialog
- * @name CKEDITOR.editor#pasteDialog
- * @event
  */
