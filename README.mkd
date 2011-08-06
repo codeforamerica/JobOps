@@ -50,6 +50,18 @@ Submitting a Pull Request
 8. Commit and push your changes.
 9. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
 
+Supported Rubies
+----------------
+This library aims to support and is [tested
+against](http://travis-ci.org/codeforamerica/JobOps) the following Ruby
+implementations:
+
+* Ruby 1.8.7
+* Ruby 1.9.1
+* Ruby 1.9.2
+* [Rubinius](http://rubini.us/)
+* [Ruby Enterprise Edition](http://www.rubyenterpriseedition.com/)
+
 Copyright
 ---------
 Copyright (c) 2011 Code for America Laboratories
