@@ -1,7 +1,7 @@
 class JobHistoriesController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /job_histories
   # GET /job_histories.json
   def index
@@ -9,7 +9,7 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @job_histories }
+      format.json { render :json => @job_histories }
     end
   end
 
@@ -20,7 +20,7 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @job_history }
+      format.json { render :json => @job_history }
     end
   end
 
@@ -31,7 +31,7 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @job_history }
+      format.json { render :json => @job_history }
     end
   end
 
@@ -47,11 +47,11 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       if @job_history.save
-        format.html { redirect_to @job_history, notice: 'Job history was successfully created.' }
-        format.json { render json: @job_history, status: :created, location: @job_history }
+        format.html { redirect_to @job_history, :notice => 'Job history was successfully created.' }
+        format.json { render :json => @job_history, :status => :created, :location => @job_history }
       else
-        format.html { render action: "new" }
-        format.json { render json: @job_history.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @job_history.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       if @job_history.update_attributes(params[:job_history])
-        format.html { redirect_to @job_history, notice: 'Job history was successfully updated.' }
+        format.html { redirect_to @job_history, :notice => 'Job history was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @job_history.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @job_history.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -1,7 +1,7 @@
 class AwardsController < ApplicationController
-  
+
  before_filter :authenticate_user!
-  
+
   # GET /awards
   # GET /awards.json
   def index
@@ -9,7 +9,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @awards }
+      format.json { render :json => @awards }
     end
   end
 
@@ -20,7 +20,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @award }
+      format.json { render :json => @award }
     end
   end
 
@@ -31,7 +31,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @award }
+      format.json { render :json => @award }
     end
   end
 
@@ -47,11 +47,11 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.save
-        format.html { redirect_to @award, notice: 'Award was successfully created.' }
-        format.json { render json: @award, status: :created, location: @award }
+        format.html { redirect_to @award, :notice => 'Award was successfully created.' }
+        format.json { render :json => @award, :status => :created, :location => @award }
       else
-        format.html { render action: "new" }
-        format.json { render json: @award.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @award.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.update_attributes(params[:award])
-        format.html { redirect_to @award, notice: 'Award was successfully updated.' }
+        format.html { redirect_to @award, :notice => 'Award was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @award.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @award.errors, :status => :unprocessable_entity }
       end
     end
   end

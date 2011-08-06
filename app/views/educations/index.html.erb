@@ -25,7 +25,7 @@
     <td><%= education.notes %></td>
     <td><%= link_to 'Show', education %></td>
     <td><%= link_to 'Edit', edit_education_path(education) %></td>
-    <td><%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

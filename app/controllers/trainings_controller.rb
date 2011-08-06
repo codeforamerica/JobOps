@@ -1,7 +1,7 @@
 class TrainingsController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /trainings
   # GET /trainings.json
   def index
@@ -9,7 +9,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @trainings }
+      format.json { render :json => @trainings }
     end
   end
 
@@ -20,7 +20,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @training }
+      format.json { render :json => @training }
     end
   end
 
@@ -31,7 +31,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @training }
+      format.json { render :json => @training }
     end
   end
 
@@ -47,11 +47,11 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to @training, notice: 'Training was successfully created.' }
-        format.json { render json: @training, status: :created, location: @training }
+        format.html { redirect_to @training, :notice => 'Training was successfully created.' }
+        format.json { render :json => @training, :status => :created, :location => @training }
       else
-        format.html { render action: "new" }
-        format.json { render json: @training.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @training.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.update_attributes(params[:training])
-        format.html { redirect_to @training, notice: 'Training was successfully updated.' }
+        format.html { redirect_to @training, :notice => 'Training was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @training.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @training.errors, :status => :unprocessable_entity }
       end
     end
   end

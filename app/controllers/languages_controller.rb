@@ -1,7 +1,7 @@
 class LanguagesController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /languages
   # GET /languages.json
   def index
@@ -9,7 +9,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @languages }
+      format.json { render :json => @languages }
     end
   end
 
@@ -20,7 +20,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @language }
+      format.json { render :json => @language }
     end
   end
 
@@ -31,7 +31,7 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @language }
+      format.json { render :json => @language }
     end
   end
 
@@ -44,14 +44,14 @@ class LanguagesController < ApplicationController
   # POST /languages.json
   def create
     @language = User.find_by_id(current_user.id).languages.new(params[:language])
-    
+
     respond_to do |format|
       if @language.save
-        format.html { redirect_to @language, notice: 'Language was successfully created.' }
-        format.json { render json: @language, status: :created, location: @language }
+        format.html { redirect_to @language, :notice => 'Language was successfully created.' }
+        format.json { render :json => @language, :status => :created, :location => @language }
       else
-        format.html { render action: "new" }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @language.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class LanguagesController < ApplicationController
 
     respond_to do |format|
       if @language.update_attributes(params[:language])
-        format.html { redirect_to @language, notice: 'Language was successfully updated.' }
+        format.html { redirect_to @language, :notice => 'Language was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @language.errors, :status => :unprocessable_entity }
       end
     end
   end

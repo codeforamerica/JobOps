@@ -13,7 +13,7 @@
     <td><%= skill.skill %></td>
     <td><%= link_to 'Show', skill %></td>
     <td><%= link_to 'Edit', edit_skill_path(skill) %></td>
-    <td><%= link_to 'Destroy', skill, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

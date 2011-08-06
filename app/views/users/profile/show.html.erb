@@ -116,7 +116,7 @@
     <td><%= education.notes %></td>
     <td><%= link_to 'Show', education %></td>
     <td><%= link_to 'Edit', edit_education_path(education) %></td>
-    <td><%= link_to 'Destroy', education, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -148,7 +148,7 @@
     <td><%= training.training_date %></td>
     <td><%= link_to 'Show', training %></td>
     <td><%= link_to 'Edit', edit_training_path(training) %></td>
-    <td><%= link_to 'Destroy', training, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -171,7 +171,7 @@
     <td><%= certification.date_acquired %></td>
     <td><%= link_to 'Show', certification %></td>
     <td><%= link_to 'Edit', edit_certification_path(certification) %></td>
-    <td><%= link_to 'Destroy', certification, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -200,7 +200,7 @@
     <td><%= job_history.summary %></td>
     <td><%= link_to 'Show', job_history %></td>
     <td><%= link_to 'Edit', edit_job_history_path(job_history) %></td>
-    <td><%= link_to 'Destroy', job_history, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

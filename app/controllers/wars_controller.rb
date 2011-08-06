@@ -1,7 +1,7 @@
 class WarsController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /wars
   # GET /wars.json
   def index
@@ -9,7 +9,7 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @wars }
+      format.json { render :json => @wars }
     end
   end
 
@@ -20,7 +20,7 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @war }
+      format.json { render :json => @war }
     end
   end
 
@@ -31,7 +31,7 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @war }
+      format.json { render :json => @war }
     end
   end
 
@@ -47,11 +47,11 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       if @war.save
-        format.html { redirect_to @war, notice: 'War was successfully created.' }
-        format.json { render json: @war, status: :created, location: @war }
+        format.html { redirect_to @war, :notice => 'War was successfully created.' }
+        format.json { render :json => @war, :status => :created, :location => @war }
       else
-        format.html { render action: "new" }
-        format.json { render json: @war.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @war.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       if @war.update_attributes(params[:war])
-        format.html { redirect_to @war, notice: 'War was successfully updated.' }
+        format.html { redirect_to @war, :notice => 'War was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @war.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @war.errors, :status => :unprocessable_entity }
       end
     end
   end

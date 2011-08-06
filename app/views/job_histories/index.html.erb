@@ -21,7 +21,7 @@
     <td><%= job_history.summary %></td>
     <td><%= link_to 'Show', job_history %></td>
     <td><%= link_to 'Edit', edit_job_history_path(job_history) %></td>
-    <td><%= link_to 'Destroy', job_history, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -17,7 +17,7 @@
     <td><%= certification.date_acquired %></td>
     <td><%= link_to 'Show', certification %></td>
     <td><%= link_to 'Edit', edit_certification_path(certification) %></td>
-    <td><%= link_to 'Destroy', certification, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

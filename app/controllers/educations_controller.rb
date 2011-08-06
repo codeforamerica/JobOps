@@ -1,7 +1,7 @@
 class EducationsController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /educations
   # GET /educations.json
   def index
@@ -9,7 +9,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @educations }
+      format.json { render :json => @educations }
     end
   end
 
@@ -20,7 +20,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @education }
+      format.json { render :json => @education }
     end
   end
 
@@ -31,7 +31,7 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @education }
+      format.json { render :json => @education }
     end
   end
 
@@ -47,11 +47,11 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       if @education.save
-        format.html { redirect_to @education, notice: 'Education was successfully created.' }
-        format.json { render json: @education, status: :created, location: @education }
+        format.html { redirect_to @education, :notice => 'Education was successfully created.' }
+        format.json { render :json => @education, :status => :created, :location => @education }
       else
-        format.html { render action: "new" }
-        format.json { render json: @education.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @education.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class EducationsController < ApplicationController
 
     respond_to do |format|
       if @education.update_attributes(params[:education])
-        format.html { redirect_to @education, notice: 'Education was successfully updated.' }
+        format.html { redirect_to @education, :notice => 'Education was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @education.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @education.errors, :status => :unprocessable_entity }
       end
     end
   end

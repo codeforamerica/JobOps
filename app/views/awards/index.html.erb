@@ -15,7 +15,7 @@
     <td><%= award.award_date %></td>
     <td><%= link_to 'Show', award %></td>
     <td><%= link_to 'Edit', edit_award_path(award) %></td>
-    <td><%= link_to 'Destroy', award, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', award, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

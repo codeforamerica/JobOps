@@ -1,7 +1,7 @@
 class CertificationsController < ApplicationController
-  
+
   before_filter :authenticate_user!
-  
+
   # GET /certifications
   # GET /certifications.json
   def index
@@ -9,7 +9,7 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @certifications }
+      format.json { render :json => @certifications }
     end
   end
 
@@ -20,7 +20,7 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @certification }
+      format.json { render :json => @certification }
     end
   end
 
@@ -31,7 +31,7 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @certification }
+      format.json { render :json => @certification }
     end
   end
 
@@ -47,11 +47,11 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       if @certification.save
-        format.html { redirect_to @certification, notice: 'Certification was successfully created.' }
-        format.json { render json: @certification, status: :created, location: @certification }
+        format.html { redirect_to @certification, :notice => 'Certification was successfully created.' }
+        format.json { render :json => @certification, :status => :created, :location => @certification }
       else
-        format.html { render action: "new" }
-        format.json { render json: @certification.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @certification.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -63,11 +63,11 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       if @certification.update_attributes(params[:certification])
-        format.html { redirect_to @certification, notice: 'Certification was successfully updated.' }
+        format.html { redirect_to @certification, :notice => 'Certification was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @certification.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @certification.errors, :status => :unprocessable_entity }
       end
     end
   end
