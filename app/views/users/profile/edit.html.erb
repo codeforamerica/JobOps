@@ -22,13 +22,12 @@
       <%= render 'military/form' %>
     </div>
     <div id="skills_edu" class="tab_content">
+      <p><%= link_to 'Add new skill', new_skill_path %></p>
     </div>
     <div id="exp" class="tab_content">
     </div>
     <div id="personal_info" class="tab_content">
     <%= render 'users/profile/personal_form' %>
     </div>
-      <%= link_to 'Show', @users %> |
-      <%= link_to 'Back', users_path %>
   </div>
 </div>
