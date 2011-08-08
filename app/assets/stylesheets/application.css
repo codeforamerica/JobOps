@@ -74,6 +74,27 @@ ul.nav li {
 #account {
   clear: both;
   margin: 0 auto; }
+  #account #name {
+    float: left; }
+  #account .tabs {
+    clear: both;
+    float: left;
+    width: 20%;
+    list-style: none; }
+    #account .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #account .tabs .active {
+      background-color: black;
+      color: white; }
+      #account .tabs .active a {
+        color: white; }
+    #account .tabs a {
+      color: black; }
+  #account .tab_container {
+    float: right;
+    width: 75%; }
 
 #edit_profile {
   clear: both;

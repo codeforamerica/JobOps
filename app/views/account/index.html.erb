@@ -1,10 +1,14 @@
 <div id="account">
-<h1>Account#index</h1>
-<p>Find me in app/views/account/index.html.erb</p>
 
-<%= render 'users/profile/nav_profile'%>
+  <%= render 'users/profile/nav_profile'%>
+  <%= render 'layouts/account_nav' %>
 
-<%= render 'layouts/account_nav' %>
+  <div class="tab_container">
+    <div id="basic_info" class="tab_content">
+      <h2>Account Info</h2>
+      <p>Find me in app/views/account/index.html.erb</p>
 
-<%= render 'users/registrations/edit'%>
+      <%= render 'users/registrations/edit'%>
+    </div>
+  </div>
 </div>
