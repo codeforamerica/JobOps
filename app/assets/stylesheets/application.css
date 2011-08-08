@@ -126,3 +126,22 @@ ul.nav li {
     float: right;
     width: 75%; }
 
+
+#resume {
+  clear: both;
+  margin: 0 auto; }
+  #resume .tabs {
+    clear: both;
+    float: right;
+    width: 20%;
+    list-style: none; }
+    #resume .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #resume .tabs a {
+      color: black; }
+  #resume .tab_container {
+    float: left;
+    width: 75%; }
+
