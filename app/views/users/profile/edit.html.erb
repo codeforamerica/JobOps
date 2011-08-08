@@ -22,9 +22,18 @@
       <%= render 'military/form' %>
     </div>
     <div id="skills_edu" class="tab_content">
+      <h3>Skills</h3>
       <p><%= link_to 'Add new skill', new_skill_path %></p>
+      <p><%= link_to 'Edit skills', skills_path %></p>
+
+      <h3>Education</h3>
+      <p><%= link_to 'Add Education', new_education_path %></p>
+      <p><%= link_to 'Edit Education', educations_path %></p>
     </div>
     <div id="exp" class="tab_content">
+      <h3>Experience</h3>
+      <p><%= link_to 'Add Job', new_job_history_path %></p>
+      <p><%= link_to 'Edit Jobs', job_histories_path %></p>
     </div>
     <div id="personal_info" class="tab_content">
     <%= render 'users/profile/personal_form' %>
