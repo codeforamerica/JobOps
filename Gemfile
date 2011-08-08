@@ -13,6 +13,7 @@ gem 'aws-s3'
 gem 'ckeditor'
 gem 'devise'
 gem 'jquery-rails'
+gem "oa-oauth", :require => "omniauth/oauth"
 gem "paperclip", "~> 2.3"
 
 platforms :jruby do
