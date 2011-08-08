@@ -99,3 +99,30 @@ ul.nav li {
 #edit_profile {
   clear: both;
   margin: 0 auto; }
+
+
+#settings {
+  clear: both;
+  margin: 0 auto; }
+  #settings #name {
+    float: left; }
+  #settings .tabs {
+    clear: both;
+    float: left;
+    width: 20%;
+    list-style: none; }
+    #settings .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #settings .tabs .active {
+      background-color: black;
+      color: white; }
+      #settings .tabs .active a {
+        color: white; }
+    #settings .tabs a {
+      color: black; }
+  #settings .tab_container {
+    float: right;
+    width: 75%; }
+
