@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe AccountController do
+describe SettingsController do
   login_user
 
   describe "#index" do
     it "should render the index template" do
       get :index
-      response.should render_template("account/index")
+      response.should render_template("settings/index")
+      response.should be_success
     end
   end
-
 end
