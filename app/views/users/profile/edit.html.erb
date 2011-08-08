@@ -1,12 +1,29 @@
-<div id="edit_profile">
-<h1>Editing Profile</h1>
+<div id="profile">
+  <h1 id="name"><%= @user.full_name %></h1>
+  <%= render 'users/profile/nav_profile'%>
 
-<h2>Basic Information</h2>
-<%= render 'users/profile/form' %>
-<%= render 'users/profile/personal_form' %>
-<%= render 'military/form' %>
+  <ul class="tabs">
+    <li><a href="#basic_info">Basic Info</a></li>
+    <li><a href="#military_info">Military Info</a></li>
+    <li><a href="#career_survey">Career Survey</a></li>
+    <li><a href="#skills_edu">Skills & Education</a></li>
+    <li><a href="#exp">Experience</a></li>
+    <li><a href="#personal_info">Personal Info</a></li>
+  </ul>
 
+  <div class="tab_container">
+    <div id="basic_info" class="tab_content">
+      <div id="edit_profile">
+        <h2>Editing Profile</h2>
 
-<%= link_to 'Show', @users %> |
-<%= link_to 'Back', users_path %>
+        <h2>Basic Information</h2>
+        <%= render 'users/profile/form' %>
+        <%= render 'users/profile/personal_form' %>
+        <%= render 'military/form' %>
+      </div>
+
+      <%= link_to 'Show', @users %> |
+      <%= link_to 'Back', users_path %>
+    </div>
+  </div>
 </div>
