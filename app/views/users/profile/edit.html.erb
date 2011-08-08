@@ -11,19 +11,23 @@
     <li><a href="#personal_info">Personal Info</a></li>
   </ul>
 
+  <h2>Editing Profile</h2>
+
   <div class="tab_container">
     <div id="basic_info" class="tab_content">
-      <div id="edit_profile">
-        <h2>Editing Profile</h2>
-
-        <h2>Basic Information</h2>
-        <%= render 'users/profile/form' %>
-        <%= render 'users/profile/personal_form' %>
-        <%= render 'military/form' %>
-      </div>
-
+      <h2>Basic Information</h2>
+      <%= render 'users/profile/form' %>
+    </div>
+    <div id="military_info" class="tab_content">
+      <%= render 'military/form' %>
+    </div>
+    <div id="skills_edu" class="tab_content">
+      <%= render 'skills/form' %>
+    </div>
+    <div id="personal_info" class="tab_content">
+    <%= render 'users/profile/personal_form' %>
+    </div>
       <%= link_to 'Show', @users %> |
       <%= link_to 'Back', users_path %>
-    </div>
   </div>
 </div>
