@@ -1,3 +1,4 @@
+<h3>Personal Info</h3>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -13,9 +14,9 @@
 
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.date_select :dob, 
+    <%= f.date_select :dob,
 		:start_year => Time.now.year - 75,
-    	:end_year => Time.now.year - 16 %> 
+    :end_year => Time.now.year - 16 %>
   </div>
   <div class="field">
     <%= f.label :gender %><br />
