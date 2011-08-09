@@ -1,5 +1,7 @@
 JobOps::Application.routes.draw do
 
+  resources :authentications
+
   get "settings/index"
 
   resources :resume, :only => [:index, :edit, :update]
