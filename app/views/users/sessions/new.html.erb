@@ -15,5 +15,9 @@
   <p><%= f.submit "Sign in" %></p>
 <% end %>
 
+<p><strong>Or Sign in through one of these services:</strong></p>
+
+<%= render 'authentications/auth_menu'%>
+
 <%= render :partial => "devise/shared/links" %>
 </div>
