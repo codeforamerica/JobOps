@@ -2,6 +2,8 @@ JobOps::Application.routes.draw do
 
   resources :authentications
 
+  match '/auth/:provider/callback' => 'authentications#create'
+
   get "settings/index"
 
   resources :resume, :only => [:index, :edit, :update]
