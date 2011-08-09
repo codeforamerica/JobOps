@@ -30,8 +30,12 @@ GEM
       activesupport (= 3.1.0.rc5)
     activesupport (3.1.0.rc5)
       multi_json (~> 1.0)
+<<<<<<< HEAD
     addressable (2.2.6)
     arel (2.1.5)
+=======
+    arel (2.1.4)
+>>>>>>> 9b06880dde532edf0d37ed19d1906509ba1a5590
     aws-s3 (0.6.2)
       builder
       mime-types
