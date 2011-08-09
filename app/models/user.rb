@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   serialize :privacy_settings
 
   has_many :awards
+  has_many :authentications
   has_many :certifications
   has_many :job_histories
   has_many :educations
