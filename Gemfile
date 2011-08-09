@@ -22,6 +22,7 @@ platforms :jruby do
 end
 
 group :development, :test do
+  gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'sqlite3'
