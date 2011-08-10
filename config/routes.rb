@@ -3,6 +3,7 @@ JobOps::Application.routes.draw do
   resources :authentications
 
   match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/facebook/setup', :to => 'facebook#setup'
 
   get "settings/index"
 
