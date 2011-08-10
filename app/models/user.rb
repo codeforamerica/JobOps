@@ -36,9 +36,27 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
 
   def apply_omniauth(omniauth)
+    case omniauth['provider']
+      when 'facebook'
+        self.apply_facebook(omniauth)
+      end
     self.email = omniauth['user_info']['email'] if email.blank?
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    build_authentications(omniauth, save_it)
   end
+
+  def build_authentications(omniauth, save_it = false)
+    auth_params = {:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil)}
+    if save_it
+      authentications.create!(auth_params)
+    else
+      authentications.build(auth_params)
+    end
+  end
+
+  def apply_omniauth!(omniauth)
+    apply_omniauth(omniauth, true)
+  end
+
 
   def password_required?
     (authentications.empty? || !password.blank?) && super
