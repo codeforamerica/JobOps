@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   has_many :trainings
   has_many :wars
 
+  validates_presence_of :first_name, :last_name
+
   def apply_omniauth(omniauth)
     self.email = omniauth['user_info']['email'] if email.blank?
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
