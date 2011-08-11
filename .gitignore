@@ -26,3 +26,4 @@ test/tmp
 test/version_tmp
 tmp/
 public/system/avatars
+heroku_env.rb
