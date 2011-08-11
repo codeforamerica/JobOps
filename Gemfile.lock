@@ -64,6 +64,9 @@ GEM
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (< 2, >= 1.1.0)
+    faraday_middleware (0.6.5)
+      faraday (~> 0.6.0)
+    hashie (1.0.0)
     hike (1.2.0)
     i18n (0.6.0)
     jquery-rails (1.0.12)
@@ -148,6 +151,7 @@ GEM
       railties (~> 3.1.0.rc1)
       sass (>= 3.1.4)
       sprockets (>= 2.0.0.beta.9)
+    simple_oauth (0.1.5)
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
     simplecov-html (0.4.5)
@@ -162,6 +166,13 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    twitter (1.6.0)
+      faraday (~> 0.6.1)
+      faraday_middleware (~> 0.6.3)
+      hashie (~> 1.0.0)
+      multi_json (~> 1.0.0)
+      multi_xml (~> 0.2.0)
+      simple_oauth (~> 0.1.5)
     tzinfo (0.3.29)
     uglifier (1.0.0)
       execjs (>= 0.3.0)
@@ -197,5 +208,6 @@ DEPENDENCIES
   simplecov
   sqlite3
   therubyrhino
+  twitter
   uglifier
   webrat

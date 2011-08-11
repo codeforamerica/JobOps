@@ -13,8 +13,9 @@ gem 'aws-s3'
 gem 'ckeditor'
 gem 'devise'
 gem 'jquery-rails'
-gem "oa-oauth", :require => "omniauth/oauth"
-gem "paperclip", "~> 2.3"
+gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'paperclip', '~> 2.3'
+gem 'twitter'
 
 platforms :jruby do
   gem 'jruby-openssl'
@@ -30,10 +31,10 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'mocha'
   gem 'webrat'
 end
 
 group :production do
   gem 'pg'
 end
-gem "mocha", :group => :test
