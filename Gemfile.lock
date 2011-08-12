@@ -56,7 +56,7 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
-    factory_girl (2.0.3)
+    factory_girl (2.0.4)
     factory_girl_rails (1.1.0)
       factory_girl (~> 2.0.0)
       railties (>= 3.0.0)
