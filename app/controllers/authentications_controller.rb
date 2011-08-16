@@ -27,6 +27,10 @@ class AuthenticationsController < ApplicationController
     end
   end
 
+  def auth_failure
+   # just render the failure view
+   end
+
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
