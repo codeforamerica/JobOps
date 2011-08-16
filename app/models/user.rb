@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   def apply_omniauth(omniauth, save_it = false)
+    if omniauth['user_info']
+      self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
+    end
     case omniauth['provider']
       when 'facebook'
         self.apply_facebook(omniauth)
