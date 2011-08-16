@@ -1,4 +1,5 @@
-<% if @authentications %>
+<div id="home">
+  <% if @authentications %>
   <% unless @authentications.empty? %>
     <p><strong>You can sign in to this account using:</strong></p>
     <div class="authentications">
@@ -22,3 +23,4 @@
 <a href="/auth/linked_in" class="auth_provider">LinkedIn</a>
 
 <div class="clear"></div>
+</div>
