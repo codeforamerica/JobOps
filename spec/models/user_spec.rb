@@ -6,13 +6,6 @@ describe User do
     @user = Factory(:user)
   end
 
-  describe "full_name" do
-    it "should combine the first name and last name" do
-      name = @user.full_name
-      name.should == "GI Joe"
-    end
-  end
-
   describe "age" do
     it "should return the users age" do
       @age = User.new

@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name,
-                  :last_name, :city, :state, :goal, :relocate, :desired_salary, :gender,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
+                  :city, :state, :goal, :relocate, :desired_salary, :gender,
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar,
                   :privacy_settings, :email_settings
@@ -33,9 +33,12 @@ class User < ActiveRecord::Base
   has_many :trainings
   has_many :wars
 
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :name
 
   def apply_omniauth(omniauth, save_it = false)
+    if omniauth['user_info']
+      self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
+    end
     case omniauth['provider']
       when 'facebook'
         self.apply_facebook(omniauth)
@@ -60,11 +63,6 @@ class User < ActiveRecord::Base
 
   def password_required?
     (authentications.empty? || !password.blank?) && super
-  end
-
-
-  def full_name
-    self.first_name + ' ' +  self.last_name
   end
 
   def age(dob)

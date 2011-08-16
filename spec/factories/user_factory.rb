@@ -2,8 +2,7 @@ Factory.define(:user) do |u|
   u.sequence(:email) {|n| "email#{n}@testcompany.com"}
   u.password "123456"
   u.password_confirmation "123456"
-  u.first_name "GI"
-  u.last_name "Joe"
+  u.name "GI Joe"
   u.service_branch "Coast Gaurd"
   u.moc "10A"
   u.rank "E220"

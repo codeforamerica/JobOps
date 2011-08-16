@@ -8,13 +8,16 @@ class AuthenticationsController < ApplicationController
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
 
     if authentication
+      #Existing user, existing authentication
       flash[:notice] = "Signed in successfully."
       sign_in_and_redirect(:user, authentication.user)
     elsif current_user
+      #Existing user, new authentication
       current_user.apply_omniauth!(omniauth)
       flash[:notice] = "Authentication successful."
       redirect_to authentications_url
     else
+      #Entirely new user
       user = User.new
       user.apply_omniauth(omniauth)
       if user.save
