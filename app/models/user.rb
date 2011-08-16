@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name
 
-  def apply_omniauth(omniauth)
+  def apply_omniauth(omniauth, save_it = false)
     case omniauth['provider']
       when 'facebook'
         self.apply_facebook(omniauth)
