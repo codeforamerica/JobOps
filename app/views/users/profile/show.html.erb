@@ -10,28 +10,28 @@
 <h2>Basic Info</h2>
 <table>
   <tr>
-	<td>Name: </td>
-	<td><%= @user.name %>
+  <td>Name: </td>
+  <td><%= @user.name %>
   </tr>
   <tr>
     <td>Location:</td>
-	<td><%= @user.city %>, <%= @user.state %></td>
+  <td><%= @user.city %>, <%= @user.state %></td>
   </tr>
   <tr>
-	<td>Phone: </td>
-	<td><%= @user.phone %></td>
+  <td>Phone: </td>
+  <td><%= @user.phone %></td>
   </tr>
   <tr>
-	<td>Current Goal: </td>
-	<td><%= @user.goal%>
+  <td>Current Goal: </td>
+  <td><%= @user.goal%>
   </tr>
   <tr>
-	<td>Willingness to relocate: </td>
-	<td><%= @user.relocate%>
+  <td>Willingness to relocate: </td>
+  <td><%= @user.relocate%>
   </tr>
   <tr>
-	<td>Desired Salary: </td>
-	<td><%= @user.desired_salary %>
+  <td>Desired Salary: </td>
+  <td><%= @user.desired_salary %>
   </tr>
 </table>
 </div>
@@ -40,42 +40,42 @@
 <h2>Military Info</h2>
 <table>
   <tr>
-	<td>Military Status: </td>
-	<td><%= @user.military_status %>
+  <td>Military Status: </td>
+  <td><%= @user.military_status %>
   </tr>
   <tr>
     <td>Service Branch:</td>
-	<td><%= @user.service_branch %></td>
+  <td><%= @user.service_branch %></td>
   </tr>
   <tr>
-	<td>MOC: </td>
-	<td><%= @user.moc %></td>
+  <td>MOC: </td>
+  <td><%= @user.moc %></td>
   </tr>
   <tr>
-	<td>Rank: </td>
-	<td><%= @user.rank %>
+  <td>Rank: </td>
+  <td><%= @user.rank %>
   </tr>
   <tr>
-	<td>Unit: </td>
-	<td><%= @user.unit %>
+  <td>Unit: </td>
+  <td><%= @user.unit %>
   </tr>
   <tr>
-	<td>Disability: </td>
-	<td><%= @user.disability %>
+  <td>Disability: </td>
+  <td><%= @user.disability %>
   </tr>
   <tr>
-	<td>Wars:</td>
-	<td>
-	<% @user.wars.each do |wars| %>
-	<%= wars.war %>,
-	<% end %></td>
+  <td>Wars:</td>
+  <td>
+  <% @user.wars.each do |wars| %>
+  <%= wars.war %>,
+  <% end %></td>
   </tr>
   <tr>
-	<td>Awards:</td>
-	<td>
-	<% @user.awards.each do |awards| %>
-	<%= awards.award %>,
-	<% end %></td>
+  <td>Awards:</td>
+  <td>
+  <% @user.awards.each do |awards| %>
+  <%= awards.award %>,
+  <% end %></td>
   </tr>
 </table>
 </div>
@@ -202,11 +202,11 @@
 <h2>Personal Info</h2>
 <table>
   <tr>
-	<td>dob: </td>
-	<td><%= @user.dob %>
+  <td>dob: </td>
+  <td><%= @user.dob %>
   </tr>
   <tr>
-	<td>Age: </td>
+  <td>Age: </td>
   <td>
     <% if not @user.dob.nil? %>
       <%= @user.age(@user.dob) %>
@@ -214,15 +214,15 @@
   </tr>
   <tr>
   <td>Gender:</td>
-	<td><%= @user.gender %></td>
+  <td><%= @user.gender %></td>
   </tr>
   <tr>
-	<td>Ethnicity: </td>
-	<td><%= @user.ethnicity %></td>
+  <td>Ethnicity: </td>
+  <td><%= @user.ethnicity %></td>
   </tr>
   <tr>
-	<td>Family: </td>
-	<td><%= @user.family %>
+  <td>Family: </td>
+  <td><%= @user.family %>
   </tr>
 </table>
 </div>

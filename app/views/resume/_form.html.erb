@@ -16,7 +16,7 @@
 <% if @user.resume.nil? %>
 <textarea id="user_resume_text_editor" name="user[resume]">
 
-<h1><%= @user.full_name	%></h1>
+<h1><%= @user.full_name  %></h1>
 <p><%= @user.city %>, <%= @user.state %></p>
 <p><%= @user.phone %> | <%= @user.email %></p>
 <br/>
@@ -30,7 +30,7 @@
 <p><%= job_history.org_name %>&nbsp;<%= job_history.start_date %> -  <%= check_present(job_history.end_date) %></p>
 <p><%= job_history.title %></p>
 <ul>
-	<li><%= job_history.summary %></li>
+  <li><%= job_history.summary %></li>
 </ul>
 <% end %>
 <h2>Military Info</h2>
@@ -41,21 +41,21 @@
 <p>Unit:<%= @user.unit %></p>
 <p>Disability: <%= @user.disability %></p>
 <p>Wars:</p>
-	<ul>
-	<% @user.wars.each do |wars| %>
-	<li><%= wars.war %></li>
-	<% end %>
-	</ul>
+  <ul>
+  <% @user.wars.each do |wars| %>
+  <li><%= wars.war %></li>
+  <% end %>
+  </ul>
 <p>Awards:</p>
-	<ul>
-	<% @user.awards.each do |awards| %>
-	<li><%= awards.award %></li>
-	<% end %>
-	</ul>
-	<h3>Skills</h3>
-	<% @user.skills.each do |skills| %>
-	<%= skills.skill %>,
-	<% end %>
+  <ul>
+  <% @user.awards.each do |awards| %>
+  <li><%= awards.award %></li>
+  <% end %>
+  </ul>
+  <h3>Skills</h3>
+  <% @user.skills.each do |skills| %>
+  <%= skills.skill %>,
+  <% end %>
 
 <h3>Languages</h3>
 <% @user.languages.each do |languages| %>
