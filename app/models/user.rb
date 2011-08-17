@@ -48,7 +48,11 @@ class User < ActiveRecord::Base
   end
 
   def build_authentications(omniauth, save_it = false)
-    auth_params = {:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil)}
+    auth_params = { :provider => omniauth['provider'],
+                    :uid => omniauth['uid'],
+                    :accss_token => omniauth['credentials']['token'],
+                    :access_secret => omniauth['credentials']['secret'],
+                    :token =>(omniauth['credentials']['token'] rescue nil)}
     if save_it
       authentications.create!(auth_params)
     else
