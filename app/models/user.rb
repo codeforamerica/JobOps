@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
       self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
+      self.city = omniauth['user_info']['location'] if omniauth['user_info']['location']
     end
     case omniauth['provider']
       when 'facebook'
