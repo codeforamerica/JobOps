@@ -1,3 +1,5 @@
-Factory.define :skill do |f|
-  f.skill "Ruby on Rails"
+FactoryGirl.define do
+  factory :skill do
+    skill "Ruby on Rails"
+  end
 end

@@ -1,3 +1,5 @@
-Factory.define :language do |f|
-  f.language "Ruby"
+FactoryGirl.define do
+  factory :language do
+    language "Ruby"
+  end
 end

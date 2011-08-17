@@ -1,13 +1,15 @@
-Factory.define(:user) do |u|
-  u.sequence(:email) {|n| "email#{n}@testcompany.com"}
-  u.password "123456"
-  u.password_confirmation "123456"
-  u.name "GI Joe"
-  u.service_branch "Coast Gaurd"
-  u.moc "10A"
-  u.rank "E220"
-  u.disability "n/a"
-  u.security_clearance "No Clerances"
-  u.resume "This is my Resume"
-  u.email_settings ["dinosaurs", "lasers"]
+FactoryGirl.define do
+  factory :user do
+    sequence(:email) {|n| "email#{n}@testcompany.com"}
+    password "123456"
+    password_confirmation "123456"
+    name "GI Joe"
+    service_branch "Coast Gaurd"
+    moc "10A"
+    rank "E220"
+    disability "n/a"
+    security_clearance "No Clerances"
+    resume "This is my Resume"
+    email_settings ["dinosaurs", "lasers"]
+  end
 end

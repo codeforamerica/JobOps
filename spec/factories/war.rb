@@ -1,3 +1,5 @@
-Factory.define :war do |f|
-  f.war "Microsoft vs Apple"
+FactoryGirl.define do
+  factory :war do
+    war "Microsoft vs Apple"
+  end
 end

@@ -1,4 +1,6 @@
-Factory.define :training do |f|
-  f.training "Gov 2.0"
-  f.training_date "2011"
+FactoryGirl.define do
+  factory :training do
+    training "Gov 2.0"
+    training_date "2011"
+  end
 end

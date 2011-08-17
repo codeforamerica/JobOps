@@ -1,5 +1,7 @@
-Factory.define :certification do |f|
-  f.name "Gov 2.0"
-  f.institution "Code for America"
-  f.date_acquired "2011"
+FactoryGirl.define do
+  factory :certification do
+    name "Gov 2.0"
+    institution "Code for America"
+    date_acquired "2011"
+  end
 end
