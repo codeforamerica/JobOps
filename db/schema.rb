@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817225430) do
+ActiveRecord::Schema.define(:version => 20110817234200) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20110817225430) do
     t.text     "privacy_settings"
     t.text     "email_settings"
     t.string   "name"
+    t.string   "twitter"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
