@@ -4,9 +4,9 @@ describe User do
 
   before do
     @user = Factory(:user)
-    @omniauth = {"provider"=>"twitter","uid"=>"12345",
-        "credentials"=>{"token"=>"abc123",
-        "secret"=>"xyz456"}}
+    @omniauth = {"user_info" => {"name" => "Jim Joe", "location" => "San Francisco"},
+        "provider"=>"twitter","uid"=>"12345",
+        "credentials"=>{"token"=>"abc123","secret"=>"xyz456"}}
   end
 
   describe "age" do
@@ -19,7 +19,7 @@ describe User do
 
   describe "#build_athentications" do
     before do
-      @test = User.new.build_authentications(@omniauth)
+      @test = User.new.apply_omniauth(@omniauth)
     end
 
     it "should add an authentication" do
