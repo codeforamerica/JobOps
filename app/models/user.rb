@@ -87,8 +87,8 @@ class User < ActiveRecord::Base
     Twitter.configure do |config|
       config.consumer_key = ENV['TWITTER_KEY']
       config.consumer_secret = ENV['TWITTER_SECRET']
-      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => 1).first.access_token
-      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => 1).first.access_secret
+      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => self.user_id).first.access_token
+      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => self.user_id).first.access_secret
     end
     twitter_client ||= Twitter::Client.new
   end
