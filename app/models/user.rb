@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
   def build_authentications(omniauth, save_it = false)
     auth_params = { :provider => omniauth['provider'],
                     :uid => omniauth['uid'],
-                    :accss_token => omniauth['credentials']['token'],
+                    :access_token => omniauth['credentials']['token'],
                     :access_secret => omniauth['credentials']['secret'],
-                    :token =>(omniauth['credentials']['token'] rescue nil)}
+    }
     if save_it
       authentications.create!(auth_params)
     else
@@ -92,6 +92,5 @@ class User < ActiveRecord::Base
     end
     twitter_client ||= Twitter::Client.new
   end
-
 
 end
