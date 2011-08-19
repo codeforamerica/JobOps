@@ -12,6 +12,7 @@ end
 gem 'aws-s3'
 gem 'ckeditor'
 gem 'devise'
+gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip', '~> 2.3'
