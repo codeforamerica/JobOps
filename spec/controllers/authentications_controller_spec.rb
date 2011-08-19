@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe AuthenticationsController do
-  login_user
 
   describe "GET 'index'" do
     it "should be successful" do
@@ -18,10 +17,33 @@ describe AuthenticationsController do
 
     it 'should login an existing user' do
       @auth = Factory(:authentication)
+      @user = Factory(:user)
       get :create, :provider => 'twitter'
       flash[:notice].should == "Signed in successfully."
       response.should redirect_to(root_url)
     end
+
+    it "should create a new user" do
+      get :create, :provider => 'twitter'
+      response.should redirect_to(new_user_registration_url)
+    end
+  end
+
+  describe "#create new authentication" do
+    login_user
+
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+      @user = Factory(:user)
+    end
+
+    it "should add a new authentication to an existing user" do
+      get :create, :provider => 'twitter'
+      flash[:notice].should == "Authentication successful."
+      response.should redirect_to(authentications_url)
+    end
+
   end
 
 
@@ -33,6 +55,8 @@ describe AuthenticationsController do
   end
 
   describe "destroy action" do
+    login_user
+
     before do
       @auth = Factory(:authentication)
       @auth_count = Authentication.all.size
@@ -48,6 +72,5 @@ describe AuthenticationsController do
       @response.should redirect_to(authentications_url)
     end
   end
-
 
 end
