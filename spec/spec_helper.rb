@@ -26,10 +26,19 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  
+
   #Devise helper
   config.include Devise::TestHelpers, :type => :controller
-  
+
   config.extend ControllerMacros, :type => :controller
-  
+
+  #Omniauth Mock
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:twitter] = {
+           'provider' => 'twitter',
+           'uid' => '12345',
+           'user_info' => {:name => "Joe Smith", :nickname => 'joesmith'},
+           'credentials' => {:token => 'abc123', :secret => 'xyz987'}
+            }
+
 end

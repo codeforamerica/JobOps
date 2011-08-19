@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
       self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
+      self.city = omniauth['user_info']['location'] if omniauth['user_info']['location']
     end
     case omniauth['provider']
       when 'facebook'
@@ -48,7 +49,11 @@ class User < ActiveRecord::Base
   end
 
   def build_authentications(omniauth, save_it = false)
-    auth_params = {:provider => omniauth['provider'], :uid => omniauth['uid'], :token =>(omniauth['credentials']['token'] rescue nil)}
+    auth_params = { :provider => omniauth['provider'],
+                    :uid => omniauth['uid'],
+                    :access_token => omniauth['credentials']['token'],
+                    :access_secret => omniauth['credentials']['secret'],
+    }
     if save_it
       authentications.create!(auth_params)
     else
@@ -70,12 +75,28 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  def twitter_user
+    if not Authentication.where(:provider => "twitter", :user_id => id).first.nil?
+      twitter_client
+    end
+  end
+
   protected
 
   def apply_facebook(omniauth)
     if (extra = omniauth['extra']['user_hash'] rescue false)
       self.email = (extra['email'] rescue '')
     end
+  end
+
+  def twitter_client
+    Twitter.configure do |config|
+      config.consumer_key = ENV['TWITTER_KEY']
+      config.consumer_secret = ENV['TWITTER_SECRET']
+      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => id).first.access_token
+      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => id).first.access_secret
+    end
+    twitter_client ||= Twitter::Client.new
   end
 
 end
