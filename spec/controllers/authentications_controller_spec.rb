@@ -10,6 +10,20 @@ describe AuthenticationsController do
     end
   end
 
+  describe "#create"  do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+    end
+
+    it 'should login an existing user' do
+      @auth = Factory(:authentication)
+      get :create, :provider => 'twitter'
+      flash[:notice].should == "Signed in successfully."
+      response.should redirect_to(root_url)
+    end
+  end
+
 
   describe "auth_failure action should render authentication failure template" do
     it "should be successful" do
