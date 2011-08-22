@@ -75,9 +75,15 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def twitter_user
-    if not Authentication.where(:provider => "twitter", :user_id => id).first.nil?
-      twitter_client
+  def twitter_user(user_id)
+    if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
+      twitter_client(user_id)
+    end
+  end
+
+  def facebook_user
+    if not Authentication.where(:provider => "facebook", :user_id => id).first.nil?
+      facebook_client
     end
   end
 
@@ -89,14 +95,20 @@ class User < ActiveRecord::Base
     end
   end
 
-  def twitter_client
+  def twitter_client(user_id)
     Twitter.configure do |config|
       config.consumer_key = ENV['TWITTER_KEY']
       config.consumer_secret = ENV['TWITTER_SECRET']
-      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => id).first.access_token
-      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => id).first.access_secret
+      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_token
+      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_secret
     end
     twitter_client ||= Twitter::Client.new
+  end
+
+  def facebook_client
+    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => id).first.access_token
+
+    facebook_client ||= Mogli::Client.new(facebook_authentication)
   end
 
 end
