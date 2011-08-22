@@ -5,9 +5,9 @@
 
 <div class="tab_container">
 <div id="basic_info" class="tab_content">
-  <% if not @user.twitter_user.nil? %>
-    <%= @user.twitter_user.user.screen_name %>
-    <%= image_tag "http://img.tweetimag.es/i/#{@user.twitter_user.user.screen_name}_b" %>
+  <% if not @twitter_user.nil? %>
+    <%= @twitter_user.user.screen_name %>
+    <%= image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b" %>
   <% else %>
     <%= gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}") %>
   <% end %>
