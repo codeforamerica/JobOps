@@ -29,4 +29,17 @@ describe User do
       @test.access_secret.should == "xyz456"
     end
   end
+
+  describe "#twitter_client" do
+    before do
+      @auth = Factory(:authentication)
+    end
+
+    it "should return a new Twitter client" do
+      @twitter = User.new.twitter_user(@user.id)
+      @twitter.should be_a Twitter::Client
+    end
+
+  end
+
 end
