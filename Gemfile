@@ -35,6 +35,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'mocha'
+  gem 'webmock'
   gem 'webrat'
 end
 

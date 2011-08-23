@@ -49,6 +49,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
+    crack (0.1.8)
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -193,6 +194,9 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.5)
       rack (>= 1.0)
+    webmock (1.7.4)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -226,4 +230,5 @@ DEPENDENCIES
   therubyrhino
   twitter
   uglifier
+  webmock
   webrat
