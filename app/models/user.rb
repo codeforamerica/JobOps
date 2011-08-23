@@ -81,9 +81,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def facebook_user
-    if not Authentication.where(:provider => "facebook", :user_id => id).first.nil?
-      facebook_client
+
+  def facebook_user(user_id)
+    if not Authentication.where(:provider => "facebook", :user_id => user_id).first.nil?
+      facebook_client(user_id)
     end
   end
 
@@ -105,9 +106,8 @@ class User < ActiveRecord::Base
     twitter_client ||= Twitter::Client.new
   end
 
-  def facebook_client
-    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => id).first.access_token
-
+  def facebook_client(user_id)
+    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
     facebook_client ||= Mogli::Client.new(facebook_authentication)
   end
 
