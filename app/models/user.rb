@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
-                  :city, :state, :phone, :goal, :relocate, :desired_salary, :gender,
+                  :location, :phone, :goal, :relocate, :desired_salary, :gender,
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar,
                   :privacy_settings, :email_settings
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
       self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
-      self.city = omniauth['user_info']['location'] if omniauth['user_info']['location']
+      self.location = omniauth['user_info']['location'] if omniauth['user_info']['location']
     end
     case omniauth['provider']
       when 'facebook'
