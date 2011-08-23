@@ -88,6 +88,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def add_facebook_info(user_id)
+    @fb_info = facebook_user(user_id).fetch
+    self.location = @fb_info.location.name
+    self.dob = @fb_info.birthday
+    self.gender = @fb_info.gender
+  end
+
   protected
 
   def apply_facebook(omniauth)
