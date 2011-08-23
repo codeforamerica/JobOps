@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
 
   def facebook_client(user_id)
     facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
-    facebook_client ||= Mogli::Client.new(facebook_authentication)
+    facebook_client ||= FbGraph::User.me(facebook_authentication)
   end
 
 end

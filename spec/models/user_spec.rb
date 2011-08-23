@@ -53,7 +53,7 @@ describe User do
 
     it "should return a new Facebook client" do
       @facebook = User.new.facebook_user(@user.id)
-      @facebook.should be_a Mogli::Client
+      @facebook.should be_a FbGraph::User
     end
 
     it "should not reutrn a new Facebook client" do
