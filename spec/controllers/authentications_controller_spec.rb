@@ -51,8 +51,8 @@ describe AuthenticationsController do
       get :create, :provider => 'facebook'
       @auth = Authentication.last
       @auth.provider.should == 'facebook'
+      @auth.uid.should == '12345'
     end
-
   end
 
   describe "#create using Facebook"  do
@@ -70,12 +70,14 @@ describe AuthenticationsController do
     end
 
     it "should create a new user using Facebook" do
+      stub_request(:get, "https://graph.facebook.com/me?access_token=abc123").
+                to_return(:status => 200, :body => fixture("facebook_user.json"))
       get :create, :provider => 'facebook'
-      response.should redirect_to(new_user_registration_url)
+      @user = User.last
+      @user.location.should == "San Francisco, California"
+      @user.gender.should == "male"
     end
   end
-
-
 
   describe "auth_failure action should render authentication failure template" do
     it "should be successful" do
