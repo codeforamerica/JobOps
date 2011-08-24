@@ -90,9 +90,23 @@ class User < ActiveRecord::Base
 
   def add_facebook_info(user_id)
     @fb_info = facebook_user(user_id).fetch
+
+    #Pull in basic profile information
     self.location = @fb_info.location.name
     self.dob = @fb_info.birthday
     self.gender = @fb_info.gender
+
+    #Pull work history
+    @work = @fb_info.work
+    @work.each do |work|
+      job_history = User.find(user_id).job_histories.new
+      job_history.org_name = work.employer.name
+      job_history.title = work.position.name
+      job_history.summary = work.description
+      job_history.start_date = work.start_date
+      job_history.end_date = work.end_date
+      job_history.save
+    end
   end
 
   protected
