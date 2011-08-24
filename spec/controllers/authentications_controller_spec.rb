@@ -76,6 +76,8 @@ describe AuthenticationsController do
       @user = User.last
       @user.location.should == "San Francisco, California"
       @user.gender.should == "male"
+      @user.job_histories.first.org_name.should == "Code for America"
+      @user.job_histories.first.title.should == "Fellow"
     end
   end
 
