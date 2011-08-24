@@ -100,6 +100,7 @@ class User < ActiveRecord::Base
   def apply_facebook(omniauth)
     if (extra = omniauth['extra']['user_hash'] rescue false)
       self.email = (extra['email'] rescue '')
+      self.password = Devise.friendly_token[0,20]
     end
   end
 
