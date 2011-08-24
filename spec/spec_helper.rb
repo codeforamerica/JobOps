@@ -38,15 +38,15 @@ RSpec.configure do |config|
   OmniAuth.config.mock_auth[:twitter] = {
            'provider' => 'twitter',
            'uid' => '12345',
-           'user_info' => {:name => "Joe Smith", :nickname => 'joesmith'},
-           'credentials' => {:token => 'abc123', :secret => 'xyz987'}
+           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}
             }
  OmniAuth.config.mock_auth[:facebook] = {
            'provider' => 'facebook',
            'uid' => '12345',
-           'extra' => {'user_hash' =>
-              {'name' => "Joe Smith", 'nickname' => 'joesmith', 'email' => "sample@example.com"}},
-           'credentials' => {:token => 'abc123', :secret => 'xyz987'}
+           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
+           'extra' => {'user_hash' => {'email' => "sample@example.com"}},
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}
             }
 
 def fixture_path
