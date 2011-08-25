@@ -16,6 +16,8 @@ gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip', '~> 2.3'
+
+gem 'fb_graph'
 gem 'twitter'
 
 platforms :jruby do
@@ -33,6 +35,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'mocha'
+  gem 'webmock'
   gem 'webrat'
 end
 

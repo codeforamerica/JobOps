@@ -21,6 +21,7 @@ class AuthenticationsController < ApplicationController
       user = User.new
       user.apply_omniauth(omniauth)
       if user.save
+        user.add_facebook_info(user.id)
         flash[:notice] = "Signed in successfully."
         sign_in_and_redirect(:user, user)
       else

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
-                  :city, :state, :phone, :goal, :relocate, :desired_salary, :gender,
+                  :location, :phone, :goal, :relocate, :desired_salary, :gender,
                   :ethnicity, :family, :dob, :military_status, :service_branch, :moc,
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar,
                   :privacy_settings, :email_settings
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
       self.name = omniauth['user_info']['name'] if omniauth['user_info']['name']
-      self.city = omniauth['user_info']['location'] if omniauth['user_info']['location']
+      self.location = omniauth['user_info']['location'] if omniauth['user_info']['location']
     end
     case omniauth['provider']
       when 'facebook'
@@ -75,10 +75,50 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def twitter_user
-    if not Authentication.where(:provider => "twitter", :user_id => id).first.nil?
-      twitter_client
+  def twitter_user(user_id)
+    if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
+      twitter_client(user_id)
     end
+  end
+
+
+  def facebook_user(user_id)
+    if not Authentication.where(:provider => "facebook", :user_id => user_id).first.nil?
+      facebook_client(user_id)
+    end
+  end
+
+  def add_facebook_info(user_id)
+    @fb_info = facebook_user(user_id).fetch
+
+    #Pull in basic profile information
+    self.location = @fb_info.location.name
+    self.dob = @fb_info.birthday
+    self.gender = @fb_info.gender
+
+    #Pull work history
+    @work = @fb_info.work
+    @work.each do |work|
+      job_history = User.find(user_id).job_histories.new
+      job_history.org_name = work.employer.name
+      job_history.title = work.position.name
+      job_history.summary = work.description
+      job_history.start_date = work.start_date
+      job_history.end_date = work.end_date
+      job_history.save
+    end
+
+    #Pull education history
+    @education = @fb_info.education
+    @education.each do |edu|
+      education = User.find(user_id).educations.new
+      education.school_name = edu.school.name
+      education.degree = edu.degree.name if edu.degree
+      education.study_field = edu.concentration.first.name if !edu.concentration.empty?
+      education.end_date = Date.parse("1-1-" + edu.year.name)
+      education.save
+    end
+
   end
 
   protected
@@ -86,17 +126,23 @@ class User < ActiveRecord::Base
   def apply_facebook(omniauth)
     if (extra = omniauth['extra']['user_hash'] rescue false)
       self.email = (extra['email'] rescue '')
+      self.password = Devise.friendly_token[0,20]
     end
   end
 
-  def twitter_client
+  def twitter_client(user_id)
     Twitter.configure do |config|
       config.consumer_key = ENV['TWITTER_KEY']
       config.consumer_secret = ENV['TWITTER_SECRET']
-      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => id).first.access_token
-      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => id).first.access_secret
+      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_token
+      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_secret
     end
     twitter_client ||= Twitter::Client.new
+  end
+
+  def facebook_client(user_id)
+    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
+    facebook_client ||= FbGraph::User.me(facebook_authentication)
   end
 
 end

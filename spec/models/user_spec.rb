@@ -29,4 +29,50 @@ describe User do
       @test.access_secret.should == "xyz456"
     end
   end
+
+  describe "#twitter_client" do
+    before do
+      @auth = Factory(:authentication)
+    end
+
+    it "should return a new Twitter client" do
+      @twitter = User.new.twitter_user(@user.id)
+      @twitter.should be_a Twitter::Client
+    end
+
+    it "should not return a new Twitter client" do
+      @twitter = User.new.twitter_user(999999)
+      @twitter.should be_nil
+    end
+  end
+
+  describe "#facebook_client" do
+    before do
+      @auth = Factory(:authentication, :provider => "facebook")
+    end
+
+    it "should return a new Facebook client" do
+      @facebook = User.new.facebook_user(@user.id)
+      @facebook.should be_a FbGraph::User
+    end
+
+    it "should not return a new Facebook client" do
+      @facebook = User.new.facebook_user(99999)
+      @facebook.should be_nil
+    end
+  end
+
+  describe "#facebook_user" do
+    before do
+      @auth = Factory(:authentication, :provider => "facebook")
+      stub_request(:get, "https://graph.facebook.com/me?access_token=abc123").
+        to_return(:status => 200, :body => fixture("facebook_user.json"))
+    end
+
+    it "should fetch a facebook user" do
+      @test = User.new.facebook_user(@user.id).fetch
+      @test.name.should == "Ryan Resella"
+    end
+  end
 end
+
