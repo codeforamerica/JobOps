@@ -107,6 +107,18 @@ class User < ActiveRecord::Base
       job_history.end_date = work.end_date
       job_history.save
     end
+
+    #Pull education history
+    @education = @fb_info.education
+    @education.each do |edu|
+      education = User.find(user_id).educations.new
+      education.school_name = edu.school.name
+      education.degree = edu.degree.name if edu.degree
+      education.study_field = edu.concentration.first.name if !edu.concentration.empty?
+      education.end_date = Date.parse("1-1-" + edu.year.name)
+      education.save
+    end
+
   end
 
   protected
