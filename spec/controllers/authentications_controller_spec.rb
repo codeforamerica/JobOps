@@ -37,6 +37,22 @@ describe AuthenticationsController do
       @user = Factory(:user)
     end
 
+    it "should add a new authentication to an existing user using Facebook" do
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+      get :create, :provider => 'facebook'
+      @auth = Authentication.last
+      @auth.provider.should == 'facebook'
+      @auth.uid.should == '12345'
+    end
+
+    it "should add a new authentication to an existing user using LinkedIn" do
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:linked_in]
+      get :create, :provider => 'linked_in'
+      @auth = Authentication.last
+      @auth.provider.should == 'linked_in'
+      @auth.uid.should == '12345'
+    end
+
     it "should add a new authentication to an existing user using Twitter" do
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
       get :create, :provider => 'twitter'
@@ -44,14 +60,6 @@ describe AuthenticationsController do
       @auth.provider.should == 'twitter'
       flash[:notice].should == "Authentication successful."
       response.should redirect_to(authentications_url)
-    end
-
-    it "should add a new authentication to an existing user using Facebook" do
-      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
-      get :create, :provider => 'facebook'
-      @auth = Authentication.last
-      @auth.provider.should == 'facebook'
-      @auth.uid.should == '12345'
     end
   end
 
@@ -90,7 +98,27 @@ describe AuthenticationsController do
       @user = User.last
       @user.job_histories.empty?.should == true
     end
+  end
 
+  describe "#create using LinkedIn"  do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:linked_in]
+    end
+
+    it 'should login an existing user using LinkedIn' do
+      @auth = Factory(:authentication, :provider => 'linked_in')
+      @user = Factory(:user)
+      get :create, :provider => 'linked_in'
+      flash[:notice].should == "Signed in successfully."
+      subject.current_user.should_not be_nil
+    end
+
+    it "should create a new user using LinkedIn" do
+      get :create, :provider => 'linked_in'
+      @user = User.last
+      @user.email.should == "12345@jobops.us"
+    end
   end
 
   describe "auth_failure action should render authentication failure template" do
