@@ -18,6 +18,7 @@ gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip', '~> 2.3'
 
 gem 'fb_graph'
+gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"
 gem 'twitter'
 
 platforms :jruby do

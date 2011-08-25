@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/pengwynn/linkedin.git
+  revision: e95bae685e12193159e1aacb5f4dfb200ff653f3
+  branch: 2-0-stable
+  specs:
+    linkedin (0.2.2)
+      nokogiri (~> 1.5.0)
+      oauth (~> 0.4.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -217,6 +226,7 @@ DEPENDENCIES
   gravatar_image_tag
   jquery-rails
   jruby-openssl
+  linkedin!
   mocha
   nifty-generators
   oa-oauth
