@@ -74,5 +74,24 @@ describe User do
       @test.name.should == "Ryan Resella"
     end
   end
+
+  describe "#linked_in_client" do
+    before do
+      @auth = Factory(:authentication, :provider => "linked_in")
+    end
+
+    it "should return a new LinkedIn client" do
+      @linked_in = @user.linked_in_user(@user.id)
+      @linked_in.should be_a LinkedIn::Client
+    end
+
+    it "should not return a new Facebook client" do
+      @linked_in = User.new.linked_in_user(99999)
+      @linked_in.should be_nil
+    end
+  end
+
+
+
 end
 
