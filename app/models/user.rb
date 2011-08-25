@@ -75,13 +75,6 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def twitter_user(user_id)
-    if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
-      twitter_client(user_id)
-    end
-  end
-
-
   def facebook_user(user_id)
     if not Authentication.where(:provider => "facebook", :user_id => user_id).first.nil?
       facebook_client(user_id)
@@ -118,7 +111,18 @@ class User < ActiveRecord::Base
       education.end_date = Date.parse("1-1-" + edu.year.name)
       education.save
     end
+  end
 
+  def linked_in_user
+    unless authentications.where(:provider => "linked_in").first.nil?
+      linked_in_client
+    end
+  end
+
+  def twitter_user(user_id)
+    if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
+      twitter_client(user_id)
+    end
   end
 
   protected
@@ -128,6 +132,18 @@ class User < ActiveRecord::Base
       self.email = (extra['email'] rescue '')
       self.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def facebook_client(user_id)
+    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
+    facebook_client ||= FbGraph::User.me(facebook_authentication)
+  end
+
+  def linked_in_client
+    linked_in_auth = authentications.where(:provider => "linked_in").first
+    linked_in = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+    linked_in.authorize_from_access(linked_in_auth.access_token, linked_in_auth.access_secret)
+    linked_in_client ||= linked_in
   end
 
   def twitter_client(user_id)
@@ -140,9 +156,5 @@ class User < ActiveRecord::Base
     twitter_client ||= Twitter::Client.new
   end
 
-  def facebook_client(user_id)
-    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
-    facebook_client ||= FbGraph::User.me(facebook_authentication)
-  end
 
 end
