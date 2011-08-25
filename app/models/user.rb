@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
     case omniauth['provider']
       when 'facebook'
         self.apply_facebook(omniauth)
+      when 'linked_in'
+        self.apply_linked_in(omniauth)
       end
     self.email = omniauth['user_info']['email'] if email.blank?
     build_authentications(omniauth, save_it)
@@ -137,6 +139,12 @@ class User < ActiveRecord::Base
   def facebook_client(user_id)
     facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
     facebook_client ||= FbGraph::User.me(facebook_authentication)
+  end
+
+  def apply_linked_in(omniauth)
+    #Create a fake email address using LinkedIn uid
+    self.email = "#{omniauth['uid']}@jobops.us"
+    self.password = Devise.friendly_token[0,20]
   end
 
   def linked_in_client
