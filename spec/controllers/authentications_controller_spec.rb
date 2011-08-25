@@ -78,6 +78,9 @@ describe AuthenticationsController do
       @user.gender.should == "male"
       @user.job_histories.first.org_name.should == "Code for America"
       @user.job_histories.first.title.should == "Fellow"
+      @user.educations.last.school_name.should == "California State University, Northridge"
+      @user.educations.last.study_field.should == "Public administration"
+      @user.educations.last.end_date.should == Date.parse("1/1/2010")
     end
 
     it "should create a new user with no job history using Facebook" do
