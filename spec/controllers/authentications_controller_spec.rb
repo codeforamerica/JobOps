@@ -79,6 +79,15 @@ describe AuthenticationsController do
       @user.job_histories.first.org_name.should == "Code for America"
       @user.job_histories.first.title.should == "Fellow"
     end
+
+    it "should create a new user with no job history using Facebook" do
+      stub_request(:get, "https://graph.facebook.com/me?access_token=abc123").
+                to_return(:status => 200, :body => fixture("facebook_user_nowork.json"))
+      get :create, :provider => 'facebook'
+      @user = User.last
+      @user.job_histories.empty?.should == true
+    end
+
   end
 
   describe "auth_failure action should render authentication failure template" do
