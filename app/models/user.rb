@@ -75,21 +75,21 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  def twitter_user(user_id)
-    if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
-      twitter_client(user_id)
+  def twitter_user
+    if not authentications.where(:provider => "twitter").first.nil?
+      twitter_client
     end
   end
 
 
-  def facebook_user(user_id)
-    if not Authentication.where(:provider => "facebook", :user_id => user_id).first.nil?
-      facebook_client(user_id)
+  def facebook_user
+    if not authentications.where(:provider => "facebook").first.nil?
+      facebook_client
     end
   end
 
   def add_facebook_info(user_id)
-    @fb_info = facebook_user(user_id).fetch
+    @fb_info = facebook_user.fetch
 
     #Pull in basic profile information
     self.location = @fb_info.location.name
@@ -130,18 +130,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def twitter_client(user_id)
+  def twitter_client
     Twitter.configure do |config|
       config.consumer_key = ENV['TWITTER_KEY']
       config.consumer_secret = ENV['TWITTER_SECRET']
-      config.oauth_token = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_token
-      config.oauth_token_secret = Authentication.where(:provider => "twitter", :user_id => user_id).first.access_secret
+      config.oauth_token = authentications.where(:provider => "twitter").first.access_token
+      config.oauth_token_secret = authentications.where(:provider => "twitter").first.access_secret
     end
     twitter_client ||= Twitter::Client.new
   end
 
-  def facebook_client(user_id)
-    facebook_authentication = Authentication.where(:provider => "facebook", :user_id => user_id).first.access_token
+  def facebook_client
+    facebook_authentication = authentications.where(:provider => "facebook").first.access_token
     facebook_client ||= FbGraph::User.me(facebook_authentication)
   end
 

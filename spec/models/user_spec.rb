@@ -36,12 +36,12 @@ describe User do
     end
 
     it "should return a new Twitter client" do
-      @twitter = User.new.twitter_user(@user.id)
+      @twitter = @user.twitter_user
       @twitter.should be_a Twitter::Client
     end
 
     it "should not return a new Twitter client" do
-      @twitter = User.new.twitter_user(999999)
+      @twitter = User.new.twitter_user
       @twitter.should be_nil
     end
   end
@@ -52,12 +52,12 @@ describe User do
     end
 
     it "should return a new Facebook client" do
-      @facebook = User.new.facebook_user(@user.id)
+      @facebook = @user.facebook_user
       @facebook.should be_a FbGraph::User
     end
 
     it "should not return a new Facebook client" do
-      @facebook = User.new.facebook_user(99999)
+      @facebook = User.new.facebook_user
       @facebook.should be_nil
     end
   end
@@ -70,7 +70,7 @@ describe User do
     end
 
     it "should fetch a facebook user" do
-      @test = User.new.facebook_user(@user.id).fetch
+      @test = @user.facebook_user.fetch
       @test.name.should == "Ryan Resella"
     end
   end
