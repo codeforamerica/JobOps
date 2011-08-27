@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<person>
+  <first-name>Ryan</first-name>
+  <last-name>Resella</last-name>
+  <educations total="2">
+    <education>
+      <id>54676090</id>
+      <school-name>California State University-Northridge</school-name>
+      <notes></notes>
+      <activities></activities>
+      <degree>Masters</degree>
+      <field-of-study>Public Administration</field-of-study>
+      <start-date>
+        <year>2008</year>
+      </start-date>
+      <end-date>
+        <year>2010</year>
+      </end-date>
+    </education>
+    <education>
+      <id>7781028</id>
+      <school-name>California State University-Northridge</school-name>
+      <notes></notes>
+      <activities></activities>
+      <degree>BS</degree>
+      <field-of-study>Computer Science</field-of-study>
+      <start-date>
+        <year>1999</year>
+      </start-date>
+      <end-date>
+        <year>2006</year>
+      </end-date>
+    </education>
+  </educations>
+  <positions total="4">
+    <position>
+      <id>158612282</id>
+      <title>Fellow</title>
+      <summary>Inaugural class of 2011 Code for America Fellows
+
+In the inaugural class of 2011 Code for America Fellows 361 people applied and 20 were chosen as the first class of fellows.
+
+Over this past year I have had a chance to work on a wide arrange of projects.  I spent the month of February learning about the City of Boston which also includes Boston Public Schools, Boston Public Library as well as the after school programs.
+
+I also worked on different open source applications such as creating Ruby gems for different government APIs.  Part of my time spent here was working on a Solar Widget for the ArcGIS Flex viewer which determines solar power for a rooftop.</summary>
+      <start-date>
+        <year>2011</year>
+        <month>1</month>
+      </start-date>
+      <is-current>true</is-current>
+      <company>
+        <id>660862</id>
+        <name>Code for America</name>
+        <type>Nonprofit</type>
+        <industry>Internet</industry>
+      </company>
+    </position>
+    <position>
+      <id>205118669</id>
+      <title>Founder</title>
+      <summary>Resella, Inc. provides consulting services in technology for local governments.  We provide technology solutions using open source programming.  Also provide GIS mapping related solutions using Esri software.</summary>
+      <start-date>
+        <year>2009</year>
+        <month>11</month>
+      </start-date>
+      <is-current>true</is-current>
+      <company>
+        <name>Resella, Inc</name>
+        <industry>Information Technology and Services</industry>
+      </company>
+    </position>
+    <position>
+      <id>139152118</id>
+      <title>Senior Information Technology Analyst</title>
+      <summary>At the City of Santa Clarita increasing responsibility over the years starting from an IT Specialist moving to an IT Analyst and then Senior IT Analyst.
+
+As a Senior IT Analyst my primary role was the Application Development manager which was responsible for management and oversight of Application Development Staff as well as all software implementation in the City of Santa Clarita.
+
+Application Development was responsible for development, implementation, and project management of new software applications.  Application Development was also responsible for coordination and overseeing software installations, training and support.  All applications were developed using the Microsoft .NET Framework with Microsoft SQL and Windows Server running IIS.
+
+I was also responsible for administration and management of City's databases and SQL database servers. Management of City's suite of Internet sites and City's intranet.
+
+Design and development of eGraffiti application, City-wide graffiti tracking database. Recognized by the League of California Cities as a 2007 Grand Prize Helen Putnam Award Winner.</summary>
+      <start-date>
+        <year>2005</year>
+        <month>9</month>
+      </start-date>
+      <end-date>
+        <year>2010</year>
+        <month>12</month>
+      </end-date>
+      <is-current>false</is-current>
+      <company>
+        <id>30493</id>
+        <name>City of Santa Clarita</name>
+        <type>Government Agency</type>
+        <industry>Government Administration</industry>
+      </company>
+    </position>
+    <position>
+      <id>139152120</id>
+      <title>Information Technology</title>
+      <summary>Responsibilities - Implementation and analysis of all new IT related projects, Application Development, Web Programming, Systems Administration, CRM Administration, Database  Administration, and Search Engine Optimization
+
+Application Developer - ­ Implemented and customized company wide CRM Database (Epicor Clientele). Designed and coded an application to transfer over 95,000 customer records from an      ACT database to Epicor Clientele CRM.NET. Integration of FedEx API shipping and Bank of America credit card merchant processing into CRM. Revise, test, debug, update, and implement any CRM changes.
+
+Web Programmer ­ Front end and back end application development in ASP, ASP.NET, and SQL for the various Companies Incorporated websites and intranet site.</summary>
+      <start-date>
+        <year>2004</year>
+        <month>6</month>
+      </start-date>
+      <end-date>
+        <year>2005</year>
+        <month>9</month>
+      </end-date>
+      <is-current>false</is-current>
+      <company>
+        <name>Companies Incorporated</name>
+        <industry>Information Technology and Services</industry>
+      </company>
+    </position>
+  </positions>
+</person>
