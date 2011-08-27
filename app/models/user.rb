@@ -149,9 +149,15 @@ class User < ActiveRecord::Base
 
   def linked_in_client
     linked_in_auth = authentications.where(:provider => "linked_in").first
-    linked_in = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+    LinkedIn.configure do |config|
+      config.token = ENV['LINKEDIN_KEY']
+      config.secret = ENV['LINKEDIN_SECRET']
+      config.default_profile_fields = ['educations', 'positions']
+    end
+    linked_in = LinkedIn::Client.new
     linked_in.authorize_from_access(linked_in_auth.access_token, linked_in_auth.access_secret)
     linked_in_client ||= linked_in
+
   end
 
   def twitter_client(user_id)
