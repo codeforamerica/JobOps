@@ -75,18 +75,25 @@ describe User do
     end
   end
 
-  describe "#linked_in_client" do
-    it "should not return a new Facebook client" do
+  describe "#linked_in_user" do
+    it "should not return an empty linked_in client" do
       @linked_in = @user.linked_in_user
       @linked_in.should be_nil
     end
 
     it "should return a new LinkedIn client" do
       @auth = Factory(:authentication, :provider => "linked_in")
+      stub_request(:get,
+        "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,positions,picture-url,skills,summary)").
+        to_return(:status => 200, :body => fixture("linked_in_profile.json"))
       @linked_in = @user.linked_in_user
       @linked_in.should be_a LinkedIn::Client
+      @linked_in.profile.first_name.should == "Ryan"
+      @linked_in.profile.last_name.should == "Resella"
     end
   end
+
+
 
 end
 
