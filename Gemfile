@@ -11,7 +11,7 @@ end
 
 gem 'aws-s3'
 gem 'ckeditor'
-gem 'devise'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'gravatar_image_tag'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
