@@ -2,6 +2,12 @@
 <person>
   <first-name>Ryan</first-name>
   <last-name>Resella</last-name>
+  <phone-numbers total="1">
+    <phone-number>
+      <phone-type>mobile</phone-type>
+      <phone-number>415-555-5555</phone-number>
+    </phone-number>
+  </phone-numbers>
   <educations total="2">
     <education>
       <id>54676090</id>
@@ -32,7 +38,7 @@
       </end-date>
     </education>
   </educations>
-  <positions total="4">
+  <positions total="2">
     <position>
       <id>158612282</id>
       <title>Fellow</title>
@@ -53,20 +59,6 @@ I also worked on different open source applications such as creating Ruby gems f
         <name>Code for America</name>
         <type>Nonprofit</type>
         <industry>Internet</industry>
-      </company>
-    </position>
-    <position>
-      <id>205118669</id>
-      <title>Founder</title>
-      <summary>Resella, Inc. provides consulting services in technology for local governments.  We provide technology solutions using open source programming.  Also provide GIS mapping related solutions using Esri software.</summary>
-      <start-date>
-        <year>2009</year>
-        <month>11</month>
-      </start-date>
-      <is-current>true</is-current>
-      <company>
-        <name>Resella, Inc</name>
-        <industry>Information Technology and Services</industry>
       </company>
     </position>
     <position>
@@ -97,29 +89,7 @@ Design and development of eGraffiti application, City-wide graffiti tracking dat
         <industry>Government Administration</industry>
       </company>
     </position>
-    <position>
-      <id>139152120</id>
-      <title>Information Technology</title>
-      <summary>Responsibilities - Implementation and analysis of all new IT related projects, Application Development, Web Programming, Systems Administration, CRM Administration, Database  Administration, and Search Engine Optimization
-
-Application Developer - ­ Implemented and customized company wide CRM Database (Epicor Clientele). Designed and coded an application to transfer over 95,000 customer records from an      ACT database to Epicor Clientele CRM.NET. Integration of FedEx API shipping and Bank of America credit card merchant processing into CRM. Revise, test, debug, update, and implement any CRM changes.
-
-Web Programmer ­ Front end and back end application development in ASP, ASP.NET, and SQL for the various Companies Incorporated websites and intranet site.</summary>
-      <start-date>
-        <year>2004</year>
-        <month>6</month>
-      </start-date>
-      <end-date>
-        <year>2005</year>
-        <month>9</month>
-      </end-date>
-      <is-current>false</is-current>
-      <company>
-        <name>Companies Incorporated</name>
-        <industry>Information Technology and Services</industry>
-      </company>
-    </position>
-  </positions>
+   </positions>
   <languages total="2">
     <language>
       <id>70</id>
