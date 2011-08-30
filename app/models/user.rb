@@ -138,6 +138,19 @@ class User < ActiveRecord::Base
       job_history.save
     end
 
+    #Pull Education history
+    @education = @linked_in_profile.educations
+    @education.each do |edu|
+      education = educations.new
+      education.school_name = edu.school_name
+      education.degree = edu.degree
+      education.study_field = edu.field_of_study
+      education.start_date = Date.new(edu.start_year)
+      education.end_date = Date.new(edu.end_year)
+      education.activities = edu.activities
+      education.notes = edu.notes
+      education.save
+    end
   end
 
   def twitter_user(user_id)
