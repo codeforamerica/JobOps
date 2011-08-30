@@ -132,6 +132,7 @@ describe AuthenticationsController do
       @user.educations.last.end_date.should == Date.new(2006,1,1)
       @user.educations.last.activities.should == "Computer club"
       @user.educations.last.notes.should == "Computers"
+      @user.skills.last.skill.should == "GIS"
     end
   end
 
