@@ -2,6 +2,11 @@
 <person>
   <first-name>Ryan</first-name>
   <last-name>Resella</last-name>
+  <date-of-birth>
+    <year>1987</year>
+    <month>12</month>
+    <day>17</day>
+  </date-of-birth>
   <phone-numbers total="1">
     <phone-number>
       <phone-type>mobile</phone-type>
