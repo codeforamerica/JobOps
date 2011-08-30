@@ -154,4 +154,11 @@ Web Programmer ­ Front end and back end application development in ASP, ASP.NET
       </skill>
     </skill>
   </skills>
+  <certifications
+   total="1">
+    <certification>
+      <id>32</id>
+      <name>Series 7 Exam</name>
+    </certification>
+  </certifications>
 </person>
