@@ -115,9 +115,14 @@ describe AuthenticationsController do
     end
 
     it "should create a new user using LinkedIn" do
+      stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,positions,picture-url,skills,summary)").
+        to_return(:status => 200, :body => fixture("linked_in_profile.xml"))
       get :create, :provider => 'linked_in'
       @user = User.last
       @user.email.should == "12345@jobops.us"
+      @user.job_histories.first.org_name.should == "Code for America"
+      @user.job_histories.first.title.should == "Fellow"
+
     end
   end
 
