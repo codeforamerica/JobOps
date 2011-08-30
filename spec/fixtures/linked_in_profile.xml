@@ -120,4 +120,24 @@ Web Programmer ­ Front end and back end application development in ASP, ASP.NET
       </company>
     </position>
   </positions>
+  <skills total="3">
+    <skill>
+      <id>3</id>
+      <skill>
+      <name>Ruby on Rails</name>
+      </skill>
+    </skill>
+    <skill>
+      <id>4</id>
+      <skill>
+      <name>ESRI</name>
+      </skill>
+    </skill>
+    <skill>
+      <id>5</id>
+      <skill>
+      <name>GIS</name>
+      </skill>
+    </skill>
+  </skills>
 </person>
