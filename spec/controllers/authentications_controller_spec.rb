@@ -133,6 +133,7 @@ describe AuthenticationsController do
       @user.educations.last.activities.should == "Computer club"
       @user.educations.last.notes.should == "Computers"
       @user.skills.last.skill.should == "GIS"
+      @user.languages.last.language.should == "Klingon"
     end
   end
 
