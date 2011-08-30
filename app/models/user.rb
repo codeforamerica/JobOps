@@ -152,6 +152,14 @@ class User < ActiveRecord::Base
       education.save
     end
 
+    #Pull Certifications
+    @cert = @linked_in_profile.certifications
+    @cert.each do |certification|
+      cert = certifications.new
+      cert.name = certification.name
+      cert.save
+    end
+
     #Pull Languages
     @language = @linked_in_profile.languages
     @language.each do |linked_in_language|
