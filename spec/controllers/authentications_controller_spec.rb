@@ -122,7 +122,8 @@ describe AuthenticationsController do
       @user.email.should == "12345@jobops.us"
       @user.job_histories.first.org_name.should == "Code for America"
       @user.job_histories.first.title.should == "Fellow"
-
+      @user.job_histories.first.start_date.should == Date.new(2011,1,1)
+      @user.job_histories.first.end_date.should be_nil
     end
   end
 
