@@ -120,6 +120,20 @@ Web Programmer ­ Front end and back end application development in ASP, ASP.NET
       </company>
     </position>
   </positions>
+  <languages total="2">
+    <language>
+      <id>70</id>
+      <language>
+        <name>English</name>
+      </language>
+    </language>
+    <language>
+      <id>72</id>
+      <language>
+        <name>Klingon</name>
+      </language>
+    </language>
+  </languages>
   <skills total="3">
     <skill>
       <id>3</id>
