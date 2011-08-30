@@ -121,6 +121,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  def add_linked_in_info
+    @linked_in_profile = linked_in_client.profile
+
+    #Pull work history
+    @work = @linked_in_profile.positions
+    @work.each do |work|
+      job_history = job_histories.new
+      job_history.org_name = work.company.name
+      job_history.title = work.title
+      job_history.summary = work.summary
+      job_history.start_date = Date.new(work.start_year,work.start_month,1)
+      unless work.end_year == 0
+        job_history.end_date = Date.new(work.end_year,work.end_month,1)
+      end
+        job_history.save
+    end
+
+  end
+
   def twitter_user(user_id)
     if not Authentication.where(:provider => "twitter", :user_id => user_id).first.nil?
       twitter_client(user_id)
