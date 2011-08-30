@@ -124,6 +124,7 @@ describe AuthenticationsController do
       @user.job_histories.first.title.should == "Fellow"
       @user.job_histories.first.start_date.should == Date.new(2011,1,1)
       @user.job_histories.first.end_date.should be_nil
+      @user.job_histories.last.end_date.should == Date.new(2005,9,1)
     end
   end
 
