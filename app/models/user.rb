@@ -151,6 +151,15 @@ class User < ActiveRecord::Base
       education.notes = edu.notes
       education.save
     end
+
+    #Pull Skills
+    @skill = @linked_in_profile.skills
+    @skill.each do |linked_in_skill|
+      user_skill = skills.new
+      user_skill.skill = linked_in_skill.name
+      user_skill.save
+    end
+
   end
 
   def twitter_user(user_id)
