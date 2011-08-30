@@ -35,19 +35,22 @@ RSpec.configure do |config|
 
   #Omniauth Mock
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:twitter] = {
-           'provider' => 'twitter',
-           'uid' => '12345',
-           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
-           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}
-            }
- OmniAuth.config.mock_auth[:facebook] = {
+  OmniAuth.config.mock_auth[:facebook] = {
            'provider' => 'facebook',
            'uid' => '12345',
            'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
            'extra' => {'user_hash' => {'email' => "sample@example.com"}},
-           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}
-            }
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}}
+  OmniAuth.config.mock_auth[:linked_in] = {
+           'provider' => 'linked_in',
+           'uid' => '12345',
+           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}}
+  OmniAuth.config.mock_auth[:twitter] = {
+           'provider' => 'twitter',
+           'uid' => '12345',
+           'user_info' => {'name' => "Joe Smith", 'nickname' => 'joesmith'},
+           'credentials' => {'token' => 'abc123', 'secret' => 'xyz987'}}
 
 def fixture_path
   File.expand_path('../fixtures', __FILE__)

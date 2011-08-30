@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
     case omniauth['provider']
       when 'facebook'
         self.apply_facebook(omniauth)
+      when 'linked_in'
+        self.apply_linked_in(omniauth)
       end
     self.email = omniauth['user_info']['email'] if email.blank?
     build_authentications(omniauth, save_it)
@@ -81,7 +83,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   def facebook_user
     if not authentications.where(:provider => "facebook").first.nil?
       facebook_client
@@ -118,7 +119,81 @@ class User < ActiveRecord::Base
       education.end_date = Date.parse("1-1-" + edu.year.name)
       education.save
     end
+  end
 
+  def linked_in_user
+    unless authentications.where(:provider => "linked_in").first.nil?
+      linked_in_client
+    end
+  end
+
+  def add_linked_in_info
+    @linked_in_profile = linked_in_client.profile
+
+    #Basic Information
+    self.phone = @linked_in_profile.phone_numbers.first.phone_number
+    self.dob = Date.new(linked_in_user.profile.birthdate.year,
+                        linked_in_user.profile.birthdate.month,
+                        linked_in_user.profile.birthdate.day)
+
+    #Pull work history
+    @work = @linked_in_profile.positions
+    @work.each do |work|
+      job_history = job_histories.new
+      job_history.org_name = work.company.name
+      job_history.title = work.title
+      job_history.summary = work.summary
+      job_history.start_date = Date.new(work.start_year,work.start_month)
+      unless work.end_year == 0
+        job_history.end_date = Date.new(work.end_year,work.end_month)
+      end
+      job_history.save
+    end
+
+    #Pull Education history
+    @education = @linked_in_profile.educations
+    @education.each do |edu|
+      education = educations.new
+      education.school_name = edu.school_name
+      education.degree = edu.degree
+      education.study_field = edu.field_of_study
+      education.start_date = Date.new(edu.start_year)
+      education.end_date = Date.new(edu.end_year)
+      education.activities = edu.activities
+      education.notes = edu.notes
+      education.save
+    end
+
+    #Pull Certifications
+    @cert = @linked_in_profile.certifications
+    @cert.each do |certification|
+      cert = certifications.new
+      cert.name = certification.name
+      cert.save
+    end
+
+    #Pull Languages
+    @language = @linked_in_profile.languages
+    @language.each do |linked_in_language|
+      language = languages.new
+      language.language = linked_in_language.name
+      language.save
+    end
+
+    #Pull Skills
+    @skill = @linked_in_profile.skills
+    @skill.each do |linked_in_skill|
+      user_skill = skills.new
+      user_skill.skill = linked_in_skill.name
+      user_skill.save
+    end
+
+  end
+
+  def twitter_user
+    if not authentications.where(:provider => "twitter").first.nil?
+      twitter_client
+    end
   end
 
   protected
@@ -128,6 +203,25 @@ class User < ActiveRecord::Base
       self.email = (extra['email'] rescue '')
       self.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def apply_linked_in(omniauth)
+    #Create a fake email address using LinkedIn uid
+    self.email = "#{omniauth['uid']}@jobops.us"
+    self.password = Devise.friendly_token[0,20]
+  end
+
+  def linked_in_client
+    linked_in_auth = authentications.where(:provider => "linked_in").first
+    LinkedIn.configure do |config|
+      config.token = ENV['LINKEDIN_KEY']
+      config.secret = ENV['LINKEDIN_SECRET']
+      config.default_profile_fields = ['certifications','date-of-birth','educations',
+        'phone-numbers','positions','picture-url','skills','summary']
+    end
+    linked_in = LinkedIn::Client.new
+    linked_in.authorize_from_access(linked_in_auth.access_token, linked_in_auth.access_secret)
+    linked_in_client ||= linked_in
   end
 
   def twitter_client
