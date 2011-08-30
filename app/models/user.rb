@@ -124,6 +124,9 @@ class User < ActiveRecord::Base
   def add_linked_in_info
     @linked_in_profile = linked_in_client.profile
 
+    #Basic Information
+    self.phone = @linked_in_profile.phone_numbers.first.phone_number
+
     #Pull work history
     @work = @linked_in_profile.positions
     @work.each do |work|
