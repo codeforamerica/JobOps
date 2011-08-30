@@ -136,6 +136,7 @@ describe AuthenticationsController do
       @user.languages.last.language.should == "Klingon"
       @user.certifications.last.name.should == "Series 7 Exam"
       @user.phone.should == "415-555-5555"
+      @user.dob.should == Date.new(1987,12,17)
     end
   end
 
