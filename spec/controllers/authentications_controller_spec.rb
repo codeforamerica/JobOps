@@ -134,6 +134,7 @@ describe AuthenticationsController do
       @user.educations.last.notes.should == "Computers"
       @user.skills.last.skill.should == "GIS"
       @user.languages.last.language.should == "Klingon"
+      @user.certifications.last.name.should == "Series 7 Exam"
     end
   end
 
