@@ -125,6 +125,13 @@ describe AuthenticationsController do
       @user.job_histories.first.start_date.should == Date.new(2011,1,1)
       @user.job_histories.first.end_date.should be_nil
       @user.job_histories.last.end_date.should == Date.new(2005,9,1)
+      @user.educations.last.school_name.should == "California State University-Northridge"
+      @user.educations.last.degree.should == "BS"
+      @user.educations.last.study_field.should == "Computer Science"
+      @user.educations.last.start_date.should == Date.new(1999,1,1)
+      @user.educations.last.end_date.should == Date.new(2006,1,1)
+      @user.educations.last.activities.should == "Computer club"
+      @user.educations.last.notes.should == "Computers"
     end
   end
 
