@@ -210,7 +210,7 @@ class User < ActiveRecord::Base
       config.token = ENV['LINKEDIN_KEY']
       config.secret = ENV['LINKEDIN_SECRET']
       config.default_profile_fields = ['certifications','date-of-birth','educations',
-        'positions','picture-url','skills','summary']
+        'phone-numbers','positions','picture-url','skills','summary']
     end
     linked_in = LinkedIn::Client.new
     linked_in.authorize_from_access(linked_in_auth.access_token, linked_in_auth.access_secret)
