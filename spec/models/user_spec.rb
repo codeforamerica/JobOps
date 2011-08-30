@@ -83,8 +83,7 @@ describe User do
 
     it "should return a new LinkedIn client" do
       @auth = Factory(:authentication, :provider => "linked_in")
-      stub_request(:get,
-        "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,positions,picture-url,skills,summary)").
+      stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,phone-numbers,positions,picture-url,skills,summary)").
         to_return(:status => 200, :body => fixture("linked_in_profile.xml"))
       @linked_in = @user.linked_in_user
       @linked_in.should be_a LinkedIn::Client

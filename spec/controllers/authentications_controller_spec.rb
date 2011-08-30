@@ -115,7 +115,7 @@ describe AuthenticationsController do
     end
 
     it "should create a new user using LinkedIn" do
-      stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,positions,picture-url,skills,summary)").
+      stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,phone-numbers,positions,picture-url,skills,summary)").
         to_return(:status => 200, :body => fixture("linked_in_profile.xml"))
       get :create, :provider => 'linked_in'
       @user = User.last
@@ -124,7 +124,7 @@ describe AuthenticationsController do
       @user.job_histories.first.title.should == "Fellow"
       @user.job_histories.first.start_date.should == Date.new(2011,1,1)
       @user.job_histories.first.end_date.should be_nil
-      @user.job_histories.last.end_date.should == Date.new(2005,9,1)
+      @user.job_histories.last.end_date.should == Date.new(2010,12,1)
       @user.educations.last.school_name.should == "California State University-Northridge"
       @user.educations.last.degree.should == "BS"
       @user.educations.last.study_field.should == "Computer Science"
@@ -135,6 +135,7 @@ describe AuthenticationsController do
       @user.skills.last.skill.should == "GIS"
       @user.languages.last.language.should == "Klingon"
       @user.certifications.last.name.should == "Series 7 Exam"
+      @user.phone.should == "415-555-5555"
     end
   end
 
