@@ -152,6 +152,14 @@ class User < ActiveRecord::Base
       education.save
     end
 
+    #Pull Languages
+    @language = @linked_in_profile.languages
+    @language.each do |linked_in_language|
+      language = languages.new
+      language.language = linked_in_language.name
+      language.save
+    end
+
     #Pull Skills
     @skill = @linked_in_profile.skills
     @skill.each do |linked_in_skill|
