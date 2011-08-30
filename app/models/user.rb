@@ -131,11 +131,11 @@ class User < ActiveRecord::Base
       job_history.org_name = work.company.name
       job_history.title = work.title
       job_history.summary = work.summary
-      job_history.start_date = Date.new(work.start_year,work.start_month,1)
+      job_history.start_date = Date.new(work.start_year,work.start_month)
       unless work.end_year == 0
-        job_history.end_date = Date.new(work.end_year,work.end_month,1)
+        job_history.end_date = Date.new(work.end_year,work.end_month)
       end
-        job_history.save
+      job_history.save
     end
 
   end
