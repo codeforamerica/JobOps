@@ -92,8 +92,8 @@ class User < ActiveRecord::Base
     @fb_info = facebook_user.fetch
 
     #Pull in basic profile information
-    self.location = @fb_info.location.name
-    self.dob = @fb_info.birthday
+    self.location = @fb_info.location.name if @fb_info.location
+    self.dob = @fb_info.birthday if @fb_info.birthday
     self.gender = @fb_info.gender
 
     #Pull work history
@@ -101,10 +101,10 @@ class User < ActiveRecord::Base
     @work.each do |work|
       job_history = job_histories.new
       job_history.org_name = work.employer.name
-      job_history.title = work.position.name
-      job_history.summary = work.description
-      job_history.start_date = work.start_date
-      job_history.end_date = work.end_date
+      job_history.title = work.position.name if work.position
+      job_history.summary = work.description if work.description
+      job_history.start_date = work.start_date if work.start_date
+      job_history.end_date = work.end_date if work.end_date
       job_history.save
     end
 
@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
       education.school_name = edu.school.name
       education.degree = edu.degree.name if edu.degree
       education.study_field = edu.concentration.first.name if !edu.concentration.empty?
-      education.end_date = Date.parse("1-1-" + edu.year.name)
+      education.end_date = Date.new(edu.year.name.to_i) if edu.year
       education.save
     end
   end
