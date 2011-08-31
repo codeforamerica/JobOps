@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1.0.rc6'
+gem 'rails', '~> 3.1.0'
 
 # Asset template engines
 group :assets do
