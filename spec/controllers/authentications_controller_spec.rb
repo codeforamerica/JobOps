@@ -138,6 +138,21 @@ describe AuthenticationsController do
       @user.phone.should == "415-555-5555"
       @user.dob.should == Date.new(1987,12,17)
     end
+
+    it "should create a new user using basic LinkedIn info" do
+      stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,phone-numbers,positions,picture-url,skills,summary)").
+        to_return(:status => 200, :body => fixture("linked_in_basic.xml"))
+      get :create, :provider => 'linked_in'
+      @user = User.last
+      @user.email.should == "12345@jobops.us"
+      @user.job_histories.should be_empty
+      @user.educations.should be_empty
+      @user.skills.should be_empty
+      @user.languages.should be_empty
+      @user.certifications.should be_empty
+      @user.phone.should be_nil
+      @user.dob.should be_nil
+    end
   end
 
   describe "auth_failure action should render authentication failure template" do
