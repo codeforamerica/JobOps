@@ -88,15 +88,17 @@ describe AuthenticationsController do
       @user.job_histories.first.title.should == "Fellow"
       @user.educations.last.school_name.should == "California State University, Northridge"
       @user.educations.last.study_field.should == "Public administration"
-      @user.educations.last.end_date.should == Date.parse("1/1/2010")
+      @user.educations.last.end_date.should == Date.new(2010,1,1)
     end
 
     it "should create a new user with no job history using Facebook" do
       stub_request(:get, "https://graph.facebook.com/me?access_token=abc123").
-                to_return(:status => 200, :body => fixture("facebook_user_nowork.json"))
+                to_return(:status => 200, :body => fixture("facebook_user_basic.json"))
       get :create, :provider => 'facebook'
       @user = User.last
+      @user.gender.should be_nil
       @user.job_histories.empty?.should == true
+      @user.educations.empty?.should == true
     end
   end
 
