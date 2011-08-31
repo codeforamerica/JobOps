@@ -131,10 +131,15 @@ class User < ActiveRecord::Base
     @linked_in_profile = linked_in_client.profile
 
     #Basic Information
-    self.phone = @linked_in_profile.phone_numbers.first.phone_number
-    self.dob = Date.new(linked_in_user.profile.birthdate.year,
-                        linked_in_user.profile.birthdate.month,
-                        linked_in_user.profile.birthdate.day)
+    self.phone = @linked_in_profile.phone_numbers.first.phone_number if !@linked_in_profile.phone_numbers.empty?
+
+    if @linked_in_profile.birthdate.day == 0
+      self.dob = nil
+    else
+      self.dob = Date.new(@linked_in_profile.birthdate.year,
+                        @linked_in_profile.birthdate.month,
+                        @linked_in_profile.birthdate.day)
+    end
 
     #Pull work history
     @work = @linked_in_profile.positions
