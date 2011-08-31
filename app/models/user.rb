@@ -67,7 +67,6 @@ class User < ActiveRecord::Base
     apply_omniauth(omniauth, true)
   end
 
-
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end
@@ -78,18 +77,18 @@ class User < ActiveRecord::Base
   end
 
   def twitter_user
-    if not authentications.where(:provider => "twitter").first.nil?
+    unless authentications.where(:provider => "twitter").first.nil?
       twitter_client
     end
   end
 
   def facebook_user
-    if not authentications.where(:provider => "facebook").first.nil?
+    unless authentications.where(:provider => "facebook").first.nil?
       facebook_client
     end
   end
 
-  def add_facebook_info(user_id)
+  def add_facebook_info
     @fb_info = facebook_user.fetch
 
     #Pull in basic profile information
@@ -100,7 +99,7 @@ class User < ActiveRecord::Base
     #Pull work history
     @work = @fb_info.work
     @work.each do |work|
-      job_history = User.find(user_id).job_histories.new
+      job_history = job_histories.new
       job_history.org_name = work.employer.name
       job_history.title = work.position.name
       job_history.summary = work.description
@@ -112,7 +111,7 @@ class User < ActiveRecord::Base
     #Pull education history
     @education = @fb_info.education
     @education.each do |edu|
-      education = User.find(user_id).educations.new
+      education = educations.new
       education.school_name = edu.school.name
       education.degree = edu.degree.name if edu.degree
       education.study_field = edu.concentration.first.name if !edu.concentration.empty?
@@ -212,7 +211,7 @@ class User < ActiveRecord::Base
 
   def apply_linked_in(omniauth)
     #Create a fake email address using LinkedIn uid
-    self.email = "#{omniauth['uid']}@jobops.us"
+    self.email = "change-me-#{omniauth['uid']}@jobops.us"
     self.password = Devise.friendly_token[0,20]
   end
 

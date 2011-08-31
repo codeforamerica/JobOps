@@ -23,7 +23,7 @@ class AuthenticationsController < ApplicationController
       if user.save
       case omniauth['provider']
         when 'facebook'
-          user.add_facebook_info(user.id)
+          user.add_facebook_info
         when 'linked_in'
           user.add_linked_in_info
       end
