@@ -1,5 +1,7 @@
 JobOps::Application.routes.draw do
 
+  get "careers/index"
+
   resources :authentications
 
   match '/auth/:provider/callback' => 'authentications#create'
