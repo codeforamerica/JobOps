@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Career do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "futures_pipeline" do
+    it "should return a new FuturesPipeline client" do
+      @test = Career.new.futures_pipeline
+      @test.should be_a FuturesPipeline::Client
+  end
+
+  end
+
 end
