@@ -119,7 +119,7 @@ describe AuthenticationsController do
         to_return(:status => 200, :body => fixture("linked_in_profile.xml"))
       get :create, :provider => 'linked_in'
       @user = User.last
-      @user.email.should == "12345@jobops.us"
+      @user.email.should == "change-me-12345@jobops.us"
       @user.job_histories.first.org_name.should == "Code for America"
       @user.job_histories.first.title.should == "Fellow"
       @user.job_histories.first.start_date.should == Date.new(2011,1,1)
@@ -144,7 +144,7 @@ describe AuthenticationsController do
         to_return(:status => 200, :body => fixture("linked_in_basic.xml"))
       get :create, :provider => 'linked_in'
       @user = User.last
-      @user.email.should == "12345@jobops.us"
+      @user.email.should == "change-me-12345@jobops.us"
       @user.job_histories.should be_empty
       @user.educations.should be_empty
       @user.skills.should be_empty
