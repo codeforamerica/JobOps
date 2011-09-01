@@ -80,7 +80,7 @@ GEM
       rack (< 2, >= 1.1.0)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
-    fb_graph (2.0.1)
+    fb_graph (2.0.2)
       httpclient (>= 2.2.0.2)
       rack-oauth2 (>= 0.8.0)
     gravatar_image_tag (1.0.0)
@@ -94,6 +94,7 @@ GEM
     jruby-openssl (0.7.4)
       bouncy-castle-java
     json (1.5.4)
+    json (1.5.4-java)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
