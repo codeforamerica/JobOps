@@ -4,9 +4,11 @@
   %table
     %tr
       %th Title
-      %th
+      %th Average National Salary
+      %th ONet SOC Code
 
     - @careers.each do |career|
       %tr
         %td= career.title
-        %td= career.onet_soc_code
+        %td= number_to_currency(career.average_national_salary)
+        %td= link_to career.onet_soc_code, career_path(career.api_safe_onet_soc_code)
