@@ -1,9 +1,11 @@
 *.gem
 *.rbc
+.rvmrc
 *.un~
 .*.sw[a-z]
 .DS_Store
 .Spotlight-V100
+development/
 .Trashes
 ._*
 .bundle
