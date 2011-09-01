@@ -12,3 +12,7 @@
         %td= career.title
         %td= number_to_currency(career.average_national_salary)
         %td= link_to career.onet_soc_code, career_path(career.api_safe_onet_soc_code)
+
+  %p Page
+  =link_to '<', careers_path({:page => @prev_page})
+  =link_to '>', careers_path({:page => @next_page})
