@@ -6,17 +6,21 @@ class CareersController < ApplicationController
   end
 
   def index
-    @careers = @futures_careers.careers
+    @careers = @futures_careers.careers({:page => params[:page]})
+    @next_page = params[:page].to_i + 1
+    @prev_page = params[:page].to_i - 1
+    if @prev_page == 0
+      @prev_page = 1
+    end
   end
 
   def show
     @careers = @futures_careers.career(params[:id])
 
-   respond_to do |format|
+    respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @careers }
     end
-
   end
 
 end
