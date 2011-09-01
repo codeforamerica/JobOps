@@ -1,3 +1,12 @@
 #home
-  %h1 Careers#index
-  %p Find me in app/views/careers/index.html.erb
+  %h1 Careers
+
+  %table
+    %tr
+      %th Title
+      %th
+
+    - @careers.each do |career|
+      %tr
+        %td= career.title
+        %td= career.onet_soc_code
