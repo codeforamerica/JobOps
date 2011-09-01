@@ -1,2 +1,56 @@
 #home
-%p Hi
+  %h1= @careers.title
+  %p= @careers.description
+  %p Average National Salary
+  = number_to_currency(@careers.average_national_salary)
+
+  %p Related Skills:
+
+  %table
+    %tr
+      %th Title
+      %th Onet SOC Code
+
+      - @careers.related_careers.each do |related|
+        %tr
+          %td= related.title
+          %td= link_to related.onet_soc_code, related.api_safe_onet_soc_code
+
+  %p Knowledge:
+
+  %table
+    %tr
+      %th Title
+      %th Stars
+
+      - @careers.knowledge.each do |knowledge|
+        %tr
+          %td= knowledge.title
+          %td= knowledge.stars
+
+  %p Skills:
+
+  %table
+    %tr
+      %th Title
+      %th Stars
+
+      - @careers.skills.each do |skills|
+        %tr
+          %td= skills.title
+          %td= skills.stars
+
+  %p Abilities
+
+  %table
+    %tr
+      %th Title
+      %th Stars
+
+      - @careers.abilities.each do |abilities|
+        %tr
+          %td= abilities.title
+          %td= abilities.stars
+
+
+
