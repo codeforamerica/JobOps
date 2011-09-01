@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe SkillsController do
   login_user
-  
+
   describe "#index" do
       it "should render the index template" do
         get :index
@@ -73,5 +73,5 @@ describe SkillsController do
           @response.should redirect_to(skills_url)
      end
    end
-  
+
 end

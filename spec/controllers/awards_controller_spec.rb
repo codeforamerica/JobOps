@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe AwardsController do
   login_user
-  
+
   describe "#index" do
       it "should render the index template" do
         get :index
