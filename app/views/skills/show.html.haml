@@ -1,0 +1,15 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong Skill:
+    = @skill.skill
+
+  %p
+    %strong User:
+    = @skill.user_id
+
+  = link_to 'Edit', edit_skill_path(@skill)
+  \|
+  = link_to 'Back', skills_path
+
