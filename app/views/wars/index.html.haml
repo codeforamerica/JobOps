@@ -1,0 +1,21 @@
+#home
+  %h1 Listing wars
+
+  %table
+    %tr
+      %th War
+      %th
+      %th
+      %th
+
+    - @wars.each do |war|
+      %tr
+        %td= war.war
+        %td= link_to 'Show', war
+        %td= link_to 'Edit', edit_war_path(war)
+        %td= link_to 'Destroy', war, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New War', new_war_path
+

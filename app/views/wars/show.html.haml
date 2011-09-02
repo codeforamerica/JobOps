@@ -1,0 +1,11 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong War:
+    = @war.war
+
+= link_to 'Edit', edit_war_path(@war)
+\|
+= link_to 'Back', wars_path
+
