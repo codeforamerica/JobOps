@@ -1,0 +1,27 @@
+#home
+  %p#notice=  notice
+
+  %p
+    %strong Org name:
+    = @job_history.org_name
+
+  %p
+    %strong Title:
+    = @job_history.title
+
+  %p
+    %strong Start date:
+    = @job_history.start_date
+
+  %p
+    %strong End date:
+    = check_present(@job_history.end_date)
+
+  %p
+    %strong Summary:
+    = @job_history.summary
+
+  = link_to 'Edit', edit_job_history_path(@job_history)
+  \|
+  = link_to 'Back', job_histories_path
+

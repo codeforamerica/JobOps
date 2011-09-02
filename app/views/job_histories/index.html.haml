@@ -1,0 +1,29 @@
+#home
+  %h1 Listing job_histories
+
+  %table
+    %tr
+      %th Org name
+      %th Title
+      %th Start date
+      %th End date
+      %th Summary
+      %th
+      %th
+      %th
+
+    - @job_histories.each do |job_history|
+      %tr
+        %td= job_history.org_name
+        %td= job_history.title
+        %td= job_history.start_date
+        %td= check_present(job_history.end_date)
+        %td= job_history.summary
+        %td= link_to 'Show', job_history
+        %td= link_to 'Edit', edit_job_history_path(job_history)
+        %td= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+
+  = link_to 'New Job history', new_job_history_path
+
