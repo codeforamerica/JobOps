@@ -16,6 +16,13 @@ describe CareersController do
       get 'index', :page => 7
       response.should be_success
     end
+
+    it "should return related careers for a MOC" do
+      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11b").
+        to_return(:status => 200, :body => fixture("futures_11b.json"))
+      get 'index', :moc => '11b'
+      response.should be_success
+    end
   end
 
   describe "#show" do
