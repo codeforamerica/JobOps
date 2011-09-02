@@ -1,0 +1,23 @@
+#home
+  %h1 Listing certifications
+
+  %table
+    %tr
+      %th Name
+      %th Institution
+      %th Date acquired
+      %th
+      %th
+      %th
+
+    - @certifications.each do |certification|
+      %t
+        %td= certification.name
+        %td= certification.institution
+        %td= certification.date_acquired
+        %td= link_to 'Show', certification
+        %td= link_to 'Edit', edit_certification_path(certification)
+        %td= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+  = link_to 'New Certification', new_certification_path
