@@ -4,26 +4,25 @@
       %h2= "#{pluralize(@resume.errors.count, "error") } prohibited this resume from being saved:"
       %ul
         - @user.errors.full_messages.each do |msg|
-          %li= msg %></li>
+          %li= msg
 
   %textarea#user_resume_text_editor{:name => "user[resume]"}
 
-    %h1= @user.full_name
+    %h1= @user.name
     %p= @user.location
     %p= @user.phone
-      \|
-      = @user.email
+    %p= @user.email
 
     %br
 
     %h2 Education
 
     - @user.educations.each do |education|
-        %p
-          %strong= education.school_name
-          %strong= "#{education.start_date} - #{check_present(education.end_date)"
-        %p
-          = "#{education.degree} #{education.study_field}"
+      %p
+        %strong= education.school_name
+        %strong= "#{education.start_date} - #{check_present(education.end_date)}"
+      %p
+        = "#{education.degree} #{education.study_field}"
 
     %h2 Job History
 
@@ -35,21 +34,27 @@
         %li= job_history.summary
 
     %h2 Military Info
-    %p Military Status:
+    %p
+      Military Status:
       = @user.military_status
-    %p Service Branch:
+    %p
+      Service Branch:
       = @user.service_branch
-    %p MOC:
+    %p
+      MOC:
       = @user.moc
-    %p Rank:
+    %p
+      Rank:
       = @user.rank
-    %p Unit:
+    %p
+      Unit:
       = @user.unit
-    %p Disability:
+    %p
+      Disability:
       = @user.disability
     %p Wars:
     %ul
-     - @user.wars.each do |wars|
+      - @user.wars.each do |wars|
         %li= wars.war
 
     %p Awards:
