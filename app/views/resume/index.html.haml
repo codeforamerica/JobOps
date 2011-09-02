@@ -1,0 +1,10 @@
+#resume
+  = render 'users/profile/nav_profile'
+  = render 'nav_resume'
+
+  .tab_container
+    %h1 Resume#index
+    %p Find me in app/views/resume/index.html.haml
+
+    =raw @user.resume
+

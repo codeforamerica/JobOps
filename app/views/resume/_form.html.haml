@@ -1,0 +1,79 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@resume.errors.count, "error") } prohibited this resume from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg %></li>
+
+  %textarea#user_resume_text_editor{:name => "user[resume]"}
+
+    %h1= @user.full_name
+    %p= @user.location
+    %p= @user.phone
+      \|
+      = @user.email
+
+    %br
+
+    %h2 Education
+
+    - @user.educations.each do |education|
+        %p
+          %strong= education.school_name
+          %strong= "#{education.start_date} - #{check_present(education.end_date)"
+        %p
+          = "#{education.degree} #{education.study_field}"
+
+    %h2 Job History
+
+    - @user.job_histories.each do |job_history|
+      %p= job_history.org_name
+      %p= "#{job_history.start_date} - #{check_present(job_history.end_date)}"
+      %p= job_history.title
+      %ul
+        %li= job_history.summary
+
+    %h2 Military Info
+    %p Military Status:
+      = @user.military_status
+    %p Service Branch:
+      = @user.service_branch
+    %p MOC:
+      = @user.moc
+    %p Rank:
+      = @user.rank
+    %p Unit:
+      = @user.unit
+    %p Disability:
+      = @user.disability
+    %p Wars:
+    %ul
+     - @user.wars.each do |wars|
+        %li= wars.war
+
+    %p Awards:
+    %ul
+      - @user.awards.each do |awards|
+        %li= awards.award
+
+
+    %h3 Skills
+    - @user.skills.each do |skills|
+      = skills.skill
+
+    %h3 Languages
+    - @user.languages.each do |languages|
+      = languages.language
+
+    %h3 Trainings
+    - @user.trainings.each do |training|
+      %p= "#{training.training} - #{training.training_date}"
+
+    %h3 Certifications
+    - @user.certifications.each do |certification|
+      %p= "#{certification.name} #{certification.institution} #{certification.date_acquired}"
+
+  .actions
+    = f.submit
+
