@@ -1,8 +1,9 @@
-<div id='home'>
-<% if user_signed_in? %>
-  <h1>Welcome, <%= resource.name %>!</h1>
-<% else %>
-  <h1>Welcome!</h1>
-<% end %>
-<p>Let's find some jobs!</p>
-</div>
+#home
+  - if user_signed_in?
+    %h1
+      Welcome
+      = resource.name
+  - else
+    %h1 Welcome!
+
+  %p Let's find some jobs!
