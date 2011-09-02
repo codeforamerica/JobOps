@@ -6,16 +6,20 @@ class CareersController < ApplicationController
   end
 
   def index
-    @careers = @futures_careers.careers({:page => params[:page]})
-    @next_page = params[:page].to_i + 1
-    @prev_page = params[:page].to_i - 1
+    if params[:moc]
+      @careers = @futures_careers.search(params[:moc])
+    else
+      @careers = @futures_careers.careers({:page => params[:page]})
+      @next_page = params[:page].to_i + 1
+      @prev_page = params[:page].to_i - 1
 
-    if @next_page == 1
-      @next_page = 2
-    end
+      if @next_page == 1
+        @next_page = 2
+      end
 
-    if @prev_page == -1
-      @prev_page = 1
+      if @prev_page == -1
+        @prev_page = 1
+      end
     end
   end
 
