@@ -50,9 +50,6 @@ GEM
     bcrypt-ruby (3.0.0-java)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.0)
-    ckeditor (3.6.1)
-      mime-types (~> 1.16)
-      orm_adapter (~> 0.0.5)
     cocaine (0.2.0)
     coffee-script (2.2.0)
       coffee-script-source
@@ -235,7 +232,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-s3
-  ckeditor
   coffee-script
   devise
   factory_girl_rails

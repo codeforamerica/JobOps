@@ -10,7 +10,6 @@ group :assets do
 end
 
 gem 'aws-s3'
-gem 'ckeditor'
 gem 'devise'
 gem 'futures_pipeline'
 gem 'gravatar_image_tag'
