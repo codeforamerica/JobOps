@@ -1,0 +1,22 @@
+#home
+  %h1 Listing awards
+  %table
+    %tr
+      %th Award
+      %th Award date
+      %th
+      %th
+      %th
+
+    - @awards.each do |award|
+      %tr
+        %td= award.award
+        %td= award.award_date
+        %td= link_to 'Show', award
+        %td= link_to 'Edit', edit_award_path(award)
+        %td= link_to 'Destroy', award, :confirm => 'Are you sure?', :method => :delete
+
+
+  %br
+  = link_to 'New Award', new_award_path
+

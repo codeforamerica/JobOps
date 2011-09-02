@@ -1,0 +1,14 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong Award:
+    = @award.award
+
+  %p
+    %strong Award date:
+    = @award.award_date
+
+  = link_to 'Edit', edit_award_path(@award)
+  \|
+  = link_to 'Back', awards_path
