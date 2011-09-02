@@ -1,0 +1,22 @@
+#home
+  %h1 Listing trainings
+  %table
+    %tr
+      %th Training
+      %th Training date
+      %th
+      %th
+      %th
+
+    - @trainings.each do |training|
+      %tr
+        %td= training.training
+        %td= training.training_date
+        %td= link_to 'Show', training
+        %td= link_to 'Edit', edit_training_path(training)
+        %td= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+
+  = link_to 'New Training', new_training_path
+

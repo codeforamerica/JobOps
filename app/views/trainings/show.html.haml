@@ -1,0 +1,15 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong Training:
+    = @training.training
+
+  %p
+    %strong Training date:
+    = @training.training_date
+
+  = link_to 'Edit', edit_training_path(@training)
+  \|
+  = link_to 'Back', trainings_path
+
