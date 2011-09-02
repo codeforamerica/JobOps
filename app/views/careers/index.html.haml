@@ -1,18 +1,30 @@
 #home
   %h1 Careers
 
-  %table
-    %tr
-      %th Title
-      %th Average National Salary
-      %th ONet SOC Code
+  = form_tag('/careers', :method => :get) do
+    MOC:
+    = text_field_tag :moc, params[:moc]
+    = submit_tag "Search"
 
-    - @careers.each do |career|
+  %br
+
+  - if @careers.empty?
+    No Careers Found
+  - else
+    %table
       %tr
-        %td= career.title
-        %td= number_to_currency(career.average_national_salary)
-        %td= link_to career.onet_soc_code, career_path(career.api_safe_onet_soc_code)
+        %th Title
+        %th Average National Salary
+        %th ONet SOC Code
 
-  %p Page
-  =link_to '<', careers_path({:page => @prev_page})
-  =link_to '>', careers_path({:page => @next_page})
+      - @careers.each do |career|
+        %tr
+          %td= career.title
+          %td= number_to_currency(career.average_national_salary)
+          %td= link_to career.onet_soc_code, career_path(career.api_safe_onet_soc_code)
+
+  - if params[:moc].nil?
+    %p Page
+    =link_to '<', careers_path({:page => @prev_page})
+    =link_to '>', careers_path({:page => @next_page})
+
