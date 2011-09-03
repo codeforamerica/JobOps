@@ -1,0 +1,6 @@
+%ul.tabs
+  %li= link_to "Show Resume", :controller => "resume", :action => "index"
+  %li= link_to "Edit Resume", edit_resume_path(@user.id)
+  %li Download Resume
+  %li Publish Resume
+

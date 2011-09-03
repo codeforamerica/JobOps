@@ -1,0 +1,19 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong Name:
+    = @certification.name
+
+  %p
+    %strong Institution:
+    = @certification.institution
+
+  %p
+    %strong Date acquired:
+    = @certification.date_acquired
+
+  = link_to 'Edit', edit_certification_path(@certification)
+  \|
+  = link_to 'Back', certifications_path
+

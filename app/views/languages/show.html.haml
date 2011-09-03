@@ -1,0 +1,11 @@
+#home
+  %p#notice= notice
+
+  %p
+    %strong Language:
+    = @language.language
+
+  = link_to 'Edit', edit_language_path(@language)
+  \|
+  = link_to 'Back', languages_path
+

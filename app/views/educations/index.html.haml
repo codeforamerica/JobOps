@@ -1,0 +1,33 @@
+#home
+  %h1 Listing educations
+
+  %table
+    %tr
+      %th School name
+      %th Degree
+      %th Study field
+      %th Start date
+      %th End date
+      %th Activities
+      %th Notes
+      %th
+      %th
+      %th
+
+    - @educations.each do |education|
+      %tr
+        %td= education.school_name
+        %td= education.degree
+        %td= education.study_field
+        %td= education.start_date
+        %td= education.end_date
+        %td= education.activities
+        %td= education.notes
+        %td= link_to 'Show', education
+        %td= link_to 'Edit', edit_education_path(education)
+        %td= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+
+  = link_to 'New Education', new_education_path
+

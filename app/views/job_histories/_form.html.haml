@@ -1,0 +1,39 @@
+= form_for @job_history do |f|
+  - if @job_history.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@job_history.errors.count, "error") } prohibited this job_history from being saved:"
+      %ul
+        - @job_history.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :org_name
+    %br
+    = f.text_field :org_name
+
+  .field
+    = f.label :title
+    %br
+    = f.text_field :title
+
+  .field
+    = f.label :start_date
+    %br
+    = f.date_select :start_date,
+     :start_year => Time.now.year - 15
+
+  .field
+    = f.label :end_date
+    %br
+    = f.date_select :end_date,
+    :start_year => Time.now.year - 15,
+    :include_blank => true
+
+  .field
+    = f.label :summary
+    %br
+    = f.text_area :summary
+
+  .actions
+    = f.submit 'Save'
+

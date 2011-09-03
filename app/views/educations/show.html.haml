@@ -1,0 +1,36 @@
+#home
+  #notice=  notice
+
+  %p
+    %strong School name:
+    = @education.school_name
+
+  %p
+    %strong Degree:
+    = @education.degree
+
+  %p
+    %strong Study field:
+    = @education.study_field
+
+  %p
+    %strong Start date:
+    = @education.valid_year(@education.start_date)
+
+  %p
+    %strong End date:
+    = @education.valid_year(@education.end_date)
+
+  %p
+    %strong Activities:
+    = @education.activities
+
+  %p
+    %strong Notes:
+    = @education.notes
+
+
+  = link_to 'Edit', edit_education_path(@education)
+  \|
+  = link_to 'Back', educations_path
+

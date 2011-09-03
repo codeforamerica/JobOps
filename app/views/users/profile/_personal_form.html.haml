@@ -1,0 +1,30 @@
+%h3 Personal Info
+= form_for(@user) do |f|
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :dob
+    = f.date_select :dob,
+    :start_year => Time.now.year - 75,
+    :end_year => Time.now.year - 16
+
+  .field
+    = f.label :gender
+    = f.text_field :gender
+
+  .field
+    = f.label :ethnicity
+    = f.text_field :ethnicity
+
+  .field
+    = f.label :family
+    = f.text_field :family
+
+  .actions
+    = f.submit
+

@@ -1,0 +1,20 @@
+!!! 5
+%html
+  %head
+    %title
+      JobOps
+  = stylesheet_link_tag 'application'
+  = javascript_include_tag 'application'
+  = csrf_meta_tags
+
+  %body.home
+    %h1.logo
+      JobOps
+    %p.notice= notice
+    %p.alert= alert
+    %ul.user
+      = render 'devise/menu/registration_items'
+      = render 'devise/menu/login_items'
+    = render 'layouts/nav'
+    = yield
+
