@@ -3,10 +3,17 @@
  * = require_tree .
 */
 
+/** GLOBAL STYLES **/
+.left { float: left; }
+.right { float: right; }
+br.clearit { clear: both; }
+
 * {
 	padding:0;
 	margin:0;
 	}
+	
+/** HEADER STYLES **/
 #header-wrapper {
 	background: image-url("/images/header_bg.png") repeat-x;
 	height:82px;
@@ -91,9 +98,16 @@
 	border-bottom:2px solid #f5f5f5;	
 }
 
-.left { float: left; }
-.right { float: right; }
-br.clearit { clear: both; }
+/** CONTENT STYLES **/
+#content-wrapper {
+  width: 100%;
+  background: #eeeeee url("/images/content_bg.png");
+}
+
+#content {
+  width: 988px;
+  margin: 0 auto;
+}
 
 /** FOOTER STYLES **/
 #footer-wrapper {
