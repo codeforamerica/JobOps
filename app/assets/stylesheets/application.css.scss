@@ -7,16 +7,14 @@
 	padding:0;
 	margin:0;
 	}
-#header {
+#header-wrapper {
 	background: image-url("/images/header_bg.png") repeat-x;
 	height:82px;
+	width: 100%;
 	}
-#wrapper {
+#header {
 	width:980px;
-	position:absolute;
-	top:0;
-	left:50%;
-	margin-left:-490px;
+	margin: 0 auto;
 	}
 #logo {
 	background: image-url("/images/header-logo.png") no-repeat;
