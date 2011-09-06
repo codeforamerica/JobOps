@@ -57,20 +57,30 @@
 .right { float: right; }
 br.clearit { clear: both; }
 
+/** FOOTER STYLES **/
 #footer {
   width: 100%;
   background-color: #333333;
   padding-top: 22px;
   color: #eeeeee;
   font-size: 0.8em;
-}
-
-#footer .right {
-  width: 220px;
+  padding-bottom: 55px;
 }
 
 #footer ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0px;
 }
 
-#footer li { float: left; width: 60px; padding-right: 10px; }
+#footer li { 
+  display: inline;
+  padding-right: 5px;  
+}
+
+#footer a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#footer p { margin-bottom: 1.2em; }
