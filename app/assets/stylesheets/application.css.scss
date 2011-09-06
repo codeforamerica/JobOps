@@ -1,3 +1,8 @@
+/*
+ * = require_self
+ * = require_tree .
+*/
+
 * {
 	padding:0;
 	margin:0;
@@ -47,3 +52,25 @@
 	}
 #nav {
 	}
+
+.left { float: left; }
+.right { float: right; }
+br.clearit { clear: both; }
+
+#footer {
+  width: 100%;
+  background-color: #333333;
+  padding-top: 22px;
+  color: #eeeeee;
+  font-size: 0.8em;
+}
+
+#footer .right {
+  width: 220px;
+}
+
+#footer ul {
+  list-style-type: none;
+}
+
+#footer li { float: left; width: 60px; padding-right: 10px; }
