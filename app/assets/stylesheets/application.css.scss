@@ -1,20 +1,17 @@
-h1.logo{
-  float: left;
-}
+h1.logo {
+  float: left; }
 
-ul.user{
+ul.user {
   float: right;
   list-style: none;
   margin: 0 0 2em;
   padding: 1.5em;
-  font-size: .75em;
-//  display: block;
-//  overflow: hidden;
-}
-ul.user li{
+  font-size: .75em; }
+
+ul.user li {
   display: inline;
-  padding: 0 1em;
-}
+  padding: 0 1em; }
+
 ul.nav {
   list-style: none;
   margin: 0 0 2em;
@@ -22,72 +19,157 @@ ul.nav {
   padding: 0;
   clear: both;
   float: right;
-  display: block;
-}
+  display: block; }
+
 ul.nav li {
   display: inline;
-  padding: 0 1em;
+  padding: 0 1em; }
+
+.authentications {
+  margin-bottom: 30px;
 }
-#home{
-  clear:both;
-  margin: 0 auto;
+
+.authentication {
+  width: 130px;
+  float: left;
+  background-color: #EEE;
+  border: solid 1px #999;
+  padding: 5px 10px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  position: relative;
+  margin-right: 10px;
 }
-#sign_up{
-  clear:both;
-  margin: 0 auto;
+
+.authentication .remove {
+  text-decoration: none;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: #333;
+  padding: 2px 4px;
+  font-size: 10px;
 }
-#sign_in{
-  clear:both;
-  margin: 0 auto;
+
+.authentication .remove:hover {
+  color: #CCC;
+  background-color: #777;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
-.profile_nav{
-  float:right;
-  font-size: 1.5em;
-  ul{
-    list-style: none;
-  }
-  li{
-    display: inline;
-    padding: 0 1em;
-  }
+
+.authentication img {
+  float: left;
+  margin-right: 10px;
 }
-#profile{
+
+.authentication .provider {
+  font-weight: bold;
+}
+
+.authentication .uid {
+  color: #666;
+  font-size: 11px;
+}
+
+.auth_provider img {
+  display: block;
+}
+
+.auth_provider {
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#home {
   clear: both;
-  margin: 0 auto;
-  #name{
-    float: left;
-  }
-  .tabs{
+  margin: 0 auto; }
+
+#sign_up {
+  clear: both;
+  margin: 0 auto; }
+
+#sign_in {
+  clear: both;
+  margin: 0 auto; }
+
+.profile_nav {
+  float: right;
+  font-size: 1.5em; }
+  .profile_nav ul {
+    list-style: none; }
+  .profile_nav li {
+    display: inline;
+    padding: 0 1em; }
+
+#profile {
+  clear: both;
+  margin: 0 auto; }
+  #profile #name {
+    float: left; }
+  #profile .tabs {
     clear: both;
     float: left;
     width: 20%;
-    list-style: none;
-    li{
+    list-style: none; }
+    #profile .tabs li {
       padding: .5em;
       font-weight: bold;
-      background-color: gray;
-    }
-    .active{
+      background-color: gray; }
+    #profile .tabs .active {
       background-color: black;
-      color: white;
-      a{
-        color: white;
-      }
-    }
-    a{
-      color: black;
-    }
-  }
-  .tab_container{
+      color: white; }
+      #profile .tabs .active a {
+        color: white; }
+    #profile .tabs a {
+      color: black; }
+  #profile .tab_container {
     float: right;
-    width: 75%;
-  }
-}
-#account{
-  clear:both;
-  margin: 0 auto;
-}
-#edit_profile{
+    width: 75%; }
+
+#account {
   clear: both;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
+  #account #name {
+    float: left; }
+  #account .tabs {
+    clear: both;
+    float: left;
+    width: 20%;
+    list-style: none; }
+    #account .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #account .tabs a {
+      color: black; }
+  #account .tab_container {
+    float: right;
+    width: 75%; }
+
+#edit_profile {
+  clear: both;
+  margin: 0 auto; }
+
+
+#resume {
+  clear: both;
+  margin: 0 auto; }
+  #resume .tabs {
+    clear: both;
+    float: right;
+    width: 20%;
+    list-style: none; }
+    #resume .tabs li {
+      padding: .5em;
+      font-weight: bold;
+      background-color: gray; }
+    #resume .tabs a {
+      color: black; }
+  #resume .tab_container {
+    float: left;
+    width: 75%; }
+
