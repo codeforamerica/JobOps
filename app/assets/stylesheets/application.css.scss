@@ -35,7 +35,7 @@ br.clearit { clear: both; }
 #user {
 	float:right;
 	color:#FFF;
-	font-size:12px;
+	font-size:0.75em;
 	}
 #user ul {
 	list-style:none;
@@ -47,7 +47,7 @@ br.clearit { clear: both; }
 	}
 #user a {
 	color:#FFF;
-	font-size:12px;
+	font-size:0.75em;
 	}	
 #user a:link, #user a:visited {
 	text-decoration:none;
@@ -59,6 +59,7 @@ br.clearit { clear: both; }
 	float:right;
 	color:#FFF;
 	margin-top:10px;
+	font-size:1.0em;
 	}
 #nav ul {
 	list-style:none;
@@ -84,7 +85,10 @@ br.clearit { clear: both; }
 	border-top-left-radius: 2px;
 	background: #EEE url("/images/content_bg.png");
 	border:2px solid #e3e3e3;
-	border-bottom:0;	
+	border-bottom:0;
+	-moz-border-image:none;
+	-webkit-border-image:none;
+	border-image:none;	
 }
 #nav a:hover, #nav a:active {
 	padding:10px 20px 15px 20px;
@@ -94,7 +98,10 @@ br.clearit { clear: both; }
 	border-top-left-radius: 2px;
 	background: #EEE url("/images/content_bg.png");
 	border:2px solid #e3e3e3;
-	border-bottom:0;	
+	border-bottom:0;
+	-moz-border-image:none;
+	-webkit-border-image:none;	
+	border-image:none;
 }
 
 /** CONTENT STYLES **/
@@ -140,3 +147,9 @@ br.clearit { clear: both; }
 }
 
 #footer p { margin-bottom: 1.2em; }
+
+/* Webkit Hacks  */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #nav {margin-top:7px;}
+}
