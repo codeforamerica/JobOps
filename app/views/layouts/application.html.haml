@@ -8,6 +8,20 @@
   = csrf_meta_tags
 
   %body.home
+    #header
+      #wrapper
+        #logo
+        #user
+          %ul
+            %li
+              %a.username{:href =>'#'}Username
+            %li
+              %a.help{:href =>'#'}Help
+            %li
+              %a.signinout{:href =>'#'}Sign Out
+        #nav
+
+
     %h1.logo
       JobOps
     %p.notice= notice

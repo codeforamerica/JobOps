@@ -27,3 +27,4 @@ test/version_tmp
 tmp/
 public/system/avatars
 heroku_env.rb
+app/views/layouts/header.html

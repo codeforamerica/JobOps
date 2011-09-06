@@ -1,93 +1,49 @@
-h1.logo{
-  float: left;
-}
-
-ul.user{
-  float: right;
-  list-style: none;
-  margin: 0 0 2em;
-  padding: 1.5em;
-  font-size: .75em;
-//  display: block;
-//  overflow: hidden;
-}
-ul.user li{
-  display: inline;
-  padding: 0 1em;
-}
-ul.nav {
-  list-style: none;
-  margin: 0 0 2em;
-  font-size: 1em;
-  padding: 0;
-  clear: both;
-  float: right;
-  display: block;
-}
-ul.nav li {
-  display: inline;
-  padding: 0 1em;
-}
-#home{
-  clear:both;
-  margin: 0 auto;
-}
-#sign_up{
-  clear:both;
-  margin: 0 auto;
-}
-#sign_in{
-  clear:both;
-  margin: 0 auto;
-}
-.profile_nav{
-  float:right;
-  font-size: 1.5em;
-  ul{
-    list-style: none;
-  }
-  li{
-    display: inline;
-    padding: 0 1em;
-  }
-}
-#profile{
-  clear: both;
-  margin: 0 auto;
-  #name{
-    float: left;
-  }
-  .tabs{
-    clear: both;
-    float: left;
-    width: 20%;
-    list-style: none;
-    li{
-      padding: .5em;
-      font-weight: bold;
-      background-color: gray;
-    }
-    .active{
-      background-color: black;
-      color: white;
-      a{
-        color: white;
-      }
-    }
-    a{
-      color: black;
-    }
-  }
-  .tab_container{
-    float: right;
-    width: 75%;
-  }
-}
-#account{
-  clear:both;
-  margin: 0 auto;
-}
-#edit_profile{
-  clear: both;
-  margin: 0 auto;
-}
+* {
+	padding:0;
+	margin:0;
+	}
+#header {
+	background:url(../../assets/images/header_bg.png) repeat-x;
+	height:82px;
+	}
+#wrapper {
+	width:960px;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-480px;
+	}
+#logo {
+	background:url(../../assets/images/header-logo.png) no-repeat;
+	height:82px;
+	width:186px;
+	border:0;
+	cursor:pointer;
+	float:left;
+	}
+#user {
+	float:right;
+	color:#FFF;
+	font-size:12px;
+	padding-top:10px;
+	}
+#user ul {
+	list-style:none;
+	display:block;
+	}
+#user li {
+	float:left;
+	margin-left:20px;
+	}
+#user a {
+	color:#FFF;
+	font-size:12px;
+	}	
+#user a:link, #user a:visited {
+	text-decoration:none;
+	}
+#user a:hover, #user a:active {
+	text-decoration:underline;
+	}
+#nav {
+	}
