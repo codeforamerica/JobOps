@@ -14,20 +14,21 @@
         = render 'layouts/user'
         = render 'layouts/nav'
     = yield
-    #footer
-      .left
-        %p
-          Code for America Labs, Inc. is a non-partisan, non-political 501(c)(3) organization
-        %p
-          Content is licensed through 
-          %a{:href => '#'}Creative Commons.
-      .right
-        %ul#footer-links
-          %li
-            %a{ :href => '#'}Privacy Policy
-          %li
-            %a{ :href => '#'}Terms of use
-          %li
-            %a{ :href => '#'}Help
-      %br.clearit
+    #footer-wrapper
+      #footer
+        .left
+          %p
+            Code for America Labs, Inc. is a non-partisan, non-political 501(c)(3) organization
+          %p
+            Content is licensed through 
+            %a{:href => '#'}Creative Commons.
+        .right
+          %ul#footer-links
+            %li
+              %a{ :href => '#'}Privacy Policy
+            %li
+              %a{ :href => '#'}Terms of use
+            %li
+              %a{ :href => '#'}Help
+        %br.clearit
 
