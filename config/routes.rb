@@ -1,5 +1,7 @@
 JobOps::Application.routes.draw do
 
+  resources :jobs, :only => [:index, :show]
+
   resources :careers, :only => [:index, :show]
 
   resources :authentications

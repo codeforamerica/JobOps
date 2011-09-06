@@ -1,0 +1,22 @@
+%h1 Listing jobs
+
+%table
+  %tr
+    %th Company
+    %th Date acquired
+    %th Location
+    %th Title
+    %th Url
+    %th
+
+
+  - @jobs.each do |job|
+    %tr
+      %td= job.company
+      %td= job.date_acquired
+      %td= job.location
+      %td= job.title
+      %td= job.url
+      %td= link_to 'Show', job
+
+%br
