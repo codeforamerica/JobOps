@@ -11,22 +11,8 @@
     #header
       #wrapper
         #logo
-        #user
-          %ul
-            %li
-              %a.username{:href =>'#'}Username
-            %li
-              %a.help{:href =>'#'}Help
-            %li
-              %a.signinout{:href =>'#'}Sign Out
-        #nav
-
-    %p.notice= notice
-    %p.alert= alert
-    %ul.user
-      = render 'devise/menu/registration_items'
-      = render 'devise/menu/login_items'
-    = render 'layouts/nav'
+        = render 'layouts/user'
+        = render 'layouts/nav'
     = yield
     #footer
       .left
