@@ -3,6 +3,56 @@
  * = require_tree .
 */
 
+* {
+	padding:0;
+	margin:0;
+	}
+#header {
+	background: image-url("/images/header_bg.png") repeat-x;
+	height:82px;
+	}
+#wrapper {
+	width:960px;
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-480px;
+	}
+#logo {
+	background: image-url("/images/header-logo.png") no-repeat;
+	height:82px;
+	width:186px;
+	border:0;
+	cursor:pointer;
+	float:left;
+	}
+#user {
+	float:right;
+	color:#FFF;
+	font-size:12px;
+	padding-top:10px;
+	}
+#user ul {
+	list-style:none;
+	display:block;
+	}
+#user li {
+	float:left;
+	margin-left:20px;
+	}
+#user a {
+	color:#FFF;
+	font-size:12px;
+	}	
+#user a:link, #user a:visited {
+	text-decoration:none;
+	}
+#user a:hover, #user a:active {
+	text-decoration:underline;
+	}
+#nav {
+	}
+
 .left { float: left; }
 .right { float: right; }
 br.clearit { clear: both; }
