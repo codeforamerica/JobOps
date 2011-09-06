@@ -33,12 +33,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'sqlite3'
+  gem 'faker'  
+  gem 'spork', '0.9.0.rc9' 
 end
 
 group :test do
   gem 'factory_girl_rails'
   gem 'mocha'
   gem 'webmock'
+  gem 'ZenTest'  
   gem 'webrat'
 end
 
