@@ -27,6 +27,7 @@ br.clearit { clear: both; }
 	background: image-url("/images/header-logo.png") no-repeat;
 	height:82px;
 	width:186px;
+	margin-left:-35px;
 	border:0;
 	cursor:pointer;
 	float:left;
@@ -57,7 +58,7 @@ br.clearit { clear: both; }
 #nav {
 	float:right;
 	color:#FFF;
-	margin-top:6px;
+	margin-top:10px;
 	}
 #nav ul {
 	list-style:none;
