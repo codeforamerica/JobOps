@@ -58,13 +58,18 @@
 br.clearit { clear: both; }
 
 /** FOOTER STYLES **/
-#footer {
+#footer-wrapper {
   width: 100%;
-  background-color: #333333;
+  background: url("/images/footer_bg.png") repeat-x;
   padding-top: 22px;
-  color: #eeeeee;
-  font-size: 0.8em;
   padding-bottom: 55px;
+}
+#footer {
+  width: 988px;
+  margin: 0 auto;
+  color: #999999;
+  font-size: 0.8em;
+
 }
 
 #footer ul {
