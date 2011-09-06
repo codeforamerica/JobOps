@@ -28,6 +28,7 @@ platforms :jruby do
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'
