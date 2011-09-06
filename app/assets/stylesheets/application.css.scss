@@ -148,8 +148,8 @@ br.clearit { clear: both; }
 
 #footer p { margin-bottom: 1.2em; }
 
-/* Webkit Hacks  */
-
+/** WEBKIT HACKS  **/
+/** http://www.evotech.net/blog/2010/04/hack-for-webkit-filter-for-chrome-and-safari/ **/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     #nav {margin-top:7px;}
 }
