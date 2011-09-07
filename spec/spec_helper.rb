@@ -14,6 +14,7 @@ Spork.prefork do
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
   RSpec.configure do |config|
     # == Mock Framework
     #
@@ -59,11 +60,11 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+  
   require 'factory_girl_rails'
   require 'simplecov'
-  SimpleCov.start do
-    add_group "Models", "app/models"
-    add_group "Controllers", "app/controllers"
+  Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
+    load model
   end
 
 end
