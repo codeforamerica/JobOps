@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :awards
   has_many :authentications
   has_many :certifications
+  has_many :job_searches
   has_many :job_histories
   has_many :educations
   has_many :languages
@@ -34,6 +35,15 @@ class User < ActiveRecord::Base
   has_many :wars
 
   validates_presence_of :name
+
+  after_save :add_saved_search
+
+  def add_saved_search
+    unless self.moc.nil?
+      job_searches.find_or_create_by_keyword(self.moc)
+      # TODO: search futures_inc careers and add
+    end
+  end
 
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
@@ -190,8 +200,8 @@ class User < ActiveRecord::Base
       user_skill.skill = linked_in_skill.name
       user_skill.save
     end
-
   end
+
 
   def twitter_user
     if not authentications.where(:provider => "twitter").first.nil?
