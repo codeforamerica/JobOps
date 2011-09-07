@@ -48,11 +48,6 @@ describe Job do
   end
   
   context "job specific checks" do
-    it "look ups or creates a company" do
-
-    end
-    pending "it should look up/create location"
     pending "it should grab the url if its a redirect"
-    pending "it should "
   end
 end
