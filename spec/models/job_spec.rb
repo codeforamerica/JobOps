@@ -2,20 +2,35 @@ require 'spec_helper'
 
 describe Job do
   before do
-    @job =Factory(:job)
+    stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
+     with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+     to_return(:status => 200, :body => fixture("google_map_location_sfca.json"), :headers => {})
+    @company = Factory(:company)
+    @location = Factory(:location, :location => "San Francisco, CA")
+    @job=Factory(:job, :location => @location)
   end
   
   context "validations" do
     it 'presence of title' do
+      @job.title = nil
+      @job.should have(1).error_on(:title)      
     end
 
     it 'presence of location' do
+      @job.location = nil
+      @job.should have(1).error_on(:location)      
+      
     end
 
     it 'presence of company' do
+      @job.company = nil
+      @job.should have(1).error_on(:company)      
+      
     end
     
-    it 'presence of company' do
+    it 'presence of url' do
+      @job.url = nil
+      @job.should have(1).error_on(:url)      
     end
     
   end
