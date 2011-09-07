@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
        careers = Career.new.futures_pipeline
        career_by_moc = careers.search(self.moc)
 
-       unless career_by_moc.empty?
+       unless career_by_moc.nil?
         career_by_moc.each do |career|
           search = JobSearch.find_or_create_by_keyword(career.title)
           job_searches_user.find_or_create_by_job_search_id(search.id)
