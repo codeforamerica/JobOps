@@ -11,6 +11,7 @@ end
 
 gem 'aws-s3'
 gem 'devise'
+gem 'direct_employers'
 gem 'futures_pipeline'
 gem 'gravatar_image_tag'
 gem 'haml'
@@ -34,7 +35,7 @@ end
 
 group :development, :test do
   gem 'faker'
-  gem 'activerecord-spatialite-adapter'  
+  gem 'activerecord-spatialite-adapter'
   gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'
