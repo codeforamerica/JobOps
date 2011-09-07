@@ -11,8 +11,21 @@ br.clearit { clear: both; }
 * {
 	padding:0;
 	margin:0;
+	line-height: 150%;
 	}
-	
+a {
+  text-decoration:none;
+  color: #06C;
+}
+a:hover {
+  text-decoration:underline;
+  color: #0054a7;
+}
+.clear {
+  clear: both;
+}	
+
+
 /** HEADER STYLES **/
 #header-wrapper {
 	background: image-url("/images/header_bg.png") repeat-x;

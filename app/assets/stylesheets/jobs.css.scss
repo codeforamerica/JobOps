@@ -36,3 +36,52 @@
   color: #333;
   margin-bottom: 20px;
 }
+.notification {
+  border-radius: 5px;
+  border: 2px solid #e6d68a;
+  background: #ffffe5;
+  padding: 15px;
+  font-size:0.75em;
+}
+ol.job-listings {
+  margin-left: -15px;
+}
+ol.job-listings li {
+  border-top: 1px dashed #CCC;
+  padding:15px 0;
+  clear: both;
+}
+.job-title {
+  font-size:1.25em;
+  font-weight: bold;
+  float: left;
+}
+.job-meta {
+  font-size:0.75em;
+  color: #4f8c23;
+  float: left;
+}
+.job-excerpt {
+  float: left;
+}
+.pagination {
+  clear: both;
+}
+
+ul.page-number {
+  list-style: none;
+  display: block;
+}
+ul.page-number li {
+  float: left;
+  margin-right:5px;
+}
+ul.page-number li a {
+  padding: 5px;
+  color: #0073e6
+}
+ul.page-number li a:hover {
+  padding: 5px;
+  background: #0073e6;
+  color: #FFF;
+}
