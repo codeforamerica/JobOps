@@ -12,6 +12,13 @@ describe JobSearch do
     it 'has many job searches user' do
       @job_search.respond_to?(:job_searches_users).should be_true
     end
+    it 'has many job searches jobs' do
+      @job_search.respond_to?(:job_searches_jobs).should be_true
+    end
+    it 'has many jobs' do
+      @job_search.respond_to?(:jobs).should be_true
+    end
+    
   end
   
   context "search direct employers" do

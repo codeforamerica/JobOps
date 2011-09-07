@@ -45,6 +45,12 @@ describe Job do
     it 'belongs to company' do
       @job.respond_to?(:company).should be_true      
     end
+    it 'has many job searches jobs' do
+      @job.respond_to?(:job_searches_jobs).should be_true
+    end
+    it 'has many jobs' do
+      @job.respond_to?(:job_searches).should be_true
+    end    
   end
   
   context "job specific checks" do
