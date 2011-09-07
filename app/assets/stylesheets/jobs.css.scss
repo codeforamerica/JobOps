@@ -1,3 +1,38 @@
 // Place all the styles related to the Jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.job-search-box {
+  font-size: 0.75em;
+}
+.job-search-box form {
+  background:url(/images/box.png) repeat;
+  border: 1px solid #CCC;
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+.job-search-box label {
+  float: left;
+  margin-right: 20px;
+}
+.saved-searches {
+  float: left;
+  width: 280px;
+  min-height: 300px;
+  margin-right: 20px;
+}
+.flagged-jobs {
+  float: left;
+  width: 280px;
+  min-height: 300px;
+}
+.reccommended-jobs {
+
+}
+.recommended-jobs-title {
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}

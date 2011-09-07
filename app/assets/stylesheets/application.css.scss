@@ -125,43 +125,25 @@ br.clearit { clear: both; }
   float: left;
   margin-right: 40px;
 }
-.job-search-box {
-  font-size: 0.75em;
-}
-.job-search-box form {
-  background:url(/images/box.png) repeat;
-  border: 1px solid #CCC;
-  padding: 15px;
-  margin-bottom: 20px;
-  height: 40px;
-}
-.job-search-box label {
-  float: left;
-  margin-right: 20px;
-}
-.saved-searches {
-  float: left;
-  width: 280px;
-  margin-right: 20px;
-}
-.flagged-jobs {
-  float: left;
-  width: 280px;
-}
 .white-box {
   padding:20px;
   background: #FFF;
   border: 1px solid #CCC;
   clear: both;
-}
-.reccommended-jobs {
-
+  margin-top:20px;
 }
 
+
+
+
+/** SIDEBAR **/
 #sidebar {
   float: left;
   width: 300px;
 }
+
+
+
 
 /** CALL TO ACTION BOXES **/
 .cta-box {
