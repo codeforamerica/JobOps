@@ -70,6 +70,49 @@
       %a{ :href => '#'}
         Compare flagged jobs
         
+  .white-box.recommended-jobs
+    .recommended-jobs-title
+      Recommended Jobs
+    .notification
+      The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to 
+      %a{:href=>'#'}My Profile 
+      to complete your profile.
+    %ul.job-listings
+    - @jobs.each do |job|
+      %li.job-listing
+        %a.job-title{ :href => "{job.url}" }=job.title
+        %span.job-meta
+          =job.company 
+          =job.location 
+          Acquired on 
+          =job.date_acquired
+    
+    .pagination
+      %span.previous
+        Previous
+      %ul.page-number
+        %li.active
+          1
+        %li
+          2
+        %li
+          3
+        %li
+          4
+        %li
+          5
+        %li
+          6
+        %li
+          7
+        %li
+          8
+        %li
+          9
+        %li
+          10
+      %span.next
+        Next
 
 #sidebar
   .cta-box.special-cta
