@@ -104,22 +104,73 @@ br.clearit { clear: both; }
 	border-image:none;
 }
 
+
+
+
 /** CONTENT STYLES **/
 #content-wrapper {
   width: 100%;
   background: #eeeeee url("/images/content_bg.png");
+  padding: 20px 0;
 }
 
 #content {
-  width: 988px;
+  width: 980px;
   margin: 0 auto;
+  background: transparent;
+}
+
+.wide-column {
+  width: 620px;
+  float: left;
+  margin-right: 40px;
+}
+.job-search-box {
+  font-size: 0.75em;
+}
+.job-search-box form {
+  background:url(/images/box.png) repeat;
+  border: 1px solid #CCC;
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+.job-search-box label {
+  float: left;
+  margin-right: 20px;
+}
+.saved-searches {
+  float: left;
+  width: 280px;
+  margin-right: 20px;
+}
+.flagged-jobs {
+  float: left;
+  width: 280px;
+}
+.white-box {
+  padding:20px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  clear: both;
+}
+.reccommended-jobs {
+
+}
+
+#sidebar {
+  float: left;
+  width: 300px;
 }
 
 /** CALL TO ACTION BOXES **/
 .cta-box {
    background:url(/images/box.png) repeat;
-   padding:10px;
+   padding: 10px;
 }
+
+
+
 
 /** FOOTER STYLES **/
 #footer-wrapper {
@@ -129,7 +180,7 @@ br.clearit { clear: both; }
   padding-bottom: 55px;
 }
 #footer {
-  width: 988px;
+  width: 980px;
   margin: 0 auto;
   color: #999999;
   font-size: 0.75em;
