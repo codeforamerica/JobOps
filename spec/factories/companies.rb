@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :company do
-    name "Code for America"
-    location "San Francisco, CA"
+    name {Faker::Company.name}
+    location {Factory(:location)}
     linked_in 660862
   end
 end

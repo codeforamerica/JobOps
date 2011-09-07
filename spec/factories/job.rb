@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :job do
-    company "Code for America"
+    company {Factory(:company)}
     date_acquired Date.new(2011,1,1)
-    location "San Francisco, CA"
-    title "Fellow"
-    url "http://www.codeforamerica.org"
+    location {Faker::Address.city}
+    title {Faker::Lorem.sentence}
+    url {"http://" + Faker::Internet.domain_suffix}
   end
 end
