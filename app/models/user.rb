@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   has_many :awards
   has_many :authentications
   has_many :certifications
-  has_many :job_searches
   has_many :job_histories
   has_many :educations
   has_many :languages
@@ -41,7 +40,8 @@ class User < ActiveRecord::Base
 
   def add_saved_search
     unless self.moc.nil?
-      # job_searches.find_or_create_by_keyword(self.moc)
+       search = JobSearch.find_or_create_by_keyword(self.moc)
+       job_searches_user.find_or_create_by_job_search_id(search.id)
       # TODO: search futures_inc careers and add
     end
   end
