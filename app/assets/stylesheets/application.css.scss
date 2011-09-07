@@ -6,7 +6,7 @@
 /** GLOBAL STYLES **/
 .left { float: left; }
 .right { float: right; }
-br.clearit { clear: both; }
+br.clearit { clear: both; height: 0px; }
 
 * {
 	padding:0;
@@ -129,7 +129,7 @@ br.clearit { clear: both; }
   padding:20px;
   background: #FFF;
   border: 1px solid #CCC;
-  clear: both;
+
   margin-top:20px;
 }
 
@@ -138,7 +138,7 @@ br.clearit { clear: both; }
 
 /** SIDEBAR **/
 #sidebar {
-  float: left;
+  float: right;
   width: 300px;
 }
 
@@ -161,12 +161,12 @@ br.clearit { clear: both; }
   padding-top: 22px;
   padding-bottom: 55px;
 }
+
 #footer {
   width: 980px;
   margin: 0 auto;
   color: #999999;
   font-size: 0.75em;
-
 }
 
 #footer ul {
