@@ -6,7 +6,7 @@
 /** GLOBAL STYLES **/
 .left { float: left; }
 .right { float: right; }
-br.clearit { clear: both; }
+br.clearit { clear: both; height: 0px; }
 
 * {
 	padding:0;
@@ -146,26 +146,17 @@ a:hover {
   margin-top:20px;
 }
 
-
-
-
 /** SIDEBAR **/
 #sidebar {
-  float: left;
+  float: right;
   width: 300px;
 }
-
-
-
 
 /** CALL TO ACTION BOXES **/
 .cta-box {
    background:url(/images/box.png) repeat;
    padding: 10px;
 }
-
-
-
 
 /** FOOTER STYLES **/
 #footer-wrapper {
@@ -174,12 +165,12 @@ a:hover {
   padding-top: 22px;
   padding-bottom: 55px;
 }
+
 #footer {
   width: 980px;
   margin: 0 auto;
   color: #999999;
   font-size: 0.75em;
-
 }
 
 #footer ul {

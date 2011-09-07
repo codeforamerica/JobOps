@@ -1,19 +1,20 @@
 .wide-column
   .job-search-box
     %form
-      %label{ :for =>'q' }
-        Search for 
-        %span
-          (job title, skills, keywords)
-        %br
+      .search-block
+        %label{ :for =>'q' }
+          Search for 
+          %span
+            (job title, skills, keywords)
         %input{ :value => '', :name => 'q', :type => 'text' }
-      %label{ :for => 'near' }
-        Near 
-        %span
-          (job title, skills, keywords)
-        %br
+      .search-block
+        %label{ :for => 'near' }
+          Near 
+          %span
+            (address, city, state, or zip code)
         %input{ :value => '', :name => 'near', :type => 'text' }
-      %input{ :type => 'submit', :value => 'Search' }
+      .search-btn-block
+        %input.green-btn{ :type => 'submit', :value => 'Search' }
       
   .cta-box.saved-searches
     .cta-title

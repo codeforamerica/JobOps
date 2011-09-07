@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.job-search-box {
-  font-size: 0.75em;
-}
 .job-search-box form {
   background:url(/images/box.png) repeat;
   border: 1px solid #CCC;
@@ -15,6 +12,29 @@
 .job-search-box label {
   float: left;
   margin-right: 20px;
+  padding-bottom: 5px;
+  color: #666666;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.job-search-box label span {
+  color: #999999;
+}
+
+.job-search-box input {
+  font-size: 1.10em;
+  padding: 2px;
+}
+
+.search-block, .search-btn-block {
+  float: left;
+  width: 250px;
+}
+
+.search-btn-block {
+  width: 80px;
+  margin-top: 19px;
 }
 .saved-searches {
   float: left;
