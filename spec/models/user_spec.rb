@@ -12,7 +12,7 @@ describe User do
   describe "age" do
     it "should return the users age" do
       @age = User.new
-      user_age = @age.age(Date.parse("1986-09-07"))
+      user_age = @age.age(Date.new(1986,9,7), Date.new(2011,1,1))
       user_age.should == 24
     end
   end
