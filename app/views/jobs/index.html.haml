@@ -82,7 +82,7 @@
     %ul.job-listings
     - @jobs.each do |job|
       %li.job-listing
-        %a.job-title{ :href => "{job.url}" }=job.title
+        =link_to job.title, job, { :class => 'job-title' }
         %span.job-meta
           =job.company 
           =job.location 

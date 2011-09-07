@@ -1,22 +1,110 @@
 %p#notice= notice
 
-%p
-  %strong Company:
-  = @job.company
+.breadcrumbs 
+  %a{ :href => '#' } Find Jobs
+  \/
+  %a{ :href => '#' } Search Results
+  \/
+  
+.wide-column
+  .white-box.job-details
+    .job-details-header
+      %span.job-title 
+        =@job.title
+      at
+      %span.job-company 
+        =@job.company
+      %span.favorite-button
+    .inner-sidebar
+      %img{ :src => '/images/mockup-map2.png' }
+      %dl.job-specifics
+        %dt
+          Location
+        %dd
+          =@job.location
+        %dt
+          Company
+        %dd
+          %a{ :href => '#'}
+            =@job.company
+        %dt
+          Job Type
+        %dd
+          Full time
+        %dt
+          Salary
+        %dd
+          Unknown
+        %dt
+          Requirements
+        %dd
+          College degree
+          %br
+          5 years experience
+        %dt
+          Industry
+        %dd
+          %a{ :href => '#'}Healthcare
+        %dt
+          Career
+        %dd
+          %a{ :href => '#'}Registered Nurse
+  .inner-main
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi. Praesent aliquam, leo a interdum placerat, elit turpis tristique nulla, et suscipit ligula nunc id dui. Nullam ipsum lacus, placerat sed dictum non, iaculis id sapien. Cras a turpis ac augue volutpat euismod eget eget risus. Nunc id odio dolor. Proin eu fermentum neque. Aenean cursus ullamcorper interdum. Quisque vestibulum mattis convallis. Morbi lectus neque, tincidunt ac elementum sit amet, mattis et magna. Aliquam sit amet massa diam. Nulla facilisi. Integer aliquam sollicitudin tempus. Donec porta adipiscing viverra. Aliquam egestas massa accumsan nunc pulvinar dictum. Morbi sollicitudin risus fermentum neque pharetra vestibulum.
+    %p
+      Praesent laoreet tincidunt ante vitae tincidunt. Nullam sit amet dolor dolor. Integer sapien diam, aliquet vel vestibulum non, mattis eu elit. Quisque nec turpis sit amet nisl tincidunt bibendum. Suspendisse ac purus vel ante dapibus porttitor. Etiam non magna nulla. Donec suscipit nisl ut orci rhoncus ut interdum orci laoreet. Nulla blandit nulla nec risus condimentum a interdum sem suscipit. In hac habitasse platea dictumst. Duis et eros nec libero ullamcorper egestas vel non nisi. Phasellus hendrerit nibh sit amet libero congue vehicula.
+    %strong
+      Qualifications
+    %ul
+      %li
+        Aenean feugiat ultricies augue ut euismod. 
+      %li
+        Nam vitae justo mauris. 
+      %li
+        Maecenas varius, purus in egestas auctor, nibh nulla volutpat quam, ac fermentum enim elit eget dui. 
+      %li
+        Aliquam erat volutpat. Suspendisse potenti. Phasellus leo sem, mollis id vestibulum sed, faucibus porttitor nibh. Donec at luctus dolor. Cras lacus purus, venenatis in rhoncus quis, fringilla quis nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel diam enim. Ut congue tincidunt suscipit. Sed consequat neque et nisi semper scelerisque.
+    %a.green-btn
+      Apply Now
 
-%p
-  %strong Date acquired:
-  = @job.date_acquired
-
-%p
-  %strong Location:
-  = @job.location
-
-%p
-  %strong Title:
-  = @job.title
-
-%p
-  %strong Url:
-  = @job.url
-
+#sidebar
+  %a.green-btn
+    Apply Now
+  
+  %ul.job-options
+    %li.flagit
+      Flag
+    %li.compareit
+      Compare
+    %li.shareit
+      Share
+  
+  .cta-box
+    .cta-title
+      Related Jobs
+    %ul
+      %li
+        %a{ :href => '#' }
+          Registered Nurse - RN/ Licensed
+        %span
+          Maxim healthcare services
+      %li
+        %a{ :href => '#' }
+          CT Rsch Nurse II
+        %span
+          Kaiser Permanente 
+      %li
+        %a{ :href => '#' }
+          Registered Nurse - Operating Room
+        %span
+          JT MedStaff
+          
+    .cta-box.featured-article
+      .cta-title
+        Featured Article
+        %a{ :href => '#' }
+          Health Care Employment for Military Veterans
+      Nam lacus ligula, scelerisque a interdum sit amet, adipiscing eget velit. Vestibulum ultrices sapien gravida nisl molestie at condimentum sem imperdiet. Duis gravida porta purus, ut porttitor orci sagittis et. Suspendisse varius ipsum dignissim neque faucibus feugiat. Aliquam accumsan orci ac lectus pretium vel aliquet turpis suscipit. Curabitur eu felis vestibulum est facilisis adipiscing id nec velit. 
+      .cta-footer
+        %a{ :href => '#'}More Advice
