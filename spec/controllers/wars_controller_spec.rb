@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe WarsController do
+
+  stub_user_moc_save
   login_user
 
   describe "#index" do

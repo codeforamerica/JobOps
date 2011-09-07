@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe EducationsController do
 
+  stub_user_moc_save
+
   login_user
+
 
   before do
     @user = Factory(:user)

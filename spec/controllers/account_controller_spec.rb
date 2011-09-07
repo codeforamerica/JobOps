@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe AccountController do
+  stub_user_moc_save
   login_user
 
   describe "#index" do

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ResumeController do
 
+  stub_user_moc_save
   login_user
 
   describe "GET 'index'" do
