@@ -1,22 +1,86 @@
-%h1 Listing jobs
+.wide-column
+  .job-search-box
+    %form
+      %label{ :for =>'q' }
+        Search for 
+        %span
+          (job title, skills, keywords)
+        %input{ :value => '', :name => 'q', :type => 'text' }
+      %label{ :for => 'near' }
+        Near 
+        %span
+          (job title, skills, keywords)
+        %input{ :value => '', :name => 'near', :type => 'text' }
+      %input{ :type => 'submit', :value => 'Search' }
+      
+  .cta-box.saved-searches
+    .cta-title
+      Saved Searches
+    %ul
+      %li
+        %a{ :href => '#' }
+          Physical Therapist near San Francisco
+        %span.result-count
+          826
+      %li
+        %a{ :href => '#' }
+          Occupational Therapist near San Francisco
+        %span.result-count
+          11
+      %li
+        %a{ :href => '#' }
+          RN near Oakland, CA
+        %span.result-count
+          2
+      %li
+        %a{ :href => '#' }
+          Nurse near 94501
+        %span.result-count
+          
+      %li
+        %a{ :href => '#' }
+          Nurse (anywhere)
+        %span.result-count
+          
+      %li
+        %a{ :href => '#' }
+          Nurse near Richmond, CA
+        %span.result-count
+    .cta-footer
+      %a{ :href => '#'}
+        Manage saved searches
+    
+  .cta-box.flagged-jobs
+    .cta-title
+      Flagged Jobs
+    %ul
+      %li
+        %a{ :href => '#' }
+          Certified Nurse Midwife
+        %span.delete-item
+      %li
+        %a{ :href => '#' }
+          Registered Nurse - Operating Room
+        %span.delete-item
+      %li
+        %a.filled{ :href => '#' }
+          CT Rsch Nurse II
+        %span.delete-item
+    .cta-footer
+      %a{ :href => '#'}
+        Compare flagged jobs
+        
 
-%table
-  %tr
-    %th Company
-    %th Date acquired
-    %th Location
-    %th Title
-    %th Url
-    %th
-
-
-  - @jobs.each do |job|
-    %tr
-      %td= job.company
-      %td= job.date_acquired
-      %td= job.location
-      %td= job.title
-      %td= job.url
-      %td= link_to 'Show', job
-
-%br
+#sidebar
+  .cta-box.special-cta
+    %span
+      Explore your career options
+    Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi. 
+  
+  .cta-box.jobs-applied-for
+    .cta-title
+      Jobs Applied For
+    You haven't applied for any jobs yet.
+  
+  .cta-box.map
+    %img{ :src => '/images/mockup-map.png' }
