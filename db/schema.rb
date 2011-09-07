@@ -105,6 +105,13 @@ ActiveRecord::Schema.define(:version => 20110907060021) do
     t.datetime "updated_at"
   end
 
+  create_table "job_searches_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "job_search_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", :force => true do |t|
     t.string   "company"
     t.date     "date_acquired"
@@ -141,13 +148,6 @@ ActiveRecord::Schema.define(:version => 20110907060021) do
     t.string   "training"
     t.date     "training_date"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_job_searches", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "job_searches_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -33,14 +33,15 @@ class User < ActiveRecord::Base
   has_many :skills
   has_many :trainings
   has_many :wars
-
+  has_many :job_searches_user
+  has_many :job_searches, :through => :job_searches_user
   validates_presence_of :name
 
   after_save :add_saved_search
 
   def add_saved_search
     unless self.moc.nil?
-      job_searches.find_or_create_by_keyword(self.moc)
+      # job_searches.find_or_create_by_keyword(self.moc)
       # TODO: search futures_inc careers and add
     end
   end

@@ -13,3 +13,4 @@ FactoryGirl.define do
     email_settings ["dinosaurs", "lasers"]
   end
 end
+
