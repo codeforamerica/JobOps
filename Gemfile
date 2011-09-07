@@ -17,6 +17,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip'
+gem "geocoder"
 
 gem 'fb_graph'
 gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"
@@ -33,6 +34,7 @@ end
 
 group :development, :test do
   gem 'faker'
+  gem 'activerecord-spatialite-adapter'  
   gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'

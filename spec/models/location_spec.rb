@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Location do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @location = Factory(:location)
+  end
+  context "relationships" do
+    it 'has many jobs' do
+      @location.respond_to?(:jobs).should be_true      
+    end
+  end
 end

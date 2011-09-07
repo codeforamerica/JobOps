@@ -35,6 +35,9 @@ GEM
       activesupport (= 3.1.0)
       arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
+    activerecord-spatialite-adapter (0.4.0)
+      rgeo-activerecord (~> 0.4.0)
+      sqlite3 (>= 1.3.3)
     activeresource (3.1.0)
       activemodel (= 3.1.0)
       activesupport (= 3.1.0)
@@ -90,6 +93,7 @@ GEM
       json (~> 1.5.1)
       multi_json (~> 1.0.2)
       rash (~> 0.3.0)
+    geocoder (1.0.2)
     gravatar_image_tag (1.0.0)
     haml (3.1.2)
     hashie (1.0.0)
@@ -172,6 +176,11 @@ GEM
     rash (0.3.0)
       hashie (~> 1.0.0)
     rdoc (3.9.4)
+    rgeo (0.3.2)
+    rgeo-activerecord (0.4.0)
+      activerecord (>= 3.0.3)
+      arel (>= 2.0.6)
+      rgeo (>= 0.3.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -238,6 +247,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  activerecord-spatialite-adapter
   aws-s3
   coffee-script
   devise
@@ -245,6 +255,7 @@ DEPENDENCIES
   faker
   fb_graph
   futures_pipeline
+  geocoder
   gravatar_image_tag
   haml
   jquery-rails
