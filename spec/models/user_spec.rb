@@ -92,6 +92,13 @@ describe User do
     end
   end
 
+  describe "#add_saved_search" do
+    it "should add a saved search based on MOC code" do
+      @user.add_saved_search
+      @user.job_searches.first.keyword.should == "10A"
+    end
+  end
+
 
 
 end
