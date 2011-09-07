@@ -5,7 +5,7 @@ FactoryGirl.define do
     password_confirmation "123456"
     name "GI Joe"
     service_branch "Coast Gaurd"
-    moc "10A"
+    moc "11B"
     rank "E220"
     disability "n/a"
     security_clearance "No Clerances"
