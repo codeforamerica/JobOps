@@ -6,12 +6,29 @@ describe Job do
   end
   
   context "validations" do
+    it 'presence of title' do
+    end
+
+    it 'presence of location' do
+    end
+
+    it 'presence of company' do
+    end
+    
+    it 'presence of company' do
+    end
     
   end
   
   context "relationships" do
-    it 'has many job searches' do
-      @job.respond_to?(:job_search).should be_true
+    pending 'has many job searches' do
+      @job.respond_to?(:job_searches).should be_true
+    end
+    it 'belongs to location' do
+      @job.respond_to?(:location).should be_true      
+    end
+    it 'belongs to company' do
+      @job.respond_to?(:company).should be_true      
     end
   end
   
