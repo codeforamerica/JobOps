@@ -42,7 +42,16 @@ class User < ActiveRecord::Base
     unless self.moc.nil?
        search = JobSearch.find_or_create_by_keyword(self.moc)
        job_searches_user.find_or_create_by_job_search_id(search.id)
-      # TODO: search futures_inc careers and add
+
+       careers = Career.new.futures_pipeline
+       career_by_moc = careers.search(self.moc)
+
+       unless career_by_moc.empty?
+        career_by_moc.each do |career|
+          search = JobSearch.find_or_create_by_keyword(career.title)
+          job_searches_user.find_or_create_by_job_search_id(search.id)
+        end
+       end
     end
   end
 
