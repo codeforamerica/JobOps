@@ -3,10 +3,12 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = Factory(:user)
     @omniauth = {"user_info" => {"name" => "Jim Joe", "location" => "San Francisco"},
         "provider"=>"twitter","uid"=>"12345",
         "credentials"=>{"token"=>"abc123","secret"=>"xyz456"}}
+    stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
+      to_return(:status => 200, :body => fixture("futures_11b.json"))
+    @user = Factory(:user)
   end
 
   describe "age" do
@@ -95,7 +97,8 @@ describe User do
   describe "#add_saved_search" do
     it "should add a saved search based on MOC code" do
       @user.add_saved_search
-      @user.reload.job_searches.first.keyword.should == "10A"
+      @user.reload.job_searches.first.keyword.should == "11B"
+      @user.reload.job_searches.last.keyword.should == "Security Guards"
     end
   end
 
