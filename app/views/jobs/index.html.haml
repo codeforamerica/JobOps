@@ -79,15 +79,17 @@
       The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to 
       %a{:href=>'#'}My Profile 
       to complete your profile.
-    %ul.job-listings
-    - @jobs.each do |job|
-      %li.job-listing
-        =link_to job.title, job, { :class => 'job-title' }
-        %span.job-meta
-          =job.company 
-          =job.location 
-          Acquired on 
-          =job.date_acquired
+    %ol.job-listings
+      - @jobs.each do |job|
+        %li.job-listing
+          =link_to job.title, job, { :class => 'job-title' }
+          %span.job-meta
+            =job.company 
+            =job.location 
+            Acquired on 
+            =job.date_acquired
+          .job-excerpt
+            Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
     
     .pagination
       %span.previous
