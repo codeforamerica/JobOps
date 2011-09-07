@@ -13,4 +13,13 @@ describe JobSearch do
       @job_search.respond_to?(:job_searches_users).should be_true
     end
   end
+  
+  context "search direct employers" do
+    
+    pending "it should start a direct employers call and save each job"
+    
+  end
+  
+  
+  
 end
