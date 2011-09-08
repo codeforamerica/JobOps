@@ -4,7 +4,6 @@ class SearchDirectEmployers
     direct_employers_client
   end
 
-
   protected
 
   def direct_employers_client
