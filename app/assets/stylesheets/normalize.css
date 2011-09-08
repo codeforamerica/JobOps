@@ -95,12 +95,9 @@ textarea {
    Links
    ========================================================================== */
 
-a {
-    color: #00e;
-}
-
-a:visited {
-    color: #551a8b;
+a:link, a:visited {
+  text-decoration:none;
+  color: #0073e5;
 }
 
 /*
@@ -116,9 +113,10 @@ a:focus {
  * people.opera.com/patrickl/experiments/keyboard/test
  */
 
-a:hover,
-a:active {
-    outline: 0;
+a:hover, a:active {
+  text-decoration:underline;
+  color: #0054a7;
+  outline: 0;
 }
 
 
