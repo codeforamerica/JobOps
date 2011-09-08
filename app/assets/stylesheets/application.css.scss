@@ -14,7 +14,7 @@ br.clearit { clear: both; height: 0px; }
 	}
 a {
   text-decoration:none;
-  color: #06C;
+  color: #0073e5;
 }
 a:hover {
   text-decoration:underline;
@@ -178,6 +178,28 @@ div.map {
   font-weight: bold;
 }
 
+/** BUTTON STYLE **/
+
+.green-btn {
+padding: 5px 10px;
+color: #FFF;
+font-size: 0.75em;
+text-shadow: 1px 1px 1px #333333;
+border: 1px solid #4e8c23;
+border-radius: 5px;
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(97,180,38)),
+    color-stop(1, rgb(127,194,78))
+);
+background-image: -moz-linear-gradient(
+    center bottom,
+    rgb(97,180,38) 0%,
+    rgb(127,194,78) 100%
+);
+}
 /** FOOTER STYLES **/
 #footer-wrapper {
   width: 100%;
