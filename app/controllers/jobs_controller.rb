@@ -12,7 +12,15 @@ class JobsController < ApplicationController
         @jobs = Job.includes(:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
       end
     else
-      @jobs = Job.order("date_acquired DESC").paginate(:page => params[:page], :per_page => 25)      
+      @flagged_jobs = []
+      @saved_searched = [];
+      
+      if current_user      
+        job_search_ids = current_user.job_searches.map(&:id)
+        @flagged_jobs = current_user.jobs
+        @saved_searches = current_user.job_searches
+      end
+      @jobs = Job.order("date_acquired DESC").paginate(:page => params[:page], :per_page => 25)
       render "jobs/results"
     end
 
