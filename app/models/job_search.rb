@@ -30,14 +30,14 @@ class JobSearch < ActiveRecord::Base
   def process_direct_employer_jobs(jobs)
     jobs.each do |job|
       new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["location"]), :url => job["url"])
-      self.jobs << new_job
+      self.jobs << new_job unless !new_job.errors.blank?
     end
   end
 
   def process_indeed_jobs(jobs)
     jobs.each do |job|
       new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["formattedLocation"]), :url => job["url"])
-      self.jobs << new_job
+      self.jobs << new_job unless !new_job.errors.blank?
     end
   end
 

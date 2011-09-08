@@ -18,7 +18,11 @@ class JobsController < ApplicationController
         job_search = JobSearch.create(:keyword => params[:q], :location => params[:near])
         job_search.search
       else
-        job_search.first.search
+        if job_search.first.updated_at < 1.hour.ago
+        else
+          job_search.first.touch
+          job_search.first.search
+        end
       end
 
       @jobs = job_search.reload.paginate(:page => params[:page], :per_page => 25)
