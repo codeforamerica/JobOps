@@ -3,16 +3,18 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = Factory(:user)
     @omniauth = {"user_info" => {"name" => "Jim Joe", "location" => "San Francisco"},
         "provider"=>"twitter","uid"=>"12345",
         "credentials"=>{"token"=>"abc123","secret"=>"xyz456"}}
+    stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
+      to_return(:status => 200, :body => fixture("futures_11b.json"))
+    @user = Factory(:user)
   end
 
   describe "age" do
     it "should return the users age" do
       @age = User.new
-      user_age = @age.age(Date.parse("1986-09-07"))
+      user_age = @age.age(Date.new(1986,9,7), Date.new(2011,1,1))
       user_age.should == 24
     end
   end
@@ -92,7 +94,20 @@ describe User do
     end
   end
 
+  describe "#add_saved_search" do
+    it "should add a saved search based on MOC code" do
+      @user.add_saved_search
+      @user.reload.job_searches.first.keyword.should == "11B"
+      @user.reload.job_searches.last.keyword.should == "Security Guards"
+    end
+  end
 
+  context "relationships" do
+    it 'has many user flags' do
+      @user.respond_to?(:job_users).should be_true
+      @user.respond_to?(:jobs).should be_true
+    end
+  end
 
 end
 

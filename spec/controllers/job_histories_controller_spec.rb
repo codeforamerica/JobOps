@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe JobHistoriesController do
 
+  stub_user_moc_save
   login_user
 
   before(:each) do

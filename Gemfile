@@ -11,12 +11,16 @@ end
 
 gem 'aws-s3'
 gem 'devise'
+gem 'direct_employers'
 gem 'futures_pipeline'
 gem 'gravatar_image_tag'
 gem 'haml'
+gem 'indeed'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip'
+gem "geocoder"
+gem 'will_paginate', '~>3.0'
 
 gem 'fb_graph'
 gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"
@@ -27,12 +31,18 @@ platforms :jruby do
   gem 'therubyrhino'
 end
 
+group :development do
+  gem 'ZenTest'
+end
+
 group :development, :test do
   gem 'faker'
+  gem 'activerecord-spatialite-adapter'
   gem 'nifty-generators'
   gem 'rspec-rails'
   gem 'simplecov'
   gem 'sqlite3'
+  gem 'spork', '0.9.0.rc9'
 end
 
 group :test do

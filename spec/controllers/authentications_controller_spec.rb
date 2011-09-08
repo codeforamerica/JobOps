@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe AuthenticationsController do
 
+  stub_user_moc_save
+
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'

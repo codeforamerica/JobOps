@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110906175954) do
+ActiveRecord::Schema.define(:version => 20110908184407) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(:version => 20110906175954) do
     t.datetime "updated_at"
   end
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "linkedin_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "educations", :force => true do |t|
     t.string   "school_name"
     t.string   "degree"
@@ -87,19 +95,58 @@ ActiveRecord::Schema.define(:version => 20110906175954) do
     t.integer  "user_id"
   end
 
-  create_table "jobs", :force => true do |t|
-    t.string   "company"
-    t.date     "date_acquired"
+  create_table "job_searches", :force => true do |t|
+    t.string   "keyword"
     t.string   "location"
+    t.float    "lat"
+    t.float    "long"
+    t.boolean  "user_saved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_searches_jobs", :force => true do |t|
+    t.integer  "job_search_id"
+    t.integer  "job_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_searches_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "job_search_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_users", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.date     "date_acquired"
     t.string   "title"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
+    t.integer  "company_id"
   end
 
   create_table "languages", :force => true do |t|
     t.string   "language"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "location"
+    t.float    "lat"
+    t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

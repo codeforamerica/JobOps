@@ -2,6 +2,8 @@ require 'spec_helper'
 
 
 describe SkillsController do
+
+  stub_user_moc_save
   login_user
 
   describe "#index" do

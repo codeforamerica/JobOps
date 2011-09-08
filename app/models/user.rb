@@ -32,8 +32,30 @@ class User < ActiveRecord::Base
   has_many :skills
   has_many :trainings
   has_many :wars
-
+  has_many :job_searches_user
+  has_many :job_searches, :through => :job_searches_user
+  has_many :job_users
+  has_many :jobs, :through => :job_users  
   validates_presence_of :name
+
+  after_save :add_saved_search
+
+  def add_saved_search
+    unless self.moc.nil?
+       search = JobSearch.find_or_create_by_keyword(self.moc)
+       job_searches_user.find_or_create_by_job_search_id(search.id)
+
+       careers = Career.new.futures_pipeline
+       career_by_moc = careers.search(self.moc)
+
+       unless career_by_moc.nil?
+        career_by_moc.each do |career|
+          search = JobSearch.find_or_create_by_keyword(career.title)
+          job_searches_user.find_or_create_by_job_search_id(search.id)
+        end
+       end
+    end
+  end
 
   def apply_omniauth(omniauth, save_it = false)
     if omniauth['user_info']
@@ -71,9 +93,8 @@ class User < ActiveRecord::Base
     (authentications.empty? || !password.blank?) && super
   end
 
-  def age(dob)
-    now = Time.now.utc.to_date
-    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  def age(dob, now = Time.now.utc.to_date)
+      now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
   def twitter_user
@@ -191,8 +212,8 @@ class User < ActiveRecord::Base
       user_skill.skill = linked_in_skill.name
       user_skill.save
     end
-
   end
+
 
   def twitter_user
     if not authentications.where(:provider => "twitter").first.nil?

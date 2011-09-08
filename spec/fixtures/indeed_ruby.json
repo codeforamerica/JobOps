@@ -1,0 +1,135 @@
+ {
+
+    "version" : 2,
+    "query" : "ruby",
+    "location" : "california",
+    "dupefilter" : true,
+    "highlight" : true,
+    
+    
+    "start" : 1,
+    "end" : 10,
+    "totalResults" : 3097,
+    "pageNumber" : 0,
+    
+    
+    
+    
+    "results" : [
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer",
+                    "company" : "Mary-Margaret Network",
+                    "city" : "Hollywood",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Mary-Margaret Network",
+                    "date" : "Fri, 02 Sep 2011 06:27:24 GMT",
+                    "snippet" : "Are you a <b>Ruby<\/b> on Rails engineer with a passion for <b>Ruby<\/b> ecosystems? Are you looking for a small, fast paced environment to grow and make a difference in? Keep...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=a5e13570b5bfe3f0&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "a5e13570b5bfe3f0",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Hollywood, CA",
+                    "formattedRelativeTime" : "5 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer Evangelist",
+                    "company" : "Heroku",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Heroku",
+                    "date" : "Wed, 07 Sep 2011 08:53:16 GMT",
+                    "snippet" : "Are you passionate about <b>Ruby<\/b> and the opportunities... their applications? The <b>Ruby<\/b> Evangelist is our direct connection to the <b>Ruby<\/b> development community. From...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=68930cfeeba1e6d4&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "68930cfeeba1e6d4",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA 94103",
+                    "formattedRelativeTime" : "18 hours ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Software Engineer - Ruby\/Rails Developer",
+                    "company" : "Groupon",
+                    "city" : "Palo Alto",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Groupon",
+                    "date" : "Mon, 05 Sep 2011 19:14:00 GMT",
+                    "snippet" : "for expert, energetic <b>Ruby<\/b>\/Rails pros to join... in any language)\n\nAt least one year experience in <b>Ruby<\/b>\/Rails web development\n\nSolid understanding of SQL...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=f398a390d0c14e1a&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "f398a390d0c14e1a",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Palo Alto, CA",
+                    "formattedRelativeTime" : "2 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer",
+                    "company" : "Engine Yard, Inc.",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Engine Yard, Inc.",
+                    "date" : "Wed, 31 Aug 2011 11:13:00 GMT",
+                    "snippet" : "work will be enabling <b>Ruby<\/b> developers to configure... be doing this while working with some of the best <b>Ruby<\/b> developers in the world, and under the best manager...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=e1513bf9003c2713&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "e1513bf9003c2713",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA",
+                    "formattedRelativeTime" : "7 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Engineer",
+                    "company" : "Jobspring Partners",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Jobspring Partners",
+                    "date" : "Wed, 07 Sep 2011 05:29:00 GMT",
+                    "snippet" : "is looking for mid-level <b>Ruby<\/b> engineers to join their... with HTML\/CSS, Javascript, jQuery\n\n\u2022<b>Ruby<\/b> or willingness to learn <b>Ruby<\/b>\n\n\u2022Python, Django, or Hadoop are a...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=7138bbd3ecd875b1&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "7138bbd3ecd875b1",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA 94105",
+                    "formattedRelativeTime" : "21 hours ago"                
+}          
+        
+    ]
+}
+

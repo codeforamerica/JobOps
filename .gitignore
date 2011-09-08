@@ -1,9 +1,12 @@
 *.gem
 *.rbc
+.rvmrc
 *.un~
 .*.sw[a-z]
 .DS_Store
 .Spotlight-V100
+db/test.sqlite3-journal
+development/
 .Trashes
 ._*
 .bundle
