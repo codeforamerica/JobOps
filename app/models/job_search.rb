@@ -23,10 +23,11 @@ class JobSearch < ActiveRecord::Base
       search_direct_moc
     else
       search_direct_keyword
+      search_indeed      
     end
   end
   
-  def process_jobs(jobs)
+  def process_direct_employer_jobs(jobs)
     jobs.each do |job|
       Job.create!(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["location"]), :url => job["url"])
     end
@@ -35,16 +36,19 @@ class JobSearch < ActiveRecord::Base
   def search_direct_moc
     @direct = SearchDirectEmployers.new.direct_client
     jobs = @direct.search({:moc => keyword}).api.jobs.job
-    process_jobs(jobs)
+    process_direct_employer_jobs(jobs)
   end
   
   def search_direct_keyword
     @direct = SearchDirectEmployers.new.direct_client
     jobs = @direct.search({:kw => keyword}).api.jobs.job
-    process_jobs(jobs)
+    process_direct_employer_jobs(jobs)
   end
   
   def search_indeed
+    @indeed = SearchIndeed.new.indeed_client
+    jobs = @direct.search({:q => keyword})
+    process_indeed_jobs(jobs)
   end
   
   def find_or_create_company(name, location)
