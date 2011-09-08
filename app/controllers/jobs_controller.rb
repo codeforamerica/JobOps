@@ -4,21 +4,15 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    if current_user
-      job_search_ids = current_user.job_searches.map(&:id)
-      @flagged_jobs = current_user.jobs
-      @saved_searches = current_user.job_searches
-      @jobs = Job.includes(:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
-      else
-      @jobs = Job.order("date_acquired DESC")
-    end
-
-    q = params[:q]
-    near = params[:near]
-
-    if q.nil? and near.nil?
-      @jobs = Job.all
+    if params[:q].nil? and params[:near].nil?
+      if current_user      
+        job_search_ids = current_user.job_searches.map(&:id)
+        @flagged_jobs = current_user.jobs
+        @saved_searches = current_user.job_searches
+        @jobs = Job.includes(:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
+      end
     else
+      @jobs = Job.order("date_acquired DESC").paginate(:page => params[:page], :per_page => 25)      
       render "jobs/results"
     end
 
