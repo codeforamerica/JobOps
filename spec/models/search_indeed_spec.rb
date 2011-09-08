@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe SearchIndeed do
-  context "it calls the api with params" do
-    pending "it should return a set of results by page params and keyword"
+  describe "#indeed_client" do
+    it "should return an Indeed class" do
+      @indeed = SearchIndeed.new.indeed_client
+      @indeed.should be_a Indeed
+    end
   end
-  
 end
