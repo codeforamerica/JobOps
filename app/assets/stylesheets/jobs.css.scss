@@ -39,13 +39,42 @@
 .saved-searches {
   float: left;
   width: 280px;
-  min-height: 300px;
+  min-height: 200px;
   margin-right: 20px;
 }
+
+.saved-searches ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saved-searches ul li {
+  font-size: 0.7em;
+  font-style: italic;
+  border-bottom: 1px dotted #999999;
+  padding: 5px 0;
+  clear: both;
+}
+
+.saved-searches ul li:first-child {
+  border-top: 1px dotted #999999;
+}
+
+.result-count {
+  float: right;
+  background-color: #669999;
+  color: #FFF;
+  padding: 0px 3px 0px 2px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 2px solid #669999;
+}
+
 .flagged-jobs {
   float: left;
   width: 280px;
-  min-height: 300px;
+  min-height: 200px;
 }
 .reccommended-jobs {
 
