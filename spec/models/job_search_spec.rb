@@ -115,8 +115,8 @@ describe JobSearch do
       @indeed = SearchIndeed.new.indeed_client
       jobs = @indeed.search({:q => job_search.keyword})
       lambda {
-        JobSearch.new.process_indeed_jobs(jobs)
-      }.should change(Job, :count).by(10)      
+        job_search.process_indeed_jobs(jobs)
+      }.should change(Job, :count).by(5)      
       
     end
     
@@ -125,15 +125,17 @@ describe JobSearch do
       stub_request(:get, "http://www.jobcentral.com/api.asp?key=&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))            
       lambda {
         job_search.search
-      }.should change(Job, :count).by(20)
+      }.should change(Job, :count).by(10)
     end
 
     it 'searches for keyword using search method' do
       job_search = Factory(:job_search, :keyword => "ruby")
       stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))            
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2")
+      .to_return(:status => 200, :body => fixture("indeed_ruby.json"))      
       lambda {
         job_search.search
-      }.should change(Job, :count).by(20)      
+      }.should change(Job, :count).by(15)      
     end
     
   end

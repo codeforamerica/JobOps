@@ -12,9 +12,9 @@
 
   - @jobs.each do |job|
     %tr
-      %td= job.company
+      %td= job.company.name
       %td= job.date_acquired
-      %td= job.location
+      %td= job.location.location
       %td= job.title
       %td= job.url
       %td= link_to 'Show', job
