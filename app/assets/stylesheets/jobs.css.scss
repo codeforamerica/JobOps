@@ -7,7 +7,6 @@
   border: 1px solid #CCC;
   padding: 15px;
   margin-bottom: 20px;
-  height: 40px;
 }
 .job-search-box label {
   float: left;
@@ -22,7 +21,7 @@
   color: #999999;
 }
 
-.job-search-box input {
+.job-search-box input[type="text"] {
   font-size: 1.10em;
   padding: 2px;
 }
@@ -34,7 +33,7 @@
 
 .search-btn-block {
   width: 80px;
-  margin-top: 19px;
+  margin-top: 30px;
 }
 .saved-searches {
   float: left;
@@ -63,12 +62,11 @@
 
 .result-count {
   float: right;
-  background-color: #669999;
+  background-color: #6b8299;
   color: #FFF;
-  padding: 0px 3px 0px 2px;
+  padding: 1px 4px 1px 3px;
   margin-right: 10px;
   border-radius: 8px;
-  border: 2px solid #669999;
 }
 
 .flagged-jobs {
