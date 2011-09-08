@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'paperclip'
 gem "geocoder"
+gem 'will_paginate', '~>3.0'
 
 gem 'fb_graph'
 gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"

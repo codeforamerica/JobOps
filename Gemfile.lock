@@ -249,6 +249,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.0)
     xml-simple (1.1.0)
     yajl-ruby (0.8.3)
 
@@ -291,3 +292,4 @@ DEPENDENCIES
   uglifier
   webmock
   webrat
+  will_paginate (~> 3.0)
