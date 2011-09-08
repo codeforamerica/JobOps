@@ -1,1 +1,83 @@
-%h1 Hi John!
+.wide-column
+  .job-search-box
+    %form
+      .search-block
+        %label{ :for =>'q' }
+          Search for
+          %span
+            (job title, skills, keywords)
+        %input{ :value => '', :name => 'q', :type => 'text' }
+      .search-block
+        %label{ :for => 'near' }
+          Near
+          %span
+            (address, city, state, or zip code)
+        %input{ :value => '', :name => 'near', :type => 'text' }
+      .search-btn-block
+        %input.green-btn{ :type => 'submit', :value => 'Search' }
+
+.wide-column
+  .inner-sidebar
+    .filter-box.smart-filter-enable
+      %strong
+        Smart Filters
+      %a{ :href => '#' }What's this?
+
+    .filter-box.basics
+      .filter-title
+        Basics
+
+    .filter-box.job-type
+      .filter-title
+        Job Type
+
+    .filter-box.skills
+      .filter-title
+        Skills
+      .filter-footer
+        %a{ :href => '#'}Select skills...
+
+    .filter-box.careers
+      .filter-title
+        Careers
+      %ul
+        %li
+          Registered Nurse
+          %span.delete-me
+        %li
+          Occupational Therapist
+          %span.delete-me
+        %li
+          Physical Therapist
+          %span.delete-me
+      .filter-footer
+        %a{ :href => '#'}Select careers...
+
+    .filter-box.companies
+      .filter-title
+        Companies
+      .filter-footer
+        %a{ :href => '#'}Select companies...
+
+    .filter-box.industries
+      .filter-title
+        Industries
+      .filter-footer
+        %a{ :href => '#'}Select industries...
+
+  .white-box.search-results-wrapper
+    .search-results-header
+      .search-result-title
+        %span
+          281
+        Jobs Found
+      .search-result-sortby
+        Sort by:
+        %select
+          %option{ :value => '1' }
+            Relevance
+          %option{ :value => '2' }
+            Distance
+          %option{ :value => '3' }
+            Salary
+
