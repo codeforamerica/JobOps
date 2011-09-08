@@ -1,5 +1,5 @@
 
-if Rails.env != 'prodcution'
+if Rails.env != 'production'
 
   100.times do |i|
     Job.create(:company => Faker::Company.name,

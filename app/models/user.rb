@@ -26,22 +26,32 @@ class User < ActiveRecord::Base
   has_many :awards
   has_many :authentications
   has_many :certifications
-  has_many :job_searches
   has_many :job_histories
   has_many :educations
   has_many :languages
   has_many :skills
   has_many :trainings
   has_many :wars
-
+  has_many :job_searches_user
+  has_many :job_searches, :through => :job_searches_user
   validates_presence_of :name
 
   after_save :add_saved_search
 
   def add_saved_search
     unless self.moc.nil?
-      job_searches.find_or_create_by_keyword(self.moc)
-      # TODO: search futures_inc careers and add
+       search = JobSearch.find_or_create_by_keyword(self.moc)
+       job_searches_user.find_or_create_by_job_search_id(search.id)
+
+       careers = Career.new.futures_pipeline
+       career_by_moc = careers.search(self.moc)
+
+       unless career_by_moc.nil?
+        career_by_moc.each do |career|
+          search = JobSearch.find_or_create_by_keyword(career.title)
+          job_searches_user.find_or_create_by_job_search_id(search.id)
+        end
+       end
     end
   end
 

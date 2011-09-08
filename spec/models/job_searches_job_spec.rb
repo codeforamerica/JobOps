@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe UserJobSearch do
+describe JobSearchesJob do
   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -38,6 +38,10 @@ Spork.prefork do
 
     config.extend ControllerMacros, :type => :controller
 
+    config.before(:each, :type => :model) do
+          stub_user_moc_save
+      end
+
     #Omniauth Mock
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:facebook] = {
@@ -60,7 +64,7 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-  
+
   require 'factory_girl_rails'
   require 'simplecov'
   Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
@@ -108,8 +112,14 @@ def fixture_path
   File.expand_path('../fixtures', __FILE__)
 end
 
+
 def fixture(file)
   File.new(fixture_path + '/' + file)
+end
+
+def stub_user_moc_save
+  stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
+    to_return(:status => 200, :body => fixture("futures_11b.json"))
 end
 
 end
