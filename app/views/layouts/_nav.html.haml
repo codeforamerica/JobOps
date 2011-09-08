@@ -1,8 +1,10 @@
-%ul{:class => "nav"}
-  %li= link_to 'Home', root_path
-  %li= link_to 'My Profile', users_path
-  %li= link_to 'Career Research', careers_path
-  %li= link_to 'Find Jobs', jobs_path
-  %li Communities
-  %li Advice
-
+#nav
+  %ul
+    %li= link_to 'Home', root_path
+    %li= link_to 'My Profile', users_path
+    %li= link_to 'Career Research', careers_path
+    %li.active= link_to 'Find Jobs', jobs_path
+    %li
+      %a{:href => '#'} Communities
+    %li
+      %a{:href => '#'} Advice

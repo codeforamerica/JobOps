@@ -1,3 +1,159 @@
 // Place all the styles related to the Jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.job-search-box form {
+  background:url(/images/box.png) repeat;
+  border: 1px solid #CCC;
+  padding: 15px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+.job-search-box label {
+  float: left;
+  margin-right: 20px;
+  padding-bottom: 5px;
+  color: #666666;
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.job-search-box label span {
+  color: #999999;
+}
+
+.job-search-box input {
+  font-size: 1.10em;
+  padding: 2px;
+}
+
+.search-block, .search-btn-block {
+  float: left;
+  width: 250px;
+}
+
+.search-btn-block {
+  width: 80px;
+  margin-top: 19px;
+}
+.saved-searches {
+  float: left;
+  width: 280px;
+  min-height: 200px;
+  margin-right: 20px;
+}
+
+.saved-searches ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.saved-searches ul li {
+  font-size: 0.7em;
+  font-style: italic;
+  border-bottom: 1px dotted #999999;
+  padding: 5px 0;
+  clear: both;
+}
+
+.saved-searches ul li:first-child {
+  border-top: 1px dotted #999999;
+}
+
+.result-count {
+  float: right;
+  background-color: #669999;
+  color: #FFF;
+  padding: 0px 3px 0px 2px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 2px solid #669999;
+}
+
+.flagged-jobs {
+  float: left;
+  width: 280px;
+  min-height: 200px;
+}
+.recommended-jobs {
+  margin-top: 1.5em;
+}
+.recommended-jobs-title {
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+.notification {
+  border-radius: 5px;
+  border: 2px solid #e6d68a;
+  background: #ffffe5;
+  padding: 15px;
+  font-size:0.75em;
+}
+ol.job-listings {
+  color: #FFF;
+  margin-left: -35px;
+  list-style: none;
+}
+ol.job-listings li {
+  border-top: 1px dashed #CCC;
+  padding:15px 0 15px 30px;
+  background:url(/images/ol-marker.png) no-repeat 0 20px;
+  overflow: visible;
+  clear: both;
+  color: #333;
+}
+.job-title {
+  font-size:1.0em;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+}
+.job-meta {
+  font-size:0.75em;
+  color: #4f8c23;
+  float: left;
+  width: 100%;
+}
+.job-aquire {
+  color: #333;
+}
+.job-excerpt {
+  float: left;
+  width: 100%;
+  color: #666;
+}
+.pagination {
+  clear: both;
+  margin: 15px 0 15px 35px;
+  padding: 15px 0; 
+}
+.previous {
+  float: left;
+  margin-right: 15px;
+}
+.next {
+  float: left;
+  margin-left: 15px;
+}
+ul.page-number {
+  list-style: none;
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+ul.page-number li {
+  float: left;
+}
+ul.page-number li a {
+  padding: 5px 10px;
+  color: #0073e6
+}
+ul.page-number li a:hover, ul.page-number li.active a {
+  padding: 5px 10px;
+  background: #0073e6;
+  color: #FFF;
+}
