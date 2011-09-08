@@ -1,3 +1,5 @@
+%script{:type => "text/javascript"}
+  =raw @jobs_json.to_json
 .wide-column
   .job-search-box
     = form_tag('/jobs', :method => :get) do
@@ -60,8 +62,9 @@
             %span.job-aquire
               Acquired on
             =job.date_acquired
-          .job-excerpt
-            Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
+          -if job.snippet?
+            .job-excerpt
+              =job.snippet  
           -if @flagged_jobs.include?(job)
             %span.unflag-item
               %a{ :href => '/jobs/flag/'+job.id.to_s }
