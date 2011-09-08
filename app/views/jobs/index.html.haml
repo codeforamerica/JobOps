@@ -88,7 +88,8 @@
           %span.job-meta
             =job.company 
             =job.location 
-            Acquired on 
+            %span.job-aquire
+              Acquired on 
             =job.date_acquired
           .job-excerpt
             Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
@@ -99,25 +100,35 @@
         Previous
       %ul.page-number
         %li.active
-          1
+          %a{ :href => '#'}
+            1
         %li
-          2
+          %a{ :href => '#'}
+            2
         %li
-          3
+          %a{ :href => '#'}
+            3
         %li
-          4
+          %a{ :href => '#'}
+            4
         %li
-          5
+          %a{ :href => '#'}
+            5
         %li
-          6
+          %a{ :href => '#'}
+            6
         %li
-          7
+          %a{ :href => '#'}
+            7
         %li
-          8
+          %a{ :href => '#'}
+            8
         %li
-          9
+          %a{ :href => '#'}
+            9
         %li
-          10
+          %a{ :href => '#'}
+            10
       %span.next
         Next
 
