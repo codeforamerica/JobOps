@@ -1,20 +1,20 @@
 .wide-column
   .job-search-box
-    %form
+    = form_tag('/jobs', :method => :get) do
       .search-block
         %label{ :for =>'q' }
           Search for
           %span
             (job title, skills, keywords)
-        %input{ :value => '', :name => 'q', :type => 'text' }
+        =text_field_tag :q
       .search-block
         %label{ :for => 'near' }
           Near
           %span
             (address, city, state, or zip code)
-        %input{ :value => '', :name => 'near', :type => 'text' }
+        =text_field_tag :name
       .search-btn-block
-        %input.green-btn{ :type => 'submit', :value => 'Search' }
+        = submit_tag 'Search', :class => 'green-btn'
   -if current_user
     .cta-box.saved-searches
       .cta-title
