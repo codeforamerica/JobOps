@@ -17,13 +17,13 @@ describe Location do
   context "validations" do
     it "has to have a location" do
       @location.location = nil
-      @location.should have(1).error_on(:location)
+      @location.should have(2).error_on(:location)
     end
     
     it "has to have a unique location" do
       attr = Factory.attributes_for(:location, :location => "San Francisco, CA")
       invalid_detail = Location.new(attr)
-      invalid_detail.should have(1).error_on(:location)      
+      invalid_detail.should have(2).error_on(:location)      
     end
     
   end

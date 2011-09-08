@@ -13,24 +13,24 @@ describe Job do
   context "validations" do
     it 'presence of title' do
       @job.title = nil
-      @job.should have(1).error_on(:title)      
+      @job.should have(2).error_on(:title)      
     end
 
     it 'presence of location' do
       @job.location = nil
-      @job.should have(1).error_on(:location)      
+      @job.should have(2).error_on(:location)      
       
     end
 
     it 'presence of company' do
       @job.company = nil
-      @job.should have(1).error_on(:company)      
+      @job.should have(2).error_on(:company)      
       
     end
     
     it 'presence of url' do
       @job.url = nil
-      @job.should have(1).error_on(:url)      
+      @job.should have(2).error_on(:url)      
     end
     
   end
