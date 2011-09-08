@@ -6,7 +6,6 @@ def fixture_path
   File.expand_path('../../spec/fixtures', __FILE__)
 end
 
-
 def fixture(file)
   File.new(fixture_path + '/' + file)
 end
@@ -40,5 +39,6 @@ if Rails.env != 'production'
   
   puts "flagging jobs"
   User.all.each { |user|  user.jobs << Job.all.shuffle[0..10]}
+
 
 end

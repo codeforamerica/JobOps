@@ -13,13 +13,13 @@ describe Company do
   context "validations" do
     it "has to have a name" do
       @company.name = nil
-      @company.should have(2).error_on(:name)
+      @company.should have(1).error_on(:name)
     end
     
     it "has to have a unique company" do
       attr = Factory.attributes_for(:company, :name => @company.name)
       invalid_detail = Company.new(attr)
-      invalid_detail.should have(2).error_on(:name)      
+      invalid_detail.should have(1).error_on(:name)      
     end
     
   end

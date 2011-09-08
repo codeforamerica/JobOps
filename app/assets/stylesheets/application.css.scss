@@ -3,25 +3,43 @@
  * = require_tree .
 */
 
+/** GLOBAL STYLES **/
+.left { float: left; }
+.right { float: right; }
+br.clearit { clear: both; height: 0px; }
+
 * {
 	padding:0;
 	margin:0;
 	}
-#header {
+a {
+  text-decoration:none;
+  color: #06C;
+}
+a:hover {
+  text-decoration:underline;
+  color: #0054a7;
+}
+.clear {
+  clear: both;
+}	
+
+
+/** HEADER STYLES **/
+#header-wrapper {
 	background: image-url("/images/header_bg.png") repeat-x;
 	height:82px;
+	width: 100%;
 	}
-#wrapper {
-	width:960px;
-	position:absolute;
-	top:0;
-	left:50%;
-	margin-left:-480px;
+#header {
+	width:980px;
+	margin: 0 auto;
 	}
 #logo {
 	background: image-url("/images/header-logo.png") no-repeat;
 	height:82px;
 	width:186px;
+	margin-left:-35px;
 	border:0;
 	cursor:pointer;
 	float:left;
@@ -29,8 +47,7 @@
 #user {
 	float:right;
 	color:#FFF;
-	font-size:12px;
-	padding-top:10px;
+	font-size:0.75em;
 	}
 #user ul {
 	list-style:none;
@@ -42,7 +59,7 @@
 	}
 #user a {
 	color:#FFF;
-	font-size:12px;
+	font-size:0.75em;
 	}	
 #user a:link, #user a:visited {
 	text-decoration:none;
@@ -51,26 +68,151 @@
 	text-decoration:underline;
 	}
 #nav {
+	float:right;
+	color:#FFF;
+	margin-top:10px;
+	font-size:1.0em;
 	}
-
-.left { float: left; }
-.right { float: right; }
-br.clearit { clear: both; }
-
-#footer {
-  width: 100%;
-  background-color: #333333;
-  padding-top: 22px;
-  color: #eeeeee;
-  font-size: 0.8em;
+#nav ul {
+	list-style:none;
+	display:block;
+}
+#nav li {
+	float:left;
+}
+#nav a:link, #nav a:visited {
+	padding:10px 20px;
+	color:#FFF;
+	text-decoration:none;
+	border-width:2px 2px 2px 2px;
+	-moz-border-image: url("/images/nav-border.png") 2 repeat stretch;
+	-webkit-border-image:url("/images/nav-border.png") 2 repeat stretch;
+	border-image:url("/images/nav-border.png") 2 repeat stretch;	
+}
+#nav ul li.active a:link, #nav ul li.active a:visited {
+	padding:10px 20px 15px 20px;
+	color:#315924;
+	text-decoration:none;
+	border-top-right-radius: 2px;
+	border-top-left-radius: 2px;
+	background: #EEE url("/images/content_bg.png");
+	border:2px solid #e3e3e3;
+	border-bottom:0;
+	-moz-border-image:none;
+	-webkit-border-image:none;
+	border-image:none;	
+}
+#nav a:hover, #nav a:active {
+	padding:10px 20px 15px 20px;
+	color:#315924;
+	text-decoration:none;
+	border-top-right-radius: 2px;
+	border-top-left-radius: 2px;
+	background: #EEE url("/images/content_bg.png");
+	border:2px solid #e3e3e3;
+	border-bottom:0;
+	-moz-border-image:none;
+	-webkit-border-image:none;	
+	border-image:none;
 }
 
-#footer .right {
-  width: 220px;
+
+
+
+/** CONTENT STYLES **/
+#content-wrapper {
+  width: 100%;
+  background: #eeeeee url("/images/content_bg.png");
+  padding: 20px 0;
+  line-height: 150%;
+}
+
+#content {
+  width: 980px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.wide-column {
+  width: 620px;
+  float: left;
+  margin-right: 40px;
+}
+.white-box {
+  padding:20px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  clear: both;
+  margin-top:20px;
+}
+
+/** SIDEBAR **/
+#sidebar {
+  float: right;
+  width: 300px;
+}
+
+/** CALL TO ACTION BOXES **/
+.cta-box {
+   background:url(/images/box.png) repeat;
+   padding: 10px;
+}
+div.map {
+  padding: 0;
+}
+
+.cta-title {
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
+.cta-box .fixed-height {
+  height: 160px;
+  overflow-y: scroll;
+}
+
+.cta-box .cta-footer {
+  font-size: 0.75em;
+  padding: 0;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/** FOOTER STYLES **/
+#footer-wrapper {
+  width: 100%;
+  background: url("/images/footer_bg.png") repeat-x;
+  padding-top: 22px;
+  padding-bottom: 55px;
+}
+
+#footer {
+  width: 980px;
+  margin: 0 auto;
+  color: #999999;
+  font-size: 0.75em;
 }
 
 #footer ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0px;
 }
 
-#footer li { float: left; width: 60px; padding-right: 10px; }
+#footer li { 
+  display: inline;
+  padding-right: 5px;  
+}
+
+#footer a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+#footer p { margin-bottom: 1.2em; }
+
+/** WEBKIT HACKS  **/
+/** http://www.evotech.net/blog/2010/04/hack-for-webkit-filter-for-chrome-and-safari/ **/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #nav {margin-top:7px;}
+}
