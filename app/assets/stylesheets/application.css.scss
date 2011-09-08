@@ -134,12 +134,12 @@ a:hover {
 }
 
 .wide-column {
-  width: 620px;
+  width: 645px;
   float: left;
-  margin-right: 40px;
+  margin-right: 25px;
 }
 .white-box {
-  padding:20px;
+  padding:10px;
   background: #FFF;
   border: 1px solid #CCC;
   clear: both;
@@ -149,13 +149,15 @@ a:hover {
 /** SIDEBAR **/
 #sidebar {
   float: right;
-  width: 300px;
+  width: 305px;
 }
 
 /** CALL TO ACTION BOXES **/
 .cta-box {
    background:url(/images/box.png) repeat;
+   border: 1px solid #CCC;
    padding: 10px;
+   margin-bottom: 15px;
 }
 div.map {
   padding: 0;

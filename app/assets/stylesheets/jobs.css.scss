@@ -2,11 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.job-search-box form {
+.job-search-box {
   background:url(/images/box.png) repeat;
   border: 1px solid #CCC;
-  padding: 15px;
-  margin-bottom: 20px;
+  width:623px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 .job-search-box label {
   float: left;
@@ -39,9 +40,9 @@
 }
 .saved-searches {
   float: left;
-  width: 280px;
-  min-height: 200px;
-  margin-right: 20px;
+  width: 293px;
+  padding: 10px;
+  margin-right: 15px;
 }
 
 .saved-searches ul {
@@ -73,8 +74,8 @@
 
 .flagged-jobs {
   float: left;
-  width: 280px;
-  min-height: 200px;
+  width: 293px;
+  padding: 10px;
 }
 .recommended-jobs {
   margin-top: 1.5em;
