@@ -163,11 +163,21 @@ ul.page-number li a:hover, ul.page-number li.active a {
 
 .inner-sidebar {
   float:left;
-  width: 215px;
-  padding: 10px;
+  width: 200px;
+  padding: 0;
+  margin-right: 15px;
+  margin-top: 20px;
 }
 
 .search-results-wrapper {
-  clear: none;
-  margin-left: 235px;
+  float: left;
+  width: 408px;
+}
+
+.search-result-title {
+  float: left;
+}
+
+.search-result-sortby {
+  float: right;
 }
