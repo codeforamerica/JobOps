@@ -5,7 +5,7 @@ class JobSearch < ActiveRecord::Base
   has_many :jobs, :through => :job_searches_jobs   
   
   def search
-    
+    determine_search
   end
   
   def detect_moc?
@@ -28,19 +28,19 @@ class JobSearch < ActiveRecord::Base
   
   def process_jobs(jobs)
     jobs.each do |job|
-      Job.create(:date_acquired => job.data_acquired , :title => job.title ,:company => find_or_create_company(job.company),:location => find_or_create_location(job.location), :url => job.url)
+      Job.create!(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["location"]), :url => job["url"])
     end
   end
   
   def search_direct_moc
     @direct = SearchDirectEmployers.new.direct_client
-    jobs = @direct.search({:moc => keyword})
+    jobs = @direct.search({:moc => keyword}).api.jobs.job
     process_jobs(jobs)
   end
   
   def search_direct_keyword
     @direct = SearchDirectEmployers.new.direct_client
-    jobs = @direct.search({:keyword => keyword})
+    jobs = @direct.search({:kw => keyword}).api.jobs.job
     process_jobs(jobs)
   end
   

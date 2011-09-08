@@ -88,14 +88,41 @@ describe JobSearch do
       location.should == return_location
     end    
     
-    it 'proceses jobs' do
+    it 'processes jobs for moc' do
+      job_search = Factory(:job_search, :keyword => "11b")
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))      
       @direct = SearchDirectEmployers.new.direct_client
-      jobs = @direct.search({:moc => keyword})
+      jobs = @direct.search({:moc => job_search.keyword}).api.jobs.job
       lambda {
         JobSearch.new.process_jobs(jobs)
       }.should change(Job, :count).by(10)
     end
     
+    it 'processes jobs for keyword' do
+      job_search = Factory(:job_search, :keyword => "ruby")
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))      
+      @direct = SearchDirectEmployers.new.direct_client
+      jobs = @direct.search({:kw => job_search.keyword}).api.jobs.job
+      lambda {
+        JobSearch.new.process_jobs(jobs)
+      }.should change(Job, :count).by(10)
+    end
+    
+    it 'searches for moc using search method' do
+      job_search = Factory(:job_search, :keyword => "11b")
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))            
+      lambda {
+        job_search.search
+      }.should change(Job, :count).by(10)
+    end
+
+    it 'searches for keyword using search method' do
+      job_search = Factory(:job_search, :keyword => "ruby")
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))            
+      lambda {
+        job_search.search
+      }.should change(Job, :count).by(10)      
+    end  
     
   end
   
