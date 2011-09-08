@@ -102,7 +102,12 @@ describe User do
     end
   end
 
-
+  context "relationships" do
+    it 'has many user flags' do
+      @user.respond_to?(:job_users).should be_true
+      @user.respond_to?(:jobs).should be_true
+    end
+  end
 
 end
 

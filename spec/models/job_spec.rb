@@ -36,7 +36,7 @@ describe Job do
   end
   
   context "relationships" do
-    pending 'has many job searches' do
+    it 'has many job searches' do
       @job.respond_to?(:job_searches).should be_true
     end
     it 'belongs to location' do
@@ -51,6 +51,9 @@ describe Job do
     it 'has many jobs' do
       @job.respond_to?(:job_searches).should be_true
     end    
+    it 'has many user flags' do
+      @job.respond_to?(:users).should be_true
+    end
   end
   
   context "job specific checks" do

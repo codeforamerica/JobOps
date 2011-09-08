@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   has_many :wars
   has_many :job_searches_user
   has_many :job_searches, :through => :job_searches_user
+  has_many :job_users
+  has_many :jobs, :through => :job_users  
   validates_presence_of :name
 
   after_save :add_saved_search
