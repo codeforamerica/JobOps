@@ -21,12 +21,9 @@
         Saved Searches
       .fixed-height
         %ul
-        - @saved_searches.each do |search|      
+        - @saved_searches.each do |search|
           %li
-            %a{ :href => '#' }
-              =search.keyword 
-              near 
-              =search.location
+            = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
             %span.result-count
               =search.jobs.size
       .cta-footer
@@ -37,7 +34,7 @@
       .cta-title
         Flagged Jobs
       %ul
-        - @flagged_jobs.each do |job|  
+        - @flagged_jobs.each do |job|
           %li
             =link_to job.title, job
             %span.unflag-item
@@ -71,7 +68,7 @@
           -else
             %span.flag-item
               %a{ :href => '/jobs/flag/'+job.id.to_s }
-            
+
           %br.clear
 
     =will_paginate @jobs
