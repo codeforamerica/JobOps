@@ -35,7 +35,7 @@ class JobSearch < ActiveRecord::Base
   
   def process_indeed_jobs(jobs)
     jobs.each do |job|
-     Job.create!(:date_acquired => job["date"] , :title => job["jobtitle"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["formattedLocation"]), :url => job["url"])
+     Job.create!(:date_acquired => job["date"], :snippet => job["snippet"] ,:title => job["jobtitle"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["formattedLocation"]), :url => job["url"])
     end
   end
   
