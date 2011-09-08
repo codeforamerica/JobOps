@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class JobsController < ApplicationController
   before_filter :authenticate_user!, :only => :flag
   # GET /jobs
@@ -8,14 +9,23 @@ class JobsController < ApplicationController
       @flagged_jobs = current_user.jobs
       @saved_searches = current_user.job_searches
       @jobs = Job.includes(:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
-    else
+      else
       @jobs = Job.order("date_acquired DESC")
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @jobs }
+    q = params[:q]
+    near = params[:near]
+
+    if q.nil? and near.nil?
+      @jobs = Job.all
+    else
+      render "jobs/results"
     end
+
+    #respond_to do |format|
+     # format.html # index.html.erb
+      #format.json { render :json => @jobs }
+    #end
   end
 
   # GET /jobs/1
