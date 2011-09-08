@@ -1,0 +1,271 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {
+
+    "version" : 2,
+    "query" : "ruby",
+    "location" : "california",
+    "dupefilter" : true,
+    "highlight" : true,
+    
+    
+    "start" : 1,
+    "end" : 10,
+    "totalResults" : 3097,
+    "pageNumber" : 0,
+    
+    
+    
+    
+    "results" : [
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer",
+                    "company" : "Mary-Margaret Network",
+                    "city" : "Hollywood",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "Hollywood, CA",
+                    "source" : "Mary-Margaret Network",
+                    "date" : "Fri, 02 Sep 2011 06:27:24 GMT",
+                    "snippet" : "Are you a <b>Ruby<\/b> on Rails engineer with a passion for <b>Ruby<\/b> ecosystems? Are you looking for a small, fast paced environment to grow and make a difference in? Keep...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=a5e13570b5bfe3f0&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "a5e13570b5bfe3f0",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Hollywood, CA",
+                    "formattedRelativeTime" : "5 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer Evangelist",
+                    "company" : "Heroku",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Heroku",
+                    "date" : "Wed, 07 Sep 2011 08:53:16 GMT",
+                    "snippet" : "Are you passionate about <b>Ruby<\/b> and the opportunities... their applications? The <b>Ruby<\/b> Evangelist is our direct connection to the <b>Ruby<\/b> development community. From...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=68930cfeeba1e6d4&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "68930cfeeba1e6d4",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA 94103",
+                    "formattedRelativeTime" : "18 hours ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Software Engineer - Ruby\/Rails Developer",
+                    "company" : "Groupon",
+                    "city" : "Palo Alto",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "Palo Alto, CA",
+                    "source" : "Groupon",
+                    "date" : "Mon, 05 Sep 2011 19:14:00 GMT",
+                    "snippet" : "for expert, energetic <b>Ruby<\/b>\/Rails pros to join... in any language)\n\nAt least one year experience in <b>Ruby<\/b>\/Rails web development\n\nSolid understanding of SQL...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=f398a390d0c14e1a&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "f398a390d0c14e1a",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Palo Alto, CA",
+                    "formattedRelativeTime" : "2 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Developer",
+                    "company" : "Engine Yard, Inc.",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Engine Yard, Inc.",
+                    "date" : "Wed, 31 Aug 2011 11:13:00 GMT",
+                    "snippet" : "work will be enabling <b>Ruby<\/b> developers to configure... be doing this while working with some of the best <b>Ruby<\/b> developers in the world, and under the best manager...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=e1513bf9003c2713&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "e1513bf9003c2713",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA",
+                    "formattedRelativeTime" : "7 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Engineer",
+                    "company" : "Jobspring Partners",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Jobspring Partners",
+                    "date" : "Wed, 07 Sep 2011 05:29:00 GMT",
+                    "snippet" : "is looking for mid-level <b>Ruby<\/b> engineers to join their... with HTML\/CSS, Javascript, jQuery\n\n\u2022<b>Ruby<\/b> or willingness to learn <b>Ruby<\/b>\n\n\u2022Python, Django, or Hadoop are a...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=7138bbd3ecd875b1&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "7138bbd3ecd875b1",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA 94105",
+                    "formattedRelativeTime" : "21 hours ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby \/ PHP Senior Software Engineer",
+                    "company" : "E-Commerce company",
+                    "city" : "Los Gatos",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "Los Gatos, CA",
+                    "source" : "JobHost",
+                    "date" : "Sun, 04 Sep 2011 15:40:44 GMT",
+                    "snippet" : "If you know LAMP, <b>Ruby<\/b>, Rails, OO design, have a... consumer facing websites\n- Expert knowledge of PHP or <b>Ruby<\/b>-on-Rails, working knowledge of others\n- Strong...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=954f82d0acaa918d&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "954f82d0acaa918d",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Los Gatos, CA 95032",
+                    "formattedRelativeTime" : "3 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby on Rails Architect",
+                    "company" : "VerticalResponse",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "VerticalResponse",
+                    "date" : "Fri, 02 Sep 2011 17:07:00 GMT",
+                    "snippet" : "latest versions of <b>Ruby<\/b> and RoR, agile development... growing, high-traffic SaaS company\n\nMastery of <b>Ruby<\/b> on Rails, MySQL, and Linux,\n\nAn uncanny ability to...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=b78bb7375cbecf1e&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "b78bb7375cbecf1e",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA",
+                    "formattedRelativeTime" : "5 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby on Rails Developer",
+                    "company" : "Viralheat",
+                    "city" : "San Mateo",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Mateo, CA",
+                    "source" : "Viralheat",
+                    "date" : "Thu, 01 Sep 2011 09:21:23 GMT",
+                    "snippet" : "web and changing the way business is done. We are looking for experienced <b>Ruby<\/b> on Rails developers to join our front-end web development team. We have multiple...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=498758233c6e390a&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "498758233c6e390a",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Mateo, CA 94404",
+                    "formattedRelativeTime" : "6 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby Engineer",
+                    "company" : "Vungle",
+                    "city" : "San Francisco",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "San Francisco, CA",
+                    "source" : "Vungle",
+                    "date" : "Wed, 31 Aug 2011 04:10:59 GMT",
+                    "snippet" : "addition to their offices in London. \n Responsibilities: \n Vungle require a <b>Ruby<\/b> engineer to help build up highly scaleable infastructure to power their video...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=870f2f2d94ea4432&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "870f2f2d94ea4432",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "San Francisco, CA 94107",
+                    "formattedRelativeTime" : "7 days ago"                
+}
+
+            ,
+        
+            
+            
+                {
+                    "jobtitle" : "Ruby On Rails Developer",
+                    "company" : "Jobspring Partners",
+                    "city" : "Newport Beach",
+                    "state" : "CA",
+                    "country" : "US",
+                    "formattedLocation" : "Newport Beach, CA",
+                    "source" : "Jobspring Partners",
+                    "date" : "Fri, 02 Sep 2011 04:00:00 GMT",
+                    "snippet" : "media is looking to add a <b>Ruby<\/b> on Rails developer to... MUST HAVE (at least 4+ years of experience):\n\n<b>Ruby<\/b> on Rails 301\/303, Linux, Apache, MYSQL\n\nHTML...",
+                    "url" : "http:\/\/www.indeed.com\/viewjob?jk=5d5461a4090f1944&indpubnum=129600633399004&atk=1693flb2a0ga050a",
+                    "onmousedown" : "indeed_clk(this, '5782');",
+                    "jobkey" : "5d5461a4090f1944",
+                    "sponsored" : false,
+                    "expired" : false,
+                    "formattedLocationFull" : "Newport Beach, CA 92660",
+                    "formattedRelativeTime" : "5 days ago"                
+}
+
+            
+        
+    ]
+}
+
