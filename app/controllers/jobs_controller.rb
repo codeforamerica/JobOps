@@ -2,12 +2,20 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @jobs }
+    q = params[:q]
+    near = params[:near]
+
+    if q.nil? and near.nil?
+      @jobs = Job.all
+    else
+      render "jobs/results"
     end
+
+    #respond_to do |format|
+     # format.html # index.html.erb
+      #format.json { render :json => @jobs }
+    #end
   end
 
   # GET /jobs/1
