@@ -15,8 +15,8 @@
         %input{ :value => '', :name => 'near', :type => 'text' }
       .search-btn-block
         %input.green-btn{ :type => 'submit', :value => 'Search' }
+      %br.clear
 
-.wide-column
   .inner-sidebar
     .filter-box.smart-filter-enable
       %strong
@@ -80,4 +80,39 @@
             Distance
           %option{ :value => '3' }
             Salary
+    %ol.job-listings
+      - @jobs.each do |job|
+        %li.job-listing
+          =link_to job.title, job, { :class => 'job-title' }
+          %span.job-meta
+            =job.company.name
+            =job.location.location
+            %span.job-aquire
+              Acquired on
+            =job.date_acquired
+          .job-excerpt
+            Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
+          -if @flagged_jobs.include?(job)
+            %span.unflag-item
+              %a{ :href => '/jobs/flag/'+job.id.to_s }
+          -else
+            %span.flag-item
+              %a{ :href => '/jobs/flag/'+job.id.to_s }
 
+          %br.clear
+
+#sidebar
+  .cta-box.special-cta
+    %span
+      Explore your career options
+    Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
+
+  .cta-box.jobs-applied-for
+    .cta-title
+      Jobs Applied For
+    You haven't applied for any jobs yet.
+
+  .cta-box.map
+    %img{ :src => '/images/mockup-map.png' }
+
+%br

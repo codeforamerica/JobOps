@@ -125,7 +125,9 @@
 }
 ol.job-listings {
   color: #FFF;
-  margin-left: -35px;
+  /*margin-left: -35px;*/
+  margin:0;
+  padding: 0;
   list-style: none;
 }
 ol.job-listings li {
@@ -178,4 +180,25 @@ ol.job-listings li {
   background: #0073e6;
   color: #FFF;
   text-decoration: none;
+}
+
+.inner-sidebar {
+  float:left;
+  width: 200px;
+  padding: 0;
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.search-results-wrapper {
+  float: left;
+  width: 408px;
+}
+
+.search-result-title {
+  float: left;
+}
+
+.search-result-sortby {
+  float: right;
 }
