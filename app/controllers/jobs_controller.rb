@@ -40,6 +40,10 @@ class JobsController < ApplicationController
       job_search.search
       @jobs = job_search.reload.jobs.paginate(:page => params[:page], :per_page => 25)
 
+      unless current_user.moc.nil?
+        @careers = Career.new.futures_pipeline.search(current_user.moc)
+      end
+
       render "jobs/results"
     end
 

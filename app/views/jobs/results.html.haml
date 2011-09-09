@@ -12,7 +12,7 @@
           Near
           %span
             (address, city, state, or zip code)
-        = text_field_tag :location, params[:location]
+        = text_field_tag :near, params[:near]
       .search-btn-block
         = submit_tag 'Search', :class => 'green-btn'
     %br.clear
@@ -40,15 +40,8 @@
       .filter-title
         Careers
       %ul
-        %li
-          Registered Nurse
-          %span.delete-me
-        %li
-          Occupational Therapist
-          %span.delete-me
-        %li
-          Physical Therapist
-          %span.delete-me
+        - @careers.each do |career|
+          %li= link_to career.title, :q => career.title, :location => params[:near]
       .filter-footer
         %a{ :href => '#'}Select careers...
 
