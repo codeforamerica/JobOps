@@ -144,7 +144,7 @@ GEM
       faraday (~> 0.6.1)
       multi_json (>= 0.0.5)
     orm_adapter (0.0.5)
-    paperclip (2.4.0)
+    paperclip (2.4.1)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
