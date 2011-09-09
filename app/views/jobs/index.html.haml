@@ -57,7 +57,13 @@
       %ol.job-listings
         - @jobs.each do |job|
           %li.job-listing
-            =link_to job.title, job, { :class => 'job-title' }
+            .job-heading
+              - if @flagged_jobs.include?(job)
+                %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s }
+              - else
+                %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s }
+              %span.job-title-wrapper
+                =link_to job.title, job, { :class => 'job-title' }
             %span.job-meta
               =job.company.name
               =job.location.location
@@ -67,12 +73,6 @@
             - if job.snippet?
               .job-excerpt
                 =job.snippet
-            - if @flagged_jobs.include?(job)
-              %span.unflag-item
-                %a{ :href => '/jobs/flag/'+job.id.to_s }
-            - else
-              %span.flag-item
-                %a{ :href => '/jobs/flag/'+job.id.to_s }
 
       %br.clear
       =will_paginate @jobs

@@ -158,6 +158,30 @@ ol.job-listings li {
   width: 100%;
   color: #666;
 }
+
+.job-listing .job-title-wrapper {
+  float: left;
+}
+
+.job-listing .flag-item, .job-listing .unflag-item {
+  background: url('/images/flagged.png');
+  background-position: 0 -12px;
+  width: 12px;
+  height: 12px;
+  float: right;
+}
+
+.job-listing .unflag-item {
+  background-position: 0 0;
+}
+
+.job-listing .flag-item:hover { background-position: 0 0; }
+.job-listing .unflag-item:hover { background-position: 0 -12px; }
+
+.job-listing .flag-item  a {
+  display: block;
+}
+
 .pagination {
   clear: both;
   margin: 15px 0 15px 35px;
