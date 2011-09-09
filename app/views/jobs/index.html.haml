@@ -36,12 +36,13 @@
     .cta-box.flagged-jobs
       .cta-title
         Flagged Jobs
-      %ul
-        - @flagged_jobs.each do |job|
-          %li
-            %span.unflag-item
-              %a{ :href => '/jobs/flag/'+job.id.to_s }
-            =link_to job.title, job
+      .fixed-height
+        %ul
+          - @flagged_jobs.each do |job|  
+            %li
+              %span.unflag-item
+                %a{ :href => '/jobs/flag/'+job.id.to_s }
+              =link_to job.title, job
       .cta-footer
         %a{ :href => '#'}
           Compare flagged jobs
