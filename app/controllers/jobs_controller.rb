@@ -29,13 +29,15 @@ class JobsController < ApplicationController
         job_search.search
       else
         if job_search.first.updated_at < 1.hour.ago
+          job_search = job_search.first
         else
-          job_search.first.touch
-          job_search.first.search
+          job_search = job_search.first
+          job_search.touch
+          job_search.search
         end
       end
 
-      @jobs = job_search.first.search.paginate(:page => params[:page], :per_page => 25)
+      @jobs = job_search.search.paginate(:page => params[:page], :per_page => 25)
 
       render "jobs/results"
     end
