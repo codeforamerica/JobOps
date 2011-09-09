@@ -5,22 +5,38 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     if params[:q].nil? and params[:near].nil?
-      if current_user      
+      if current_user
         job_search_ids = current_user.job_searches.map(&:id)
         @flagged_jobs = current_user.jobs
         @saved_searches = current_user.job_searches
-        @jobs = Job.includes(:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
+        @jobs = Job.includes([:location,:job_searches_jobs]).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
+        @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.location.location}", "latitude" => "#{job.location.lat}", "longitude" => "#{job.location.long}", "company" => job.company.name}}
       end
     else
       @flagged_jobs = []
       @saved_searched = [];
-      
-      if current_user      
+
+      if current_user
         job_search_ids = current_user.job_searches.map(&:id)
         @flagged_jobs = current_user.jobs
         @saved_searches = current_user.job_searches
       end
-      @jobs = Job.order("date_acquired DESC").paginate(:page => params[:page], :per_page => 25)
+
+      job_search =  JobSearch.where(:keyword => params[:q], :location => params[:near])
+
+      if job_search.blank?
+        job_search = JobSearch.create(:keyword => params[:q], :location => params[:near])
+        job_search.search
+      else
+        if job_search.first.updated_at < 1.hour.ago
+        else
+          job_search.first.touch
+          job_search.first.search
+        end
+      end
+
+      @jobs = job_search.first.search.paginate(:page => params[:page], :per_page => 25)
+
       render "jobs/results"
     end
 
@@ -49,12 +65,12 @@ class JobsController < ApplicationController
       current_user.job_users.where(:job_id => @job.id).first.delete
     else
       message = {"message" => "#{@job.title} flagged." }
-      current_user.jobs << @job      
+      current_user.jobs << @job
     end
     respond_to do |format|
       format.json { render :json => message }
     end
-    
+
   end
 
 end

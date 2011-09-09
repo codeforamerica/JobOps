@@ -1,35 +1,34 @@
+%script{:type => "text/javascript"}
+  =raw @jobs_json.to_json
 .wide-column
   .job-search-box
-    %form
+    = form_tag('/jobs', :method => :get) do
       .search-block
         %label{ :for =>'q' }
           Search for
           %span
             (job title, skills, keywords)
-        %input{ :value => '', :name => 'q', :type => 'text' }
+        =text_field_tag :q
       .search-block
         %label{ :for => 'near' }
           Near
           %span
             (address, city, state, or zip code)
-        %input{ :value => '', :name => 'near', :type => 'text' }
+        =text_field_tag :name
       .search-btn-block
-        %input.green-btn{ :type => 'submit', :value => 'Search' }
+        = submit_tag 'Search', :class => 'green-btn'
       %br.clear
-  -if current_user
+  - if current_user
     .cta-box.saved-searches
       .cta-title
         Saved Searches
       .fixed-height
         %ul
-          - @saved_searches.each do |search|      
-            %li
-              %a{ :href => '#' }
-                =search.keyword 
-                near 
-                =search.location
-              %span.result-count
-                =search.jobs.size
+        - @saved_searches.each do |search|
+          %li
+            = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
+            %span.result-count
+              =search.jobs.size
       .cta-footer
         %a{ :href => '#'}
           Manage saved searches
@@ -38,7 +37,7 @@
       .cta-title
         Flagged Jobs
       %ul
-        - @flagged_jobs.each do |job|  
+        - @flagged_jobs.each do |job|
           %li
             =link_to job.title, job
             %span.unflag-item
@@ -64,17 +63,17 @@
               %span.job-aquire
                 Acquired on
               =job.date_acquired
-            .job-excerpt
-              Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
-            -if @flagged_jobs.include?(job)
+            - if job.snippet?
+              .job-excerpt
+                =job.snippet
+            - if @flagged_jobs.include?(job)
               %span.unflag-item
                 %a{ :href => '/jobs/flag/'+job.id.to_s }
-            -else
+            - else
               %span.flag-item
                 %a{ :href => '/jobs/flag/'+job.id.to_s }
-            
-            %br.clear
 
+      %br.clear
       =will_paginate @jobs
       .pagination
         %span.previous

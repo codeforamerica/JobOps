@@ -1,22 +1,21 @@
 .wide-column
   .job-search-box
-    %form
+    = form_tag('/jobs', :method => :get) do
       .search-block
         %label{ :for =>'q' }
           Search for
           %span
             (job title, skills, keywords)
-        %input{ :value => '', :name => 'q', :type => 'text' }
+        = text_field_tag :q, params[:q]
       .search-block
         %label{ :for => 'near' }
           Near
           %span
             (address, city, state, or zip code)
-        %input{ :value => '', :name => 'near', :type => 'text' }
+        = text_field_tag :location, params[:location]
       .search-btn-block
-        %input.green-btn{ :type => 'submit', :value => 'Search' }
-      %br.clear
-
+        = submit_tag 'Search', :class => 'green-btn'
+    %br.clear
   .inner-sidebar
     .filter-box.smart-filter-enable
       %strong
@@ -85,8 +84,8 @@
         %li.job-listing
           =link_to job.title, job, { :class => 'job-title' }
           %span.job-meta
-            =job.company.name
-            =job.location.location
+            =job.company
+            =job.location
             %span.job-aquire
               Acquired on
             =job.date_acquired
