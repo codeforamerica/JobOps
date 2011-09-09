@@ -107,7 +107,7 @@ GEM
     hike (1.2.1)
     httpclient (2.2.1)
     i18n (0.6.0)
-    indeed (0.1.1)
+    indeed (0.1.2)
       rake
       yajl-ruby
     jquery-rails (1.0.13)
