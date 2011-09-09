@@ -3,7 +3,7 @@
 $(document).ready(function() {
   $('.fixed-height').scrollbar();
 
-  $('.flag-item, .unflag-item').click(function(ev) {
+  $('.flag-item, .unflag-item').live('click',function(ev) {
     ev.preventDefault();
     var $target = $(ev.target);
     var theId = $target.attr('data-jobid');
@@ -11,8 +11,9 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       if($target.hasClass('flag-item')) {
         $target.removeClass('flag-item').addClass('unflag-item');
-        $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><span class="unflag-item"><a href="/jobs/flag/'+theId+'"></a></span><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
+        $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
       } else {
+        //console.log($('a[data-jobid*="'+theId+'"]'));
         $target.removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
       }
