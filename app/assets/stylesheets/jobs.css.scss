@@ -55,8 +55,11 @@
   font-size: 0.7em;
   font-style: italic;
   border-bottom: 1px dotted #999999;
-  padding: 5px 5px 5px 0px;
+  padding: 5px 0px;
   clear: both;
+}
+.saved-searches ul li a {
+  padding-right: 25px;
 }
 
 .saved-searches ul li:first-child {
