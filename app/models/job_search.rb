@@ -9,9 +9,7 @@ class JobSearch < ActiveRecord::Base
   end
 
   def detect_moc?
-    if keyword[0].to_i > 0
-      true
-    elsif keyword[0] == "0"
+    if keyword =~ /^\d/
       true
     else
       false
@@ -30,7 +28,7 @@ class JobSearch < ActiveRecord::Base
   def process_direct_employer_jobs(jobs)
     jobs.each do |job|
       company = find_or_create_company(job["company"], job["location"])
-      location = find_or_create_location(job["location"])      
+      location = find_or_create_location(job["location"])
       find_job = Job.where(:title => job["title"], :company_id => company, :location_id => location)
       if !find_job.blank?
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
@@ -44,11 +42,11 @@ class JobSearch < ActiveRecord::Base
   def process_indeed_jobs(jobs)
     jobs.each do |job|
       company = find_or_create_company(job["company"], job["formattedLocation"])
-      location = find_or_create_location(job["formattedLocation"])      
+      location = find_or_create_location(job["formattedLocation"])
       find_job = Job.where(:title => job["jobtitle"], :company_id => company, :location_id => location)
       if !find_job.blank?
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
-      else      
+      else
         new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"])
         self.jobs << new_job unless !new_job.errors.blank?
       end

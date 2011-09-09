@@ -119,8 +119,7 @@ describe JobSearch do
     it 'Indeed adds jobs to new job search if they already exist' do
       job_search = Factory(:job_search, :keyword => "ruby")
       job_search2 = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2")
-      .to_return(:status => 200, :body => fixture("indeed_ruby.json"))
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
       @indeed = SearchIndeed.new.indeed_client
       jobs = @indeed.search({:q => job_search.keyword})
       job_search.process_indeed_jobs(jobs)
