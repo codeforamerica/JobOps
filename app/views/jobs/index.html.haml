@@ -17,7 +17,7 @@
         =text_field_tag :name
       .search-btn-block
         = submit_tag 'Search', :class => 'green-btn'
-      %br.clear
+      %br.clearit
   - if current_user
     .cta-box.saved-searches
       .cta-title
@@ -39,7 +39,7 @@
       .fixed-height
         %ul
           - @flagged_jobs.each do |job|  
-            %li
+            %li{ :id => 'flagged-job-'+job.id.to_s }
               %span.unflag-item
                 %a{ :href => '/jobs/flag/'+job.id.to_s }
               =link_to job.title, job
@@ -59,9 +59,9 @@
           %li.job-listing
             .job-heading
               - if @flagged_jobs.include?(job)
-                %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s }
+                %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
               - else
-                %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s }
+                %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
               %span.job-title-wrapper
                 =link_to job.title, job, { :class => 'job-title' }
             %span.job-meta
@@ -74,15 +74,16 @@
               .job-excerpt
                 =job.snippet
 
-            %br.clear
+            %br.clearit
       =will_paginate @jobs
 
 #sidebar
   .cta-box.special-cta
-    %span
+    .special-title
       Explore your career options
-    Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
-
+    .special-copy
+      Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
+    %br.clearit
   .cta-box.jobs-applied-for
     .cta-title
       Jobs Applied For

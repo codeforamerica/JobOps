@@ -106,7 +106,20 @@
   display: block;
 }
 .special-cta {
-  
+  background:#283e54;
+  line-height:120%;
+}
+.special-cta .special-title {
+  float: left;
+  width:inherit;
+  color:#FFF;
+  font-size:1.0em;
+}
+.special-cta .special-copy {
+ float: left;
+ width:inherit;
+ color:#7a8a99;
+ font-size:0.75em;
 }
 .recommended-jobs {
 }
