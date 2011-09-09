@@ -29,15 +29,29 @@ class JobSearch < ActiveRecord::Base
 
   def process_direct_employer_jobs(jobs)
     jobs.each do |job|
-      new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["location"]), :url => job["url"])
-      self.jobs << new_job unless !new_job.errors.blank?
+      company = find_or_create_company(job["company"], job["location"])
+      location = find_or_create_location(job["location"])      
+      find_job = Job.where(:title => job["title"], :company_id => company, :location_id => location)
+      if !find_job.blank?
+        self.jobs << find_job.first unless self.jobs.include?(find_job.first)
+      else
+        new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => company, :location => location, :url => job["url"])
+        self.jobs << new_job unless !new_job.errors.blank?
+      end
     end
   end
 
   def process_indeed_jobs(jobs)
     jobs.each do |job|
-      new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"] ,:company => find_or_create_company(job["company"], job["location"]),:location => find_or_create_location(job["formattedLocation"]), :url => job["url"])
-      self.jobs << new_job unless !new_job.errors.blank?
+      company = find_or_create_company(job["company"], job["formattedLocation"])
+      location = find_or_create_location(job["formattedLocation"])      
+      find_job = Job.where(:title => job["jobtitle"], :company_id => company, :location_id => location)
+      if !find_job.blank?
+        self.jobs << find_job.first unless self.jobs.include?(find_job.first)
+      else      
+        new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"])
+        self.jobs << new_job unless !new_job.errors.blank?
+      end
     end
   end
 
