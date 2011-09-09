@@ -13,8 +13,7 @@ $(document).ready(function() {
         $target.removeClass('flag-item').addClass('unflag-item');
         $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
       } else {
-        //console.log($('a[data-jobid*="'+theId+'"]'));
-        $target.removeClass('unflag-item').addClass('flag-item');
+        $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
       }
       $('.fixed-height').scrollbar('repaint');
