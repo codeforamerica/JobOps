@@ -19,6 +19,8 @@
         = submit_tag 'Search', :class => 'green-btn'
       %br.clearit
   - if current_user
+
+
     .cta-box.saved-searches
       .cta-title
         Saved Searches
@@ -26,12 +28,13 @@
         %ul
           - @saved_searches.each do |search|
             %li
-              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
               %span.result-count
                 =search.jobs.size
+              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
       .cta-footer
         %a{ :href => '#'}
           Manage saved searches
+
 
     .cta-box.flagged-jobs
       .cta-title
@@ -45,7 +48,11 @@
       .cta-footer
         %a{ :href => '#'}
           Compare flagged jobs
+          
+          
     %br.clearit
+    
+    
     .white-box.recommended-jobs
       .recommended-jobs-title
         Recommended Jobs
