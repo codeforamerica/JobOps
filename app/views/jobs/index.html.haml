@@ -24,11 +24,11 @@
         Saved Searches
       .fixed-height
         %ul
-        - @saved_searches.each do |search|
-          %li
-            = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
-            %span.result-count
-              =search.jobs.size
+          - @saved_searches.each do |search|
+            %li
+              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
+              %span.result-count
+                =search.jobs.size
       .cta-footer
         %a{ :href => '#'}
           Manage saved searches
