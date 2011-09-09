@@ -47,30 +47,30 @@
 
 .saved-searches ul {
   list-style: none;
-  padding: 0;
+  padding: 0 15px 0 0;
   margin: 0;
 }
-
 .saved-searches ul li {
   font-size: 0.7em;
   font-style: italic;
   border-bottom: 1px dotted #999999;
-  padding: 5px 0px;
+  padding: 5px 0;
+  min-height: 35px;
   clear: both;
 }
 .saved-searches ul li a {
-  padding-right: 25px;
+  line-height: 100%;
 }
-
 .saved-searches ul li:first-child {
   border-top: 1px dotted #999999;
 }
-
 .result-count {
   float: right;
   background-color: #6b8299;
   color: #FFF;
   padding: 1px 4px 1px 3px;
+  margin: 5px 0 0 10px;
+  display: block;
   border-radius: 8px;
 }
 
@@ -91,6 +91,9 @@
   border-bottom: 1px dotted #999999;
   padding: 5px 10px 5px 20px;
   clear: both;
+}
+.flagged-jobs ul li a {
+  line-height: 100%;
 }
 .flagged-jobs ul li:first-child {
   border-top: 1px dotted #999999;
