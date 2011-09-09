@@ -68,7 +68,7 @@
     .search-results-header
       .search-result-title
         %span
-          281
+          =@jobs.total_entries
         Jobs Found
       .search-result-sortby
         Sort by:
@@ -97,8 +97,8 @@
           -else
             %span.flag-item
               %a{ :href => '/jobs/flag/'+job.id.to_s }
-
           %br.clear
+      =will_paginate @jobs
 
 #sidebar
   .cta-box.special-cta
