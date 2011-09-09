@@ -13,7 +13,7 @@
         =@job.title
       at
       %span.job-company
-        =@job.company
+        =@job.company.name
       %span.favorite-button
     .inner-sidebar
       %img{ :src => '/images/mockup-map2.png' }
@@ -21,12 +21,12 @@
         %dt
           Location
         %dd
-          =@job.location
+          =@job.location.location
         %dt
           Company
         %dd
           %a{ :href => '#'}
-            =@job.company
+            =@job.company.name
         %dt
           Job Type
         %dd
