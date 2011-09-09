@@ -35,7 +35,7 @@ Spork.prefork do
 
     #Devise helper
     config.include Devise::TestHelpers, :type => :controller
-
+    config.include Devise::TestHelpers, :type => :view
     config.extend ControllerMacros, :type => :controller
 
     config.before(:each, :type => :model) do

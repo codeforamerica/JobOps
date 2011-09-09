@@ -37,7 +37,8 @@ class JobsController < ApplicationController
         end
       end
 
-      @jobs = job_search.search.paginate(:page => params[:page], :per_page => 25)
+      job_search.search
+      @jobs = job_search.reload.jobs.paginate(:page => params[:page], :per_page => 25)
 
       render "jobs/results"
     end

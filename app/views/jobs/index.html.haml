@@ -14,7 +14,10 @@
           Near
           %span
             (address, city, state, or zip code)
-        =text_field_tag :name
+        -if current_user.location?
+          =text_field_tag :location, current_user.location
+        -else
+          =text_field_tag :location
       .search-btn-block
         = submit_tag 'Search', :class => 'green-btn'
       %br.clearit

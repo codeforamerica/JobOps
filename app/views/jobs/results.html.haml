@@ -68,7 +68,7 @@
     .search-results-header
       .search-result-title
         %span
-          281
+          =@jobs.total_entries
         Jobs Found
       .search-result-sortby
         Sort by:
@@ -82,23 +82,23 @@
     %ol.job-listings
       - @jobs.each do |job|
         %li.job-listing
-          =link_to job.title, job, { :class => 'job-title' }
+          =link_to job.title, job_path(job.id), { :class => 'job-title' }
           %span.job-meta
-            =job.company
-            =job.location
+            =job.company.name
+            =job.location.location
             %span.job-aquire
               Acquired on
             =job.date_acquired
           .job-excerpt
-            Praesent enim orci, sollicitudin eget ultrices sit amet, vulputate vel sem. Pellentesque pellentesque...
+            =job.snippet
           -if @flagged_jobs.include?(job)
             %span.unflag-item
               %a{ :href => '/jobs/flag/'+job.id.to_s }
           -else
             %span.flag-item
               %a{ :href => '/jobs/flag/'+job.id.to_s }
-
           %br.clear
+      =will_paginate @jobs
 
 #sidebar
   .cta-box.special-cta
