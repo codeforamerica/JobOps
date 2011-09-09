@@ -24,11 +24,11 @@
         Saved Searches
       .fixed-height
         %ul
-        - @saved_searches.each do |search|
-          %li
-            = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
-            %span.result-count
-              =search.jobs.size
+          - @saved_searches.each do |search|
+            %li
+              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
+              %span.result-count
+                =search.jobs.size
       .cta-footer
         %a{ :href => '#'}
           Manage saved searches
@@ -36,12 +36,13 @@
     .cta-box.flagged-jobs
       .cta-title
         Flagged Jobs
-      %ul
-        - @flagged_jobs.each do |job|
-          %li
-            =link_to job.title, job
-            %span.unflag-item
-              %a{ :href => '/jobs/flag/'+job.id.to_s }
+      .fixed-height
+        %ul
+          - @flagged_jobs.each do |job|  
+            %li
+              %span.unflag-item
+                %a{ :href => '/jobs/flag/'+job.id.to_s }
+              =link_to job.title, job
       .cta-footer
         %a{ :href => '#'}
           Compare flagged jobs
@@ -56,7 +57,13 @@
       %ol.job-listings
         - @jobs.each do |job|
           %li.job-listing
-            =link_to job.title, job, { :class => 'job-title' }
+            .job-heading
+              - if @flagged_jobs.include?(job)
+                %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s }
+              - else
+                %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s }
+              %span.job-title-wrapper
+                =link_to job.title, job, { :class => 'job-title' }
             %span.job-meta
               =job.company.name
               =job.location.location
@@ -66,51 +73,9 @@
             - if job.snippet?
               .job-excerpt
                 =job.snippet
-            - if @flagged_jobs.include?(job)
-              %span.unflag-item
-                %a{ :href => '/jobs/flag/'+job.id.to_s }
-            - else
-              %span.flag-item
-                %a{ :href => '/jobs/flag/'+job.id.to_s }
 
-      %br.clear
+            %br.clear
       =will_paginate @jobs
-      .pagination
-        %span.previous
-          Previous
-        %ul.page-number
-          %li.active
-            %a{ :href => '#'}
-              1
-          %li
-            %a{ :href => '#'}
-              2
-          %li
-            %a{ :href => '#'}
-              3
-          %li
-            %a{ :href => '#'}
-              4
-          %li
-            %a{ :href => '#'}
-              5
-          %li
-            %a{ :href => '#'}
-              6
-          %li
-            %a{ :href => '#'}
-              7
-          %li
-            %a{ :href => '#'}
-              8
-          %li
-            %a{ :href => '#'}
-              9
-          %li
-            %a{ :href => '#'}
-              10
-        %span.next
-          Next
 
 #sidebar
   .cta-box.special-cta

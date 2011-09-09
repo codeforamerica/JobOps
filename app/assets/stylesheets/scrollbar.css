@@ -1,0 +1,21 @@
+.scrollbar-pane {
+    margin-right: 15px;
+}
+
+.scrollbar-handle-container {
+    background: #FFF;
+    width: 10px;
+	border-radius: 2px;
+}
+
+.scrollbar-handle {
+    width: 10px;
+    background: #999;
+	border-radius: 2px;
+}
+.scrollbar-handle-up {
+    display: none;
+}
+.scrollbar-handle-down {
+    display: none;
+}
