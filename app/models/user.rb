@@ -57,8 +57,14 @@ class User < ActiveRecord::Base
 
        unless career_by_moc.nil?
         career_by_moc.each do |career|
-          search = JobSearch.find_or_create_by_keyword(career.title)
-          job_searches_user.find_or_create_by_job_search_id(search.id)
+          if self.location?
+           job_search = JobSearch.where(:keyword => career.title, :location => self.location)
+           job_search = JobSearch.create(:keyword => career.title, :location => self.location) unless !job_search.blank?
+          else
+           job_search = JobSearch.where(:keyword => career.title) 
+           job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?        
+          end
+          self.job_searches << job_search          
         end
        end
     end
