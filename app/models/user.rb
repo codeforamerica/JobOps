@@ -42,8 +42,15 @@ class User < ActiveRecord::Base
 
   def add_saved_search
     unless self.moc.nil?
-       search = JobSearch.find_or_create_by_keyword(self.moc)
-       job_searches_user.find_or_create_by_job_search_id(search.id)
+      if self.location?
+       job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
+       job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
+      else
+       job_search = JobSearch.where(:keyword => self.moc) 
+       job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?        
+      end
+      
+      self.job_searches << job_search
 
        careers = Career.new.futures_pipeline
        career_by_moc = careers.search(self.moc)
