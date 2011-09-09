@@ -95,18 +95,14 @@
 .flagged-jobs ul li:first-child {
   border-top: 1px dotted #999999;
 }
-.flagged-jobs span.unflag-item {
-  height:8px;
-  width:8px;
-  display: block;
-  float: right;
-}
-.flagged-jobs span.unflag-item a {
+
+.flagged-jobs .unflag-item {
   background: url(/images/remove.png) no-repeat right top;
   height:8px;
   width:8px;
   margin: 8px 0 0 10px;
   display: block;
+  float: right;
 }
 .special-cta {
   background:#283e54;
