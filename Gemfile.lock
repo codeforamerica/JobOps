@@ -54,7 +54,6 @@ GEM
     bcrypt-ruby (3.0.0-java)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.0)
-    cocaine (0.2.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -144,11 +143,6 @@ GEM
       faraday (~> 0.6.1)
       multi_json (>= 0.0.5)
     orm_adapter (0.0.5)
-    paperclip (2.4.1)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     pg (0.11.0)
     polyglot (0.3.2)
     rack (1.3.2)
@@ -278,7 +272,6 @@ DEPENDENCIES
   mocha
   nifty-generators
   oa-oauth
-  paperclip
   pg
   rails (~> 3.1.0)
   rspec-rails

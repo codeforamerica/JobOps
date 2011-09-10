@@ -11,15 +11,6 @@ class User < ActiveRecord::Base
                   :rank, :disability, :security_clearance, :unit, :resume, :avatar,
                   :privacy_settings, :email_settings
 
-  if Rails.env  == 'development'
-    has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100"}
-  elsif Rails.env  == 'production'
-    has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
-                    :storage => :s3,
-                    :bucket => 'jobops',
-                    :s3_credentials => {:access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET']}
-  end
-
   serialize :email_settings
   serialize :privacy_settings
 
@@ -35,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :job_searches_user
   has_many :job_searches, :through => :job_searches_user
   has_many :job_users
-  has_many :jobs, :through => :job_users  
+  has_many :jobs, :through => :job_users
   validates_presence_of :name
 
   after_save :add_saved_search
@@ -46,10 +37,10 @@ class User < ActiveRecord::Base
        job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
        job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
       else
-       job_search = JobSearch.where(:keyword => self.moc) 
-       job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?        
+       job_search = JobSearch.where(:keyword => self.moc)
+       job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?
       end
-      
+
       self.job_searches << job_search
 
        careers = Career.new.futures_pipeline
@@ -61,10 +52,10 @@ class User < ActiveRecord::Base
            job_search = JobSearch.where(:keyword => career.title, :location => self.location)
            job_search = JobSearch.create(:keyword => career.title, :location => self.location) unless !job_search.blank?
           else
-           job_search = JobSearch.where(:keyword => career.title) 
-           job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?        
+           job_search = JobSearch.where(:keyword => career.title)
+           job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?
           end
-          self.job_searches << job_search          
+          self.job_searches << job_search
         end
        end
     end

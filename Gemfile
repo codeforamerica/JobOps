@@ -18,7 +18,6 @@ gem 'haml'
 gem 'indeed'
 gem 'jquery-rails'
 gem 'oa-oauth', :require => 'omniauth/oauth'
-gem 'paperclip'
 gem "geocoder"
 gem 'will_paginate', '~>3.0'
 
