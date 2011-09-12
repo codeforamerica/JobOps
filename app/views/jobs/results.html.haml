@@ -57,41 +57,12 @@
           %option{ :value => '3' }
             Salary
     %ol.job-listings
-      - @jobs.each do |job|
-        %li.job-listing
-          =link_to job.title, job_path(job.id), { :class => 'job-title' }
-          %span.job_source{:class=>job.job_source}
-            =job.job_source
-          %span.job-meta
-            =job.company.name
-            =job.location.location
-            %span.job-aquire
-              Acquired on
-            =job.date_acquired
-          .job-excerpt
-            =job.snippet
-          -if @flagged_jobs.include?(job)
-            %span.unflag-item
-              %a{ :href => '/jobs/flag/'+job.id.to_s }
-          -else
-            %span.flag-item
-              %a{ :href => '/jobs/flag/'+job.id.to_s }
-          %br.clear
-      =will_paginate @jobs
+      = render 'joblisting'
+    =will_paginate @jobs
 
 #sidebar
-  .cta-box.special-cta
-    .special-title
-      Explore your career options
-    .special-copy
-      Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
-    %br.clearit
-  .cta-box.jobs-applied-for
-    .cta-title
-      Jobs Applied For
-    You haven't applied for any jobs yet.
-
   .cta-box.map
     %img{ :src => '/images/mockup-map.png' }
 
+    = render 'savedsearches'
 %br

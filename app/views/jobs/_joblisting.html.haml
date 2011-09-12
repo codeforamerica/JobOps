@@ -1,0 +1,23 @@
+- @jobs.each do |job|
+  %li.job-listing
+    .job-heading
+      - if @flagged_jobs.include?(job)
+        %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
+      - else
+        %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
+      %span.job-number
+        = @counter = @counter + 1
+      %span.job-title-wrapper
+        =link_to job.title, job, { :class => 'job-title' }
+      %span.job_source{:class=>job.job_source}
+        =job.job_source
+    %span.job-meta
+      =job.company.name
+      =job.location.location
+      %span.job-aquire
+        Acquired on
+      =job.date_acquired
+    - if job.snippet?
+      .job-excerpt
+        =job.snippet
+    %br.clearit
