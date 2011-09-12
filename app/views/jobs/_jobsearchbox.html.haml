@@ -1,23 +1,25 @@
 .job-search-box
-  = form_tag('/jobs', :method => :get) do
+  =form_for @search do |f|
     .search-block
       %label{ :for =>'q' }
         Search for
         %span
           (job title, skills, keywords)
-      =text_field_tag :q, params[:q]
+      -if params[:search] and params[:search][:job_searches_keyword_contains]
+        =f.text_field :job_searches_keyword_contains, :value => params[:search][:job_searches_keyword_contains]
+      -else
+        =f.text_field :job_searches_keyword_contains
     .search-block
       %label{ :for => 'near' }
         Near
         %span
           (address, city, state, or zip code)
-      - if current_user
-        - if params[:near].nil?
-          =text_field_tag :near, current_user.location
-        - else
-          =text_field_tag :near, params[:near]
+      - if params[:search] and params[:search][:job_searches_location_contains]
+        =f.text_field :job_searches_location_contains, :value => params[:search][:job_searches_location_contains]
+      - elsif current_user
+        =f.text_field :job_searches_location_contains, :value => current_user.location
       - else
-        =text_field_tag :near, params[:near]
+        =f.text_field :job_searches_location_contains
     .search-btn-block
       = submit_tag 'Search', :class => 'green-btn'
     %br.clearit

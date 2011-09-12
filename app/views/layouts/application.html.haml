@@ -5,6 +5,7 @@
       JobOps
   = stylesheet_link_tag 'application'
   = javascript_include_tag 'application'
+  %script{ :src => 'http://maps.googleapis.com/maps/api/js?sensor=false'}
   = csrf_meta_tags
 
   %body.home
@@ -23,7 +24,7 @@
           %p
             Code for America Labs, Inc. is a non-partisan, non-political 501(c)(3) organization
           %p
-            Content is licensed through 
+            Content is licensed through
             %a{:href => '#'}Creative Commons.
         .right
           %ul#footer-links
