@@ -20,7 +20,7 @@ $(document).ready(function() {
     });
   });
 
-  var mapCenter = new google.maps.LatLng(37.779398571318765, -122.43988037109375);
+  var mapCenter = new google.maps.LatLng(37.77940, -122.43988);
   var mapOptions = {
     zoom: 10,
     mapTypeId: google.maps.MapTypeId.TERRAIN,
