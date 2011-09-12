@@ -11,9 +11,6 @@ class JobsController < ApplicationController
         @saved_searches = current_user.job_searches
         @jobs = Job.includes([:location,:job_searches_jobs]).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
         @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.location.location}", "latitude" => "#{job.location.lat}", "longitude" => "#{job.location.long}", "company" => job.company.name}}
-        unless current_user.moc.nil?
-          @careers = Career.new.futures_pipeline.search(current_user.moc)
-        end
       end
     else
       @flagged_jobs = []
@@ -24,6 +21,9 @@ class JobsController < ApplicationController
         job_search_ids = current_user.job_searches.map(&:id)
         @flagged_jobs = current_user.jobs
         @saved_searches = current_user.job_searches
+        unless current_user.moc.nil?
+          @careers = careers(current_user.moc)
+        end
       end
 
       job_search =  JobSearch.where(:keyword => params[:q], :location => params[:near])
@@ -39,6 +39,10 @@ class JobsController < ApplicationController
           job_search.touch
           job_search.search
         end
+      end
+
+      if (params[:q] =~ /^\d/)
+        @careers = careers(params[:q])
       end
 
       job_search.search
@@ -77,7 +81,12 @@ class JobsController < ApplicationController
     respond_to do |format|
       format.json { render :json => message }
     end
-
   end
+
+  #Load the related careers based on Fututures API
+  def careers(moc)
+    Career.new.futures_pipeline.search(moc)
+  end
+
 
 end
