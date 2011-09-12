@@ -67,7 +67,7 @@ class JobSearch < ActiveRecord::Base
 
   def search_indeed
     @indeed = SearchIndeed.new.indeed_client
-    jobs = @indeed.search({:q => keyword})
+    jobs = @indeed.search(:q => keyword)
     process_indeed_jobs(jobs)
   end
 

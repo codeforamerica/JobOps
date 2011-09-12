@@ -6,6 +6,8 @@ Spork.prefork do
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
   ENV["RAILS_ENV"] ||= 'test'
+  require 'simplecov'
+  SimpleCov.start
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'webmock/rspec'
@@ -66,7 +68,6 @@ Spork.each_run do
   # This code will be run each time you run your specs.
 
   require 'factory_girl_rails'
-  require 'simplecov'
   Dir["#{Rails.root}/app/models/**/*.rb"].each do |model|
     load model
   end
