@@ -44,7 +44,6 @@
         .filter-footer
           =f.text_field :company_name_contains
           =f.submit "Submit", :value=>"Search", :class => "green-btn"        
-        
 
   .white-box.search-results-wrapper
     .search-results-header
@@ -73,14 +72,11 @@
         Current Search
       %ul
         %li
-          "Nurse" near San Francisco, CA
-        %li
-          Within 20 miles
-        %li
-          3 careers select
+          = "#{params[:q]}"
+          - unless params[:near].nil?
+            = "near #{params[:near]}"
       .cta-footer
-        %a.green-btn{ :href => '#'}
-          Save this search
+        = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
 

@@ -358,6 +358,9 @@ Changelog:
                 'cursor':   'pointer'
             });
 
+            // Custom hack
+            this.container.parent('.cta-box').addClass('scroll-on');
+
             // set initial position of pane to 'top'
             this.pane.top = 0;
 
