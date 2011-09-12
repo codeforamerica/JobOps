@@ -20,13 +20,43 @@ $(document).ready(function() {
     });
   });
 
-  var mapCenter = new google.maps.LatLng(37.77940, -122.43988);
-  var mapOptions = {
-    zoom: 10,
-    mapTypeId: google.maps.MapTypeId.TERRAIN,
-    center: mapCenter,
-    streetViewControl: false,
-    mapTypeControl: false
-  };
-  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  var fakeJobs = [
+    { lat: 37.774929, lng: -122.419415 },
+    { lat: 37.812496, lng: -122.287445 },
+    { lat: 37.758772, lng: -122.388381 },
+    { lat: 37.744114, lng: -122.439880 },
+    { lat: 37.797305, lng: -122.459793 },
+    { lat: 37.855880, lng: -122.481765 },
+    { lat: 37.661537, lng: -122.394561 },
+    { lat: 37.664255, lng: -122.089004 },
+    { lat: 37.777227, lng: -121.970214 },
+    { lat: 37.937157, lng: -122.048492 }
+  ];
+
+  function setupMap(jobs) {
+    var markers = [], tempMarker, bounds, jobLatLng;
+    var mapCenter = new google.maps.LatLng(37.77940, -122.43988);
+    var mapOptions = {
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      center: mapCenter,
+      streetViewControl: false,
+      mapTypeControl: false
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    bounds = new google.maps.LatLngBounds();
+    
+    $.each(jobs, function(idx, job) {
+      jobLatLng = new google.maps.LatLng(job.lat, job.lng);
+      bounds.extend(jobLatLng);
+      tempMarker = new google.maps.Marker({
+            position: jobLatLng,
+            map: map
+      });
+      markers.push(tempMarker);
+    });
+    map.fitBounds(bounds);
+  }
+  
+  setupMap(fakeJobs);
 });
