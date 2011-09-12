@@ -1,48 +1,50 @@
 .wide-column
   = render 'jobsearchbox'
   .inner-sidebar
-    .filter-box.smart-filter-enable
-      #smart-filter
-        .smart-filter-title
-          %span
-            Smart Filters
-          %a{ :href => '#' }What's this?
-        %input{:type => 'button', :class => 'smart-filter-toggle'}
-      %br.clearit
-    .filter-box.basics
-      .filter-title
-        Basics
+    =form_for @search do |f|
+      .filter-box.smart-filter-enable
+        #smart-filter
+          .smart-filter-title
+            %span
+              Smart Filters
+            %a{ :href => '#' }What's this?
+          %input{:type => 'button', :class => 'smart-filter-toggle'}
+        %br.clearit
+      .filter-box.basics
+        .filter-title
+          Basics
+        .filter-footer
 
-    .filter-box.job-type
-      .filter-title
-        Job Type
+      .filter-box.date
+        .filter-title
+          Post on After
+        .filter-footer
+          =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
+      .filter-box.keyword
+        .filter-title
+          Search
+        .filter-footer
+          =f.text_field :job_searches_keyword_contains
+        
+      .filter-box.location
+        .filter-title
+          Location
+        .filter-footer
+          =f.text_field :job_searches_location_contains
 
-    .filter-box.skills
-      .filter-title
-        Skills
-      .filter-footer
-        %a{ :href => '#'}Select skills...
-
-    .filter-box.careers
-      .filter-title
-        Careers
-      %ul
-        - @careers.each do |career|
-          %li= link_to career.title, :q => career.title, :location => params[:near]
-      .filter-footer
-        %a{ :href => '#'}Select careers...
-
-    .filter-box.companies
-      .filter-title
-        Companies
-      .filter-footer
-        %a{ :href => '#'}Select companies...
-
-    .filter-box.industries
-      .filter-title
-        Industries
-      .filter-footer
-        %a{ :href => '#'}Select industries...
+      .filter-box.title
+        .filter-title
+          Title Contains
+        .filter-footer
+          =f.text_field :title_contains
+        
+      .filter-box.companies
+        .filter-title
+          Company Name Contains
+        .filter-footer
+          =f.text_field :company_name_contains
+          =f.submit "Submit", :value=>"Search", :class => "green-btn"        
+        
 
   .white-box.search-results-wrapper
     .search-results-header

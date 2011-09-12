@@ -5,12 +5,15 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @counter = 0
-    if params[:q].nil? and params[:near].nil?
+    if params[:search].nil?
+
       if current_user
         job_search_ids = current_user.job_searches.map(&:id)
         @flagged_jobs = current_user.jobs
         @saved_searches = current_user.job_searches
-        @jobs = Job.includes([:location,:job_searches_jobs]).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").paginate(:page => params[:page], :per_page => 25)
+        
+        @search = Job.includes(:location,:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").search(params[:search])
+        @jobs = @search.paginate(:page => params[:page], :per_page => 25)
         @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.location.location}", "latitude" => "#{job.location.lat}", "longitude" => "#{job.location.long}", "company" => job.company.name}}
       end
     else
@@ -27,10 +30,10 @@ class JobsController < ApplicationController
         end
       end
 
-      job_search =  JobSearch.where(:keyword => params[:q], :location => params[:near])
+      job_search =  JobSearch.where(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:location_location_contains])
 
       if job_search.blank?
-        job_search = JobSearch.create(:keyword => params[:q], :location => params[:near])
+        job_search = JobSearch.create(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:location_location_contains])
         job_search.search
       else
         if job_search.first.updated_at < 1.hour.ago
@@ -42,15 +45,16 @@ class JobsController < ApplicationController
         end
       end
 
-      if (params[:q] =~ /^\d/)
-        @careers = careers(params[:q])
+      if (params[:search][:job_searches_keyword_contains] =~ /^\d/)
+        @careers = careers(params[:search][:job_searches_keyword_contains])
       end
 
-      job_search.search
-      @jobs = job_search.reload.jobs.paginate(:page => params[:page], :per_page => 25)
+      @search = job_search.reload.jobs.search(params[:search])
+      @jobs = @search.paginate(:page => params[:page], :per_page => 25)
 
       render "jobs/results"
     end
+    
 
     #respond_to do |format|
      # format.html # index.html.erb

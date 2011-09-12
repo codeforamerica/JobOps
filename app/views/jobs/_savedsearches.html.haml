@@ -7,7 +7,7 @@
         %li
           %span.result-count
             =search.jobs.size
-          = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
+          = link_to "#{search.keyword} near #{search.location}", :search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword}
   .cta-footer
     %a{ :href => '#'}
       Manage saved searches
