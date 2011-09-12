@@ -29,35 +29,37 @@ class User < ActiveRecord::Base
   has_many :jobs, :through => :job_users
   validates_presence_of :name
 
-  after_save :add_saved_search
+  before_save :add_saved_search
 
   def add_saved_search
-    unless self.moc.nil?
-      if self.location?
-       job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
-       job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
-      else
-       job_search = JobSearch.where(:keyword => self.moc)
-       job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?
-      end
-
-      self.job_searches << job_search
-
-       careers = Career.new.futures_pipeline
-       career_by_moc = careers.search(self.moc)
-
-       unless career_by_moc.nil?
-        career_by_moc.each do |career|
-          if self.location?
-           job_search = JobSearch.where(:keyword => career.title, :location => self.location)
-           job_search = JobSearch.create(:keyword => career.title, :location => self.location) unless !job_search.blank?
-          else
-           job_search = JobSearch.where(:keyword => career.title)
-           job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?
-          end
-          self.job_searches << job_search
+    if self.moc_changed?
+      unless self.moc.nil?
+        if self.location?
+          job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
+          job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
+        else
+          job_search = JobSearch.where(:keyword => self.moc)
+          job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?
         end
-       end
+
+        self.job_searches << job_search
+
+        careers = Career.new.futures_pipeline
+        career_by_moc = careers.search(self.moc)
+
+        unless career_by_moc.nil?
+          career_by_moc.each do |career|
+            if self.location?
+              job_search = JobSearch.where(:keyword => career.title, :location => self.location)
+              job_search = JobSearch.create(:keyword => career.title, :location => self.location) unless !job_search.blank?
+            else
+              job_search = JobSearch.where(:keyword => career.title)
+              job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?
+            end
+            self.job_searches << job_search
+          end
+        end
+      end
     end
   end
 
