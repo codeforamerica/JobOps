@@ -21,14 +21,7 @@
         %a{ :href => '#'}Select skills...
 
     .filter-box.careers
-      .filter-title
-        Careers
-      %ul
-        - @careers.each do |career|
-          %li= link_to career.title, :q => career.title, :location => params[:near]
-      .filter-footer
-        %a{ :href => '#'}Select careers...
-
+      = render 'careers/related'
     .filter-box.companies
       .filter-title
         Companies
