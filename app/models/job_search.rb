@@ -29,11 +29,11 @@ class JobSearch < ActiveRecord::Base
     jobs.each do |job|
       company = find_or_create_company(job["company"], job["location"])
       location = find_or_create_location(job["location"])
-      find_job = Job.where(:title => job["title"], :company_id => company, :location_id => location)
+      find_job = Job.where(:title => job["title"], :company_id => company, :location_id => location, :job_source => "Direct_Employers")
       if !find_job.blank?
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
       else
-        new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => company, :location => location, :url => job["url"])
+        new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => company, :location => location, :url => job["url"], :job_source => "Direct_Employers")
         self.jobs << new_job unless !new_job.errors.blank?
       end
     end
@@ -43,11 +43,11 @@ class JobSearch < ActiveRecord::Base
     jobs.each do |job|
       company = find_or_create_company(job["company"], job["formattedLocation"])
       location = find_or_create_location(job["formattedLocation"])
-      find_job = Job.where(:title => job["jobtitle"], :company_id => company, :location_id => location)
+      find_job = Job.where(:title => job["jobtitle"], :company_id => company, :location_id => location, :job_source => "Indeed")
       if !find_job.blank?
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
       else
-        new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"])
+        new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"], :job_source => "Indeed")
         self.jobs << new_job unless !new_job.errors.blank?
       end
     end
