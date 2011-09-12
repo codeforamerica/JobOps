@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
+    @counter = 0
     if params[:q].nil? and params[:near].nil?
       if current_user
         job_search_ids = current_user.job_searches.map(&:id)
