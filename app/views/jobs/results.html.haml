@@ -76,6 +76,8 @@
       - @jobs.each do |job|
         %li.job-listing
           =link_to job.title, job_path(job.id), { :class => 'job-title' }
+          %span.job_source{:class=>job.job_source}
+            =job.job_source
           %span.job-meta
             =job.company.name
             =job.location.location

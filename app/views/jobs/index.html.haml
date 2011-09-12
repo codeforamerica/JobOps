@@ -71,6 +71,8 @@
                 %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
               %span.job-title-wrapper
                 =link_to job.title, job, { :class => 'job-title' }
+              %span.job_source{:class=>job.job_source}
+                =job.job_source
             %span.job-meta
               =job.company.name
               =job.location.location
@@ -80,6 +82,7 @@
             - if job.snippet?
               .job-excerpt
                 =job.snippet
+              
 
             %br.clearit
       =will_paginate @jobs
