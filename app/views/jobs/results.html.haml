@@ -2,10 +2,13 @@
   = render 'jobsearchbox'
   .inner-sidebar
     .filter-box.smart-filter-enable
-      %strong
-        Smart Filters
-      %a{ :href => '#' }What's this?
-
+      #smart-filter
+        .smart-filter-title
+          %span
+            Smart Filters
+          %a{ :href => '#' }What's this?
+        %input{:type => 'button', :class => 'smart-filter-toggle'}
+      %br.clearit
     .filter-box.basics
       .filter-title
         Basics
