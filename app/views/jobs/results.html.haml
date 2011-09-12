@@ -59,15 +59,19 @@
     %ol.job-listings
       - @jobs.each do |job|
         %li.job-listing
+          %span.job-number
+            = @counter = @counter + 1
           =link_to job.title, job_path(job.id), { :class => 'job-title' }
-          %span.job_source{:class=>job.job_source}
-            =job.job_source
           %span.job-meta
             =job.company.name
             =job.location.location
             %span.job-aquire
               Acquired on
             =job.date_acquired
+            %span.job-aquire
+              from 
+            %span.job_source{:class=>job.job_source}
+              =job.job_source
           .job-excerpt
             =job.snippet
           -if @flagged_jobs.include?(job)
