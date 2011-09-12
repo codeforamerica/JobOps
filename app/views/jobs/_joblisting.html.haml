@@ -25,11 +25,5 @@
           =job.job_source
       .job-excerpt
         =job.snippet
-      -if @flagged_jobs.include?(job)
-        %span.unflag-item
-          %a{ :href => '/jobs/flag/'+job.id.to_s }
-      -else
-        %span.flag-item
-          %a{ :href => '/jobs/flag/'+job.id.to_s }
       %br.clear
 
