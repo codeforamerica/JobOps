@@ -19,4 +19,14 @@ $(document).ready(function() {
       $('.fixed-height').scrollbar('repaint');
     });
   });
+
+  var mapCenter = new google.maps.LatLng(37.779398571318765, -122.43988037109375);
+  var mapOptions = {
+    zoom: 10,
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    center: mapCenter,
+    streetViewControl: false,
+    mapTypeControl: false
+  };
+  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 });
