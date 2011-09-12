@@ -103,6 +103,7 @@ describe JobSearch do
       jobs = @direct.search({:kw => job_search.keyword}).api.jobs.job
       lambda {
         JobSearch.new.process_direct_employer_jobs(jobs)
+        Job.last.job_source.should == "Direct_Employers"        
       }.should change(Job, :count).by(9)
     end
 
@@ -113,6 +114,7 @@ describe JobSearch do
       jobs = @indeed.search({:q => job_search.keyword})
       lambda {
         job_search.process_indeed_jobs(jobs)
+        Job.last.job_source.should == "Indeed"
       }.should change(Job, :count).by(5)
     end
 

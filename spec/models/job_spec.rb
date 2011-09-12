@@ -14,6 +14,11 @@ describe Job do
       @job.title = nil
       @job.should have(1).error_on(:title)
     end
+    
+    it 'presence of job_source' do
+      @job.job_source = nil
+      @job.should have(1).error_on(:job_source)
+    end
 
     it 'presence of location' do
       @job.location = nil
