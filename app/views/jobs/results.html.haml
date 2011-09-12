@@ -64,8 +64,7 @@
     =will_paginate @jobs
 
 #sidebar
-  .cta-box.map
-    %img{ :src => '/images/mockup-map.png' }
+  = render 'jobmap'
   - if current_user
     .cta-box.current-search
       .cta-title
