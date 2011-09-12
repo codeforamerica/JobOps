@@ -50,8 +50,8 @@ GEM
       builder
       mime-types
       xml-simple
-    bcrypt-ruby (3.0.0)
-    bcrypt-ruby (3.0.0-java)
+    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-java)
     bouncy-castle-java (1.5.0146.1)
     builder (3.0.0)
     coffee-script (2.2.0)
