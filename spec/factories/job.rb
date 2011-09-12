@@ -3,6 +3,7 @@ FactoryGirl.define do
     company {Factory(:company)}
     date_acquired Date.new(2011,1,1)
     location {Factory(:location)}
+    job_source "direct_employers"
     snippet {Faker::Lorem.sentence}
     title {Faker::Lorem.sentence + rand(100).to_s}
     url {"http://" + Faker::Internet.domain_suffix}
