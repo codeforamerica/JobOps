@@ -24,14 +24,7 @@
         %a{ :href => '#'}Select skills...
 
     .filter-box.careers
-      .filter-title
-        Careers
-      %ul
-        - @careers.each do |career|
-          %li= link_to career.title, :q => career.title, :location => params[:near]
-      .filter-footer
-        %a{ :href => '#'}Select careers...
-
+      = render 'careers/related'
     .filter-box.companies
       .filter-title
         Companies
@@ -71,14 +64,11 @@
         Current Search
       %ul
         %li
-          "Nurse" near San Francisco, CA
-        %li
-          Within 20 miles
-        %li
-          3 careers select
+          = "#{params[:q]}"
+          - unless params[:near].nil?
+            = "near #{params[:near]}"
       .cta-footer
-        %a.green-btn{ :href => '#'}
-          Save this search
+        = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
 
