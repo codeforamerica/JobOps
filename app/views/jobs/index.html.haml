@@ -24,35 +24,10 @@
   - if current_user
 
 
-    .cta-box.saved-searches
-      .cta-title
-        Saved Searches
-      .fixed-height
-        %ul
-          - @saved_searches.each do |search|
-            %li
-              %span.result-count
-                =search.jobs.size
-              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
-      .cta-footer
-        %a{ :href => '#'}
-          Manage saved searches
+    = render 'savedsearches'
 
-
-    .cta-box.flagged-jobs
-      .cta-title
-        Flagged Jobs
-      .fixed-height
-        %ul
-          - @flagged_jobs.each do |job|
-            %li{ :id => 'flagged-job-'+job.id.to_s }
-              %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
-              =link_to job.title, job
-      .cta-footer
-        %a{ :href => '#'}
-          Compare flagged jobs
-          
-          
+    = render 'flaggedjobs'
+    
     %br.clearit
     
     

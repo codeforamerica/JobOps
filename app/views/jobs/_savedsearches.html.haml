@@ -1,0 +1,13 @@
+.cta-box.saved-searches
+  .cta-title
+    Saved Searches
+  .fixed-height
+    %ul
+      - @saved_searches.each do |search|
+        %li
+          %span.result-count
+            =search.jobs.size
+          = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
+  .cta-footer
+    %a{ :href => '#'}
+      Manage saved searches
