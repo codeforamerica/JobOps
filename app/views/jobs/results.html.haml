@@ -63,7 +63,7 @@
       %ul
         %li
           = "#{params[:q]}"
-          - unless params[:near].nil?
+          - unless params[:near].empty?
             = "near #{params[:near]}"
       .cta-footer
         = submit_tag 'Save this search', {:class => 'green-btn'}
