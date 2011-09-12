@@ -1,21 +1,5 @@
 .wide-column
-  .job-search-box
-    = form_tag('/jobs', :method => :get) do
-      .search-block
-        %label{ :for =>'q' }
-          Search for
-          %span
-            (job title, skills, keywords)
-        = text_field_tag :q, params[:q]
-      .search-block
-        %label{ :for => 'near' }
-          Near
-          %span
-            (address, city, state, or zip code)
-        = text_field_tag :near, params[:near]
-      .search-btn-block
-        = submit_tag 'Search', :class => 'green-btn'
-    %br.clear
+  = render 'jobsearchbox'
   .inner-sidebar
     .filter-box.smart-filter-enable
       %strong
@@ -75,15 +59,19 @@
     %ol.job-listings
       - @jobs.each do |job|
         %li.job-listing
+          %span.job-number
+            = @counter = @counter + 1
           =link_to job.title, job_path(job.id), { :class => 'job-title' }
-          %span.job_source{:class=>job.job_source}
-            =job.job_source
           %span.job-meta
             =job.company.name
             =job.location.location
             %span.job-aquire
               Acquired on
             =job.date_acquired
+            %span.job-aquire
+              from 
+            %span.job_source{:class=>job.job_source}
+              =job.job_source
           .job-excerpt
             =job.snippet
           -if @flagged_jobs.include?(job)

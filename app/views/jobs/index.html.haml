@@ -1,55 +1,10 @@
 %script{:type => "text/javascript"}
   =raw @jobs_json.to_json
 .wide-column
-  .job-search-box
-    = form_tag('/jobs', :method => :get) do
-      .search-block
-        %label{ :for =>'q' }
-          Search for
-          %span
-            (job title, skills, keywords)
-        =text_field_tag :q
-      .search-block
-        %label{ :for => 'near' }
-          Near
-          %span
-            (address, city, state, or zip code)
-        - if current_user
-          =text_field_tag :near, current_user.location unless current_user.location.nil?
-        - else
-          =text_field_tag :near
-      .search-btn-block
-        = submit_tag 'Search', :class => 'green-btn'
-      %br.clearit
+  = render 'jobsearchbox'
   - if current_user
-    .cta-box.saved-searches
-      .cta-title
-        Saved Searches
-      .fixed-height
-        %ul
-          - @saved_searches.each do |search|
-            %li
-              %span.result-count
-                =search.jobs.size
-              = link_to "#{search.keyword} near #{search.location}", :q => search.keyword, :location => search.location
-      .cta-footer
-        %a{ :href => '#'}
-          Manage saved searches
-
-
-    .cta-box.flagged-jobs
-      .cta-title
-        Flagged Jobs
-      .fixed-height
-        %ul
-          - @flagged_jobs.each do |job|
-            %li{ :id => 'flagged-job-'+job.id.to_s }
-              %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
-              =link_to job.title, job
-      .cta-footer
-        %a{ :href => '#'}
-          Compare flagged jobs
-
+    = render 'savedsearches'
+    = render 'flaggedjobs'
 
     %br.clearit
 
@@ -69,16 +24,20 @@
                 %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
               - else
                 %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
+              %span.job-number
+                = @counter = @counter + 1
               %span.job-title-wrapper
                 =link_to job.title, job, { :class => 'job-title' }
-              %span.job_source{:class=>job.job_source}
-                =job.job_source
             %span.job-meta
               =job.company.name
               =job.location.location
               %span.job-aquire
                 Acquired on
               =job.date_acquired
+              %span.job-aquire
+                from 
+              %span.job_source{:class=>job.job_source}
+                =job.job_source
             - if job.snippet?
               .job-excerpt
                 =job.snippet
