@@ -74,7 +74,7 @@ GEM
     erubis (2.7.0)
     eventmachine (0.12.10)
     eventmachine (0.12.10-java)
-    execjs (1.2.4)
+    execjs (1.2.5)
       multi_json (~> 1.0)
     factory_girl (2.1.0)
     factory_girl_rails (1.2.0)
@@ -111,8 +111,7 @@ GEM
       thor (~> 0.14)
     jruby-openssl (0.7.4)
       bouncy-castle-java
-    json (1.5.4)
-    json (1.5.4-java)
+    json (1.6.0)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
