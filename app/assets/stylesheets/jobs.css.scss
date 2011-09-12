@@ -164,10 +164,21 @@ ol.job-listings li {
   font-size:0.75em;
   color: #4f8c23;
   float: left;
-  width: 100%;
+  padding-right:25px;
+  line-height:110%;
 }
 .job-aquire {
   color: #333;
+}
+.job-number {
+  float: left;
+  color: #FFF;
+  display: block;
+  font-size:0.55em;
+  margin-left:-34px;
+  padding-top:2px;
+  text-align:center;
+  width:24px;
 }
 .job-excerpt {
   float: left;
