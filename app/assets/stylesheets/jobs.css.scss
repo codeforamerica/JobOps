@@ -44,7 +44,15 @@
   padding: 10px;
   margin-right: 15px;
 }
-
+#sidebar .saved-searches  {
+  float: left;
+  width: 293px;
+  padding: 10px;
+  margin-right: 0;
+}
+#sidebar .scroll-on {
+  width: 283px;
+}
 .saved-searches ul {
   list-style: none;
   padding: 0 15px 0 0;
