@@ -63,6 +63,22 @@
 #sidebar
   .cta-box.map
     %img{ :src => '/images/mockup-map.png' }
+  - if current_user
+    .cta-box.current-search
+      .cta-title
+        Current Search
+      %ul
+        %li
+          "Nurse" near San Francisco, CA
+        %li
+          Within 20 miles
+        %li
+          3 careers select
+      .cta-footer
+        %a.green-btn{ :href => '#'}
+          Save this search
+        %a{ :href => '#'}
+          What's this?
 
     = render 'savedsearches'
 %br
