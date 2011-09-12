@@ -28,14 +28,16 @@
                 = @counter = @counter + 1
               %span.job-title-wrapper
                 =link_to job.title, job, { :class => 'job-title' }
-              %span.job_source{:class=>job.job_source}
-                =job.job_source
             %span.job-meta
               =job.company.name
               =job.location.location
               %span.job-aquire
                 Acquired on
               =job.date_acquired
+              %span.job-aquire
+                from 
+              %span.job_source{:class=>job.job_source}
+                =job.job_source
             - if job.snippet?
               .job-excerpt
                 =job.snippet
