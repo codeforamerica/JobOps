@@ -1,21 +1,5 @@
 .wide-column
-  .job-search-box
-    = form_tag('/jobs', :method => :get) do
-      .search-block
-        %label{ :for =>'q' }
-          Search for
-          %span
-            (job title, skills, keywords)
-        = text_field_tag :q, params[:q]
-      .search-block
-        %label{ :for => 'near' }
-          Near
-          %span
-            (address, city, state, or zip code)
-        = text_field_tag :near, params[:near]
-      .search-btn-block
-        = submit_tag 'Search', :class => 'green-btn'
-    %br.clear
+  = render 'jobsearchbox'
   .inner-sidebar
     .filter-box.smart-filter-enable
       %strong
