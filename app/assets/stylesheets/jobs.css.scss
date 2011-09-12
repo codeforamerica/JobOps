@@ -211,9 +211,31 @@ ol.job-listings li {
 
 /** SEARCH FILTERS **/
 
-.smart-filter-enable {
-
+.filter-box {
+  border-bottom:1px solid #CCC;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
 }
+.filter-box a {
+  font-size:0.75em;
+}
+.filter-box ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  color:#333;
+}
+.filter-box ul li {
+  margin-bottom:10px;
+  line-height:100%;
+}
+.filter-box ul li a{
+  color:#333;
+  width:inherit;
+  padding-right: 15px;
+  background:url(/images/remove.png) no-repeat top right;
+}
+
 #smart-filter {
   display:block;
 }
@@ -242,6 +264,12 @@ ol.job-listings li {
 }
 .smart-filter-toggle:hover {
   background:url(/images/filter_onoff.png) no-repeat 0 -30px;
+}
+
+.filter-title {
+  font-size:0.75em;
+  color:#999;
+  text-transform:uppercase;
 }
 
 .pagination {
