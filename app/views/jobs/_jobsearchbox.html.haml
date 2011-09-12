@@ -12,7 +12,10 @@
         %span
           (address, city, state, or zip code)
       - if current_user
-        =text_field_tag :near, current_user.location
+        - if params[:near].nil?
+          =text_field_tag :near, current_user.location
+        - else
+          =text_field_tag :near, params[:near]
       - else
         =text_field_tag :near, params[:near]
     .search-btn-block
