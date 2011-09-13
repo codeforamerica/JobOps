@@ -24,7 +24,7 @@ class JobSearchesUserController < ApplicationController
   # DELETE /job_searches_user/1
   # DELETE /job_searcues_user/1.json
   def destroy
-    @job_search = current_user.job_searches_user.where(:job_search_id => params[:id])
+    @job_search = current_user.job_searches_user.find_by_job_search_id(params[:id])
     @job_search.destroy
 
     message = {"message" => "Job search removed."}
