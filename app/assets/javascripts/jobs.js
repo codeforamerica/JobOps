@@ -29,7 +29,7 @@ $(document).ready(function() {
     $.getJSON(action +'?'+data, function(resp) {
       alert(resp.message);  // TODO: Make this a pretty alert
       if(!$('a[data-searchid = '+resp.newid+']').length) {
-        var $li = $('<li><span class="result-count">'+resultCount+'</span><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'">X</a><a href="'+location.pathname+location.search+'">'+sentence+'</a></li>');
+        var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
         $('.saved-searches ul').prepend($li);
       }
     });
@@ -41,7 +41,7 @@ $(document).ready(function() {
     var theId = $target.attr('data-jobid');
     $.getJSON($target.attr('href'), function(resp){
       alert(resp.message);
-      $target.parent().remove();
+      $target.parents('li').remove();
     });
   });
 
