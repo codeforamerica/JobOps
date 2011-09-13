@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'active_link_to'
 gem 'aws-s3'
 gem 'devise'
 gem 'direct_employers'
