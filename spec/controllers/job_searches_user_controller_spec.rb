@@ -5,13 +5,6 @@ describe JobSearchesUserController do
   stub_user_moc_save
   login_user
 
-  describe "GET 'index'" do
-    it "should be successful" do
-      get 'index'
-      response.should be_success
-    end
-  end
-
   describe "#create" do
     before do
       @user = Factory(:user)
@@ -26,10 +19,10 @@ describe JobSearchesUserController do
   end
 
   describe "#destroy" do
-    pending it "should delete a saved search" do
+   it "should delete a saved search" do
       lambda {
-        get :destroy, :id => @search
-      }.should change(JobSearchUser, :count).by(-1)
+        get :destroy, :id => 1
+      }.should change(JobSearchesUser, :count).by(-1)
     end
   end
 
