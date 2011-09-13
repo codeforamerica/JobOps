@@ -17,7 +17,7 @@
 
       .filter-box.date
         .filter-title
-          Post on After
+          Job Post Age
         .filter-footer
           =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
       .filter-box.keyword
