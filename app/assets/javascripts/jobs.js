@@ -34,7 +34,7 @@ $(document).ready(function() {
   ];
 
   function setupMap(jobs) {
-    var markers = [], tempMarker, bounds, jobLatLng;
+    var markers = [], tempMarker, bounds, jobLatLng, label;
     var mapCenter = new google.maps.LatLng(37.77940, -122.43988);
     var mapOptions = {
       zoom: 10,
@@ -45,18 +45,20 @@ $(document).ready(function() {
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     bounds = new google.maps.LatLngBounds();
-    
+
     $.each(jobs, function(idx, job) {
       jobLatLng = new google.maps.LatLng(job.lat, job.lng);
       bounds.extend(jobLatLng);
       tempMarker = new google.maps.Marker({
             position: jobLatLng,
-            map: map
+            map: map,
+            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter_withshadow&chld='+idx+'|4F8C23|EEEEEE'
       });
+
       markers.push(tempMarker);
     });
     map.fitBounds(bounds);
   }
-  
+
   setupMap(fakeJobs);
 });
