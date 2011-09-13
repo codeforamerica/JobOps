@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20110913185551) do
     t.boolean  "user_saved"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "search_params"
   end
 
   create_table "job_searches_jobs", :force => true do |t|
