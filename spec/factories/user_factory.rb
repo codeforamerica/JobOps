@@ -10,6 +10,7 @@ FactoryGirl.define do
     disability "n/a"
     security_clearance "No Clerances"
     resume "This is my Resume"
+    location "San Francisco, CA"
     email_settings ["dinosaurs", "lasers"]
   end
 end
