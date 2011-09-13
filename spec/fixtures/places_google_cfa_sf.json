@@ -1,0 +1,20 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 37.7882990,
+               "lng" : -122.3999830
+            }
+         },
+         "icon" : "http://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+         "id" : "bad209e585b640517653261a0343894c9f01ec1d",
+         "name" : "Code for America",
+         "reference" : "CnRoAAAAnAdMUtXFgAkMasO5wlEEjN1RDkIOp1QZ7VvlA2Htedagvqt9z007-Dk7OpQ_Mo-eP73i9fV7P6sp2BbaT7BfG8mgwvreWqBvbfrcsMK33QY8MIKguY-IVsSHHHZO45QCZXvw3jMhN6GQBx9jWdryNxIQuT9mHevYl3_ge-vwBYZy4BoU6eWURFYYBIDhQdryZ6LRuHF_guk",
+         "types" : [ "establishment" ],
+         "vicinity" : "2nd St #710, San Francisco"
+      }
+   ],
+   "status" : "OK"
+}
