@@ -26,12 +26,19 @@ describe Company do
 
   end
 
-  context 'Try to find the company in google places' do
-    pending "update_location_if_found_in_google_places" do
-      stub_request(:get, "https://maps.googleapis.com/maps/api/place/search/json?key=love&location=,&name=Code%20for%20America&radius=500&sensor=false").
-               to_return(:status => 200, :body => fixture("places_google_cfa_sf.json"), :headers => {})
-      ENV['PLACES']='love'
+  describe 'Company#update_location_if_found_in_google_places' do
+    before do
+      ENV['PLACES'] = 'love'
+    end
+
+    it "should geocode the place if found in Google Places" do
+      stub_request(:get, "https://maps.googleapis.com/maps/api/place/search/json?key=love&location=37.0,-122.0&name=Code%20for%20America&radius=500&sensor=false").
+        to_return(:status => 200, :body => fixture("places_google_cfa_sf.json"), :headers => {:content_type => "application/json; charset=UTF-8"})
       @company.update_location_if_found_in_google_places
+      a_request(:get, "https://maps.googleapis.com/maps/api/place/search/json?key=love&location=37.0,-122.0&name=Code%20for%20America&radius=500&sensor=false").
+        should have_been_made
+      @company.lat.should == 37.788299
+      @company.long.should == -122.399983
     end
   end
 
