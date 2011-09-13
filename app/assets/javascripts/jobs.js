@@ -20,6 +20,21 @@ $(document).ready(function() {
     });
   });
 
+  $('#save-search').bind('submit', function(ev) {
+    ev.preventDefault();
+    var action = $(this).attr('action');
+    var data = $(this).serialize();
+    var sentence = $('#keyword').val() +' near '+$('#location').val();
+    var resultCount = $('.search-result-title span').text();
+
+    $.getJSON(action +'?'+data, function(resp) {
+      alert(resp.message);  // TODO: Make this a pretty alert
+      var $li = $('<li><span class="result-count">'+resultCount+'</span><a href="'+location.pathname+location.search+'">'+sentence+'</a></li>');
+      $('.saved-searches ul').prepend($li);
+    });
+
+  });
+
   var fakeJobs = [
     { lat: 37.774929, lng: -122.419415 },
     { lat: 37.812496, lng: -122.287445 },
@@ -44,7 +59,7 @@ $(document).ready(function() {
       streetViewControl: false,
       mapTypeControl: false
     };
-    
+
     var gSize = new google.maps.Size('16', '21', 'px', 'px');
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     bounds = new google.maps.LatLngBounds();
