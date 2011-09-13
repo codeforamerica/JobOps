@@ -6,3 +6,128 @@ body.users {
   // Add the users class to your body tag
   // Then, place scoped styles here.
 }
+
+/** PROFILE NAV **/
+
+#profile h2#name {
+  float:left;
+  color:#315924;
+  font-weight:normal;
+  line-height:100%;
+  margin-bottom:15px;
+}
+ul.profile_nav {
+  list-style:none;
+  display:block;
+  float:right;
+  margin:0;
+  padding:0;
+}
+ul.profile_nav li {
+  float:left;
+  margin-left:5px;
+}
+ul.profile_nav li a:link, ul.profile_nav li a:visited {
+  line-height:100%;
+  padding:6px 11px;
+}
+ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active a:link, ul.profile_nav li.active a:visited  {
+  color:#333;
+  border-radius: 8px;
+  border:1px inset #CCC;
+  background:#ECECEC;
+  padding:5px 10px;
+  text-decoration:none;
+}
+/** USER MAIN CONTENT AREA **/
+
+#user-main {
+  background-color:#FFF;
+  padding:30px;
+  border:1px solid #CCC;
+}
+.tab_container {
+  float:right;
+  width:688px;
+}
+.tab_content h2 {
+  float:left;
+  margin-bottom:15px;
+  width:100%;
+  font-size:1.0em;
+  color:#315924;
+  font-weight:normal;
+  line-height:150%;
+  background-color:#FFF;
+}
+.tab_form {
+  background-color:#ECECEC;
+  padding:30px;
+  margin-bottom:15px;
+  border:1px solid #CCC;
+}
+.tab_form .field {
+  border-bottom:1px solid #CCC;
+  margin-bottom:15px;
+  padding:0 0 15px 0;
+  height:25px;
+  clear:both;
+}
+.tab_form .field label {
+  width:200px;
+  text-align:right;
+  color:#666;
+  display:block;
+  float:left;
+  margin-right:15px;
+}
+.tab_form .field input[type="text"] {
+  float:left;
+}
+
+/** SIDEBAR TABS **/
+
+ul.tabs {
+  list-style:none;
+  margin:0 30px 15px 0;
+  padding:0;
+  width:200px;
+  float:left;
+}
+ul.tabs li {
+  margin:0 0 5px 0;
+}
+ul.tabs li.user-basic a {
+  background:url(/images/user-basic.png) no-repeat 5px center;
+}
+ul.tabs li.user-military a {
+  background:url(/images/user-military.png) no-repeat 5px center;
+}
+ul.tabs li.user-survey a {
+  background:url(/images/user-survey.png) no-repeat 5px center;
+}
+ul.tabs li.user-skills a {
+  background:url(/images/user-skills.png) no-repeat 5px center;
+}
+ul.tabs li.user-experience a {
+  background:url(/images/user-experience.png) no-repeat 5px center;
+}
+ul.tabs li a {
+  display:block;
+  font-size:0.75em;
+  padding:5px 10px 5px 35px;
+  width:160px;
+  border-bottom:1px dotted #CCC;
+  color:#3d5266;
+  margin:0 0 5px 0;
+}
+ul.tabs li a:hover, ul.tabs li a:active, ul.tabs li.active a:link, ul.tabs li.active a:visited {
+  color:#333;
+  border-radius: 8px;
+  border:1px inset #999;
+  background-color:#ECECEC;
+  background-position: 4px center;
+  text-decoration:none;
+  padding:4px 9px 5px 34px;
+}
+
