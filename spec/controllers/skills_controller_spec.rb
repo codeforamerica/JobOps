@@ -34,7 +34,7 @@ describe SkillsController do
 
    describe '#create' do
      before do
-       post :create, :skill => Factory.attributes_for(:skill)
+       post :create, :skill => FactoryGirl.attributes_for(:skill)
        @skills = Skill.find(:first)
        @response = response
      end

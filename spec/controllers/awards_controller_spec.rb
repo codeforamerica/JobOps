@@ -32,7 +32,7 @@ describe AwardsController do
 
    describe '#create' do
      before do
-       post :create, :award => Factory.attributes_for(:award)
+       post :create, :award => FactoryGirl.attributes_for(:award)
        @awards = Award.find(:first)
        @response = response
      end
