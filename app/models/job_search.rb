@@ -55,8 +55,10 @@ class JobSearch < ActiveRecord::Base
 
   def search_direct_moc
     @direct = SearchDirectEmployers.new.direct_client
-    jobs = @direct.search({:moc => keyword}).api.jobs.job
-    process_direct_employer_jobs(jobs)
+    jobs = @direct.search({:moc => keyword}).api.jobs
+    unless jobs.nil?
+      process_direct_employer_jobs(jobs.job)
+    end
   end
 
   def search_direct_keyword
