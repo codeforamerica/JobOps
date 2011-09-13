@@ -7,7 +7,6 @@ $(document).ready(function() {
     ev.preventDefault();
     var $target = $(ev.target);
     var theId = $target.attr('data-jobid');
-
     $.getJSON($target.attr('href'), function(resp){
       if($target.hasClass('flag-item')) {
         $target.removeClass('flag-item').addClass('unflag-item');
