@@ -33,7 +33,7 @@ describe TrainingsController do
 
   describe '#create' do
     before do
-      post :create, :trainings => Factory.attributes_for(:training)
+      post :create, :trainings => FactoryGirl.attributes_for(:training)
       @training = Training.find(:first)
       @response = response
     end

@@ -17,7 +17,7 @@
 
       .filter-box.date
         .filter-title
-          Post on After
+          Job Post Age
         .filter-footer
           =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
       .filter-box.keyword
@@ -25,7 +25,7 @@
           Search
         .filter-footer
           =f.text_field :job_searches_keyword_contains
-        
+
       .filter-box.location
         .filter-title
           Location
@@ -37,13 +37,13 @@
           Title Contains
         .filter-footer
           =f.text_field :title_contains
-        
+
       .filter-box.companies
         .filter-title
           Company Name Contains
         .filter-footer
           =f.text_field :company_name_contains
-          =f.submit "Submit", :value=>"Search", :class => "green-btn"        
+          =f.submit "Submit", :value=>"Search", :class => "green-btn"
 
   .white-box.search-results-wrapper
     .search-results-header
@@ -72,10 +72,15 @@
         Current Search
       %ul
         %li
-          = "#{params[:q]}"
-          - unless params[:near].nil?
-            = "near #{params[:near]}"
+          = "#{params[:search][:job_searches_keyword_contains]}"
+          - if params[:search][:job_searches_location_contains]
+            - unless params[:search][:job_searches_location_contains].empty?
+              = "near #{params[:search][:job_searches_location_contains]}"
+      = form_tag('/job_searches_user/new', :method => :get, :id => 'save-search')
       .cta-footer
+        = hidden_field_tag 'search', params[:search]
+        = hidden_field_tag 'keyword', params[:search][:job_searches_keyword_contains]
+        = hidden_field_tag 'location', params[:search][:job_searches_location_contains]
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?

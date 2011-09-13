@@ -37,7 +37,7 @@ describe JobHistoriesController do
 
   describe '#create' do
     before do
-      post :create, :job_history => Factory.attributes_for(:job_history)
+      post :create, :job_history => FactoryGirl.attributes_for(:job_history)
       @job_histories = JobHistory.find(:first)
       @response = response
     end

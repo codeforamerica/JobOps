@@ -20,7 +20,7 @@ describe Location do
     end
 
     it "has to have a unique location" do
-      attr = Factory.attributes_for(:location, :location => "San Francisco, CA")
+      attr = FactoryGirl.attributes_for(:location, :location => "San Francisco, CA")
       invalid_detail = Location.new(attr)
       invalid_detail.should have(1).error_on(:location)
     end

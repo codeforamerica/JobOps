@@ -5,11 +5,9 @@
         = @counter = @counter + 1
       .job-heading
         -if @flagged_jobs.include?(job)
-          %span.unflag-item
-            %a{ :href => '/jobs/flag/'+job.id.to_s }
+          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s }
         -else
-          %span.flag-item
-            %a{ :href => '/jobs/flag/'+job.id.to_s }
+          %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s }
         %span.job-title-wrapper
           =link_to job.title, job_path(job.id), { :class => 'job-title' }
       %br.clearit
@@ -25,11 +23,5 @@
           =job.job_source
       .job-excerpt
         =job.snippet
-      -if @flagged_jobs.include?(job)
-        %span.unflag-item
-          %a{ :href => '/jobs/flag/'+job.id.to_s }
-      -else
-        %span.flag-item
-          %a{ :href => '/jobs/flag/'+job.id.to_s }
       %br.clear
 
