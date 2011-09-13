@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(:version => 20110913185551) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
+    t.string   "location"
     t.integer  "linkedin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "location"
     t.float    "lat"
     t.float    "long"
   end
