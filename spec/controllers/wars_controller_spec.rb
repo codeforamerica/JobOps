@@ -33,7 +33,7 @@ describe WarsController do
 
   describe '#create' do
     before do
-      post :create, :war => Factory.attributes_for(:war)
+      post :create, :war => FactoryGirl.attributes_for(:war)
       @wars = War.find(:first)
       @response = response
     end

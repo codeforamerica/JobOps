@@ -25,7 +25,7 @@
           Search
         .filter-footer
           =f.text_field :job_searches_keyword_contains
-        
+
       .filter-box.location
         .filter-title
           Location
@@ -37,13 +37,13 @@
           Title Contains
         .filter-footer
           =f.text_field :title_contains
-        
+
       .filter-box.companies
         .filter-title
           Company Name Contains
         .filter-footer
           =f.text_field :company_name_contains
-          =f.submit "Submit", :value=>"Search", :class => "green-btn"        
+          =f.submit "Submit", :value=>"Search", :class => "green-btn"
 
   .white-box.search-results-wrapper
     .search-results-header
@@ -72,10 +72,15 @@
         Current Search
       %ul
         %li
-          = "#{params[:q]}"
-          - unless params[:near].nil?
-            = "near #{params[:near]}"
+          = "#{params[:search][:job_searches_keyword_contains]}"
+          - if params[:search][:job_searches_location_contains]
+            - unless params[:search][:job_searches_location_contains].empty?
+              = "near #{params[:search][:job_searches_location_contains]}"
+      = form_tag('/job_searches_user/new', :method => :get)
       .cta-footer
+        = hidden_field_tag 'search', params[:search]
+        = hidden_field_tag 'keyword', params[:search][:job_searches_keyword_contains]
+        = hidden_field_tag 'location', params[:search][:job_searches_location_contains]
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?

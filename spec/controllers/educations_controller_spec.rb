@@ -39,7 +39,7 @@ describe EducationsController do
 
   describe '#create' do
     before do
-      post :create, :education => Factory.attributes_for(:education)
+      post :create, :education => FactoryGirl.attributes_for(:education)
       @educations = Education.find(:first)
       @response = response
     end

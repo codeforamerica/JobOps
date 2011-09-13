@@ -17,7 +17,7 @@ describe Company do
     end
 
     it "has to have a unique company" do
-      attr = Factory.attributes_for(:company, :name => @company.name, :location => @company.location)
+      attr = FactoryGirl.attributes_for(:company, :name => @company.name, :location => @company.location)
       invalid_detail = Company.new(attr)
       invalid_detail.should have(1).error_on(:name)
     end
