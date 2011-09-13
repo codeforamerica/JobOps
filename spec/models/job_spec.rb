@@ -61,6 +61,8 @@ describe Job do
   end
 
   context "job specific checks" do
-    pending "it should grab the url if its a redirect"
+      it 'doesnt error out on improper redirect' do
+        @job.follow_and_update_redirect
+      end 
   end
 end

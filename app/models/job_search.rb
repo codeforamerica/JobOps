@@ -34,6 +34,7 @@ class JobSearch < ActiveRecord::Base
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
       else
         new_job = Job.create(:date_acquired => job["dateacquired"] , :title => job["title"] ,:company => company, :location => location, :url => job["url"], :job_source => "Direct_Employers")
+        new_job.delay.process_checks        
         self.jobs << new_job unless !new_job.errors.blank?
       end
     end
@@ -48,6 +49,7 @@ class JobSearch < ActiveRecord::Base
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
       else
         new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"], :job_source => "Indeed")
+        new_job.delay.process_checks
         self.jobs << new_job unless !new_job.errors.blank?
       end
     end
