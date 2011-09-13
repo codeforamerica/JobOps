@@ -60,6 +60,9 @@ GEM
     coffee-script-source (1.1.2)
     crack (0.1.8)
     daemons (1.1.4)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     devise (1.4.5)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -188,6 +191,7 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.2)
     rdoc (3.9.4)
+    redirect_follower (0.1.1)
     rgeo (0.3.2)
     rgeo-activerecord (0.4.0)
       activerecord (>= 3.0.3)
@@ -265,6 +269,7 @@ DEPENDENCIES
   activerecord-spatialite-adapter
   aws-s3
   coffee-script
+  delayed_job
   devise
   direct_employers
   factory_girl_rails
@@ -285,6 +290,7 @@ DEPENDENCIES
   pg
   places
   rails (~> 3.1.0)
+  redirect_follower
   rspec-rails
   sass-rails
   simplecov

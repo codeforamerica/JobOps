@@ -21,7 +21,12 @@ gem 'oa-oauth', '~> 0.3.0.rc3', :require => 'omniauth/oauth'
 gem "geocoder"
 gem 'will_paginate'
 gem 'meta_search'
+<<<<<<< HEAD
 gem 'places'
+=======
+gem 'delayed_job'
+gem 'redirect_follower' 
+>>>>>>> job-search
 
 gem 'fb_graph'
 gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"
