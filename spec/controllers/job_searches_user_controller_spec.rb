@@ -25,5 +25,4 @@ describe JobSearchesUserController do
       }.should change(JobSearchesUser, :count).by(-1)
     end
   end
-
 end
