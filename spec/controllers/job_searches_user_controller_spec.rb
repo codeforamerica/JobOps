@@ -14,15 +14,22 @@ describe JobSearchesUserController do
 
   describe "#create" do
     before do
-      post :create, :search => Factory.attributes_for(:job_search)
+      @user = Factory(:user)
+      sign_in(@user)
+      @search = Factory(:job_search)
     end
-    pending it "should create a saved search" do
-
+    it "should create a saved search for the user" do
+      lambda {
+        get :new, :search => @search
+      }.should change(JobSearchesUser, :count).by(1)
     end
   end
 
   describe "#destroy" do
     pending it "should delete a saved search" do
+      lambda {
+        get :destroy, :id => @search
+      }.should change(JobSearchUser, :count).by(-1)
     end
   end
 
