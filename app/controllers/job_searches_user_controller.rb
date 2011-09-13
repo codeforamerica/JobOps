@@ -12,6 +12,8 @@ class JobSearchesUserController < ApplicationController
     search = JobSearch.where(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search])
     current_user.job_searches.create(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]) unless !search.blank?
 
+    current_user.job_searches << search
+
     message = {"message" => "Job search saved." }
 
     respond_to do |format|
