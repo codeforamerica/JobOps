@@ -76,10 +76,11 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
 .tab_form .field label {
   width:200px;
   text-align:right;
-  color:#666;
+  color:#999;
   display:block;
   float:left;
   margin-right:15px;
+  font-size:0.75em;
 }
 .tab_form .field input[type="text"] {
   float:left;
