@@ -4,9 +4,9 @@ describe Job do
   before do
     stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
       to_return(:status => 200, :body => fixture("google_map_location_sfca.json"), :headers => {})
-    @company = Factory(:company)
+    @company = Factory(:company, :location => "San Francisco, CA")
     @location = Factory(:location, :location => "San Francisco, CA")
-    @job=Factory(:job, :location => @location)
+    @job=Factory(:job, :location => @location, :company => Factory(:company, :location => "San Francisco, CA"))
   end
 
   context "validations" do
@@ -61,6 +61,8 @@ describe Job do
   end
 
   context "job specific checks" do
-    pending "it should grab the url if its a redirect"
+      it 'doesnt error out on improper redirect' do
+        @job.follow_and_update_redirect
+      end 
   end
 end

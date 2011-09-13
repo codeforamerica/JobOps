@@ -17,7 +17,7 @@ describe JobsController do
 
   describe "#show" do
     before do
-      Factory(:job, :location => Factory(:location, :location => "San Francisco, CA") )
+      Factory(:job, :location => Factory(:location, :location => "San Francisco, CA"), :company => Factory(:company, :location => "San Francisco, CA") )
       @job = Job.find(:first)
     end
 
@@ -32,7 +32,7 @@ describe JobsController do
     before do
       @user = Factory(:user)
       sign_in(@user)
-      @job = Factory(:job, :location => Factory(:location, :location => "San Francisco, CA") )
+      @job = Factory(:job, :location => Factory(:location, :location => "San Francisco, CA"), :company => Factory(:company, :location => "San Francisco, CA") )
     end
 
     it "should flag a job" do

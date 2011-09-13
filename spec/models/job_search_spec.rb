@@ -48,7 +48,7 @@ describe JobSearch do
     end
 
     it "returns a newly created company when name and location is different" do
-      Factory(:company, :name => "Code for America")
+      Factory(:company, :name => "Code for America", :location => "San Francisco, CA")
       lambda {
         JobSearch.new.find_or_create_company("Code for America1", "Boston, MA")
       }.should change(Company, :count).by(1)
@@ -57,7 +57,7 @@ describe JobSearch do
     it "returns a newly created company when location is different" do
       Factory(:company, :location => "Boston, MA")
       lambda {
-        JobSearch.new.find_or_create_company("Code for America1", "Toledo, OH")
+        JobSearch.new.find_or_create_company("Code for America1", "San Francisco, CA")
       }.should change(Company, :count).by(1)
     end
 
