@@ -18,4 +18,17 @@ class JobSearchesUserController < ApplicationController
       format.json { render :json => message }
     end
   end
+
+  # DELETE /job_searches_user/1
+  # DELETE /job_searcues_user/1.json
+  def destroy
+    @job_search = current_user.job_searches_user.find(params[:id])
+    @job_search.destroy
+
+    message = {"message" => "Job search removed."}
+
+    respond_to do |format|
+      format.json { render :json => message}
+    end
+  end
 end
