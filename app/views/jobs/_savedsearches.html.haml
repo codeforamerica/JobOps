@@ -7,6 +7,8 @@
         %li
           %span.result-count
             =search.jobs.size
+          %a.delete-search{ :href => "/job_searches_user/"+search.id.to_s, :data => { :searchid => search.id.to_s } }
+            X
           = link_to "#{search.keyword} near #{search.location}", :search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword}
   .cta-footer
     %a{ :href => '#'}
