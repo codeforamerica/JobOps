@@ -279,7 +279,15 @@ ol.job-listings li {
   color:#999;
   text-transform:uppercase;
 }
-
+.filter-footer input[type="text"] {
+  width:195px;
+}
+#search_company_name_contains {
+  margin-bottom:12px;
+}
+.search-result-sortby {
+  margin-bottom:15px;
+}
 .pagination {
   clear: both;
   margin: 15px 0 15px 35px;

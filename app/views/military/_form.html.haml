@@ -1,4 +1,3 @@
-%h2 Military Information
 = form_for @user do |f|
   - if @user.errors.any?
     #error_explanation
@@ -9,43 +8,36 @@
 
   .field
     = f.label :military_status
-    %br
     = f.text_field :military_status
 
   .field
     = f.label :service_branch
-    %br
     = f.text_field :service_branch
 
   .field
     = f.label :moc
-    %br
     = f.text_field :moc
 
   .field
     = f.label :rank
-    %br
     = f.text_field :rank
 
   .field
     = f.label :unit
-    %br
     = f.text_field :unit
 
   .field
     = f.label :disability
-    %br
     = f.text_field :disability
 
   .field
     = f.label :security_clearnace
-    %br
     = f.text_field :security_clearance
 
   %p= link_to 'Add War', new_war_path
   %p= link_to 'Add Award', new_award_path
 
   .actions
-    = f.submit
+    =f.submit "Submit", :value=>"Save", :class => "green-btn"
 
 
