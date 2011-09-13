@@ -32,7 +32,7 @@ describe LanguagesController do
 
   describe '#create' do
     before do
-      post :create, :language => Factory.attributes_for(:language)
+      post :create, :language => FactoryGirl.attributes_for(:language)
       @language = Language.find(:first)
       @response = response
     end

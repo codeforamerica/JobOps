@@ -33,7 +33,7 @@ describe CertificationsController do
 
   describe '#create' do
     before do
-      post :create, :certifications => Factory.attributes_for(:certification)
+      post :create, :certifications => FactoryGirl.attributes_for(:certification)
       @certs = Certification.find(:first)
       @response = response
     end
