@@ -1,9 +1,9 @@
 #nav
   %ul
-    %li= link_to 'Home', root_path
-    %li= link_to 'My Profile', users_path
-    %li= link_to 'Career Research', careers_path
-    %li.active= link_to 'Find Jobs', jobs_path
+    %li= active_link_to 'Home', root_path, :wrap_tag => :li
+    %li= active_link_to 'My Profile', users_path, :wrap_tag => :li
+    %li= active_link_to 'Career Research', careers_path, :wrap_tag => :li
+    %li= active_link_to 'Find Jobs', jobs_path, :wrap_tag => :li
     %li
       %a{:href => '#'} Communities
     %li
