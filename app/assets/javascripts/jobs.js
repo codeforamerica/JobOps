@@ -36,6 +36,7 @@ $(document).ready(function() {
   function setupMap(jobs) {
     var markers = [], tempMarker, bounds, jobLatLng, label;
     var mapCenter = new google.maps.LatLng(37.77940, -122.43988);
+    var markerIcon;
     var mapOptions = {
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -43,16 +44,21 @@ $(document).ready(function() {
       streetViewControl: false,
       mapTypeControl: false
     };
+    
+    var gSize = new google.maps.Size('16', '21', 'px', 'px');
     var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     bounds = new google.maps.LatLngBounds();
 
     $.each(jobs, function(idx, job) {
       jobLatLng = new google.maps.LatLng(job.lat, job.lng);
       bounds.extend(jobLatLng);
+      markerOrigin = new google.maps.Point(0, (idx*21));
+      markerIcon = new google.maps.MarkerImage('/images/pin-sprite.png', gSize, markerOrigin);
       tempMarker = new google.maps.Marker({
             position: jobLatLng,
             map: map,
-            icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter_withshadow&chld='+idx+'|4F8C23|EEEEEE'
+            icon: markerIcon,
+            shadow: 'images/pin-shadow.png'
       });
 
       markers.push(tempMarker);
