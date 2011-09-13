@@ -78,7 +78,9 @@
               = "near #{params[:search][:job_searches_location_contains]}"
       = form_tag('/job_searches_user/new', :method => :get)
       .cta-footer
-        = hidden_field_tag 'search', params[:search].to_s
+        = hidden_field_tag 'search', params[:search]
+        = hidden_field_tag 'keyword', params[:search][:job_searches_keyword_contains]
+        = hidden_field_tag 'location', params[:search][:job_searches_location_contains]
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
