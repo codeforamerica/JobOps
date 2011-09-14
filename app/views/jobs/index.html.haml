@@ -1,30 +1,89 @@
-%script{:type => "text/javascript"}
-  =raw @jobs_json.to_json
 .wide-column
   = render 'jobsearchbox'
-  - if current_user
-    = render 'savedsearches'
-    = render 'flaggedjobs'
+  .inner-sidebar
+    =form_for @search do |f|
+      .filter-box.smart-filter-enable
+        #smart-filter
+          .smart-filter-title
+            %span
+              Smart Filters
+            %a{ :href => '#' }What's this?
+          %input{:type => 'button', :class => 'smart-filter-toggle'}
+        %br.clearit
+      .filter-box.basics
+        .filter-title
+          Basics
+        .filter-footer
 
-    %br.clearit
+      .filter-box.date
+        .filter-title
+          Job Post Age
+        .filter-footer
+          =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
+      .filter-box.keyword
+        .filter-title
+          Search
+        .filter-footer
+          =f.text_field :job_searches_keyword_contains
 
-    .white-box.recommended-jobs
-      .recommended-jobs-title
-        Recommended Jobs
-      .notification
-        The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to
-        %a{:href=>'#'}My Profile
-        to complete your profile.
-      %ol.job-listings
-        = render 'joblisting'
-      =will_paginate @jobs
+      .filter-box.location
+        .filter-title
+          Location
+        .filter-footer
+          =f.text_field :job_searches_location_contains
+
+      .filter-box.title
+        .filter-title
+          Title Contains
+        .filter-footer
+          =f.text_field :title_contains
+
+      .filter-box.companies
+        .filter-title
+          Company Name Contains
+        .filter-footer
+          =f.text_field :company_name_contains
+          =f.submit "Submit", :value=>"Search", :class => "green-btn"
+
+  .white-box.search-results-wrapper
+    .search-results-header
+      .search-result-title
+        %span
+          =@jobs.total_entries unless @jobs.blank?
+        Jobs Found
+      .search-result-sortby
+        Sort by:
+        %select
+          %option{ :value => '1' }
+            Relevance
+          %option{ :value => '2' }
+            Distance
+          %option{ :value => '3' }
+            Salary
+    %ol.job-listings
+      = render 'joblisting'
+    =will_paginate @jobs unless @jobs.blank?
 
 #sidebar
-  .cta-box.special-cta
-    .special-title
-      Explore your career options
-    .special-copy
-      Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
-    %br.clearit
   = render 'jobmap'
+  - if current_user && params[:search]
+    .cta-box.current-search
+      .cta-title
+        Current Search
+      %ul
+        %li
+          = "#{params[:search][:job_searches_keyword_contains]}"
+          - if params[:search][:job_searches_location_contains]
+            - unless params[:search][:job_searches_location_contains].empty?
+              = "near #{params[:search][:job_searches_location_contains]}"
+      = form_tag('/job_searches_user/new', :method => :get, :id => 'save-search')
+      .cta-footer
+        = hidden_field_tag 'search', params[:search]
+        = hidden_field_tag 'keyword', params[:search][:job_searches_keyword_contains]
+        = hidden_field_tag 'location', params[:search][:job_searches_location_contains]
+        = submit_tag 'Save this search', {:class => 'green-btn'}
+        %a{ :href => '#'}
+          What's this?
+
+    = render 'savedsearches'
 %br

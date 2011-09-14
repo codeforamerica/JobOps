@@ -3,62 +3,35 @@ class JobsController < ApplicationController
   before_filter :authenticate_user!, :only => :flag
   # GET /jobs
   # GET /jobs.json
-  def index
-    @counter = 0
-    if params[:search].nil?
-      if current_user
-        job_search_ids = current_user.job_searches.map(&:id)
-        @flagged_jobs = current_user.jobs
-        @saved_searches = current_user.job_searches
-        @search = Job.includes(:location,:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").search(params[:search])
-        @jobs = @search.paginate(:page => params[:page], :per_page => 25)
-        @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.location.location}", "latitude" => "#{job.location.lat}", "longitude" => "#{job.location.long}", "company" => job.company.name}}
-      else
-        @search = Job.includes(:location,:job_searches_jobs).search(params[:search])
-      end
-
-    else
-      @flagged_jobs = []
-      @saved_searched = []
-      @careers = []
-
-      if current_user
-        job_search_ids = current_user.job_searches.map(&:id)
-        @flagged_jobs = current_user.jobs
-        @saved_searches = current_user.job_searches
-        unless current_user.moc.nil?
-          @careers = careers(current_user.moc)
-        end
-      end
-      job_search =  JobSearch.where(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:job_searches_location_contains])
-
-      if job_search.blank?
-        job_search = JobSearch.create(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:job_searches_location_contains])
-        job_search.search
-      else
-        if job_search.first.updated_at < 1.hour.ago
-          job_search = job_search.first
-        else
-          job_search = job_search.first
-          job_search.touch
-          job_search.search
-        end
-      end
-
-      if (params[:search][:job_searches_keyword_contains] =~ /^\d/)
-        @careers = careers(params[:search][:job_searches_keyword_contains])
-      end
-      @search = job_search.reload.jobs.search(params[:search])
+  def dashboard
+    if current_user
+      job_search_ids = current_user.job_searches.map(&:id)
+      @search = Job.includes(:location,:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").search(params[:search])
       @jobs = @search.paginate(:page => params[:page], :per_page => 25)
-
-      render "jobs/results"
+      @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.company.location}", "latitude" => "#{job.company.lat}", "longitude" => "#{job.company.long}", "company" => job.company.name}}
+    else
+      @search = Job.includes(:location,:job_searches_jobs).search(params[:search])
     end
 
+    get_user_variables
 
-    #respond_to do |format|
-     # format.html # index.html.erb
-      #format.json { render :json => @jobs }
-    #end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @jobs }
+    end
+  end
+
+  def index
+    @counter = 0
+    if !params[:search].nil?
+      job_search = get_job_search
+      @search = job_search.reload.jobs.search(params[:search])
+      @jobs = @search.paginate(:page => params[:page], :per_page => 25)
+    else
+      @jobs = []
+      @search = Job.search(params[:search])
+    end
+    get_user_variables
   end
 
   # GET /jobs/1
@@ -92,5 +65,42 @@ class JobsController < ApplicationController
     Career.new.futures_pipeline.search(moc)
   end
 
+  protected
+
+  def get_user_variables
+    if current_user
+      @flagged_jobs = current_user.jobs
+      @saved_searches = current_user.job_searches
+      @careers = careers(current_user.moc) unless current_user.moc.nil?
+    else
+      @flagged_jobs = []
+    end
+
+    unless params[:search].nil?
+      if(params[:search][:job_searches_keyword_contains] =~ /^\d/)
+        @careers = careers(params[:search][:job_searches_keyword_contains])
+      end
+    end
+  end
+
+  def get_job_search
+    job_search =  JobSearch.where(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:job_searches_location_contains])
+
+    if job_search.blank?
+      job_search = JobSearch.create(:keyword => params[:search][:job_searches_keyword_contains], :location => params[:search][:job_searches_location_contains])
+      job_search.search
+    else
+      if job_search.first.updated_at < 1.hour.ago
+        job_search = job_search.first
+      else
+        job_search = job_search.first
+        job_search.touch
+        job_search.search
+      end
+    end
+
+    job_search
+
+  end
 
 end
