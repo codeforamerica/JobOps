@@ -3,7 +3,9 @@ class Company < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name, :scope => :location
   geocoded_by :location, :latitude => :lat, :longitude => :long
-  after_create :geocode
+  after_validation do
+    self.geocode unless !lat.nil?
+  end 
   
   def update_location_if_found_in_google_places
     @client = Places::Client.new(:api_key => ENV['PLACES'])

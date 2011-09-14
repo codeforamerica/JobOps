@@ -1,3 +1,8 @@
+%script{:type => "text/javascript", :charset => "utf-8"}
+  var jobs = 
+  =raw @jobs.map { |job| { :lat => job.company.lat, :lng => job.company.long}}.to_json
+  ;
+  $(document).ready(function() {setupMap(jobs);});
 .wide-column
   = render 'jobsearchbox'
   .inner-sidebar
