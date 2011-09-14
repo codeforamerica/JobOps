@@ -9,8 +9,7 @@ class JobSearchesUserController < ApplicationController
   end
 
   def new
-
-    search = JobSearch.where(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]).first()
+    search = JobSearch.where(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search].to_s).first
     search = JobSearch.create(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]) unless !search.blank?
 
     current_user.job_searches << search

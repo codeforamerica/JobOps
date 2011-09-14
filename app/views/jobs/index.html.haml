@@ -72,17 +72,19 @@
         Current Search
       %ul
         %li
-          = "#{params[:search][:job_searches_keyword_contains]} near "
+          = "#{params[:search][:job_searches_keyword_contains]}"
           - if params[:search][:job_searches_location_contains]
             - if params[:search][:job_searches_location_contains].empty?
-              = "everywhere"
+              = "near everywhere"
             - else
-              = "#{params[:search][:job_searches_location_contains]}"
+              = "near #{params[:search][:job_searches_location_contains]}"
       = form_tag('/job_searches_user/new', :method => :get, :id => 'save-search')
       .cta-footer
-        = hidden_field_tag 'search', params[:search]
-        = hidden_field_tag 'keyword', params[:search][:job_searches_keyword_contains]
-        = hidden_field_tag 'location', params[:search][:job_searches_location_contains]
+        = hidden_field_tag 'search[date_acquired_greater_than]', params[:search][:date_acquired_greater_than]
+        = hidden_field_tag 'search[job_searches_keyword_contains]', params[:search][:job_searches_keyword_contains]
+        = hidden_field_tag 'search[job_searches_location_contains]', params[:search][:job_searches_location_contains]
+        = hidden_field_tag 'search[title_contains]', params[:search][:title_contains]
+        = hidden_field_tag 'search[company_name_contains]', params[:search][:company_name_contains]
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
