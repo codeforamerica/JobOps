@@ -17,7 +17,7 @@
     
     $target.prepend($msgBox);
     
-    $msgBox.fadeIn().addClass('open-message').delay(options.timeToFade).fadeOut();
+    $msgBox.fadeIn().addClass('open-message').delay(options.timeToFade).fadeOut(function(){ $msgBox.remove(); });
     
     return true;
   };
