@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def dashboard
     if current_user
+      @counter = 0
       job_search_ids = current_user.job_searches.map(&:id)
       @search = Job.includes(:location,:job_searches_jobs).where("job_searches_jobs.job_search_id IN (#{job_search_ids.join(", ")})").search(params[:search])
       @jobs = @search.paginate(:page => params[:page], :per_page => 25)
