@@ -246,16 +246,28 @@ background-image: -moz-linear-gradient(
   z-index: 501;
 }
 .flash-wrapper {
-  border: 2px solid #0060C0;
-  border-radius: 5px;
-  background-color: #0287E6;
   padding: 10px;
   color: #ffffff;
-  width: 980px;
+  width: 960px;
   margin: 10px auto 10px;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
 #flashmessage a {
   text-decoration: underline;
   color: #FFFFFF;
+}
+.flash-wrapper.notification {
+  border: 2px solid #0060c0;
+  background: url(/images/note-bg-blue.png);
+  font-size: 1em;
+}
+.flash-wrapper.error {
+  border: 2px solid #b31900;
+  background: url(/images/note-bg-red.png);
+}
+.flash-wrapper.success {
+  border: 2px solid #337300;
+  background: url(/images/note-bg-green.png);
 }
