@@ -4,7 +4,7 @@
       target: 'body',
       id: 'flashmessage',
       timeToFade: 3000,
-      type: 'fm-notification'
+      type: 'notification'
     };
 
     var options = $.extend(defaults, options);
@@ -17,7 +17,7 @@
     
     $target.prepend($msgBox);
     
-    $msgBox.fadeIn().addClass('open-message').delay(options.timeToFade).fadeOut();
+    $msgBox.fadeIn().addClass('open-message');//.delay(options.timeToFade).fadeOut();
     
     return true;
   };

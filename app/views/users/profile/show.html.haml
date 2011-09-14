@@ -1,186 +1,196 @@
 #profile
   = render 'users/profile/nav_profile'
-  = render 'users/profile/sidebar_nav'
+  %br.clearit
+  #user-main
+    = render 'users/profile/sidebar_nav'
+    .tab_container
+      #basic_info.tab_content
+        - if not @facebook_user.nil?
+          = image_tag @facebook_user.picture
+        - if not @twitter_user.nil?
+          = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
+        - unless @user.linked_in_user.nil?
+          = image_tag @user.linked_in_user.profile.picture_url
 
-  .tab_container
-    #basic_info.tab_content
-      - if not @facebook_user.nil?
-        = image_tag @facebook_user.picture
-      - if not @twitter_user.nil?
-        = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
-      - unless @user.linked_in_user.nil?
-        = image_tag @user.linked_in_user.profile.picture_url
+        = gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}")
 
-      = gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}")
-
-      %h2 Basic Info
-      %table
-        %tr
-          %td Name:
-          %td= @user.name
-        %tr
-          %td Location:
-          %td= @user.location
-        %tr
-          %td Phone:
-          %td= @user.phone
-        %tr
-          %td Current Goal:
-          %td= @user.goal
-        %tr
-          %td Willingness to relocate:
-          %td= @user.relocate
-        %tr
-          %td Desired Salary:
-          %td= @user.desired_salary
-
-    #military_info.tab_content
-      %h2 Military Info
-      %table
-        %tr
-          %td Military Status:
-          %td= @user.military_status
-        %tr
-          %td Service Branch:
-          %td= @user.service_branch
-        %tr
-          %td MOC:
-          %td= @user.moc
-        %tr
-          %td Rank:
-          %td= @user.rank
-        %tr
-          %td Unit:
-          %td= @user.unit
-        %tr
-          %td Disability:
-          %td= @user.disability
-        %tr
-          %td Wars:
-          %td
-            - @user.wars.each do |wars|
-              = wars.war
-        %tr
-          %td Awards:
-          %td
-            - @user.awards.each do |awards|
-              = awards.award
-
-    #skills_edu.tab_content
-      %h2 Skills &amp; Education
-      %h3 Education
-      %table
-        %tr
-          %th School name
-          %th Degree
-          %th Study field
-          %th Start date
-          %th End date
-          %th Activities
-          %th Notes
-          %th
-          %th
-          %th
-
-        - @user.educations.each do |education|
+        %h2 Basic Info
+        %table
           %tr
-            %td= education.school_name
-            %td= education.degree
-            %td= education.study_field
-            %td= education.start_date
-            %td= check_present(education.end_date)
-            %td= education.activities
-            %td= education.notes
-            %td= link_to 'Show', education
-            %td= link_to 'Edit', edit_education_path(education)
-            %td= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
-
-      %h3 Skills
-      - @user.skills.each do |skills|
-        = skills.skill
-
-      %h3 Languages
-      - @user.languages.each do |languages|
-        = languages.language
-
-      %h3 Trainings
-      %table
-        %tr
-        %th Training
-        %th Training date
-        %th
-        %th
-        %th
-
-        - @user.trainings.each do |training|
+            %td Name:
+            %td= @user.name
           %tr
-            %td= training.training
-            %td= training.training_date
-            %td= link_to 'Show', training
-            %td= link_to 'Edit', edit_training_path(training)
-            %td= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
-
-      %h3 Certifications
-      %table
-        %tr
-          %th Name
-          %th Institution
-          %th Date acquired
-          %th
-          %th
-          %th
-
-        - @user.certifications.each do |certification|
+            %td Location:
+            %td= @user.location
           %tr
-            %td= certification.name
-            %td= certification.institution
-            %td= certification.date_acquired
-            %td= link_to 'Show', certification
-            %td= link_to 'Edit', edit_certification_path(certification)
-            %td= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
-
-    #exp.tab_content
-      %h3 Experience
-      %table
-        %tr
-          %th Org name
-          %th Title
-          %th Start date
-          %th End date
-          %th Summary
-          %th
-          %th
-          %th
-
-        - @user.job_histories.each do |job_history|
+            %td Phone:
+            %td= @user.phone
           %tr
-            %td= job_history.org_name
-            %td= job_history.title
-            %td= job_history.start_date
-            %td= check_present(job_history.end_date)
-            %td= job_history.summary
-            %td= link_to 'Show', job_history
-            %td= link_to 'Edit', edit_job_history_path(job_history)
-            %td= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
+            %td Current Goal:
+            %td= @user.goal
+          %tr
+            %td Willingness to relocate:
+            %td= @user.relocate
+          %tr
+            %td Desired Salary:
+            %td= @user.desired_salary
 
-    #personal_info.tab_content
-      %h2 Personal Info
-      %table
-        %tr
-          %td DOB:
-          %td= @user.dob
-        %tr
-          %td Age:
-          %td
-            - unless @user.dob.nil?
-              = @user.age(@user.dob)
-        %tr
-          %td Gender:
-          %td= @user.gender
-        %tr
-          %td Ethnicity:
-          %td= @user.ethnicity
-        %tr
-          %td Family:
-          %td= @user.family
+      #military_info.tab_content
+        %h2 Military Info
+        %table
+          %tr
+            %td Military Status:
+            %td= @user.military_status
+          %tr
+            %td Service Branch:
+            %td= @user.service_branch
+          %tr
+            %td MOC:
+            %td= @user.moc
+          %tr
+            %td Rank:
+            %td= @user.rank
+          %tr
+            %td Unit:
+            %td= @user.unit
+          %tr
+            %td Disability:
+            %td= @user.disability
+          %tr
+            %td Wars:
+            %td
+              - @user.wars.each do |wars|
+                = wars.war
+          %tr
+            %td Awards:
+            %td
+              - @user.awards.each do |awards|
+                = awards.award
 
+      #skills_edu.tab_content
+        %h2 Skills &amp; Education
+        %br.clearit
+        %h3 Education
+        %br.clearit
+        %table
+          %tr
+            %th School name
+            %th Degree
+            %th Study field
+            %th Start date
+            %th End date
+            %th Activities
+            %th Notes
+            %th
+            %th
+            %th
+
+          - @user.educations.each do |education|
+            %tr
+              %td= education.school_name
+              %td= education.degree
+              %td= education.study_field
+              %td= education.start_date
+              %td= check_present(education.end_date)
+              %td= education.activities
+              %td= education.notes
+              %td= link_to 'Show', education
+              %td= link_to 'Edit', edit_education_path(education)
+              %td= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
+
+        %h3 Skills
+        %br.clearit
+        - @user.skills.each do |skills|
+          = skills.skill
+
+        %h3 Languages
+        %br.clearit
+        - @user.languages.each do |languages|
+          = languages.language
+
+        %h3 Trainings
+        %br.clearit
+        %table
+          %tr
+          %th Training
+          %th Training date
+          %th
+          %th
+          %th
+
+          - @user.trainings.each do |training|
+            %tr
+              %td= training.training
+              %td= training.training_date
+              %td= link_to 'Show', training
+              %td= link_to 'Edit', edit_training_path(training)
+              %td= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
+
+        %h3 Certifications
+        %br.clearit
+        %table
+          %tr
+            %th Name
+            %th Institution
+            %th Date acquired
+            %th
+            %th
+            %th
+
+          - @user.certifications.each do |certification|
+            %tr
+              %td= certification.name
+              %td= certification.institution
+              %td= certification.date_acquired
+              %td= link_to 'Show', certification
+              %td= link_to 'Edit', edit_certification_path(certification)
+              %td= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
+
+      #exp.tab_content
+        %h2 Experience
+        %br.clearit
+        %table
+          %tr
+            %th Org name
+            %th Title
+            %th Start date
+            %th End date
+            %th Summary
+            %th
+            %th
+            %th
+
+          - @user.job_histories.each do |job_history|
+            %tr
+              %td= job_history.org_name
+              %td= job_history.title
+              %td= job_history.start_date
+              %td= check_present(job_history.end_date)
+              %td= job_history.summary
+              %td= link_to 'Show', job_history
+              %td= link_to 'Edit', edit_job_history_path(job_history)
+              %td= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
+
+      #personal_info.tab_content
+        %h2 Personal Info
+        %br.clearit
+        %table
+          %tr
+            %td DOB:
+            %td= @user.dob
+          %tr
+            %td Age:
+            %td
+              - unless @user.dob.nil?
+                = @user.age(@user.dob)
+          %tr
+            %td Gender:
+            %td= @user.gender
+          %tr
+            %td Ethnicity:
+            %td= @user.ethnicity
+          %tr
+            %td Family:
+            %td= @user.family
+
+    %br.clearit
