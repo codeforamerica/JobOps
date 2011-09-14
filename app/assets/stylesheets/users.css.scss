@@ -60,6 +60,16 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
   line-height:150%;
   background-color:#FFF;
 }
+.tab_content h3 {
+  float:left;
+  margin-bottom:15px;
+  width:100%;
+  font-size:1.0em;
+  color:#666;
+  font-weight:normal;
+  line-height:150%;
+  background-color:#FFF;
+}
 .tab_form {
   background-color:#ECECEC;
   padding:30px;
@@ -76,13 +86,40 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
 .tab_form .field label {
   width:200px;
   text-align:right;
-  color:#666;
+  color:#999;
   display:block;
   float:left;
   margin-right:15px;
+  font-size:0.75em;
 }
 .tab_form .field input[type="text"] {
   float:left;
+ }
+.tab_content table {
+  float:left;
+  background-color:#ECECEC;
+  padding:30px;
+  margin-bottom:15px;
+  border:1px solid #CCC;
+  border-collapse:separate;
+  clear:left;
+}
+.tab_content table tr {
+  border-bottom:1px solid #CCC;
+  padding:0 0 15px 0;
+  height:25px;
+  clear:both;
+}
+.tab_content td {
+  color:#333;
+  font-size:1.0em;
+  margin-bottom:15px;
+}
+#basic_info img {
+  float:right;
+}
+#basic_info h2 {
+  width:inherit;
 }
 
 /** SIDEBAR TABS **/
