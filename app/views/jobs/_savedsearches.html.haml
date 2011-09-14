@@ -3,11 +3,12 @@
     Saved Searches
   .fixed-height
     %ul
-      - @saved_searches.each do |search|
+      - current_user.job_searches.each do |search|
         %li
           %span.result-count
             =search.jobs.size
-          = link_to "#{search.keyword} near #{search.location}", :search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword}
+          .search-wrapper
+            %a.delete-search{ :href => "/job_searches_user/"+search.id.to_s, :data => { :searchid => search.id.to_s } }
+              = link_to "#{search.keyword} near #{search.location}", jobs_path(:search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword})
   .cta-footer
-    %a{ :href => '#'}
-      Manage saved searches
+    &nbsp;

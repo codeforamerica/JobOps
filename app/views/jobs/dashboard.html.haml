@@ -1,0 +1,30 @@
+%script{:type => "text/javascript"}
+  =raw @jobs_json.to_json
+.wide-column
+  = render 'jobsearchbox'
+  - if current_user
+    = render 'savedsearches'
+    = render 'flaggedjobs'
+
+    %br.clearit
+
+    .white-box.recommended-jobs
+      .recommended-jobs-title
+        Recommended Jobs
+      .notification
+        The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to
+        %a{:href=>'#'}My Profile
+        to complete your profile.
+      %ol.job-listings
+        = render 'joblisting'
+      =will_paginate @jobs
+
+#sidebar
+  .cta-box.special-cta
+    .special-title
+      Explore your career options
+    .special-copy
+      Etiam quis lectus eu sapien porta laoreet. Sed eget ante enim, in placerat nisi.
+    %br.clearit
+  = render 'jobmap'
+%br
