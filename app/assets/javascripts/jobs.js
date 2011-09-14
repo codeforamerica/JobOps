@@ -83,7 +83,7 @@ $(document).ready(function() {
             position: jobLatLng,
             map: map,
             icon: markerIcon,
-            shadow: 'images/pin-shadow.png'
+            shadow: '/images/pin-shadow.png'
       });
 
       markers.push(tempMarker);
