@@ -240,3 +240,22 @@ background-image: -moz-linear-gradient(
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     #nav {margin-top:7px;}
 }
+
+/** FLASH MESSAGES **/
+#flashmessage {
+  z-index: 501;
+}
+.flash-wrapper {
+  border: 2px solid #0060C0;
+  border-radius: 5px;
+  background-color: #0287E6;
+  padding: 10px;
+  color: #ffffff;
+  width: 980px;
+  margin: 10px auto 10px;
+}
+
+#flashmessage a {
+  text-decoration: underline;
+  color: #FFFFFF;
+}

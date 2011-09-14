@@ -8,6 +8,7 @@ $(document).ready(function() {
     var $target = $(ev.target);
     var theId = $target.attr('data-jobid');
     $.getJSON($target.attr('href'), function(resp){
+      $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
         $target.removeClass('flag-item').addClass('unflag-item');
         $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
@@ -27,7 +28,7 @@ $(document).ready(function() {
     var resultCount = $('.search-result-title span').text();
 
     $.getJSON(action +'?'+data, function(resp) {
-      alert(resp.message);  // TODO: Make this a pretty alert
+      $.flashmessage(resp.message);
       if(!$('a[data-searchid = '+resp.newid+']').length) {
         var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
         $('.saved-searches ul').prepend($li);
@@ -40,7 +41,7 @@ $(document).ready(function() {
     var $target = $(ev.target);
     var theId = $target.attr('data-jobid');
     $.getJSON($target.attr('href'), function(resp){
-      alert(resp.message);
+      $.flashmessage(resp.message);
       $target.parents('li').remove();
     });
   });
@@ -83,7 +84,7 @@ $(document).ready(function() {
             position: jobLatLng,
             map: map,
             icon: markerIcon,
-            shadow: 'images/pin-shadow.png'
+            shadow: '/images/pin-shadow.png'
       });
 
       markers.push(tempMarker);
