@@ -88,7 +88,7 @@ describe JobSearch do
 
     it 'processes jobs for moc' do
       job_search = Factory(:job_search, :keyword => "11b")
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
       @direct = SearchDirectEmployers.new.direct_client
       jobs = @direct.search({:moc => job_search.keyword}).api.jobs.job
       lambda {
@@ -98,18 +98,18 @@ describe JobSearch do
 
     it 'processes jobs for keyword on direct employers' do
       job_search = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
       @direct = SearchDirectEmployers.new.direct_client
       jobs = @direct.search({:kw => job_search.keyword}).api.jobs.job
       lambda {
         JobSearch.new.process_direct_employer_jobs(jobs)
-        Job.last.job_source.should == "Direct_Employers"        
+        Job.last.job_source.should == "Direct_Employers"
       }.should change(Job, :count).by(9)
     end
 
     it 'processes jobs for keyword on indeed' do
       job_search = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=xyz456&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
       @indeed = SearchIndeed.new.indeed_client
       jobs = @indeed.search({:q => job_search.keyword})
       lambda {
@@ -121,7 +121,7 @@ describe JobSearch do
     it 'Indeed adds jobs to new job search if they already exist' do
       job_search = Factory(:job_search, :keyword => "ruby")
       job_search2 = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=xyz456&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
       @indeed = SearchIndeed.new.indeed_client
       jobs = @indeed.search({:q => job_search.keyword})
       job_search.process_indeed_jobs(jobs)
@@ -135,7 +135,7 @@ describe JobSearch do
     it 'DE search adds jobs to new job search if they already exist' do
       job_search = Factory(:job_search, :keyword => "ruby")
       job_search2 = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
       @direct = SearchDirectEmployers.new.direct_client
       jobs = @direct.search({:kw => job_search.keyword}).api.jobs.job
       job_search.process_direct_employer_jobs(jobs)
@@ -148,7 +148,7 @@ describe JobSearch do
 
     it 'searches for moc using search method' do
       job_search = Factory(:job_search, :keyword => "11b")
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
       lambda {
         job_search.search
       }.should change(Job, :count).by(9)
@@ -156,8 +156,8 @@ describe JobSearch do
 
     it 'searches for keyword using search method' do
       job_search = Factory(:job_search, :keyword => "ruby")
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
-      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&kw=ruby").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=xyz456&q=ruby&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").to_return(:status => 200, :body => fixture("indeed_ruby.json"))
       lambda {
         job_search.search
       }.should change(Job, :count).by(14)

@@ -5,9 +5,9 @@
         = @counter = @counter + 1
       .job-heading
         -if @flagged_jobs.include?(job)
-          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s }
+          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s }}
         -else
-          %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s }
+          %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s }}
         %span.job-title-wrapper
           =link_to job.title, job_path(job.id), { :class => 'job-title' }
       %br.clearit
@@ -17,10 +17,8 @@
         %span.job-aquire
           Acquired on
         =job.date_acquired
-        %span.job-aquire
-          from 
-        %span.job_source{:class=>job.job_source}
-          =job.job_source
+        %span.job-source{:class=>job.job_source}
+          %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source }
       .job-excerpt
         =job.snippet
       %br.clear

@@ -36,4 +36,7 @@ JobOps::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  ENV['DIRECT_EMPLOYERS'] = "abc123"
+  ENV['INDEED'] = "xyz456"
+  ENV['PLACES'] = "love"
 end

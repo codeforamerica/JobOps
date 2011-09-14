@@ -107,7 +107,7 @@
   border-top: 1px dotted #999999;
 }
 
-.flagged-jobs .unflag-item {
+.flagged-jobs .unflag-item, .delete-search {
   background: url(/images/remove.png) no-repeat right top;
   height:8px;
   width:8px;
@@ -178,6 +178,7 @@ ol.job-listings li {
 .job-aquire {
   color: #333;
 }
+
 .job-number {
   float: left;
   color: #FFF;
@@ -336,4 +337,8 @@ ol.job-listings li {
 #map-canvas {
   width: 100%;
   height: 300px;
+}
+
+.search-wrapper {
+  padding-top: 6px;
 }
