@@ -9,12 +9,13 @@ class JobSearchesUserController < ApplicationController
   end
 
   def new
-    search = JobSearch.where(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search])
-    current_user.job_searches.create(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]) unless !search.blank?
+
+    search = JobSearch.where(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]).first()
+    search = JobSearch.create(:keyword => params[:keyword], :location => params[:location], :search_params => params[:search]) unless !search.blank?
 
     current_user.job_searches << search
 
-    message = {"message" => "Job search saved." }
+    message = {"message" => "Job search saved.", "newid" => search.id }
 
     respond_to do |format|
       format.json { render :json => message }

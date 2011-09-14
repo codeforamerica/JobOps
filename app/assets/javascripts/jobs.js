@@ -28,10 +28,21 @@ $(document).ready(function() {
 
     $.getJSON(action +'?'+data, function(resp) {
       alert(resp.message);  // TODO: Make this a pretty alert
-      var $li = $('<li><span class="result-count">'+resultCount+'</span><a href="'+location.pathname+location.search+'">'+sentence+'</a></li>');
-      $('.saved-searches ul').prepend($li);
+      if(!$('a[data-searchid = '+resp.newid+']').length) {
+        var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
+        $('.saved-searches ul').prepend($li);
+      }
     });
+  });
 
+  $('.delete-search').live('click', function(ev) {
+    ev.preventDefault();
+    var $target = $(ev.target);
+    var theId = $target.attr('data-jobid');
+    $.getJSON($target.attr('href'), function(resp){
+      alert(resp.message);
+      $target.parents('li').remove();
+    });
   });
 
   var fakeJobs = [
