@@ -9,7 +9,7 @@
 
     var options = $.extend(defaults, options);
 
-    var $msgBox = $('<div id="'+options.id+'" class="'+options.type+'"><div class="flash-wrapper">'+msg+'</div></div>').css({
+    var $msgBox = $('<div id="'+options.id+'"><div class="flash-wrapper '+options.type+'">'+msg+'</div></div>').css({
       position: 'fixed',
       width: '100%',
     }).hide();
