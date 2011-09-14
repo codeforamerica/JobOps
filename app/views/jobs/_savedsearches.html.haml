@@ -9,6 +9,6 @@
             =search.jobs.size
           .search-wrapper
             %a.delete-search{ :href => "/job_searches_user/"+search.id.to_s, :data => { :searchid => search.id.to_s } }
-            = link_to "#{search.keyword} near #{search.location}", :search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword}
+              = link_to "#{search.keyword} near #{search.location}", jobs_path(:search => {:job_searches_location_contains => search.location, :job_searches_keyword_contains => search.keyword})
   .cta-footer
     &nbsp;
