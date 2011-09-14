@@ -250,24 +250,24 @@ background-image: -moz-linear-gradient(
   color: #ffffff;
   width: 960px;
   margin: 10px auto 10px;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
 #flashmessage a {
   text-decoration: underline;
   color: #FFFFFF;
 }
-#flashmessage .notification {
-    border: 2px solid #0060c0;
-    border-radius: 5px;
-    background:url(/images/note-bg-blue.png) repeat-x;
+.flash-wrapper.notification {
+  border: 2px solid #0060c0;
+  background: url(/images/note-bg-blue.png);
+  font-size: 1em;
 }
-#flashmessage .error {
-    border: 2px solid #b31900;
-    border-radius: 5px;
-    background:url(/images/note-bg-red.png) repeat-x;
+.flash-wrapper.error {
+  border: 2px solid #b31900;
+  background: url(/images/note-bg-red.png);
 }
-#flashmessage .success {
-    border: 2px solid #337300;
-    border-radius: 5px;
-    background:url(/images/note-bg-green.png) repeat-x;
+.flash-wrapper.success {
+  border: 2px solid #337300;
+  background: url(/images/note-bg-green.png);
 }
