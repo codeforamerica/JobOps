@@ -1,5 +1,8 @@
 %script{:type => "text/javascript"}
+  var jobs =
   =raw @jobs_json.to_json
+  ;
+  $(document).ready(function() {setupMap(jobs);});
 .wide-column
   = render 'jobsearchbox'
   - if current_user

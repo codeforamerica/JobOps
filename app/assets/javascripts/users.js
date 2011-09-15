@@ -17,4 +17,32 @@ $(document).ready(function() {
     }
   });
 
+  // Setup the tooltips
+  $('.tool_tip').hide();
+  $('form.edit_user .field').each(function(idx, div) {
+    var $toolTip = $(div).find('.tool_tip');
+    var $input, offset;
+
+    if($toolTip) {
+
+      $input = $(div).find('input');
+      offset = $input.offset();
+
+      $toolTip.css({
+        position: 'absolute',
+        left: (offset.left + $input.outerWidth()) + 'px',
+        top: offset.top + 'px'
+      });
+
+      $input.focusin(function(ev) {
+        $(this).addClass('highlight');
+        $toolTip.show();
+      });
+      $input.focusout(function(ev) {
+        $(this).removeClass('highlight');
+        $toolTip.hide();
+      });
+    }
+  });
+
 });
