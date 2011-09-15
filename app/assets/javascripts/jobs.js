@@ -86,11 +86,12 @@ function setupMap(jobs) {
       markers.push(tempMarker);
     }
   });
-  map.fitBounds(bounds);
 
   // If there is nothing on the map, just show a map of the continental US
   if(markers.length == 0) {
     map.setCenter(new google.maps.LatLng(40.58058466412761, -98.0859375));
     map.setZoom(3);
+  } else {
+    map.fitBounds(bounds);
   }
 }
