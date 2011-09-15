@@ -9,7 +9,7 @@
         -else
           %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s }}
         %span.job-title-wrapper
-          =link_to job.title, job_path(job.id), { :class => 'job-title' }
+          =link_to job.title, job.url, {:target => '_blank', :class => 'job-title' }
       %br.clearit
       %span.job-meta
         =job.company.name
