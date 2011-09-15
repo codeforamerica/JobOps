@@ -15,8 +15,7 @@
         =job.company.name
         =job.location.location
         %span.job-aquire
-          Acquired on
-        =job.date_acquired
+          = "Acquired #{time_ago_in_words(job.date_acquired)} ago"
         %span.job-source{:class=>job.job_source}
           %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source.gsub(/_/,' '), :alt =>job.job_source.gsub(/_/,' ') }
       .job-excerpt
