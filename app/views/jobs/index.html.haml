@@ -15,9 +15,9 @@
               Smart Filters
             %a{ :href => '#' }What's this?
             .tooltip.tooltip-yellow-tl{:style => "display:none"}
-              =smart_filter_tip 
-          -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"  
-          -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"            
+              =smart_filter_tip
+          -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"
+          -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"
           %input{:type => 'button', :class => "smart-filter-toggle #{toggle}"}
         %br.clearit
       %div{:class => hide}
@@ -50,7 +50,8 @@
           .filter-footer
             =f.text_field :company_name_contains
             =f.submit "Submit", :value=>"Search", :class => "green-btn"
-
+    .careers
+      = render 'careers/related'
   .white-box.search-results-wrapper
     .search-results-header
       .search-result-title
