@@ -11,7 +11,7 @@ class JobSearch < ActiveRecord::Base
   end
 
   def detect_moc?
-    if keyword =~ /^\d/
+    if keyword =~ /^\d/ 
       true
     else
       false
@@ -59,7 +59,11 @@ class JobSearch < ActiveRecord::Base
 
   def search_direct_moc
     @direct = SearchDirectEmployers.new.direct_client
-    jobs = @direct.search({:moc => keyword}).api.jobs
+    if location.nil?
+      jobs = @direct.search({:moc => keyword}).api.jobs
+    elsif
+      jobs = @direct.search({:moc => keyword, :zc => location}).api.jobs      
+    end
     unless jobs.nil?
       process_direct_employer_jobs(jobs.job)
     end
@@ -67,7 +71,11 @@ class JobSearch < ActiveRecord::Base
 
   def search_direct_keyword
     @direct = SearchDirectEmployers.new.direct_client
-    jobs = @direct.search({:kw => keyword}).api.jobs
+    if location.nil?
+      jobs = @direct.search({:kw => keyword}).api.jobs
+    elsif
+      jobs = @direct.search({:kw => keyword, :zc => location}).api.jobs      
+    end    
     unless jobs.nil?
       process_direct_employer_jobs(jobs.job)
     end
@@ -75,7 +83,11 @@ class JobSearch < ActiveRecord::Base
 
   def search_indeed
     @indeed = SearchIndeed.new.indeed_client
-    jobs = @indeed.search(:q => keyword)
+    if location.nil?
+      jobs = @indeed.search(:q => keyword)
+    elsif
+      jobs = @indeed.search(:q => keyword, :l=>location)
+    end
     process_indeed_jobs(jobs)
   end
 
