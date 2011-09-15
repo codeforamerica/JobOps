@@ -70,7 +70,6 @@ function setupMap(jobs) {
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   bounds = new google.maps.LatLngBounds();
 
-
   $.each(jobs, function(idx, job) {
     if(job.lat && job.lng) {
       jobLatLng = new google.maps.LatLng(job.lat, job.lng);
