@@ -11,7 +11,7 @@ class JobSearch < ActiveRecord::Base
   end
 
   def detect_moc?
-    if keyword =~ /^\d/ 
+    if keyword =~ /^\d/
       true
     else
       false
@@ -50,7 +50,8 @@ class JobSearch < ActiveRecord::Base
       if !find_job.blank?
         self.jobs << find_job.first unless self.jobs.include?(find_job.first)
       else
-        new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,:location => location, :url => job["url"], :job_source => "Indeed")
+        new_job = Job.create(:date_acquired => job["date"] , :title => job["jobtitle"],:company => company,
+                            :location => location, :url => job["url"], :snippet => job["snippet"], :job_source => "Indeed")
         new_job.delay.process_checks
         self.jobs << new_job unless !new_job.errors.blank?
       end
@@ -62,7 +63,7 @@ class JobSearch < ActiveRecord::Base
     if location.nil?
       jobs = @direct.search({:moc => keyword}).api.jobs
     elsif
-      jobs = @direct.search({:moc => keyword, :zc => location}).api.jobs      
+      jobs = @direct.search({:moc => keyword, :zc => location}).api.jobs
     end
     unless jobs.nil?
       process_direct_employer_jobs(jobs.job)
@@ -74,8 +75,8 @@ class JobSearch < ActiveRecord::Base
     if location.nil?
       jobs = @direct.search({:kw => keyword}).api.jobs
     elsif
-      jobs = @direct.search({:kw => keyword, :zc => location}).api.jobs      
-    end    
+      jobs = @direct.search({:kw => keyword, :zc => location}).api.jobs
+    end
     unless jobs.nil?
       process_direct_employer_jobs(jobs.job)
     end
