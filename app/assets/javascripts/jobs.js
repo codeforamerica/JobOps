@@ -3,14 +3,16 @@
 $(document).ready(function() {
     
      $('.toggle-on').live('click', function(ev) {
-        ev.preventDefault();         
-      $('.can-hide').css('visibility','hidden');
+        ev.preventDefault();  
+       $('.hide-off').addClass("hide-on").removeClass("hide-off");                  
       $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
      });
 
      $('.toggle-off').live('click', function(ev) {
         ev.preventDefault();
-       $('.can-hide').css('visibility','visible');               
+      $('.hide-on').addClass("hide-off").removeClass("hide-on");           
+
+       $('input#smart_filter').val("on");              
        $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");   
       });
       
