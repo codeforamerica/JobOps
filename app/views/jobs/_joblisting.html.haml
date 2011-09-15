@@ -5,9 +5,9 @@
         = @counter = @counter + 1
       .job-heading
         -if @flagged_jobs.include?(job)
-          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s }}
+          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :title => flag_tip, :data => { :jobid => job.id.to_s }}
         -else
-          %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s }}
+          %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :title => flag_tip, :data => { :jobid => job.id.to_s }}
         %span.job-title-wrapper
           =link_to job.title, job.url, {:target => '_blank', :class => 'job-title' }
       %br.clearit

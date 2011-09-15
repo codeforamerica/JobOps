@@ -21,7 +21,7 @@ module JobsHelper
   end
   
   def flag_tip
-    "Clicking on the star next to the job listing flags it so you can easily find it later. Compare all of your flagged jobs [here]."
+    "Clicking on the star next to the job listing flags it so you can easily find it later."
   end
 
 end
