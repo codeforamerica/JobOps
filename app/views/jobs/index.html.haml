@@ -14,6 +14,8 @@
             %span
               Smart Filters
             %a{ :href => '#' }What's this?
+            .tooltip.tooltip-yellow-tl{:style => "display:none"}
+              =smart_filter_tip 
           -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"  
           -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"            
           %input{:type => 'button', :class => "smart-filter-toggle #{toggle}"}
@@ -92,6 +94,8 @@
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
+        .tooltip.tooltip-yellow-tm{:style => "display:none"}
+          =save_search_tip
 
     = render 'savedsearches'
 %br
