@@ -7,7 +7,10 @@ describe JobsController do
     stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
        to_return(:status => 200, :body => fixture("futures_11b.json"))
     stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11B").
-        to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+        to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))        
+    stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11B&zc=San%20Francisco,%20CA").
+        to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))        
+
   end
 
   describe "#index" do
