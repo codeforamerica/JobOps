@@ -1,28 +1,30 @@
-#sign_in
-  %h2 Sign in
+#sign_in_wrapper
+  #sign_in
+    %h2 Sign in
 
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %p
-      = f.label :email
-      %br
-      = f.email_field :email
-
-    %p
-      = f.label :password
-      %br
-      = f.password_field :password
-
-    - if devise_mapping.rememberable?
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       %p
-        = f.check_box :remember_me
-        = f.label :remember_me
+        = f.label :email
+        = f.email_field :email
+      %br.clearit
+      %p
+        = f.label :password
+        = f.password_field :password
+      %br.clearit
+      - if devise_mapping.rememberable?
+        %p
+          = f.check_box :remember_me
+          = f.label :remember_me
 
-    %p= f.submit "Sign in"
+      %p=f.submit "Submit", :value=>"Sign in", :class => "green-btn"
+      %br.clearit
 
 
-  %p
-    %strong Or Sign in through one of these services:
+    %p
+      %strong Or sign in through one of these services:
 
-  = render 'authentications/auth_menu'
+    = render 'authentications/auth_menu'
 
-  = render :partial => "devise/shared/links"
+    = render :partial => "devise/shared/links"
+    
+    %br.clearit

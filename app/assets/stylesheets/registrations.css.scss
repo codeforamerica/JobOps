@@ -1,3 +1,65 @@
 // Place all the styles related to the registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/** LOG IN PAGE **/
+
+#sign_in_wrapper {
+  width:300px;
+  position:relative;
+  left:50%;
+  margin-left:-180px;
+  top:15px;
+  background:url(/images/box.png) repeat;
+  padding: 15px;
+}
+#sign_in {
+  background-color:#FFF;
+  padding:15px;
+}
+#sign_in h2 {
+  font-size:1.25em;
+  background:url("/images/footer_bg.png") repeat-x;
+  color:#FFF;
+  margin:-15px -15px 15px -15px;
+  padding:5px 15px;
+}
+#sign_in label {
+  float:left;
+  color:#999;
+  margin:0 10px 5px 0;
+}
+#sign_in input[type="email"], #sign_in input[type="password"] {
+  float:left;
+  margin-bottom:15px;
+  padding:5px 5px;
+  width:250px;
+}
+#sign_in .green-btn {
+  float:right;
+  margin-bottom:25px;
+}
+#sign_in strong {
+  display:block;
+  margin:0 -15px 15px -15px;
+  padding:0 15px;
+  text-transform:uppercase;
+  background:url("/images/footer_bg.png") repeat-x;
+  color:#FFF;
+  font-size:0.6em;
+  width:270px;
+}
+#sign_in img {
+  float:left;
+  margin:0 10px 0 0;
+}
+a.sign_up, a.forgot_password {
+  display: block;
+  float: left;
+  font-size: 0.75em;
+  line-height: 100%;
+  width: 130px;
+}
+a.sign_up {
+  margin-bottom:10px;
+}

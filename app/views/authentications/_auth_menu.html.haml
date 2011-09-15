@@ -1,5 +1,4 @@
 #auth_menu
-  %a.auth_provider{:href => "/auth/twitter"} Twitter
-  %a.auth_provider{:href => "/auth/facebook"} Facebook
-  %a.auth_provider{:href => "/auth/linked_in"} LinkedIn
-
+  =link_to image_tag("/images/login-twitter.png",:title => "Twitter"),"/auth/twitter"
+  =link_to image_tag("/images/login-facebook.png",:title => "Facebook"),"/auth/facebook"
+  =link_to image_tag("/images/login-linkedin.png",:title => "Linked In"),"/auth/linkedin"  
