@@ -178,27 +178,4 @@
               .value= link_to 'Edit', edit_job_history_path(job_history)
               .value= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
 
-      #personal_info.tab_content
-        %h2 Personal Info
-        %br.clearit
-        .tab_form
-          .label
-            DOB:
-          .value= @user.dob
-          .label
-            Age:
-          .value
-            - unless @user.dob.nil?
-              = @user.age(@user.dob)
-          .label
-            Gender:
-          .value= @user.gender
-          .label
-            Ethnicity:
-          .value= @user.ethnicity
-          .label
-            Family:
-          .value= @user.family
-          %br.clearit
-
     %br.clearit
