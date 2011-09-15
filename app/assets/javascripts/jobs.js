@@ -1,6 +1,19 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
+    
+     $('.toggle-on').live('click', function(ev) {
+        ev.preventDefault();         
+      $('.can-hide').css('visibility','hidden');
+      $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
+     });
+
+     $('.toggle-off').live('click', function(ev) {
+        ev.preventDefault();
+       $('.can-hide').css('visibility','visible');               
+       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");   
+      });
+      
   $('.fixed-height').scrollbar();
 
   $('.flag-item, .unflag-item').live('click',function(ev) {
@@ -49,7 +62,7 @@ $(document).ready(function() {
       $target.parents('li').remove();
     });
   });
-
+ 
 });
 
 function setupMap(jobs) {
@@ -70,7 +83,6 @@ function setupMap(jobs) {
   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   bounds = new google.maps.LatLngBounds();
 
-
   $.each(jobs, function(idx, job) {
     if(job.lat && job.lng) {
       jobLatLng = new google.maps.LatLng(job.lat, job.lng);
@@ -86,11 +98,12 @@ function setupMap(jobs) {
       markers.push(tempMarker);
     }
   });
-  map.fitBounds(bounds);
 
   // If there is nothing on the map, just show a map of the continental US
   if(markers.length == 0) {
     map.setCenter(new google.maps.LatLng(40.58058466412761, -98.0859375));
     map.setZoom(3);
+  } else {
+    map.fitBounds(bounds);
   }
 }

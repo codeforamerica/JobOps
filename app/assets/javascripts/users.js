@@ -17,4 +17,22 @@ $(document).ready(function() {
     }
   });
 
+  // Setup the tooltips
+  $('.tool_tip').hide();
+  $('form.edit_user .field').each(function(idx, div) {
+    var $toolTip = $(div).find('.tool_tip');
+    var $input;
+    if($toolTip) {
+      $input = $(div).find('input');
+      $input.focusin(function(ev) {
+        $(this).addClass('highlight');
+        $toolTip.show();
+      });
+      $input.focusout(function(ev) {
+        $(this).removeClass('highlight');
+        $toolTip.hide();
+      });
+    }
+  });
+
 });
