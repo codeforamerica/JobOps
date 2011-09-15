@@ -2,25 +2,19 @@ class JobSearchesUserController < ApplicationController
 
   before_filter :authenticate_user!
 
-  def index
-    if current_user
-      @saved_searches = current_user.job_searches
-    end
-  end
-
   def new
     keyword = params[:search][:job_searches_keyword_contains]
     location = params[:search][:job_searches_location_contains]
     search = JobSearch.where(:keyword => keyword, :location => location, :search_params => params[:search].to_yaml)
     if search.blank?
-      search = JobSearch.create(:keyword => keyword, :location => location, :search_params => params[:search]) 
+      search = JobSearch.create(:keyword => keyword, :location => location, :search_params => params[:search])
       current_user.job_searches << search
-      message = {"message" => "Job search saved.", "newid" => search.id }    
+      message = {"message" => "Job search saved.", "newid" => search.id }
     else
       current_user.job_searches << search.first unless current_user.job_searches.include?(search.first)
-      message = {"error" => "Job search already saved." }      
+      message = {"error" => "Job search already saved." }
     end
-    
+
     respond_to do |format|
       format.json { render :json => message }
     end
