@@ -30,8 +30,8 @@ end
     }
 
   puts "adding job searches for 11b and ruby"
-  moc_search = Factory(:job_search, :keyword => "11b", :location => @location.location, :search_params => "{\"job_searches_keyword_contains\"=>\"11b\", \"job_searches_location_contains\"=>\"#{@location}\"}")
-  ruby_search = Factory(:job_search, :keyword => "ruby", :location => @location.location, :search_params => "{\"job_searches_keyword_contains\"=>\"ruby\", \"job_searches_location_contains\"=>\"#{@location}\"}")
+  moc_search = Factory(:job_search, :keyword => "11b", :location => @location.location, :search_params =>{"date_acquired_greater_than"=>"", "job_searches_keyword_contains"=>"21b", "job_searches_location_contains"=>"San Francisco, CA", "title_contains"=>"", "company_name_contains"=>""})
+  ruby_search = Factory(:job_search, :keyword => "ruby", :location => @location.location, :search_params => {"date_acquired_greater_than"=>"", "job_searches_keyword_contains"=>"21b", "job_searches_location_contains"=>"San Francisco, CA", "title_contains"=>"", "company_name_contains"=>""})
 
   puts "adding jobs to job searches"
   JobSearch.all.each { |search| 100.times {search.jobs << Factory(:job, :location => @location, :company => Factory(:company, :location => @location.location), :job_source => ["Indeed", "Direct_Employers"].shuffle[0])}
