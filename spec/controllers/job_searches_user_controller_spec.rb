@@ -26,9 +26,13 @@ describe JobSearchesUserController do
   end
 
   describe "#destroy" do
+    before do
+      @user = Factory(:user)
+      @saved_search = @user.job_searches.create(FactoryGirl.attributes_for(:job_search))
+    end
    it "should delete a saved search" do
       lambda {
-        get :destroy, :id => 1
+        get :destroy, :id => @user.id
       }.should change(JobSearchesUser, :count).by(-1)
     end
   end

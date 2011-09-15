@@ -44,6 +44,11 @@
   padding: 10px;
   margin-right: 15px;
 }
+
+.blank_search {
+  font-size: 0.75em;
+}
+
 #sidebar .saved-searches  {
   float: left;
   width: 283px;
@@ -291,8 +296,12 @@ ol.job-listings li {
   background:url(/images/filter_onoff.png) no-repeat 0 0px;
 }
 
-.can-hide {
+.hide-on {
 visibility:hidden;
+}
+
+.hide-off {
+visibility:visible;
 }
 
 .filter-title {

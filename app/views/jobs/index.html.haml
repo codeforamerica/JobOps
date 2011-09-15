@@ -7,44 +7,49 @@
   = render 'jobsearchbox'
   .inner-sidebar
     =form_for @search do |f|
+      =hidden_field_tag "smart_filter", params[:smart_filter]
       .filter-box.smart-filter-enable
         #smart-filter
           .smart-filter-title
             %span
               Smart Filters
             %a{ :href => '#' }What's this?
-          %input{:type => 'button', :class => 'smart-filter-toggle toggle-off'}
+            .tooltip.tooltip-yellow-tl{:style => "display:none"}
+              =smart_filter_tip 
+          -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"  
+          -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"            
+          %input{:type => 'button', :class => "smart-filter-toggle #{toggle}"}
         %br.clearit
+      %div{:class => hide}
+        .filter-box.date
+          .filter-title
+            Job Post Age
+          .filter-footer
+            =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
+        .filter-box.keyword
+          .filter-title
+            Search
+          .filter-footer
+            =f.text_field :job_searches_keyword_contains
 
-      .filter-box.date.can-hide
-        .filter-title
-          Job Post Age
-        .filter-footer
-          =select :search, :date_acquired_greater_than, [ ["1 week ago", (Date.today - 7.days).to_s],["2 weeks ago", (Date.today - 14.days).to_s],["1 month ago", (Date.today - 30.days).to_s],["2 months ago", (Date.today - 60.days).to_s],["3 months ago", (Date.today -   90.days).to_s],["1 year ago", (Date.today - 356.days).to_s]], :include_blank => 'None'
-      .filter-box.keyword.can-hide
-        .filter-title
-          Search
-        .filter-footer
-          =f.text_field :job_searches_keyword_contains
+        .filter-box.location
+          .filter-title
+            Location
+          .filter-footer
+            =f.text_field :job_searches_location_contains
 
-      .filter-box.location.can-hide
-        .filter-title
-          Location
-        .filter-footer
-          =f.text_field :job_searches_location_contains
+        .filter-box.title
+          .filter-title
+            Title Contains
+          .filter-footer
+            =f.text_field :title_contains
 
-      .filter-box.title.can-hide
-        .filter-title
-          Title Contains
-        .filter-footer
-          =f.text_field :title_contains
-
-      .filter-box.companies.can-hide
-        .filter-title
-          Company Name Contains
-        .filter-footer
-          =f.text_field :company_name_contains
-          =f.submit "Submit", :value=>"Search", :class => "green-btn"
+        .filter-box.companies
+          .filter-title
+            Company Name Contains
+          .filter-footer
+            =f.text_field :company_name_contains
+            =f.submit "Submit", :value=>"Search", :class => "green-btn"
 
   .white-box.search-results-wrapper
     .search-results-header
@@ -89,6 +94,8 @@
         = submit_tag 'Save this search', {:class => 'green-btn'}
         %a{ :href => '#'}
           What's this?
+        .tooltip.tooltip-yellow-tm{:style => "display:none"}
+          =save_search_tip
 
     = render 'savedsearches'
 %br

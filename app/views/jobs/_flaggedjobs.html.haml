@@ -2,12 +2,19 @@
   .cta-title
     Flagged Jobs
   .fixed-height
-    %ul
-      - current_user.jobs.each do |job|
-        %li{ :id => 'flagged-job-'+job.id.to_s }
-          %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
-          =link_to job.title, job
+    -if current_user.jobs.blank?
+      .blank_search
+        =raw flagged_jobs_blank
+    -else
+      %ul
+        - current_user.jobs.each do |job|
+          %li{ :id => 'flagged-job-'+job.id.to_s }
+            %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
+            =link_to job.title, job
   .cta-footer
-    %a{ :href => '#'}
-      Compare flagged jobs
+    -if !current_user.jobs.blank?
+      %a{ :href => '#'}
+        Compare flagged jobs
+    -else
+      &nbsp;
 
