@@ -25,9 +25,10 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
+        $(".flagged-jobs .blank_search").hide();          
         $target.removeClass('flag-item').addClass('unflag-item');
         $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
-      } else {
+      } else {          
         $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
       }
@@ -47,6 +48,7 @@ $(document).ready(function() {
         $.flashmessage(resp.error, {type: 'error'});
       } else {
         $.flashmessage(resp.message);
+        $(".saved-searches .blank_search").hide();
         if(!$('a[data-searchid = '+resp.newid+']').length) {
           var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
           $('.saved-searches ul').prepend($li);
