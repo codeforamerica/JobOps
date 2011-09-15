@@ -13,7 +13,7 @@ module JobsHelper
   end
  
   def flagged_jobs_blank
-    "You don't have any flagged jobs. Flag jobs that interest you by clicking on the star next to job result title. Your flagged jobs will appear here; when you've flagged jobs, you can compare them [here]."
+    "You don't have any flagged jobs. Flag jobs that interest you by clicking on the star next to job result title. Your flagged jobs will appear here; when you've flagged jobs, you can compare them."
   end
 
   def flagged_jobs_tip
