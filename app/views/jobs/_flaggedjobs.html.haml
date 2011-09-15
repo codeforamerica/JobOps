@@ -5,6 +5,7 @@
     -if current_user.jobs.blank?
       .blank_search
         =raw flagged_jobs_blank
+      %ul
     -else
       %ul
         - current_user.jobs.each do |job|

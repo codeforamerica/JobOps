@@ -5,6 +5,7 @@
     -if current_user.job_searches.blank?
       .blank_search
         =raw save_search_blank
+      %ul
     -else
       %ul
         - current_user.job_searches.each do |search|
