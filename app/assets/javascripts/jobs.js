@@ -1,6 +1,19 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
+    
+     $('.toggle-on').live('click', function(ev) {
+        ev.preventDefault();         
+      $('.can-hide').css('visibility','hidden');
+      $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
+     });
+
+     $('.toggle-off').live('click', function(ev) {
+        ev.preventDefault();
+       $('.can-hide').css('visibility','visible');               
+       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");   
+      });
+      
   $('.fixed-height').scrollbar();
 
   $('.flag-item, .unflag-item').live('click',function(ev) {
@@ -49,7 +62,7 @@ $(document).ready(function() {
       $target.parents('li').remove();
     });
   });
-
+ 
 });
 
 function setupMap(jobs) {
