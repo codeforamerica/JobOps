@@ -5,6 +5,7 @@ FactoryGirl.define do
     lat 34.156788991
     long 118.1230984
     user_saved true
-    search_params '{"date_acquired_greater_than"=>"","job_searches_keyword_contains"=>"ruby","job_searches_location_contains"=>"San Francisco, CA","title_contains"=>"", "company_name_contains"=>""}'
+    search_params {{"date_acquired_greater_than"=>"", "job_searches_keyword_contains"=>"21b", "job_searches_location_contains"=>"San Francisco, CA", "title_contains"=>"", "company_name_contains"=>""}}
+
   end
 end
