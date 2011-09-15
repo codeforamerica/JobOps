@@ -1,5 +1,5 @@
 %script{:type => "text/javascript", :charset => "utf-8"}
-  var jobs = 
+  var jobs =
   =raw @jobs.map { |job| { :lat => job.company.lat, :lng => job.company.long}}.to_json
   ;
   $(document).ready(function() {setupMap(jobs);});
@@ -76,7 +76,7 @@
           = "#{params[:search][:job_searches_keyword_contains]}"
           - if params[:search][:job_searches_location_contains]
             - if params[:search][:job_searches_location_contains].empty?
-              = "near everywhere"
+              = " (anywhere)"
             - else
               = "near #{params[:search][:job_searches_location_contains]}"
       = form_tag('/job_searches_user/new', :method => :get, :id => 'save-search')

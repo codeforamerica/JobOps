@@ -84,17 +84,26 @@ function setupMap(jobs) {
   bounds = new google.maps.LatLngBounds();
 
   $.each(jobs, function(idx, job) {
-    jobLatLng = new google.maps.LatLng(job.lat, job.lng);
-    bounds.extend(jobLatLng);
-    markerOrigin = new google.maps.Point(0, (idx*21));
-    markerIcon = new google.maps.MarkerImage('/images/pin-sprite.png', gSize, markerOrigin);
-    tempMarker = new google.maps.Marker({
-          position: jobLatLng,
-          map: map,
-          icon: markerIcon,
-          shadow: '/images/pin-shadow.png'
-    });
-    markers.push(tempMarker);
+    if(job.lat && job.lng) {
+      jobLatLng = new google.maps.LatLng(job.lat, job.lng);
+      bounds.extend(jobLatLng);
+      markerOrigin = new google.maps.Point(0, (idx*21));
+      markerIcon = new google.maps.MarkerImage('/images/pin-sprite.png', gSize, markerOrigin);
+      tempMarker = new google.maps.Marker({
+            position: jobLatLng,
+            map: map,
+            icon: markerIcon,
+            shadow: '/images/pin-shadow.png'
+      });
+      markers.push(tempMarker);
+    }
   });
-  map.fitBounds(bounds);
+
+  // If there is nothing on the map, just show a map of the continental US
+  if(markers.length == 0) {
+    map.setCenter(new google.maps.LatLng(40.58058466412761, -98.0859375));
+    map.setZoom(3);
+  } else {
+    map.fitBounds(bounds);
+  }
 }

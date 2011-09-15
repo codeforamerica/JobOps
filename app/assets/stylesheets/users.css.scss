@@ -31,7 +31,7 @@ ul.profile_nav li a:link, ul.profile_nav li a:visited {
   line-height:100%;
   padding:6px 11px;
 }
-ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active a:link, ul.profile_nav li.active a:visited  {
+ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:active, ul.profile_nav li.active a:link, ul.profile_nav li.active a:visited  {
   color:#333;
   border-radius: 8px;
   border:1px inset #CCC;
