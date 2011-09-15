@@ -24,16 +24,14 @@ $(document).ready(function() {
         return $( this ).val() == '' ? false : true;
       },
       onError : function() {
-        $(this).parent('.field').addClass('fix-me');
-        console.log(this);
+        $(this).parents('.field').first().addClass('fix-me');
       },
       onValid : function() {
-        $(this).parent('.field').removeClass('fix-me');
+        $(this).parents('.field').first().removeClass('fix-me');
         $(this).focus();
       }
     },
-
-    submitHandler : function() {}
+    submitHandler : function() { return true; }
   });
 
 });
