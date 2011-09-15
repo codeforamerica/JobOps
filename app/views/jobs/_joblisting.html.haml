@@ -18,7 +18,7 @@
           Acquired on
         =job.date_acquired
         %span.job-source{:class=>job.job_source}
-          %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source }
+          %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source.gsub(/_/,' '), :alt =>job.job_source.gsub(/_/,' ') }
       .job-excerpt
         =job.snippet
       %br.clear
