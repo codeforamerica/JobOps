@@ -24,14 +24,18 @@ $(document).ready(function() {
     ev.preventDefault();
     var action = $(this).attr('action');
     var data = $(this).serialize();
-    var sentence = $('#keyword').val() +' near '+$('#location').val();
+    var sentence = $('#search_job_searches_keyword_contains').val() +' near '+$('#search_job_searches_location_contains').val();
     var resultCount = $('.search-result-title span').text();
 
     $.getJSON(action +'?'+data, function(resp) {
-      $.flashmessage(resp.message);
-      if(!$('a[data-searchid = '+resp.newid+']').length) {
-        var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
-        $('.saved-searches ul').prepend($li);
+      if(resp.error) {
+        $.flashmessage(resp.error, {type: 'error'});
+      } else {
+        $.flashmessage(resp.message);
+        if(!$('a[data-searchid = '+resp.newid+']').length) {
+          var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
+          $('.saved-searches ul').prepend($li);
+        }
       }
     });
   });

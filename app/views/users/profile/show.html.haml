@@ -5,192 +5,177 @@
     = render 'users/profile/sidebar_nav'
     .tab_container
       #basic_info.tab_content
-        - if not @facebook_user.nil?
-          = image_tag @facebook_user.picture
-        - if not @twitter_user.nil?
-          = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
-        - unless @user.linked_in_user.nil?
-          = image_tag @user.linked_in_user.profile.picture_url
-
-        = gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}")
-
         %h2 Basic Info
-        %table
-          %tr
-            %td Name:
-            %td= @user.name
-          %tr
-            %td Location:
-            %td= @user.location
-          %tr
-            %td Phone:
-            %td= @user.phone
-          %tr
-            %td Current Goal:
-            %td= @user.goal
-          %tr
-            %td Willingness to relocate:
-            %td= @user.relocate
-          %tr
-            %td Desired Salary:
-            %td= @user.desired_salary
+        .tab_form
+          - if not @facebook_user.nil?
+            = image_tag @facebook_user.picture
+          - if not @twitter_user.nil?
+            = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
+          - unless @user.linked_in_user.nil?
+            = image_tag @user.linked_in_user.profile.picture_url
+
+          = gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}")
+          
+          .label
+            Name:
+          .value= @user.name
+          .label
+            Location:
+          .value= @user.location
+          .label
+            Phone:
+          .value= @user.phone
+          .label
+            Current Goal:
+          .value= @user.goal
+          .label
+            Willingness to relocate:
+          .value= @user.relocate
+          .label
+            Desired Salary:
+          .value= @user.desired_salary
+          %br.clearit
 
       #military_info.tab_content
         %h2 Military Info
-        %table
-          %tr
-            %td Military Status:
-            %td= @user.military_status
-          %tr
-            %td Service Branch:
-            %td= @user.service_branch
-          %tr
-            %td MOC:
-            %td= @user.moc
-          %tr
-            %td Rank:
-            %td= @user.rank
-          %tr
-            %td Unit:
-            %td= @user.unit
-          %tr
-            %td Disability:
-            %td= @user.disability
-          %tr
-            %td Wars:
-            %td
-              - @user.wars.each do |wars|
-                = wars.war
-          %tr
-            %td Awards:
-            %td
-              - @user.awards.each do |awards|
-                = awards.award
+        .tab_form
+          .label
+            Military Status:
+          .value= @user.military_status
+          .label
+            Service Branch:
+          .value= @user.service_branch
+          .label
+            MOC:
+          .value= @user.moc
+          .label
+            Rank:
+          .value= @user.rank
+          .label
+            Unit:
+          .value= @user.unit
+          .label
+            Disability:
+          .value= @user.disability
+          .label
+            Wars:
+          .value
+            - @user.wars.each do |wars|
+              = wars.war
+          .label
+            Awards:
+          .value
+            - @user.awards.each do |awards|
+              = awards.award
+          %br.clearit
 
       #skills_edu.tab_content
         %h2 Skills &amp; Education
         %br.clearit
-        %h3 Education
+        %h3 - Education
         %br.clearit
-        %table
-          %tr
-            %th School name
-            %th Degree
-            %th Study field
-            %th Start date
-            %th End date
-            %th Activities
-            %th Notes
-            %th
-            %th
-            %th
-
+        .tab_form
+          .label
+            School Name:
+          .label            
+            Degree:
+          .label            
+            Study Field:
+          .label
+            Start Date:
+          .label
+            End Date:
+          .label
+            Activities:
+          .label
+            Notes:
+          %br.clearit
+            
           - @user.educations.each do |education|
-            %tr
-              %td= education.school_name
-              %td= education.degree
-              %td= education.study_field
-              %td= education.start_date
-              %td= check_present(education.end_date)
-              %td= education.activities
-              %td= education.notes
-              %td= link_to 'Show', education
-              %td= link_to 'Edit', edit_education_path(education)
-              %td= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
+            .label
+              .value= education.school_name
+              .value= education.degree
+              .value= education.study_field
+              .value= education.start_date
+              .value= check_present(education.end_date)
+              .value= education.activities
+              .value= education.notes
+              .value= link_to 'Show', education
+              .value= link_to 'Edit', edit_education_path(education)
+              .value= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
 
-        %h3 Skills
+        %h3 - Skills
         %br.clearit
         - @user.skills.each do |skills|
           = skills.skill
 
-        %h3 Languages
+        %h3 - Languages
         %br.clearit
         - @user.languages.each do |languages|
           = languages.language
 
-        %h3 Trainings
+        %h3 - Trainings
         %br.clearit
-        %table
-          %tr
-          %th Training
-          %th Training date
-          %th
-          %th
-          %th
+        .tab_form
+          .label
+            Training:
+          .label            
+            Training Date:
+          %br.clearit
 
           - @user.trainings.each do |training|
-            %tr
-              %td= training.training
-              %td= training.training_date
-              %td= link_to 'Show', training
-              %td= link_to 'Edit', edit_training_path(training)
-              %td= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
+            .label
+              .value= training.training
+              .value= training.training_date
+              .value= link_to 'Show', training
+              .value= link_to 'Edit', edit_training_path(training)
+              .value= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
 
-        %h3 Certifications
+        %h3 - Certifications
         %br.clearit
-        %table
-          %tr
-            %th Name
-            %th Institution
-            %th Date acquired
-            %th
-            %th
-            %th
+        .tab_form
+          .label
+            Name:
+          .label
+            Institution:
+          .label
+            Date Acquired:
+          %br.clearit
 
           - @user.certifications.each do |certification|
-            %tr
-              %td= certification.name
-              %td= certification.institution
-              %td= certification.date_acquired
-              %td= link_to 'Show', certification
-              %td= link_to 'Edit', edit_certification_path(certification)
-              %td= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
+            .label
+              .value= certification.name
+              .value= certification.institution
+              .value= certification.date_acquired
+              .value= link_to 'Show', certification
+              .value= link_to 'Edit', edit_certification_path(certification)
+              .value= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
 
       #exp.tab_content
         %h2 Experience
         %br.clearit
-        %table
-          %tr
-            %th Org name
-            %th Title
-            %th Start date
-            %th End date
-            %th Summary
-            %th
-            %th
-            %th
+        .tab_form
+          .label
+            Org Name:
+          .label
+            Title:
+          .label
+            Start Date:
+          .label
+            End Date:
+          .label
+            Summary:
+          %br.clearit
 
           - @user.job_histories.each do |job_history|
-            %tr
-              %td= job_history.org_name
-              %td= job_history.title
-              %td= job_history.start_date
-              %td= check_present(job_history.end_date)
-              %td= job_history.summary
-              %td= link_to 'Show', job_history
-              %td= link_to 'Edit', edit_job_history_path(job_history)
-              %td= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
-
-      #personal_info.tab_content
-        %h2 Personal Info
-        %br.clearit
-        %table
-          %tr
-            %td DOB:
-            %td= @user.dob
-          %tr
-            %td Age:
-            %td
-              - unless @user.dob.nil?
-                = @user.age(@user.dob)
-          %tr
-            %td Gender:
-            %td= @user.gender
-          %tr
-            %td Ethnicity:
-            %td= @user.ethnicity
-          %tr
-            %td Family:
-            %td= @user.family
+            .label
+              .value= job_history.org_name
+              .value= job_history.title
+              .value= job_history.start_date
+              .value= check_present(job_history.end_date)
+              .value= job_history.summary
+              .value= link_to 'Show', job_history
+              .value= link_to 'Edit', edit_job_history_path(job_history)
+              .value= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
 
     %br.clearit

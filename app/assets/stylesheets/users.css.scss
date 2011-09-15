@@ -64,7 +64,7 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
   float:left;
   margin-bottom:15px;
   width:100%;
-  font-size:1.0em;
+  font-size:0.9em;
   color:#666;
   font-weight:normal;
   line-height:150%;
@@ -72,19 +72,18 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
 }
 .tab_form {
   background-color:#ECECEC;
-  padding:30px;
+  padding:15px 30px;
   margin-bottom:15px;
   border:1px solid #CCC;
+  clear:left;
 }
 .tab_form .field {
-  border-bottom:1px solid #CCC;
   margin-bottom:15px;
-  padding:0 0 15px 0;
   height:25px;
   clear:both;
 }
 .tab_form .field label {
-  width:200px;
+  width:160px;
   text-align:right;
   color:#999;
   display:block;
@@ -94,15 +93,21 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
 }
 .tab_form .field input[type="text"] {
   float:left;
- }
-.tab_content table {
+}
+.tab_form .label {
+  color:#999;
+  font-size:0.75em;
   float:left;
-  background-color:#ECECEC;
-  padding:30px;
-  margin-bottom:15px;
-  border:1px solid #CCC;
-  border-collapse:separate;
+  margin-right:15px;
+  width:160px;
+  text-align:right;
   clear:left;
+}
+.tab_form .value {
+  color:#333;
+  font-size:1.0em;
+  float:left;
+  text-align:left;
 }
 .tab_content table tr {
   border-bottom:1px solid #CCC;
@@ -110,16 +115,8 @@ ul.profile_nav li a:hover, ul.profile_nav li a:active, ul.profile_nav li.active 
   height:25px;
   clear:both;
 }
-.tab_content td {
-  color:#333;
-  font-size:1.0em;
-  margin-bottom:15px;
-}
 #basic_info img {
   float:right;
-}
-#basic_info h2 {
-  width:inherit;
 }
 
 /** SIDEBAR TABS **/
