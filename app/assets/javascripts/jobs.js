@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     $.getJSON(action +'?'+data, function(resp) {
       if(resp.error) {
-        $.flashmessage(resp.message, {type: 'error'});
+        $.flashmessage(resp.error, {type: 'error'});
       } else {
         $.flashmessage(resp.message);
         if(!$('a[data-searchid = '+resp.newid+']').length) {
