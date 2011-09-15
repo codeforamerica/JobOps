@@ -279,3 +279,11 @@ background-image: -moz-linear-gradient(
   border: 2px solid #337300;
   background: url(/images/note-bg-green.png);
 }
+
+/** FORM MESSAGES **/
+.fix-me { 
+  background-image: url('/images/cross.png');
+  background-repeat: no-repeat;
+  background-position: 0 5px;
+}
+.fix-me input { border: 2px solid #ff0000; }

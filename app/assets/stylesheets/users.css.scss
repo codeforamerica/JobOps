@@ -83,7 +83,7 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   clear:both;
 }
 .tab_form .field label {
-  width:160px;
+  width:105px;
   text-align:right;
   color:#999;
   display:block;
@@ -93,6 +93,9 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
 }
 .tab_form .field input[type="text"] {
   float:left;
+  width: 240px;
+  font-size: 0.8em;
+  padding: 2px;
 }
 .tab_form .label {
   color:#999;
@@ -115,6 +118,19 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   height:25px;
   clear:both;
 }
+
+.field-wrapper {
+  float: left;
+  width: 300px;
+}
+.helpful_info { 
+  float: left; 
+  font-size: 0.75em;
+  width: 240px;
+  line-height: 1.2em;
+  padding: 0 0 5px 10px;
+}
+
 #basic_info img {
   float:right;
 }
@@ -164,4 +180,3 @@ ul.tabs li a:hover, ul.tabs li a:active, ul.tabs li.active a:link, ul.tabs li.ac
   text-decoration:none;
   padding:4px 9px 5px 34px;
 }
-
