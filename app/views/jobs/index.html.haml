@@ -58,9 +58,9 @@
   .white-box.search-results-wrapper
     .search-results-header
       .search-result-title
-        -if @jobs.blank?
+        - if @jobs.blank?
           = raw(jobs_not_found)
-        -else
+        - else
           %span
             =@jobs.total_entries unless @jobs.blank?
           Jobs Found
