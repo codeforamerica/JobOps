@@ -1,0 +1,20 @@
+%h3 - Skills
+%br.clearit
+%p= link_to 'Add new skill', new_skill_path
+%p= link_to 'Edit skills', skills_path
+.tab_form
+  .skills
+    %ul
+    -current_user.skills.each do |skill|
+      %li
+        %span{:class=>"skill_#{skill.id}"}
+          =skill.skill
+          %a{:class=>"edit_skill_#{skill.id}"} Edit 
+          =link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_skill_#{skill.id}"
+        %span{:class=>"edit_skill_#{skill.id}"}
+          =form_for skill, :remote => true do |f|
+            =f.text_field :skill 
+            =f.submit :value=>"Edit Skill", :class => "green-btn"
+    =form_for @user.skills.new, :remote => true do |f|
+      =f.text_field :skill 
+      =f.submit :value=>"Add Skill", :class => "green-btn"

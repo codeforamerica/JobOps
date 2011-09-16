@@ -1,59 +1,33 @@
 #profile
-  = render 'users/profile/nav_profile'
+  =render 'users/profile/nav_profile'
   %br.clearit
   #user-main
-    = render 'users/profile/sidebar_nav'
+    =render 'users/profile/sidebar_nav'
     .tab_container
       #basic_info.tab_content
         %h2 Basic Info
         %br.clearit
         .tab_form
-          = render 'users/profile/form'
+          =render 'users/profile/form'
 
       #military_info.tab_content
         %h2 Military Info
         %br.clearit
         .tab_form
-          = render 'military/form'
+          =render 'military/form'
+          =render 'users/profile/war'
+          =render 'users/profile/award'
 
       #skills_edu.tab_content
         %h2 Skills & Education
-        %h3 - Education
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add Education', new_education_path
-          %p= link_to 'Edit Education', educations_path
-        
-        %h3 - Skills
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add new skill', new_skill_path
-          %p= link_to 'Edit skills', skills_path
-
-        %h3 - Languages
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add Language', new_language_path
-          %p= link_to 'Edit Languages',languages_path
-
-        %h3 - Trainings
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add Training', new_training_path
-          %p= link_to 'Edit Trainings', trainings_path
-
-        %h3 - Certifications
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add Certification', new_certification_path
-          %p= link_to 'Edit Certifications', certifications_path
+        =render "users/profile/education"
+        =render "users/profile/skills"
+        =render "users/profile/languages"
+        =render "users/profile/trainings"
+        =render "users/profile/certifications"
 
       #exp.tab_content
-        %h2 Experience
-        %br.clearit
-        .tab_form
-          %p= link_to 'Add Job', new_job_history_path
-          %p= link_to 'Edit Jobs', job_histories_path
+        =render "users/profile/experience"
 
     %br.clearit
 
