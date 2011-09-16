@@ -11,8 +11,12 @@ class JobSearchesUserController < ApplicationController
       current_user.job_searches << search
       message = {"message" => "Job search saved.", "newid" => search.id }
     else
-      current_user.job_searches << search.first unless current_user.job_searches.include?(search.first)
-      message = {"error" => "Job search already saved." }
+      if current_user.job_searches.include?(search.first)
+        message = {"error" => "Job search already saved." }
+      else
+      current_user.job_searches << search.first 
+      message = {"message" => "Job search saved.", "newid" => search.first.id }
+      end
     end
 
     respond_to do |format|
