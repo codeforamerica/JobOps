@@ -186,8 +186,7 @@ ol.job-listings li {
 .job-title {
   font-size:1.0em;
   font-weight: bold;
-  float: left;
-  width: 100%;
+  display:inline;
 }
 .job-meta {
   font-size:0.75em;
@@ -199,7 +198,6 @@ ol.job-listings li {
 .job-aquire {
   color: #333;
 }
-
 .job-number {
   float: left;
   color: #FFF;
