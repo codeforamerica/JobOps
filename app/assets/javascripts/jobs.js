@@ -35,10 +35,13 @@ $(document).ready(function() {
 
         // If there are no flagged jobs, show the tip
         if($('.flagged-jobs li').length == 0) {
-          $('.blank_search').show();
+          $('.flagged-jobs .blank_search').show();
         }
-
       }
+      if(!$('.flagged-jobs .scoll-pane').length) {
+        $('.flagged-jobs .fixed-height').scrollbar();
+      }
+      
       $('.fixed-height').scrollbar('repaint');
     });
   });
@@ -71,6 +74,16 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       $target.parents('li').remove();
+
+      // If there are no flagged jobs, show the tip
+      if($('.saved-searches li').length == 0) {
+        $('.saved-searches .blank_search').show();
+      }
+      
+      if(!$('.saved-searches .scoll-pane').length) {
+        $('.saved-searches .fixed-height').scrollbar();
+      }
+      $('.fixed-height').scrollbar('repaint');
     });
   });
 
