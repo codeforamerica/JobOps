@@ -33,5 +33,29 @@ $(document).ready(function() {
     },
     submitHandler : function() { return true; }
   });
+  
+ $('.add_skill_form').hide();
+ $('.edit_skill_form').hide(); 
  
-});
+ $('.add_skill').click(function(ev){
+     ev.preventDefault();
+     $('.add_skill_form').show();
+ });
+ 
+ $('.edit_skill').click(function(ev){
+     ev.preventDefault();
+     
+     $('.edit_skill_form').show();
+ }); 
+
+ $('.cancel_add_skill').click(function(ev){
+     ev.preventDefault();
+     $('.add_skill_form').hide();
+ });
+ 
+ $('.cancel_edit_skill').click(function(ev){
+     ev.preventDefault();
+     $('.edit_skill_form').hide();
+ }); 
+  
+ });
