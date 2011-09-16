@@ -68,18 +68,18 @@ class JobsController < ApplicationController
     end
   end
 
+  protected
+
   #Load the related careers based on Fututures API
   def careers(moc)
     Career.new.futures_pipeline.search(moc)
   end
 
-  protected
-
   def get_user_variables
     if current_user
       @flagged_jobs = current_user.jobs
       @saved_searches = current_user.job_searches
-      @careers = careers(current_user.moc) unless current_user.moc.nil?
+      @careers = careers(current_user.moc) unless current_user.moc.blank?
     else
       @flagged_jobs = []
     end
