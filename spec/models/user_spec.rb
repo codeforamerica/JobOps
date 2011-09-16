@@ -95,6 +95,18 @@ describe User do
   end
 
   describe "#add_saved_search" do
+    it "should not search careers is MOC is nil" do
+      @user = Factory(:user, :moc => nil)
+      @user.add_saved_search
+      @user.job_searches.should be_empty
+    end
+
+    it "should not search careers when MOC is blank" do
+      @user = Factory(:user, :moc => '')
+      @user.add_saved_search
+      @user.job_searches.should be_empty
+    end
+
     it "should add a saved search based on MOC code" do
       @user.add_saved_search
       @user.reload.job_searches.first.keyword.should == "11B"
