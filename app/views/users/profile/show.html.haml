@@ -13,8 +13,6 @@
             = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
           - unless @user.linked_in_user.nil?
             = image_tag @user.linked_in_user.profile.picture_url
-
-          = gravatar_image_tag("#{@user.email}", :alt => "#{@user.name}")
           
           .label
             Name:
