@@ -134,6 +134,36 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
 #basic_info img {
   float:right;
 }
+#new_education .notes, #new_education .activities {
+  clear:both;
+  height:200px;
+  overflow:hidden;
+}
+.saved-edu h4 {
+  font-weight:normal;
+  float:left;
+}
+.saved-edu span {
+  float:right;
+}
+.saved-edu ul {
+  margin-left: -25px;
+}
+.saved-edu ul li {
+  font-size:0.75em;
+  color:#666;
+  line-height:100%;
+}
+.tab_function .remove {
+  background: url(/images/remove.png) no-repeat right top;
+  height:8px;
+  width:8px;
+  margin: 10px 0 0 10px;
+  float:right;
+}
+.tab_function a {
+  font-size:0.6em;
+}
 
 /** SIDEBAR TABS **/
 

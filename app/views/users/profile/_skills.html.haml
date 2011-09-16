@@ -1,21 +1,21 @@
 %h3 - Skills
-.ive-got-a-button-wrapper
-  %p= link_to 'Add new skill', new_skill_path, :class => "add_form_button"
-  %p= link_to 'Edit skills', skills_path
-  .tab_form
-    %ul.skill
-      -current_user.skills.each do |skill|
-        %li
-          %span{:class=>"skill_#{skill.id}"}
-            =skill.skill
-            %a{:class=>"skill_#{skill.id} edit_skill"} Edit 
-            =link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_skill_#{skill.id}"
-          %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
-            =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
-              =f.text_field :skill 
-              =f.submit :value=>"Edit Skill", :class => "green-btn"
-    .inline_form
-      =form_for @user.skills.new, :remote => true do |f|
-        =f.text_field :skill 
-        =f.submit :value=>"Add Skill", :class => "green-btn"
-        %a{:class=>"cancel_add_skill", :href => "#"} Cancel
+%br.clearit
+.ive-got-a-button-wrapper.tab_form
+  %p= link_to 'Add new skill', new_skill_path, :class => "add_skill add_form_button"
+  %p= link_to 'Edit skills', skills_path, :class => "edit_skill"
+  %ul.skill
+    -current_user.skills.each do |skill|
+      %li
+        %span{:class=>"skill_#{skill.id}"}
+          =skill.skill
+          %a{:class=>"skill_#{skill.id} edit_skill"} Edit
+          =link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_skill_#{skill.id}"
+        %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
+          =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
+            =f.text_field :skill
+            =f.submit :value=>"Edit Skill", :class => "green-btn"
+  .inline_form
+    =form_for @user.skills.new, :remote => true do |f|
+      =f.text_field :skill
+      =f.submit :value=>"Add Skill", :class => "green-btn"
+      %a{:class=>"cancel_add_skill", :href => "#"} Cancel
