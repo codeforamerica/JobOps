@@ -1,12 +1,12 @@
 %h3 - Education
-%br.clearit
+.tab-add-edit
   %p= link_to 'Add Education', new_education_path, :class => "add_edu"
   %p= link_to 'Edit Education', educations_path, :class => "edit_edu"
 .tab_form
   -@education = current_user.educations.new
   .add_education_form
     =render "educations/form"
--current_user.educations.each do |education|
+-Education.where(:user_id => current_user.id).each do |education|
   .tab_form
     .saved-edu
       %h4 

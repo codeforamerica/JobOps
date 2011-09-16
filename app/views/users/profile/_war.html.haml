@@ -1,1 +1,28 @@
-%p= link_to 'Add War', new_war_path
+%h3 - Wars
+%br.clearit
+%p= link_to 'Add new war', new_war_path, :class => "add_war"
+%p= link_to 'Edit wars', wars_path
+.tab_form
+  .wars
+    %ul
+    -current_user.wars.each do |war|
+      %li
+        %span{:class=>"war_#{war.id}"}
+          =war.war
+          %a{:class=>"war_#{war.id} edit_war"} Edit 
+          =link_to 'Destroy', war, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_war_#{war.id}"
+        %span{:class=>"edit_war_#{war.id} edit_war_form"}
+          =form_for war, :remote => true, :html => {:class => "edit_war"} do |f|
+            .fields
+              =f.label :wars
+              =f.text_field :war 
+            .actions              
+              =f.submit :value=>"Edit War", :class => "green-btn"
+    .add_war_form
+      =form_for @user.wars.new, :remote => true do |f|
+        .fields
+          =f.label :wars
+          =f.text_field :war 
+        .actions
+          =f.submit :value=>"Add War", :class => "green-btn"
+          %a{:class=>"cancel_add_war", :href => "#"} Cancel

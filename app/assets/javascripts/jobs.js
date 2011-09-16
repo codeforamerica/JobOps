@@ -41,7 +41,7 @@ $(document).ready(function() {
       if(!$('.flagged-jobs .scoll-pane').length) {
         $('.flagged-jobs .fixed-height').scrollbar();
       }
-      
+
       $('.fixed-height').scrollbar('repaint');
     });
   });
@@ -51,7 +51,7 @@ $(document).ready(function() {
     var action = $(this).attr('action');
     var data = $(this).serialize();
     var sentence = $('#search_job_searches_keyword_contains').val() +' near '+$('#search_job_searches_location_contains').val();
-    var resultCount = $('.search-result-title span').text();
+    var resultCount = $('.search-result-title span').first().text();
 
     $.getJSON(action +'?'+data, function(resp) {
       if(resp.error) {
@@ -79,7 +79,7 @@ $(document).ready(function() {
       if($('.saved-searches li').length == 0) {
         $('.saved-searches .blank_search').show();
       }
-      
+
       if(!$('.saved-searches .scoll-pane').length) {
         $('.saved-searches .fixed-height').scrollbar();
       }

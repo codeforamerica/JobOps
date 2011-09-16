@@ -1,1 +1,28 @@
-%p= link_to 'Add Award', new_award_path
+%h3 - Awards
+%br.clearit
+%p= link_to 'Add new award', new_award_path, :class => "add_award"
+%p= link_to 'Edit awards', awards_path
+.tab_form
+  .awards
+    %ul
+    -current_user.awards.each do |award|
+      %li
+        %span{:class=>"award_#{award.id}"}
+          =award.award
+          %a{:class=>"award_#{award.id} edit_award"} Edit 
+          =link_to 'Destroy', award, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_award_#{award.id}"
+        %span{:class=>"edit_award_#{award.id} edit_award_form"}
+          =form_for award, :remote => true, :html => {:class => "edit_award"} do |f|
+            .fields
+              =f.label :awards
+              =f.text_field :award 
+            .actions              
+              =f.submit :value=>"Edit Award", :class => "green-btn"
+    .add_award_form
+      =form_for @user.awards.new, :remote => true do |f|
+        .fields
+          =f.label :awards
+          =f.text_field :award 
+        .actions
+          =f.submit :value=>"Add Award", :class => "green-btn"
+          %a{:class=>"cancel_add_award", :href => "#"} Cancel
