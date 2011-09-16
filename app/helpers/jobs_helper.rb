@@ -23,6 +23,10 @@ module JobsHelper
   def flag_tip
     "Clicking on the star next to the job listing flags it so you can easily find it later."
   end
+  
+  def jobs_not_found
+    "Your search didn't return any jobs. Try searching for a more general term - for example 'engineer' instead of 'quality and operations engineer'. Also, updating your MOC code in <a href='/users'>your profile</a> will help us suggest job searches for you based on your background."
+  end
 
   def search_params(param)
     case param
