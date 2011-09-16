@@ -2,19 +2,19 @@
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
 
-     $('.toggle-on').live('click', function(ev) {
-        ev.preventDefault();
-       $('.hide-off').addClass("hide-on").removeClass("hide-off");
-      $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
-     });
+  $('.toggle-on').live('click', function(ev) {
+    ev.preventDefault();
+    $('.hide-off').addClass("hide-on").removeClass("hide-off");
+    $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
+  });
 
-     $('.toggle-off').live('click', function(ev) {
-        ev.preventDefault();
-      $('.hide-on').addClass("hide-off").removeClass("hide-on");
+  $('.toggle-off').live('click', function(ev) {
+    ev.preventDefault();
+    $('.hide-on').addClass("hide-off").removeClass("hide-on");
 
-       $('input#smart_filter').val("on");
-       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
-      });
+    $('input#smart_filter').val("on");
+    $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
+  });
 
   $('.fixed-height').scrollbar();
 
