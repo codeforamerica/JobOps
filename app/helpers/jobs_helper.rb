@@ -25,7 +25,7 @@ module JobsHelper
   end
   
   def jobs_not_found
-    "love you matt lewis"
+    "Your search didn't return any jobs. Try searching for a more general term - for example 'engineer' instead of 'quality and operations engineer'. Also, updating your MOC code in <a href='/users'>your profile</a> will help us suggest job searches for you based on your background."
   end
 
 end
