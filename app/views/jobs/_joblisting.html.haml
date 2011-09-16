@@ -10,14 +10,14 @@
           %a.flag-item{ :href => '/jobs/flag/'+job.id.to_s, :title => flag_tip, :data => { :jobid => job.id.to_s }}
         %span.job-title-wrapper
           =link_to job.title, job.url, {:target => '_blank', :class => 'job-title' }
+          %span.job-source{:class=>job.job_source}
+            %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source.gsub(/_/,' '), :alt =>job.job_source.gsub(/_/,' ') }
       %br.clearit
       %span.job-meta
         =job.company.name
         =job.location.location
         %span.job-aquire
           = "Acquired #{time_ago_in_words(job.date_acquired)} ago"
-        %span.job-source{:class=>job.job_source}
-          %img{ :src => '/images/bank-'+job.job_source.downcase.gsub(/_/,'')+'.png', :title => job.job_source.gsub(/_/,' '), :alt =>job.job_source.gsub(/_/,' ') }
       .job-excerpt
         =job.snippet
       %br.clear

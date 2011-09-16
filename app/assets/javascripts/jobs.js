@@ -1,23 +1,24 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
+  // Setup smart filter on/off switch
+  $('.toggle-on').live('click', function(ev) {
+    ev.preventDefault();
+    $('.hide-off').addClass("hide-on").removeClass("hide-off");
+    $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
+  });
 
-     $('.toggle-on').live('click', function(ev) {
-        ev.preventDefault();
-       $('.hide-off').addClass("hide-on").removeClass("hide-off");
-      $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
-     });
+  $('.toggle-off').live('click', function(ev) {
+    ev.preventDefault();
+    $('.hide-on').addClass("hide-off").removeClass("hide-on");
+    $('input#smart_filter').val("on");
+    $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
+  });
 
-     $('.toggle-off').live('click', function(ev) {
-        ev.preventDefault();
-      $('.hide-on').addClass("hide-off").removeClass("hide-on");
-
-       $('input#smart_filter').val("on");
-       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
-      });
-
+  // Add a scrollbar to every fixed-height element
   $('.fixed-height').scrollbar();
 
+  // Bind our flagging click handlers
   $('.flag-item, .unflag-item').live('click',function(ev) {
     ev.preventDefault();
     var $target = $(ev.target);
@@ -25,13 +26,22 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
-        $(".flagged-jobs .blank_search").hide();          
+        $(".flagged-jobs .blank_search").hide();
         $target.removeClass('flag-item').addClass('unflag-item');
         $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
-      } else {          
+      } else {
         $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
+
+        // If there are no flagged jobs, show the tip
+        if($('.flagged-jobs li').length == 0) {
+          $('.flagged-jobs .blank_search').show();
+        }
       }
+      if(!$('.flagged-jobs .scoll-pane').length) {
+        $('.flagged-jobs .fixed-height').scrollbar();
+      }
+      
       $('.fixed-height').scrollbar('repaint');
     });
   });
@@ -64,10 +74,20 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       $target.parents('li').remove();
+
+      // If there are no flagged jobs, show the tip
+      if($('.saved-searches li').length == 0) {
+        $('.saved-searches .blank_search').show();
+      }
+      
+      if(!$('.saved-searches .scoll-pane').length) {
+        $('.saved-searches .fixed-height').scrollbar();
+      }
+      $('.fixed-height').scrollbar('repaint');
     });
   });
 
-  // Setup tooltips
+  // Bind tooltip events
   $('a.tooltip-link').click(function(ev) {
     ev.preventDefault();
     var offset = $(this).offset();
@@ -85,6 +105,11 @@ $(document).ready(function() {
       zIndex: 501
     })
     $tip.toggle();
+  });
+
+  $('a.tooltip-close').click(function(ev) {
+    ev.preventDefault();
+    $(this).parents('.tooltip').hide();
   });
 
 });

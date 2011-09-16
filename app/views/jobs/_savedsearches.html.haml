@@ -7,6 +7,8 @@
         =raw save_search_blank
       %ul
     -else
+      .blank_search{ :style => 'display:none' }
+        =raw save_search_blank
       %ul
         - current_user.job_searches.each do |search|
           %li

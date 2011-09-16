@@ -4,7 +4,7 @@
 
 /** LOG IN PAGE **/
 
-#sign_in_wrapper {
+#sign_in_wrapper, #sign_up_wrapper {
   width:300px;
   position:relative;
   left:50%;
@@ -13,33 +13,33 @@
   background:url(/images/box.png) repeat;
   padding: 15px;
 }
-#sign_in {
+#sign_in, #sign_up {
   background-color:#FFF;
   padding:15px;
 }
-#sign_in h2 {
+#sign_in h2, #sign_up h2 {
   font-size:1.25em;
   background:url("/images/footer_bg.png") repeat-x;
   color:#FFF;
   margin:-15px -15px 15px -15px;
   padding:5px 15px;
 }
-#sign_in label {
+#sign_in label, #sign_up label {
   float:left;
   color:#999;
   margin:0 10px 5px 0;
 }
-#sign_in input[type="email"], #sign_in input[type="password"] {
+#sign_in input[type="email"], #sign_in input[type="password"], #sign_up input[type="email"], #sign_up input[type="password"], #sign_up input[type="text"] {
   float:left;
   margin-bottom:15px;
   padding:5px 5px;
   width:250px;
 }
-#sign_in .green-btn {
+#sign_in .green-btn, #sign_up .green-btn {
   float:right;
   margin-bottom:25px;
 }
-#sign_in strong {
+#sign_in strong, #sign_up strong {
   display:block;
   margin:0 -15px 15px -15px;
   padding:0 15px;
@@ -49,11 +49,11 @@
   font-size:0.6em;
   width:270px;
 }
-#sign_in img {
+#sign_in img, #sign_up img {
   float:left;
   margin:0 10px 0 0;
 }
-a.sign_up, a.forgot_password {
+a.sign_up, a.sign_in, a.forgot_password {
   display: block;
   float: left;
   font-size: 0.75em;
@@ -61,6 +61,6 @@ a.sign_up, a.forgot_password {
   width: 130px;
   text-align:right;
 }
-a.sign_up {
+a.sign_up, a.sign_in {
   margin-bottom:10px;
 }

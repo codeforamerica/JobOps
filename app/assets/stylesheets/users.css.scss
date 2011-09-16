@@ -9,7 +9,7 @@ body.users {
 
 /** PROFILE NAV **/
 
-#profile h2#name {
+#profile h2#name, #account h2#name {
   float:left;
   color:#315924;
   font-weight:normal;
@@ -50,7 +50,7 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   float:right;
   width:688px;
 }
-.tab_content h2 {
+.tab_container h2 {
   float:left;
   margin-bottom:15px;
   width:100%;
@@ -60,7 +60,7 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   line-height:150%;
   background-color:#FFF;
 }
-.tab_content h3 {
+.tab_container h3 {
   float:left;
   margin-bottom:15px;
   width:100%;
@@ -91,7 +91,7 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   margin-right:15px;
   font-size:0.75em;
 }
-.tab_form .field input[type="text"] {
+.tab_form .field input[type="text"], .tab_form .field input[type="password"], .tab_form .field input[type="email"] {
   float:left;
   width: 240px;
   font-size: 0.8em;
@@ -147,8 +147,14 @@ ul.tabs {
 ul.tabs li {
   margin:0 0 5px 0;
 }
-ul.tabs li.user-basic a {
+ul.tabs li.user-basic a, ul.tabs li.account-info a {
   background:url(/images/user-basic.png) no-repeat 5px center;
+}
+ul.tabs li.priv-settings a {
+  background:url(/images/user-priv.png) no-repeat 5px center;
+}
+ul.tabs li.email-settings a {
+  background:url(/images/user-email.png) no-repeat 5px center;
 }
 ul.tabs li.user-military a {
   background:url(/images/user-military.png) no-repeat 5px center;
@@ -181,5 +187,11 @@ ul.tabs li a:hover, ul.tabs li a:active, ul.tabs li.active a:link, ul.tabs li.ac
   padding:4px 9px 5px 34px;
 }
 
-/** CSS for Add/Edit/Delete **/
+.helpful_info {
+  font-size:0.6em;
+  color:#666;
+}
+.unhappy {
+  font-size:0.75em;
+}
 
