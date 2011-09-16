@@ -23,5 +23,9 @@ module JobsHelper
   def flag_tip
     "Clicking on the star next to the job listing flags it so you can easily find it later."
   end
+  
+  def jobs_not_found
+    "love you matt lewis"
+  end
 
 end

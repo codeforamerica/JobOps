@@ -56,20 +56,24 @@
   .white-box.search-results-wrapper
     .search-results-header
       .search-result-title
-        %span
-          =@jobs.total_entries unless @jobs.blank?
-        Jobs Found
-      .search-result-sortby
-        Sort by:
-        %select
-          %option{ :value => '1' }
-            Relevance
-          %option{ :value => '2' }
-            Distance
-          %option{ :value => '3' }
-            Salary
-    %ol.job-listings
-      = render 'joblisting'
+        -if @jobs.blank?
+          =jobs_not_found
+        -else
+          %span
+            =@jobs.total_entries unless @jobs.blank?
+          Jobs Found
+          .search-result-sortby
+            Sort by:
+            %select
+              %option{ :value => '1' }
+                Relevance
+              %option{ :value => '2' }
+                Distance
+              %option{ :value => '3' }
+                Salary
+        %ol.job-listings
+          = render 'joblisting'
+      
     =will_paginate @jobs unless @jobs.blank?
 
 #sidebar
