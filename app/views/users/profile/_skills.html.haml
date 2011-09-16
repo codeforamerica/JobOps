@@ -1,8 +1,8 @@
 %h3 - Skills
 %br.clearit
+%p= link_to 'Add Skill', new_skill_path, :class => "add_skill"
+%p= link_to 'Edit Skills', skills_path, :class => "edit_skill"
 .tab_form
-  %p= link_to 'Add Skill', new_skill_path, :class => "add_skill"
-  %p= link_to 'Edit Skills', skills_path, :class => "edit_skill"
   .skills
     -current_user.skills.each do |skill|
       %span{:class=>"skill_#{skill.id}"}
