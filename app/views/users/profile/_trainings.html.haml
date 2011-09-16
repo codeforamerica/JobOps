@@ -1,5 +1,38 @@
 %h3 - Trainings
 %br.clearit
+%p= link_to 'Add new training', new_training_path, :class => "add_training"
+%p= link_to 'Edit trainings', trainings_path
 .tab_form
-  %p= link_to 'Add Training', new_training_path
-  %p= link_to 'Edit Trainings', trainings_path
+  .trainings
+    %ul
+    -current_user.trainings.each do |training|
+      %li
+        %span{:class=>"training_#{training.id}"}
+          =training.training
+          %span.date
+            =training.training_date
+          %a{:class=>"training_#{training.id} edit_training"} Edit 
+          =link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_training_#{training.id}"
+        %span{:class=>"edit_training_#{training.id} edit_training_form"}
+          =form_for training, :remote => true, :html => {:class => "edit_training"} do |f|
+            .field
+              =f.label :training
+              =f.text_field :training 
+            .actions
+              =f.submit :value=>"Edit Training", :class => "green-btn"
+    .add_training_form
+      =form_for @user.trainings.new, :remote => true do |f|
+        .field
+          =f.label :training
+          =f.text_field :training
+        .field
+          =f.label :training_date
+          = f.date_select :training_date,
+        :start_year => Time.now.year - 50,
+        :discard_day => true,
+        :discard_month => true,
+        :include_blank => true
+           
+        .actions
+          =f.submit :value=>"Add Training", :class => "green-btn"
+          %a{:class=>"cancel_add_training", :href => "#"} Cancel

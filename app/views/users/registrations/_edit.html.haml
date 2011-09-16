@@ -8,7 +8,10 @@
   
   .field
     = f.label :email
-    = f.email_field :email
+    -if current_user.email.include?('change-me')
+      = f.email_field :email, :value => ""
+    -else
+      = f.email_field :email
 
   .field
     = f.label :new_password
