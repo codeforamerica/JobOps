@@ -5,7 +5,7 @@ module JobsHelper
   end
   
   def smart_filter_tip
-    "Turning on Smart Filters helps you easily apply a set of filters to every job search you make, helping you to find the jobs you want, and eliminating results that don't apply to you. Smart Filters work especially well if your searches are tied to a specific location, job title, or company. If the Smart Filters slider is set to On, your searches will only return results that fit the Smart Filters you have set. You can change these filters at any time. To turn off Smart Filters, change the Smart Filters setting to Off."
+    "Turning on Smart Filters helps you easily apply a set of filters to every job search you make, helping you to find the jobs you want, and eliminating results that don't apply to you. You can change these filters at any time. To turn off Smart Filters, change the Smart Filters setting to Off."
   end
   
   def save_search_blank
@@ -17,7 +17,7 @@ module JobsHelper
   end
 
   def flagged_jobs_tip
-    "Flagging jobs saves individual job listings so that you can more easily access and compare them later. By flagging noteworthy job listings, you can better organize, compare, share, and apply for jobs; and your flagged jobs list is saved so you can access it whenever you log-in to JobOps."
+    "Flagging jobs saves individual job listings so that you can more easily access and compare them later. Flagging noteworthy job listings helps you organize, compare, share, and apply for jobs."
   end
   
   def flag_tip
