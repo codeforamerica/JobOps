@@ -84,6 +84,11 @@ $(document).ready(function() {
     })
     $tip.toggle();
   });
+  
+  $('a.tooltip-close').click(function(ev) {
+    ev.preventDefault();
+    $(this).parents('.tooltip').hide();
+  });
 
 });
 
