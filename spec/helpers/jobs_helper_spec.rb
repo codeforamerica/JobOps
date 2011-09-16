@@ -1,15 +1,33 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the JobsHelper. For example:
-#
-# describe JobsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe JobsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#search_params" do
+    context "it should return the formatted params" do
+      it "should return JOB POST AGE" do
+        result = search_params("date_acquired_greater_than")
+        result.should == "JOB POST AGE "
+      end
+
+      it "should return KEYWORD" do
+        result = search_params("job_searches_keyword_contains")
+        result.should == "KEYWORD "
+      end
+
+      it "should return NEAR" do
+        result = search_params("job_searches_location_contains")
+        result.should  == "NEAR "
+      end
+
+      it "should return TITLE" do
+        result = search_params("title_contains")
+        result.should == "TITLE "
+      end
+
+      it "should return COMPANY " do
+        result = search_params("company_name_contains")
+        result.should == "COMPANY "
+      end
+    end
+  end
 end
