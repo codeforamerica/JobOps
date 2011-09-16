@@ -17,32 +17,21 @@ $(document).ready(function() {
     }
   });
 
-  // Setup the tooltips
-  $('.tool_tip').hide();
-  $('form.edit_user .field').each(function(idx, div) {
-    var $toolTip = $(div).find('.tool_tip');
-    var $input, offset;
-
-    if($toolTip) {
-
-      $input = $(div).find('input');
-      offset = $input.offset();
-
-      $toolTip.css({
-        position: 'absolute',
-        left: (offset.left + $input.outerWidth()) + 'px',
-        top: offset.top + 'px'
-      });
-
-      $input.focusin(function(ev) {
-        $(this).addClass('highlight');
-        $toolTip.show();
-      });
-      $input.focusout(function(ev) {
-        $(this).removeClass('highlight');
-        $toolTip.hide();
-      });
-    }
+  // Profile information validation
+  $('.edit_user').ipValidate( {
+    required : { //required is a class
+      rule : function() {
+        return $( this ).val() == '' ? false : true;
+      },
+      onError : function() {
+        $(this).parents('.field').first().addClass('fix-me');
+      },
+      onValid : function() {
+        $(this).parents('.field').first().removeClass('fix-me');
+        $(this).focus();
+      }
+    },
+    submitHandler : function() { return true; }
   });
 
 });

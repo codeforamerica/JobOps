@@ -1,21 +1,21 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
-    
+
      $('.toggle-on').live('click', function(ev) {
-        ev.preventDefault();  
-       $('.hide-off').addClass("hide-on").removeClass("hide-off");                  
+        ev.preventDefault();
+       $('.hide-off').addClass("hide-on").removeClass("hide-off");
       $('.toggle-on').addClass("toggle-off").removeClass("toggle-on");
      });
 
      $('.toggle-off').live('click', function(ev) {
         ev.preventDefault();
-      $('.hide-on').addClass("hide-off").removeClass("hide-on");           
+      $('.hide-on').addClass("hide-off").removeClass("hide-on");
 
-       $('input#smart_filter').val("on");              
-       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");   
+       $('input#smart_filter').val("on");
+       $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
       });
-      
+
   $('.fixed-height').scrollbar();
 
   $('.flag-item, .unflag-item').live('click',function(ev) {
@@ -66,7 +66,27 @@ $(document).ready(function() {
       $target.parents('li').remove();
     });
   });
- 
+
+  // Setup tooltips
+  $('a.tooltip-link').click(function(ev) {
+    ev.preventDefault();
+    var offset = $(this).offset();
+    var $tip = $(this).next('.tooltip');
+    var newTop = offset.top + $(this).height();
+    var newLeft = offset.left;
+
+    if($tip.attr('class').indexOf('-tr') != -1) {
+      newLeft = offset.left - $tip.width();
+    }
+    $tip.css({
+      position: 'absolute',
+      top: newTop + 'px',
+      left: newLeft +'px',
+      zIndex: 501
+    })
+    $tip.toggle();
+  });
+
 });
 
 function setupMap(jobs) {

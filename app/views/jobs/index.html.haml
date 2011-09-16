@@ -13,9 +13,10 @@
           .smart-filter-title
             %span
               Smart Filters
-            %a{ :href => '#' }What's this?
+            %a{ :href => '#', :class => 'tooltip-link' }What's this?
             .tooltip.tooltip-yellow-tl{:style => "display:none"}
-              =smart_filter_tip
+              .tooltip-content
+                =raw smart_filter_tip
           -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"
           -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"
           %input{:type => 'button', :class => "smart-filter-toggle #{toggle}"}
@@ -93,11 +94,12 @@
         = hidden_field_tag 'search[title_contains]', params[:search][:title_contains]
         = hidden_field_tag 'search[company_name_contains]', params[:search][:company_name_contains]
         = submit_tag 'Save this search', {:class => 'green-btn'}
-        %a{ :href => '#'}
+        %a{ :href => '#', :class => 'tooltip-link' }
           What's this?
-        .tooltip.tooltip-yellow-tm{:style => "display:none"}
-          =save_search_tip
+        .tooltip.tooltip-yellow-tr{:style => "display:none"}
+          .tooltip-content
+            =raw save_search_tip
 
     = render 'savedsearches'
-    = render 'flaggedjobs'    
+    = render 'flaggedjobs'
 %br
