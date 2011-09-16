@@ -1,7 +1,8 @@
-.filter-title
-  Careers
-  %ul
-  - @careers.each do |career|
-    %li= link_to career.title, :q => career.title, :location => params[:near]
-  .filter-footer
-    %a{ :href => '#'}Select careers...
+- unless @careers.nil?
+  .filter-title
+    Careers
+    %ul
+    - @careers.each do |career|
+      %li= link_to career.title, :job_searches_keyword_contains => career.title, :job_searches_location_contains => params[:near]
+    .filter-footer
+      = link_to 'Select careers...', careers_path

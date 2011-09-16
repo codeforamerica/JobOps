@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   def add_saved_search
     if self.moc_changed?
-      unless self.moc.nil?
+      if !self.moc.blank?
         if self.location?
           job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
           job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
           job_search = JobSearch.where(:keyword => self.moc)
           job_search = JobSearch.create(:keyword => self.moc) unless !job_search.blank?
         end
-        
+
         if job_search.is_a?(Array)
           job_search.each { |job| job.delay(:priority => 10).search}
         else

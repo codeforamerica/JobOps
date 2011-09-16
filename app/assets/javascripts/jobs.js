@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $(document).ready(function() {
-
+  // Setup smart filter on/off switch
   $('.toggle-on').live('click', function(ev) {
     ev.preventDefault();
     $('.hide-off').addClass("hide-on").removeClass("hide-off");
@@ -11,13 +11,14 @@ $(document).ready(function() {
   $('.toggle-off').live('click', function(ev) {
     ev.preventDefault();
     $('.hide-on').addClass("hide-off").removeClass("hide-on");
-
     $('input#smart_filter').val("on");
     $('.toggle-off').addClass("toggle-on").removeClass("toggle-off");
   });
 
+  // Add a scrollbar to every fixed-height element
   $('.fixed-height').scrollbar();
 
+  // Bind our flagging click handlers
   $('.flag-item, .unflag-item').live('click',function(ev) {
     ev.preventDefault();
     var $target = $(ev.target);
@@ -25,11 +26,18 @@ $(document).ready(function() {
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
+        $(".flagged-jobs .blank_search").hide();
         $target.removeClass('flag-item').addClass('unflag-item');
         $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
       } else {
         $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
+
+        // If there are no flagged jobs, show the tip
+        if($('.flagged-jobs li').length == 0) {
+          $('.blank_search').show();
+        }
+
       }
       $('.fixed-height').scrollbar('repaint');
     });
@@ -47,6 +55,7 @@ $(document).ready(function() {
         $.flashmessage(resp.error, {type: 'error'});
       } else {
         $.flashmessage(resp.message);
+        $(".saved-searches .blank_search").hide();
         if(!$('a[data-searchid = '+resp.newid+']').length) {
           var $li = $('<li><span class="result-count">'+resultCount+'</span><div class="search-wrapper"><a class="delete-search" data-searchid="'+resp.newid+'" href="/job_searches_user/'+resp.newid+'"></a><a href="'+location.pathname+location.search+'">'+sentence+'</a></div></li>');
           $('.saved-searches ul').prepend($li);
@@ -65,7 +74,7 @@ $(document).ready(function() {
     });
   });
 
-  // Setup tooltips
+  // Bind tooltip events
   $('a.tooltip-link').click(function(ev) {
     ev.preventDefault();
     var offset = $(this).offset();
@@ -84,7 +93,7 @@ $(document).ready(function() {
     })
     $tip.toggle();
   });
-  
+
   $('a.tooltip-close').click(function(ev) {
     ev.preventDefault();
     $(this).parents('.tooltip').hide();

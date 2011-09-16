@@ -5,7 +5,10 @@
     -if current_user.jobs.blank?
       .blank_search
         =raw flagged_jobs_blank
+      %ul
     -else
+      .blank_search{ :style => 'display:none' }
+        =raw flagged_jobs_blank
       %ul
         - current_user.jobs.each do |job|
           %li{ :id => 'flagged-job-'+job.id.to_s }

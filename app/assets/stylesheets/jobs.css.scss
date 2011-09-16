@@ -49,12 +49,13 @@
   font-size: 0.75em;
 }
 
-#sidebar .saved-searches  {
+#sidebar .saved-searches, #sidebar .flagged-jobs  {
   float: left;
   width: 283px;
   padding: 10px;
   margin-right: 0;
 }
+
 #sidebar .scroll-on {
   width: 283px;
 }
@@ -301,11 +302,11 @@ ol.job-listings li {
 }
 
 .hide-on {
-visibility:hidden;
+display:none;
 }
 
 .hide-off {
-visibility:visible;
+display:block;
 }
 
 .filter-title {
