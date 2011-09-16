@@ -285,3 +285,38 @@ background-image: -moz-linear-gradient(
   background-position: 0 5px;
 }
 .fix-me input { border: 2px solid #ff0000; }
+
+/** TOOL TIPS **/
+.tooltip-yellow-tl {
+  border-width:25px;
+  -moz-border-image:url("/images/tooltip-yellow-tl.png") 25 25 25 25 stretch stretch;
+  -webkit-border-image:url("/images/tooltip-yellow-tl.png") 25 25 25 25 stretch stretch;
+  border-image:url("/images/tooltip-yellow-tl.png") 25 25 25 25 stretch stretch;
+  width:200px;
+  padding:-10px;
+}
+.tooltip-yellow-tr {
+  border-width:25px;
+  -moz-border-image:url("/images/tooltip-yellow-tr.png") 25 25 25 25 stretch stretch;
+  -webkit-border-image:url("/images/tooltip-yellow-tr.png") 25 25 25 25 stretch stretch;
+  border-image:url("/images/tooltip-yellow-tr.png") 25 25 25 25 stretch stretch;
+  width:200px;
+  padding:-10px;
+}
+.tooltip-yellow-lt {
+  border-width:25px;
+  -moz-border-image:url("/images/tooltip-yellow-lt.png") 25 25 25 25 stretch stretch;
+  -webkit-border-image:url("/images/tooltip-yellow-lt.png") 25 25 25 25 stretch stretch;
+  border-image:url("/images/tooltip-yellow-lt.png") 25 25 25 25 stretch stretch;
+  width:200px;
+  padding:-10px;
+}
+.tooltip-content-tl, .tooltip-content-tr {
+  margin: -5px -15px -15px -15px;
+}
+.tooltip-content-lt, .tooltip-content-lb {
+  margin: -15px -15px -15px -5px;
+}
+.tooltip {
+  font-size: 13px;
+}
