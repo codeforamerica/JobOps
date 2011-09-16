@@ -16,10 +16,10 @@
             %a{ :href => '#', :class => 'tooltip-link' }What's this?
             .tooltip.tooltip-yellow-tl{:style => "display:none"}
               .tooltip-content
-                =raw smart_filter_tip 
+                =raw smart_filter_tip
                 %a.green-btn.tooltip-close{ :href => '#' }Close
-          -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"  
-          -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"            
+          -hide = params[:smart_filter]=="on" ? "hide-off" : "hide-on"
+          -toggle = params[:smart_filter]=="on" ? "toggle-on" : "toggle-off"
 
           %input{:type => 'button', :class => "smart-filter-toggle #{toggle}"}
         %br.clearit
@@ -59,7 +59,7 @@
     .search-results-header
       .search-result-title
         -if @jobs.blank?
-          =jobs_not_found
+          = raw(jobs_not_found)
         -else
           %span
             =@jobs.total_entries unless @jobs.blank?
@@ -75,7 +75,7 @@
                 Salary
         %ol.job-listings
           = render 'joblisting'
-      
+
     =will_paginate @jobs unless @jobs.blank?
 
 #sidebar
