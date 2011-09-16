@@ -33,29 +33,65 @@ $(document).ready(function() {
     },
     submitHandler : function() { return true; }
   });
-  
- $('.add_skill_form').hide();
- $('.edit_skill_form').hide(); 
- 
- $('.add_skill').click(function(ev){
-     ev.preventDefault();
-     $('.add_skill_form').show();
- });
- 
- $('.edit_skill').click(function(ev){
-     ev.preventDefault();
-     
-     $('.edit_skill_form').show();
- }); 
 
- $('.cancel_add_skill').click(function(ev){
+  $('.inline_form').hide();
+
+  // Inline form handlers
+  $('.add_form_button').click(function(ev){
      ev.preventDefault();
-     $('.add_skill_form').hide();
- });
- 
- $('.cancel_edit_skill').click(function(ev){
+     var $wrapper = $(ev.target).parents('.ive-got-a-button-wrapper').first();
+     $wrapper.find('.inline_form').show();
+  });
+
+  $('.cancel_add_skill').click(function(ev){
+     ev.preventDefault();
+     var $wrapper = $(ev.target).parents('.ive-got-a-button-wrapper').first();
+     $('.inline_form').hide();
+  });
+
+  $('.inline_form form').submit(function(ev) {
+    ev.preventDefault();
+    var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
+    console.log(itemType);
+    var action = $(this).attr('action');
+    var data = $(this).serialize();
+    var $li;
+    var $that = $(this);
+
+    var opts = {
+      url: action+'.json',
+      data: data,
+      dataType: 'json',
+      type: 'POST',
+      success: function(resp) {
+        //console.log(resp);
+        var newObj = resp;
+        if(resp.error) {
+          $.flashmessage(resp.error, {type: 'error'});
+        } else {
+          $.flashmessage('&quot;'+resp.skill + '&quot; has been added.');
+          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj.skill+'</span><a href="#">Edit</a> <a href="/skills/'+newObj.id+'" class="delete_skill_'+newObj.id+'" data-confirm="Are you sure?" data-method="delete" data-remote="true" rel="nofollow">Destroy</a></li>')
+          $('ul.'+itemType).append($li);
+          $that.trigger('reset').parent().hide();
+        }
+      }
+    }
+    $.ajax(opts);
+  });
+
+
+  $('.edit_skill_form').hide();
+  $('.edit_skill').click(function(ev){
+     ev.preventDefault();
+
+     $('.edit_skill_form').show();
+  });
+
+
+
+  $('.cancel_edit_skill').click(function(ev){
      ev.preventDefault();
      $('.edit_skill_form').hide();
- }); 
-  
+  });
+
  });
