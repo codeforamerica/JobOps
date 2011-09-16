@@ -1,5 +1,7 @@
 %ul.tabs
-  %li= link_to "Account Info", :controller => "account", :action => "index"
-  %li= link_to "Privacy Settings", :controller => "settings", :action => "index"
-  %li= link_to "Email Notification Settings", :controller => "settings", :action => "index"
-
+  %li.account-info
+    %a{:href =>"#acc-info"} Account Info
+  %li.priv-settings
+    %a{:href =>"#priv-settings"} Privacy Settings
+  %li.email-settings
+    %a{:href =>"#email-settings"} Email Notification Settings

@@ -1,11 +1,16 @@
 #account
   =render 'users/profile/nav_profile'
-  =render 'layouts/account_nav'
-
-  .tab_container
-    #tab_content.basic_info
-      %h2 Account Info
-      %p Find me in app/views/account/index.html.haml
-
-      = render 'users/registrations/edit'
-
+  %br.clearit
+  #user-main
+    =render 'layouts/account_nav'
+    .tab_container
+      #basic_info.tab_content
+        %h2 Account Info
+        .tab_form
+          = render 'users/registrations/edit' 
+        %span.unhappy
+          Unhappy?
+          = link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
+        
+  
+    %br.clearit
