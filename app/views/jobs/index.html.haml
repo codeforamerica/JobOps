@@ -79,13 +79,12 @@
       .cta-title
         Current Search
       %ul
-        %li
-          = "#{params[:search][:job_searches_keyword_contains]}"
-          - if params[:search][:job_searches_location_contains]
-            - if params[:search][:job_searches_location_contains].empty?
-              = " (anywhere)"
-            - else
-              = "near #{params[:search][:job_searches_location_contains]}"
+        - params[:search].each do |search|
+          - unless search[1].blank?
+            %li
+              = search_params(search[0])
+              %strong
+                = "#{search[1]}"
       = form_tag('/job_searches_user/new', :method => :get, :id => 'save-search')
       .cta-footer
         - params[:search].each do |search|
