@@ -1,7 +1,6 @@
 #sign_in_wrapper
   #sign_in
     %h2 Sign in
-
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       %p
         = f.label :email
