@@ -1,7 +1,7 @@
 %h3 - Skills
 .ive-got-a-button-wrapper
   .tab-add-edit
-    %span= link_to 'Add new skill', new_skill_path, :class => "add_skill add_form_button"
+    %span= link_to 'Add New Skill', new_skill_path, :class => "add_skill add_form_button"
   %br.clearit
   .tab_form
     %ul.skill
@@ -9,8 +9,9 @@
         %li
           %span{:class=>"skill_#{skill.id}"}
             =skill.skill
-            %a{:class=>"skill_#{skill.id} edit_skill"} Edit
-            =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
+            %span.tab_function
+              %a{:class=>"skill_#{skill.id} edit_skill"} Edit
+              =link_to '', skill, :confirm => 'Are you sure?', :class=>"delete_link remove"
           %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
             =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :skill
