@@ -35,4 +35,10 @@
             %li
               %a{ :href => '#'}Help
         %br.clearit
+-if flash[:notice]
+  %script{:type => "text/javascript"}
+    ="$(document).ready(function() {$.flashmessage('#{flash[:notice]}', { type: 'success'} );});"  
+-elsif flash[:alert]
+  %script{:type => "text/javascript"}
+    ="$(document).ready(function() {$.flashmessage('#{flash[:alert]}', { type: 'error'} );});" 
 
