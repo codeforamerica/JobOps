@@ -8,10 +8,11 @@
       -current_user.skills.each do |skill|
         %li
           %span{:class=>"skill_#{skill.id}"}
-            =skill.skill
-            %a{:class=>"skill_#{skill.id} edit_skill"} Edit
+            %span
+              =skill.skill
+            %a{:class=>"skill_#{skill.id} edit_link"} Edit
             =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
-          %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
+          %span{:class=>"edit_skill_#{skill.id} edit_form"}
             =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :skill
               =f.submit :value=>"Edit Skill", :class => "green-btn"
