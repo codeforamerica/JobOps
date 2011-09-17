@@ -15,9 +15,5 @@
             %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
             =link_to job.title, job
   .cta-footer
-    -if !current_user.jobs.blank?
-      %a{ :href => '#'}
-        Compare flagged jobs
-    -else
-      &nbsp;
+    &nbsp;
 
