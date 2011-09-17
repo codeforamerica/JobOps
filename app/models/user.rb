@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
       if !self.moc.blank?
         if self.location?
           job_search = JobSearch.where(:keyword => self.moc, :location => self.location)
-          job_search = JobSearch.create(:keyword => self.moc, :location => self.location) unless !job_search.blank?
+          job_search = JobSearch.create(:keyword => self.moc, :location => self.location, :search_params => {"job_searches_keyword_contains"=> self.moc, "job_searches_location_contains"=> self.location}) unless !job_search.blank?
           job_search.delay(:priority => 10).search
         else
           job_search = JobSearch.where(:keyword => self.moc)
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
           career_by_moc.each do |career|
             if self.location?
               job_search = JobSearch.where(:keyword => career.title, :location => self.location)
-              job_search = JobSearch.create(:keyword => career.title, :location => self.location) unless !job_search.blank?
+              job_search = JobSearch.create(:keyword => career.title, :location => self.location, :search_params => {"job_searches_keyword_contains"=> career.title, "job_searches_location_contains"=> self.location} ) unless !job_search.blank?
             else
               job_search = JobSearch.where(:keyword => career.title)
               job_search = JobSearch.create(:keyword => career.title) unless !job_search.blank?
