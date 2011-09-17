@@ -80,7 +80,7 @@ class SkillsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to skills_url }
-      format.json { head :ok }
+      format.json { render :json => @skill }
     end
   end
 end

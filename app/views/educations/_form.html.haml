@@ -8,17 +8,14 @@
 
   .field
     = f.label :school_name
-    %br
     = f.text_field :school_name
 
   .field
     = f.label :degree
-    %br
     = f.text_field :degree
 
   .field
     = f.label :study_field
-    %br
     = f.text_field :study_field
 
   .field
@@ -31,23 +28,20 @@
 
   .field
     = f.label :end_date
-    %br
     = f.date_select :end_date,
     :start_year => Time.now.year - 50,
     :discard_day => true,
     :discard_month => true,
     :include_blank => true
 
-  .field
+  .field.activities
     = f.label :activities
-    %br
     = f.text_area :activities
-
-  .field
+  %br.clear
+  .field.notes
     = f.label :notes
-    %br
     = f.text_area :notes
 
   .actions
-    = f.submit 'Save'
+    =f.submit "Submit", :value=>"Save", :class => "green-btn"
 
