@@ -1,28 +1,22 @@
 %h3 - Languages
-%br.clearit
-%p= link_to 'Add new language', new_language_path, :class => "add_language"
-%p= link_to 'Edit languages', languages_path
-.tab_form
-  .languages
-    %ul
-    -current_user.languages.each do |language|
-      %li
-        %span{:class=>"language_#{language.id}"}
-          =language.language
-          %a{:class=>"language_#{language.id} edit_language"} Edit 
-          =link_to 'Destroy', language, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_language_#{language.id}"
-        %span{:class=>"edit_language_#{language.id} edit_language_form"}
-          =form_for language, :remote => true, :html => {:class => "edit_language"} do |f|
-            .field
-              =f.label :language
-              =f.text_field :language 
-            .actions
-              =f.submit :value=>"Edit Language", :class => "green-btn"            
-    .add_language_form
+.ive-got-a-button-wrapper
+  .tab-add-edit
+    %span= link_to 'Add new language', new_language_path, :class => "add_language add_form_button"
+  %br.clearit
+  .tab_form
+    %ul.language
+      -current_user.languages.each do |language|
+        %li
+          %span{:class=>"language_#{language.id}"}
+            =language.language
+            %a{:class=>"language_#{language.id} edit_link"} Edit
+            =link_to 'Destroy', language, :confirm => 'Are you sure?', :class=>"delete_link"
+          %span{:class=>"edit_language_#{language.id} edit_form"}
+            =form_for language, :remote => true, :html => {:class => "edit_skill"} do |f|
+              =f.text_field :language
+              =f.submit :value=>"Edit Language", :class => "green-btn"
+    .inline_form
       =form_for @user.languages.new, :remote => true do |f|
-        .field
-          =f.label :language
-          =f.text_field :language 
-        .actions
-          =f.submit :value=>"Add Language", :class => "green-btn"
-          %a{:class=>"cancel_add_language", :href => "#"} Cancel
+        =f.text_field :language
+        =f.submit :value=>"Add Language", :class => "green-btn"
+        %a{:class=>"cancel_form_button", :href => "#"} Cancel

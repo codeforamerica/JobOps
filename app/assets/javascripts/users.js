@@ -43,7 +43,7 @@ $(document).ready(function() {
      $wrapper.find('.inline_form').show();
   });
 
-  $('.cancel_add_skill').click(function(ev){
+  $('.cancel_form_button').live('click', function(ev){
      ev.preventDefault();
      var $wrapper = $(ev.target).parents('.ive-got-a-button-wrapper').first();
      $('.inline_form').hide();
@@ -52,7 +52,7 @@ $(document).ready(function() {
   $('.inline_form form').submit(function(ev) {
     ev.preventDefault();
     var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
-    
+
     var action = $(this).attr('action');
     //console.log(action);
     var data = $(this).serialize();
@@ -70,8 +70,8 @@ $(document).ready(function() {
         if(resp.error) {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
-          $.flashmessage('&quot;'+resp.skill + '&quot; has been added.');
-          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj.skill+'</span><a href="#">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></li>')
+          $.flashmessage('&quot;'+resp[itemType] + '&quot; has been added.');
+          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj[itemType]+'</span><a href="#">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></li>')
           $('ul.'+itemType).append($li);
           $that.trigger('reset').parent().hide();
         }
@@ -90,25 +90,49 @@ $(document).ready(function() {
       dataType: 'json',
       type: 'DELETE',
       success: function(resp) {
-        $.flashmessage(resp.skill+' has been deleted.');
+        $.flashmessage(resp[itemType]+' has been deleted.');
         $deleteme.remove();
       }
-    }
+    };
 
     $.ajax(opts);
   });
 
-  $('.edit_skill_form').hide();
-  $('.edit_skill').click(function(ev){
+  $('.edit_form').hide();
+  $('.edit_link').live('click', function(ev){
      ev.preventDefault();
-     $('.edit_skill_form').show();
+     $(ev.target).parents('li').first().find('.edit_form').show();
+  });
+  
+  $('.edit_form form').submit(function(ev) {
+    ev.preventDefault();
+    var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
+
+    var action = $(this).attr('action');
+    //console.log(action);
+    var data = $(this).serialize();
+    var $li;
+    var $that = $(this);
+
+    var opts = {
+      url: action+'.json',
+      data: data,
+      dataType: 'json',
+      type: 'PUT',
+      success: function(resp) {
+        console.log(resp);
+        var newObj = resp;
+        if(resp.error) {
+          $.flashmessage(resp.error, {type: 'error'});
+        } else {
+          $.flashmessage('&quot;'+resp[itemType] + '&quot; has been updated.');
+          $('.'+itemType+'_'+resp.id+' span').html(newObj[itemType]);
+          $that.trigger('reset').parent().hide();
+        }
+      }
+    }
+    $.ajax(opts);
+    return false;
   });
 
-
-
-  $('.cancel_edit_skill').click(function(ev){
-     ev.preventDefault();
-     $('.edit_skill_form').hide();
-  });
-
- });
+});
