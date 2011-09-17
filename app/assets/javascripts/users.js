@@ -43,7 +43,7 @@ $(document).ready(function() {
      $wrapper.find('.inline_form').show();
   });
 
-  $('.cancel_add_skill').click(function(ev){
+  $('.cancel_form_button').live('click', function(ev){
      ev.preventDefault();
      var $wrapper = $(ev.target).parents('.ive-got-a-button-wrapper').first();
      $('.inline_form').hide();
