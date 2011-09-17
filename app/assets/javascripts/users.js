@@ -77,13 +77,13 @@ $(document).ready(function() {
       }
     }
     $.ajax(opts);
+    return false;
   });
 
 
   $('.edit_skill_form').hide();
   $('.edit_skill').click(function(ev){
      ev.preventDefault();
-
      $('.edit_skill_form').show();
   });
 
