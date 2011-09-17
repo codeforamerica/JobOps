@@ -2,14 +2,13 @@
 %br.clearit
 .ive-got-a-button-wrapper.tab_form
   %p= link_to 'Add new skill', new_skill_path, :class => "add_skill add_form_button"
-  %p= link_to 'Edit skills', skills_path, :class => "edit_skill"
   %ul.skill
     -current_user.skills.each do |skill|
       %li
         %span{:class=>"skill_#{skill.id}"}
           =skill.skill
           %a{:class=>"skill_#{skill.id} edit_skill"} Edit
-          =link_to 'Destroy', skill, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_skill_#{skill.id}"
+          =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
         %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
           =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
             =f.text_field :skill

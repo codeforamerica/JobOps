@@ -52,8 +52,9 @@ $(document).ready(function() {
   $('.inline_form form').submit(function(ev) {
     ev.preventDefault();
     var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
-    console.log(itemType);
+    
     var action = $(this).attr('action');
+    //console.log(action);
     var data = $(this).serialize();
     var $li;
     var $that = $(this);
@@ -70,7 +71,7 @@ $(document).ready(function() {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
           $.flashmessage('&quot;'+resp.skill + '&quot; has been added.');
-          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj.skill+'</span><a href="#">Edit</a> <a href="/skills/'+newObj.id+'" class="delete_skill_'+newObj.id+'" data-confirm="Are you sure?" data-method="delete" data-remote="true" rel="nofollow">Destroy</a></li>')
+          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj.skill+'</span><a href="#">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></li>')
           $('ul.'+itemType).append($li);
           $that.trigger('reset').parent().hide();
         }
@@ -80,6 +81,22 @@ $(document).ready(function() {
     return false;
   });
 
+  $('.delete_link').live('click',function(ev) {
+    ev.preventDefault();
+    var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
+    var $deleteme = $(ev.target).parents('li').first();
+    var opts = {
+      url: $(this).attr('href')+'.json',
+      dataType: 'json',
+      type: 'DELETE',
+      success: function(resp) {
+        $.flashmessage(resp.skill+' has been deleted.');
+        $deleteme.remove();
+      }
+    }
+
+    $.ajax(opts);
+  });
 
   $('.edit_skill_form').hide();
   $('.edit_skill').click(function(ev){
