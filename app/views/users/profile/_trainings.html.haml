@@ -10,13 +10,12 @@
           %div{:class=>"training_#{training.id} display_wrapper"}
             %span
               =training.training
-              &nbsp;
-              =training.training_date
-            %a{:class=>"training_#{training.id} edit_link"} Edit 
+              =training.training_date.strftime("%Y")
+            %a{:class=>"training_#{training.id} edit_link"} Edit
             =link_to 'Destroy', training, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_training_#{training.id} edit_form"}
             =form_for training, :remote => true, :html => {:class => "edit_training"} do |f|
-              =f.text_field :training 
+              =f.text_field :training
               =f.date_select :training_date, :start_year => Time.now.year - 50, :discard_day => true, :discard_month => true, :include_blank => true
               =f.submit :value=>"Save", :class => "green-btn"
               %a{:class => 'cancel_edit_button', :href => '#'}Cancel
