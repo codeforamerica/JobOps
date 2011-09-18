@@ -71,7 +71,7 @@ $(document).ready(function() {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
           $.flashmessage('&quot;'+resp[itemType] + '&quot; has been added.');
-          $li = $('<li><span class="'+itemType+'_'+newObj.id+'">'+newObj[itemType]+'</span><a href="#">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></li>')
+          $li = $('<li><div class="'+itemType+'_'+newObj.id+' display_wrapper"><span>'+newObj[itemType]+'</span> <a href="#" class="'+itemType+'_'+newObj.id+' edit_link">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div></li>');
           $('ul.'+itemType).append($li);
           $that.trigger('reset').parent().hide();
         }
@@ -101,7 +101,16 @@ $(document).ready(function() {
   $('.edit_form').hide();
   $('.edit_link').live('click', function(ev){
      ev.preventDefault();
-     $(ev.target).parents('li').first().find('.edit_form').show();
+     var $li = $(ev.target).parents('li').first();
+     $li.find('.display_wrapper').hide();
+     $li.find('.edit_form').show();
+  });
+  
+  $('.cancel_edit_button').live('click', function(ev) {
+    ev.preventDefault();
+    var $li = $(ev.target).parents('li').first();
+    $li.find('.display_wrapper').show();
+    $li.find('.edit_form').hide();
   });
   
   $('.edit_form form').submit(function(ev) {
@@ -128,6 +137,7 @@ $(document).ready(function() {
           $.flashmessage('&quot;'+resp[itemType] + '&quot; has been updated.');
           $('.'+itemType+'_'+resp.id+' span').html(newObj[itemType]);
           $that.trigger('reset').parent().hide();
+          $that.parents('li').find('.display_wrapper').show();
         }
       }
     }

@@ -7,15 +7,16 @@
     %ul.skill
       -current_user.skills.each do |skill|
         %li
-          %span{:class=>"skill_#{skill.id}"}
+          %div{:class=>"skill_#{skill.id} display_wrapper"}
             %span
               =skill.skill
             %a{:class=>"skill_#{skill.id} edit_link"} Edit
             =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
-          %span{:class=>"edit_skill_#{skill.id} edit_form"}
+          %div{:class=>"edit_skill_#{skill.id} edit_form"}
             =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :skill
-              =f.submit :value=>"Edit Skill", :class => "green-btn"
+              =f.submit :value=>"Save", :class => "green-btn"
+              %a{:class => 'cancel_edit_button', :href => '#'}Cancel
     .inline_form
       =form_for @user.skills.new, :remote => true do |f|
         =f.text_field :skill
