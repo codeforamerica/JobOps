@@ -64,7 +64,7 @@ class CertificationsController < ApplicationController
     respond_to do |format|
       if @certification.update_attributes(params[:certification])
         format.html { redirect_to @certification, :notice => 'Certification was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @certification }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @certification.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class CertificationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to certifications_url }
-      format.json { head :ok }
+      format.json { render :json => @certification }
     end
   end
 end
