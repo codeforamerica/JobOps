@@ -65,13 +65,15 @@ $(document).ready(function() {
       dataType: 'json',
       type: 'POST',
       success: function(resp) {
-        //console.log(resp);
         var newObj = resp;
+        var cur_meta = window[itemType+'_meta'];
+        var display_arr = [];
         if(resp.error) {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
-          $.flashmessage('&quot;'+resp[itemType] + '&quot; has been added.');
-          $li = $('<li><div class="'+itemType+'_'+newObj.id+' display_wrapper"><span>'+newObj[itemType]+'</span> <a href="#" class="'+itemType+'_'+newObj.id+' edit_link">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div></li>');
+          display_arr = getDisplayArray(cur_meta, resp);
+          $.flashmessage('&quot;'+display_arr[0] + '&quot; has been added.');
+          $li = $('<li><div class="'+itemType+'_'+newObj.id+' display_wrapper"><span>'+display_arr.join(' ')+'</span> <a href="#" class="'+itemType+'_'+newObj.id+' edit_link">Edit</a> <a href="'+action+'/'+newObj.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div></li>');
           $('ul.'+itemType).append($li);
           $that.trigger('reset').parent().hide();
         }
@@ -105,14 +107,14 @@ $(document).ready(function() {
      $li.find('.display_wrapper').hide();
      $li.find('.edit_form').show();
   });
-  
+
   $('.cancel_edit_button').live('click', function(ev) {
     ev.preventDefault();
     var $li = $(ev.target).parents('li').first();
     $li.find('.display_wrapper').show();
     $li.find('.edit_form').hide();
   });
-  
+
   $('.edit_form form').submit(function(ev) {
     ev.preventDefault();
     var itemType = $(ev.target).parents('.tab_form').find('ul').attr('class');
@@ -131,11 +133,14 @@ $(document).ready(function() {
       success: function(resp) {
         console.log(resp);
         var newObj = resp;
+        var cur_meta = window[itemType+'_meta'];
+        var display_arr = [];
         if(resp.error) {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
-          $.flashmessage('&quot;'+resp[itemType] + '&quot; has been updated.');
-          $('.'+itemType+'_'+resp.id+' span').html(newObj[itemType]);
+          display_arr = getDisplayArray(cur_meta, resp);
+          $.flashmessage('&quot;'+display_arr[0] + '&quot; has been updated.');
+          $('.'+itemType+'_'+resp.id+' span').html(display_arr.join(' '));
           $that.trigger('reset').parent().hide();
           $that.parents('li').find('.display_wrapper').show();
         }
@@ -144,5 +149,16 @@ $(document).ready(function() {
     $.ajax(opts);
     return false;
   });
+
+  function getDisplayArray(cur_meta, resp) {
+    var display_arr = [];
+    $.each(cur_meta.display, function(idx, el) {
+      if(el == 'date_acquired' || el == 'training_date') {
+        resp[el] = resp[el].split('-').shift();
+      }
+      display_arr.push(resp[el]);
+    });
+    return display_arr;
+  }
 
 });
