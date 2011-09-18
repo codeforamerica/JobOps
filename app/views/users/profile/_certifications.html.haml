@@ -1,44 +1,48 @@
 %h3 - Certifications
-%br.clearit
-%p= link_to 'Add new certification', new_certification_path, :class => "add_certification"
-%p= link_to 'Edit certifications', certifications_path
-.tab_form
-  .certifications
-    %ul
-    -current_user.certifications.each do |certification|
-      %li
-        %span{:class=>"certification_#{certification.id}"}
-          =certification.name
-          =certification.institution
-          =certification.date_acquired.strftime("%Y")
-          
-          %a{:class=>"certification_#{certification.id} edit_certification"} Edit 
-          =link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_certification_#{certification.id}"
-        %span{:class=>"edit_certification_#{certification.id} edit_certification_form"}
-          =form_for certification, :remote => true, :html => {:class => "edit_certification"} do |f|
+.ive-got-a-button-wrapper
+  .tab-add-edit
+    %span= link_to 'Add new certification', new_certification_path, :class => "add_certification add_form_button"
+  %br.clearit
+  .tab_form
+    %ul.certification
+      -current_user.certifications.each do |certification|
+        %li
+          %div{:class=>"certification_#{certification.id} display_wrapper"}
+            %span
+              =certification.name
+              =certification.institution
+              =certification.date_acquired.strftime("%Y")
+
+            %a{:class=>"certification_#{certification.id} edit_link"} Edit
+            =link_to 'Destroy', certification, :confirm => 'Are you sure?', :class=>"delete_link"
+          %div{:class=>"edit_certification_#{certification.id} edit_form"}
+            =form_for certification, :remote => true, :html => {:class => "edit_certification"} do |f|
+              =f.text_field :name
+              =f.text_field :institution
+              = f.date_select :date_acquired,
+              :start_year => Time.now.year - 50,
+              :discard_day => true,
+              :discard_month => true,
+              :include_blank => true
+              =f.submit :value=>"Save", :class => "green-btn"
+              %a{:class => 'cancel_edit_button', :href => '#'}Cancel
+      .inline_form
+        =form_for @user.certifications.new, :remote => true do |f|
+          .field
+            =f.label :name
             =f.text_field :name
-            =f.text_field :institution            
+          .field
+            =f.label :institution
+            =f.text_field :institution
+          .field
+            =f.label :date_acquired
             = f.date_select :date_acquired,
-            :start_year => Time.now.year - 50,
-            :discard_day => true,
-            :discard_month => true,
-            :include_blank => true            
-            =f.submit :value=>"Edit Certification", :class => "green-btn"
-    .add_certification_form
-      =form_for @user.certifications.new, :remote => true do |f|
-        .field
-          =f.label :name
-          =f.text_field :name
-        .field   
-          =f.label :institution        
-          =f.text_field :institution        
-        .field
-          =f.label :date_acquired
-          = f.date_select :date_acquired,
-        :start_year => Time.now.year - 50,
-        :discard_day => true,
-        :discard_month => true,
-        :include_blank => true
-        .actions
-          =f.submit :value=>"Add Certification", :class => "green-btn"
-          %a{:class=>"cancel_add_certification", :href => "#"} Cancel
+          :start_year => Time.now.year - 50,
+          :discard_day => true,
+          :discard_month => true,
+          :include_blank => true
+          .actions
+            =f.submit :value=>"Add Certification", :class => "green-btn"
+            %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var certification_meta = { display: ['name','institution','date_acquired'] };
