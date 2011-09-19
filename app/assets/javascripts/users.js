@@ -157,10 +157,11 @@ $(document).ready(function() {
 
   function getDisplayArray(cur_meta, resp, edit) {
     edit = edit || false;
-    var display_arr = [], $li, $edit_form;
-
+    var display_arr = [], $li, $edit_form, html='';
+    var shortenTheseDates = ['date_acquired','training_date','start_date','end_date'];
+    
     $.each(cur_meta.display, function(idx, el) {
-      if(el == 'date_acquired' || el == 'training_date') {
+      if(shortenTheseDates.indexOf(el) != -1) {
         resp[el] = resp[el].split('-').shift();
       }
       display_arr.push(resp[el]);
@@ -169,7 +170,18 @@ $(document).ready(function() {
     cur_meta.action = (edit) ? cur_meta.action : cur_meta.action+'/'+resp.id;
     switch(cur_meta.type) {
       case 'education':
-        $li = $('<li>Build the education piece.</li>');
+        html = '<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper">'+
+                 '<span>'+resp.school_name+'</span>'+
+                 '<span class="tab_function">'+
+                   '<a class="edit_education edit_link" data="education_'+resp.id+'">Edit</a>'+
+                   '<a href="/educations/'+resp.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a>'+
+                 '</span><br class="clearit">'+
+                 '<ul>'+
+                   '<li class="dates">'+resp.start_date+' to '+resp.end_date+'</li>'+
+                   '<li class="study">'+resp.degree+' in '+resp.study_field+'</li>'+
+                 '</ul>'+
+               '</div>';
+        $li = $(html);
         break;
       default:
         $li = $('<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper"><span>'+display_arr.join(' ')+'</span> <a href="#" class="'+cur_meta.type+'_'+resp.id+' edit_link">Edit</a> <a href="'+cur_meta.action+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div>');
