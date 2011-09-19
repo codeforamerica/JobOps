@@ -10,8 +10,8 @@
           %div{:class=>"award_#{award.id} display_wrapper"}
             %span
               =award.award
+            =link_to ' ', award, :confirm => 'Are you sure?', :class=>"delete_link"
             %a{:class=>"award_#{award.id} edit_link"} Edit 
-            =link_to 'Destroy', award, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_award_#{award.id} edit_form"}
             =form_for award, :remote => true, :html => {:class => "edit_award"} do |f|
               =f.text_field :award 
