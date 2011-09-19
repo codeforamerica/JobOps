@@ -13,7 +13,7 @@
         - current_user.jobs.each do |job|
           %li{ :id => 'flagged-job-'+job.id.to_s }
             %a.unflag-item{ :href => '/jobs/flag/'+job.id.to_s, :data => { :jobid => job.id.to_s} }
-            =link_to job.title, job
+              =link_to job.title, job.url, {:target => '_blank'}
   .cta-footer
     &nbsp;
 

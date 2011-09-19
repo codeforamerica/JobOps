@@ -23,12 +23,13 @@ $(document).ready(function() {
     ev.preventDefault();
     var $target = $(ev.target);
     var theId = $target.attr('data-jobid');
+    var jobLink = $target.parents('li').find('.job-title').first().attr('href');
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
         $(".flagged-jobs .blank_search").hide();
         $target.removeClass('flag-item').addClass('unflag-item');
-        $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a href="/jobs/'+theId+'">'+$target.next().text()+'</a></li>'));
+        $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a target="_blank" href="'+jobLink+'">'+$target.next().text()+'</a></li>'));
       } else {
         $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
         $('#flagged-job-'+theId).fadeOut().remove();
