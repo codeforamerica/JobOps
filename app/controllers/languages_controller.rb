@@ -64,7 +64,7 @@ class LanguagesController < ApplicationController
     respond_to do |format|
       if @language.update_attributes(params[:language])
         format.html { redirect_to @language, :notice => 'Language was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @language }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @language.errors, :status => :unprocessable_entity }

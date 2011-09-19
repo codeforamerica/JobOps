@@ -1,38 +1,34 @@
 %h3 - Trainings
-%br.clearit
-%p= link_to 'Add new training', new_training_path, :class => "add_training"
-%p= link_to 'Edit trainings', trainings_path
-.tab_form
-  .trainings
-    %ul
-    -current_user.trainings.each do |training|
-      %li
-        %span{:class=>"training_#{training.id}"}
-          =training.training
-          %span.date
-            =training.training_date
-          %a{:class=>"training_#{training.id} edit_training"} Edit 
-          =link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>"delete_training_#{training.id}"
-        %span{:class=>"edit_training_#{training.id} edit_training_form"}
-          =form_for training, :remote => true, :html => {:class => "edit_training"} do |f|
-            .field
-              =f.label :training
-              =f.text_field :training 
-            .actions
-              =f.submit :value=>"Edit Training", :class => "green-btn"
-    .add_training_form
+.ive-got-a-button-wrapper
+  .tab-add-edit
+    %span= link_to 'Add new training', new_training_path, :class => "add_training add_form_button"
+  %br.clearit
+  .tab_form
+    %ul.training
+      -current_user.trainings.each do |training|
+        %li
+          %div{:class=>"training_#{training.id} display_wrapper"}
+            %span
+              =training.training
+              =training.training_date.strftime("%Y")
+            %a{:class=>"training_#{training.id} edit_link"} Edit
+            =link_to 'Destroy', training, :confirm => 'Are you sure?', :class=>"delete_link"
+          %div{:class=>"edit_training_#{training.id} edit_form"}
+            =form_for training, :remote => true, :html => {:class => "edit_training"} do |f|
+              =f.text_field :training
+              =f.date_select :training_date, :start_year => Time.now.year - 50, :discard_day => true, :discard_month => true, :include_blank => true
+              =f.submit :value=>"Save", :class => "green-btn"
+              %a{:class => 'cancel_edit_button', :href => '#'}Cancel
+    .inline_form
       =form_for @user.trainings.new, :remote => true do |f|
         .field
           =f.label :training
           =f.text_field :training
         .field
           =f.label :training_date
-          = f.date_select :training_date,
-        :start_year => Time.now.year - 50,
-        :discard_day => true,
-        :discard_month => true,
-        :include_blank => true
-           
+          = f.date_select :training_date, :start_year => Time.now.year - 50, :discard_day => true, :discard_month => true, :include_blank => true
         .actions
           =f.submit :value=>"Add Training", :class => "green-btn"
-          %a{:class=>"cancel_add_training", :href => "#"} Cancel
+          %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var training_meta = { display: ['training','training_date'] };

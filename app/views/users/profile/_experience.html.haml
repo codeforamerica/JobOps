@@ -1,5 +1,28 @@
-%h2 Experience
-%br.clearit
-.tab_form
-  %p= link_to 'Add Job', new_job_history_path
-  %p= link_to 'Edit Jobs', job_histories_path
+%h3 - Job History
+.ive-got-a-button-wrapper
+  .tab-add-edit
+    %span= link_to 'Add a job', new_job_history_path, :class => "add_job add_form_button"
+  %br.clearit
+  .tab_form
+    %ul.job
+      -current_user.job_histories.each do |job|
+        %li
+          %div{:class=>"job_#{job.id} display_wrapper"}
+            %span
+              = job.title
+              at
+              = job.org_name
+              %a{:class=>"job_#{job.id} edit_link"} Edit
+              =link_to 'Destroy', job, :confirm => 'Are you sure?', :class=>"delete_link"
+          %div{:class=>"edit_job_#{job.id} edit_form"}
+            -@job_history = job
+            =render "job_histories/form"
+            %a{:class => 'cancel_edit_button', :href => '#'}Cancel
+          %br.clearit
+
+    .inline_form
+      -@job_history = current_user.job_histories.new
+      =render "job_histories/form"
+      %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var job_meta = { display: ['title','org_name'] };

@@ -64,7 +64,7 @@ class JobHistoriesController < ApplicationController
     respond_to do |format|
       if @job_history.update_attributes(params[:job_history])
         format.html { redirect_to @job_history, :notice => 'Job history was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @job_history }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @job_history.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class JobHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to job_histories_url }
-      format.json { head :ok }
+      format.json { render :json => @job_history }
     end
   end
 end

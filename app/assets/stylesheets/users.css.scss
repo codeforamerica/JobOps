@@ -133,10 +133,16 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
 #basic_info img {
   float:right;
 }
-#new_education .notes, #new_education .activities {
+#new_education .notes,
+#new_education .activities,
+.edit_education .activities,
+.edit_education .notes,
+#new_job_history .summary,
+.edit_job_history .summary {
   clear:both;
   height:200px;
   overflow:hidden;
+  margin-bottom: 15px;
 }
 .saved-edu h4 {
   font-weight:normal;
@@ -170,7 +176,6 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
 .tab-add-edit span a {
   font-size:0.75em;
 }
-
 
 /** SIDEBAR TABS **/
 

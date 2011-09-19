@@ -64,7 +64,7 @@ class TrainingsController < ApplicationController
     respond_to do |format|
       if @training.update_attributes(params[:training])
         format.html { redirect_to @training, :notice => 'Training was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @training }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @training.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to trainings_url }
-      format.json { head :ok }
+      format.json { render :json => @training }
     end
   end
 end

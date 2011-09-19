@@ -7,16 +7,20 @@
     %ul.language
       -current_user.languages.each do |language|
         %li
-          %span{:class=>"language_#{language.id}"}
-            =language.language
+          %div{:class=>"language_#{language.id} display_wrapper"}
+            %span
+              =language.language
             %a{:class=>"language_#{language.id} edit_link"} Edit
             =link_to 'Destroy', language, :confirm => 'Are you sure?', :class=>"delete_link"
-          %span{:class=>"edit_language_#{language.id} edit_form"}
+          %div{:class=>"edit_language_#{language.id} edit_form"}
             =form_for language, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :language
-              =f.submit :value=>"Edit Language", :class => "green-btn"
+              =f.submit :value=>"Save", :class => "green-btn"
+              %a{:class => 'cancel_edit_button', :href => '#'}Cancel
     .inline_form
       =form_for @user.languages.new, :remote => true do |f|
         =f.text_field :language
         =f.submit :value=>"Add Language", :class => "green-btn"
         %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var language_meta = { display: ['language'] };
