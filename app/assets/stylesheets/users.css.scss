@@ -117,7 +117,23 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   height:25px;
   clear:both;
 }
-
+.tab_content ul {
+  list-style:none;
+  padding:0;
+  
+}
+.tab_content ul li {
+  color:#333;
+  clear: both;
+}
+.tab_content ul li ul {
+  padding:0;
+}
+.tab_content ul li ul li {
+  font-size:0.75em;
+  color:#666;
+  line-height:100%;
+}
 .field-wrapper {
   float: left;
   width: 300px;
@@ -159,33 +175,21 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
   color:#666;
   line-height:100%;
 }
-ul.skill {
-  margin-left:-35px;
-  list-style:none;
-}
-ul.skill li span {
-  
-}
 .tab_function {
   float:right;
 }
-.tab_function .remove {
+.remove, .delete_link {
   background: url(/images/remove.png) no-repeat right top;
   height:8px;
   width:8px;
   margin: 10px 0 0 10px;
   float:right;
 }
-.tab_function .delete_link {
-  background: url(/images/remove.png) no-repeat right top;
-  height:8px;
-  width:8px;
-  margin: 8px 0 0 10px;
-  float:right;
-}
 
-.tab_function a {
+a.edit_link {
+  float:right;
   font-size:0.6em;
+  padding-top:3px;
 }
 .tab-add-edit span {
   float:right;

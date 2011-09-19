@@ -11,8 +11,8 @@
             %span
               =education.school_name
             %span.tab_function
+              =link_to ' ', education, :confirm => 'Are you sure?', :class => 'delete_link'
               %a{ :class=> 'edit_education edit_link', :data => "education_#{education.id}"} Edit
-              =link_to 'Destroy', education, :confirm => 'Are you sure?', :class => 'delete_link'
             %br.clearit
             %ul
               %li.dates
@@ -25,7 +25,6 @@
             -@education = education
             =render "educations/form"
             %a{:class => 'cancel_edit_button', :href => '#'}Cancel
-          %br.clearit
     .inline_form
       -@education = current_user.educations.new
       =render "educations/form"

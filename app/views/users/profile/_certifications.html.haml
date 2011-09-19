@@ -13,9 +13,8 @@
               =certification.institution
               - unless certification.date_acquired.nil?
                 =certification.date_acquired.strftime("%Y")
-
+            =link_to ' ', certification, :confirm => 'Are you sure?', :class=>"delete_link"
             %a{:class=>"certification_#{certification.id} edit_link"} Edit
-            =link_to 'Destroy', certification, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_certification_#{certification.id} edit_form"}
             =form_for certification, :remote => true, :html => {:class => "edit_certification"} do |f|
               =f.text_field :name

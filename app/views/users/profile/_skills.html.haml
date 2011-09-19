@@ -10,8 +10,8 @@
           %div{:class=>"skill_#{skill.id} display_wrapper"}
             %span
               =skill.skill
+            =link_to ' ', skill, :confirm => 'Are you sure?', :class=>"delete_link"
             %a{:class=>"skill_#{skill.id} edit_link"} Edit
-            =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_skill_#{skill.id} edit_form"}
             =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :skill

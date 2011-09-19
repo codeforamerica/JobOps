@@ -176,8 +176,8 @@ $(document).ready(function() {
         html = '<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper">'+
                  '<span>'+resp.school_name+'</span> '+
                  '<span class="tab_function">'+
+                   '<a href="/educations/'+resp.id+'" class="delete_link" data-confirm="Are you sure?"> </a>'+
                    '<a class="edit_education edit_link" data="education_'+resp.id+'">Edit</a> '+
-                   '<a href="/educations/'+resp.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a>'+
                  '</span><br class="clearit">'+
                  '<ul>'+
                    '<li class="dates">'+resp.start_date+' to '+resp.end_date+'</li>'+
@@ -190,7 +190,7 @@ $(document).ready(function() {
         }
         break;
       default:
-        $li = $('<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper"><span>'+display_arr.join(' ')+'</span> <a href="#" class="'+cur_meta.type+'_'+resp.id+' edit_link">Edit</a> <a href="'+cur_meta.action+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div>');
+        $li = $('<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper"><span>'+display_arr.join(' ')+'</span> <a href="'+cur_meta.action+'" class="delete_link" data-confirm="Are you sure?"> </a> <a href="#" class="'+cur_meta.type+'_'+resp.id+' edit_link">Edit</a></div>');
         if(!edit) {
           // Clone the add-whatever form, and reset some of the vars
           $edit_form = $('ul.'+cur_meta.type).parents('.ive-got-a-button-wrapper').find('.inline_form form').clone();

@@ -10,8 +10,8 @@
           %div{:class=>"language_#{language.id} display_wrapper"}
             %span
               =language.language
+            =link_to ' ', language, :confirm => 'Are you sure?', :class=>"delete_link"
             %a{:class=>"language_#{language.id} edit_link"} Edit
-            =link_to 'Destroy', language, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_language_#{language.id} edit_form"}
             =form_for language, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :language

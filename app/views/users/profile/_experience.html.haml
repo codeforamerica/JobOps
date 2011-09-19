@@ -12,13 +12,12 @@
               = job.title
               at
               = job.org_name
+              =link_to ' ', job, :confirm => 'Are you sure?', :class=>"delete_link"
               %a{:class=>"job_#{job.id} edit_link"} Edit
-              =link_to 'Destroy', job, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_job_#{job.id} edit_form"}
             -@job_history = job
             =render "job_histories/form"
             %a{:class => 'cancel_edit_button', :href => '#'}Cancel
-          %br.clearit
 
     .inline_form
       -@job_history = current_user.job_histories.new

@@ -10,8 +10,8 @@
           %div{:class=>"war_#{war.id} display_wrapper"}
             %span
               =war.war
+            =link_to ' ', war, :confirm => 'Are you sure?', :class=>"delete_link"
             %a{:class=>"war_#{war.id} edit_link"} Edit 
-            =link_to 'Destroy', war, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_war_#{war.id} edit_form"}
             =form_for war, :remote => true, :html => {:class => "edit_war"} do |f|
               =f.text_field :war 
