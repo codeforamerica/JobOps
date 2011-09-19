@@ -133,7 +133,7 @@ $(document).ready(function() {
       dataType: 'json',
       type: 'PUT',
       success: function(resp) {
-        console.log(resp);
+        //console.log(resp);
         var newObj = resp;
         var cur_meta = window[itemType+'_meta'];
         cur_meta.type = itemType;
