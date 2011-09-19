@@ -64,7 +64,7 @@ class AwardsController < ApplicationController
     respond_to do |format|
       if @award.update_attributes(params[:award])
         format.html { redirect_to @award, :notice => 'Award was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @award }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @award.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to awards_url }
-      format.json { head :ok }
+      format.json { render :json => @award }
     end
   end
 end
