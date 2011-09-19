@@ -19,18 +19,22 @@
     = f.label :phone
     = f.text_field :phone
     .helpful_info
-      Here goes your phonez
+      = profile_phone_tip
   .field
     = f.label :goal
     = f.text_field :goal
     .helpful_info
-      Srsly, tell me you goals.
+      = profile_goal_tip
   .field
     = f.label :relocate
     = f.text_field :relocate
+    .helpful_info
+      = profile_relocate_tip
   .field
     = f.label :desired_salary
     = f.text_field :desired_salary
+    .helpful_info
+      = profile_desired_salary_tip
   .actions
     =f.submit "Submit", :value=>"Save", :class => "green-btn"
 
