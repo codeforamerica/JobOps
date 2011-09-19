@@ -23,6 +23,9 @@ gem "geocoder"
 gem 'will_paginate'
 gem 'meta_search'
 gem 'places'
+gem 'delayed_job'
+gem 'redirect_follower' 
+
 
 gem 'fb_graph'
 gem 'linkedin', :git =>'git://github.com/pengwynn/linkedin.git', :branch => "2-0-stable"
