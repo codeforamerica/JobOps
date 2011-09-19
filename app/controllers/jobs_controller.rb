@@ -1,4 +1,3 @@
-require 'will_paginate/array'
 class JobsController < ApplicationController
   before_filter :authenticate_user!, :only => :flag
   # GET /jobs
