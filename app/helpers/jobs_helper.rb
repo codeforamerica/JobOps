@@ -1,7 +1,7 @@
 module JobsHelper
 
   def save_search_tip
-    "Saving job searches allows you to easily check important search terms each time you start a session on JobOps. Start saving searches and they will appear here. You can also update your MOC code in <a href='/users'>your profile</a>, and we will generate some job searches that fit your background."
+    "Saving job searches allows you to easily check important search terms each time you start a session on JobOps. Start saving searches and they will appear here. You can also update your MOC code in <a href='/users'>your profile</a>, to generate job searches that fit you."
   end
 
   def smart_filter_tip
