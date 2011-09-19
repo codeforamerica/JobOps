@@ -70,7 +70,7 @@ $(document).ready(function() {
         cur_meta.type = itemType;
         cur_meta.action = action;
         var displayObj = {};
-        
+
         if(resp.error) {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
@@ -94,7 +94,8 @@ $(document).ready(function() {
       dataType: 'json',
       type: 'DELETE',
       success: function(resp) {
-        $.flashmessage(resp[itemType]+' has been deleted.');
+        var msg = resp[itemType] || 'It';
+        $.flashmessage(msg+' has been deleted.');
         $deleteme.remove();
       }
     };
@@ -159,21 +160,23 @@ $(document).ready(function() {
     edit = edit || false;
     var display_arr = [], $li, $edit_form, html='';
     var shortenTheseDates = ['date_acquired','training_date','start_date','end_date'];
-    
+
     $.each(cur_meta.display, function(idx, el) {
       if(shortenTheseDates.indexOf(el) != -1) {
-        resp[el] = resp[el].split('-').shift();
+        if(resp[el]) {
+          resp[el] = resp[el].split('-').shift();
+        }
       }
       display_arr.push(resp[el]);
     });
-    
+
     cur_meta.action = (edit) ? cur_meta.action : cur_meta.action+'/'+resp.id;
     switch(cur_meta.type) {
       case 'education':
         html = '<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper">'+
-                 '<span>'+resp.school_name+'</span>'+
+                 '<span>'+resp.school_name+'</span> '+
                  '<span class="tab_function">'+
-                   '<a class="edit_education edit_link" data="education_'+resp.id+'">Edit</a>'+
+                   '<a class="edit_education edit_link" data="education_'+resp.id+'">Edit</a> '+
                    '<a href="/educations/'+resp.id+'" class="delete_link" data-confirm="Are you sure?">Destroy</a>'+
                  '</span><br class="clearit">'+
                  '<ul>'+
@@ -182,6 +185,9 @@ $(document).ready(function() {
                  '</ul>'+
                '</div>';
         $li = $(html);
+        if(!edit) {
+          $li = $('<li></li>').append($li);
+        }
         break;
       default:
         $li = $('<div class="'+cur_meta.type+'_'+resp.id+' display_wrapper"><span>'+display_arr.join(' ')+'</span> <a href="#" class="'+cur_meta.type+'_'+resp.id+' edit_link">Edit</a> <a href="'+cur_meta.action+'" class="delete_link" data-confirm="Are you sure?">Destroy</a></div>');
