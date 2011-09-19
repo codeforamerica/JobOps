@@ -116,7 +116,10 @@
           - @user.trainings.each do |training|
             .label
               Training:
-            .value="#{training.training} on #{training.training_date.strftime('%Y')}"
+            .value
+              ="#{training.training}"
+              - unless training.training_date.nil?
+                "on #{training.training_date.strftime('%Y')}"
           %br.clearit
 
         %h3 - Certifications

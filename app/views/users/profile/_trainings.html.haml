@@ -10,7 +10,8 @@
           %div{:class=>"training_#{training.id} display_wrapper"}
             %span
               =training.training
-              =training.training_date.strftime("%Y")
+              - unless training.training_date.nil?
+                =training.training_date.strftime("%Y")
             %a{:class=>"training_#{training.id} edit_link"} Edit
             =link_to 'Destroy', training, :confirm => 'Are you sure?', :class=>"delete_link"
           %div{:class=>"edit_training_#{training.id} edit_form"}
