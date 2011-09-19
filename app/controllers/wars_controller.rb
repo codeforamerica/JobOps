@@ -64,7 +64,7 @@ class WarsController < ApplicationController
     respond_to do |format|
       if @war.update_attributes(params[:war])
         format.html { redirect_to @war, :notice => 'War was successfully updated.' }
-        format.json { head :ok }
+        format.json { render :json => @war }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @war.errors, :status => :unprocessable_entity }
@@ -80,7 +80,7 @@ class WarsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to wars_url }
-      format.json { head :ok }
+      format.json { render :json => @war }
     end
   end
 end
