@@ -7,6 +7,7 @@ module UsersHelper
   def profile_goal_tip
   end
   def profile_relocate_tip
+    "Are you willing to move to a new location for a job?"
   end
   def profile_desired_salary_tip
   end
