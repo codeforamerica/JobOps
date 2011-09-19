@@ -1,4 +1,3 @@
-require 'will_paginate/array'
 class JobsController < ApplicationController
   before_filter :authenticate_user!, :only => :flag
   # GET /jobs
@@ -87,6 +86,8 @@ class JobsController < ApplicationController
     unless params[:search].nil?
       if(params[:search][:job_searches_keyword_contains] =~ /^\d/)
         @careers = careers(params[:search][:job_searches_keyword_contains])
+      else
+        @careers = []
       end
     end
   end

@@ -13,7 +13,7 @@
             = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
           - unless @user.linked_in_user.nil?
             = image_tag @user.linked_in_user.profile.picture_url
-          
+
           .label
             Name:
           .value= @user.name
@@ -77,36 +77,36 @@
             .label
               School Name:
             .value= education.school_name
-            .label            
+            .label
               Degree:
             .value= education.degree
-            .label            
-              Study Field:          
+            .label
+              Study Field:
             .value= education.study_field
             .label
-              Start Date:          
+              Start Date:
             .value= education.start_date
             .label
-              End Date:          
+              End Date:
             .value= check_present(education.end_date)
             .label
-              Activities:          
+              Activities:
             .value= education.activities
             .label
-              Notes:          
+              Notes:
             .value= education.notes
-          %br.clearit            
+          %br.clearit
 
         %h3 - Skills
         .tab_form
-          .label        
+          .label
             Skills:
           .value=@user.skills.map(&:skill).to_sentence
           %br.clearit
 
         %h3 - Languages
         .tab_form
-          .label        
+          .label
             Languages:
           .value=@user.languages.map(&:language).to_sentence
           %br.clearit
@@ -125,7 +125,7 @@
             .label
               Certification:
             .value= "#{certification.name} at #{certification.institution} on #{certification.date_acquired.strftime('%Y')}"
-          %br.clearit            
+          %br.clearit
 
       #exp.tab_content
         %h2 Experience
@@ -146,5 +146,6 @@
             .label
               Summary:
             .value=job_history.summary
-    %br.clearit           
-          
+          %br.clearit
+    %br.clearit
+
