@@ -64,7 +64,7 @@ $(document).ready(function() {
       dataType: 'json',
       type: 'POST',
       success: function(resp) {
-        console.log(resp);
+        //console.log(resp);
         var newObj = resp;
         var cur_meta = window[itemType+'_meta'];
         cur_meta.type = itemType;
@@ -144,7 +144,7 @@ $(document).ready(function() {
           $.flashmessage(resp.error, {type: 'error'});
         } else {
           displayObj = getDisplayArray(cur_meta, resp, true);
-          console.log(displayObj);
+          //console.log(displayObj);
           $.flashmessage('&quot;'+displayObj.display_text + '&quot; has been updated.');
           $('.'+itemType+'_'+resp.id+'.display_wrapper').replaceWith(displayObj.content);
           $that.trigger('reset').parent().hide();
