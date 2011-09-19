@@ -9,7 +9,7 @@ module JobsHelper
   end
 
   def save_search_blank
-    "You don't have any saved searches. Saving job searches makes it easier to check important search terms each time you come to JobOps, so you don't have to search from scratch each time you come to JobOps. You can start saving searches that are relevant to you, or you can update your MOC code in <a href='/users'>your profile</a> to generate some recommended saved searches."
+    "You don't have any saved searches. Saving job searches makes it easier to check important search terms each time you come to JobOps. Start saving searches that are relevant to you, or update your MOC code in <a href='/users'>your profile</a> to generate some recommended saved searches."
   end
 
   def flagged_jobs_blank
