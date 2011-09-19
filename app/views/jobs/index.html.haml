@@ -64,15 +64,6 @@
           %span
             =@jobs.total_entries unless @jobs.blank?
           Jobs Found
-          .search-result-sortby
-            Sort by:
-            %select
-              %option{ :value => '1' }
-                Relevance
-              %option{ :value => '2' }
-                Distance
-              %option{ :value => '3' }
-                Salary
         %ol.job-listings
           = render 'joblisting'
 

@@ -266,6 +266,16 @@ ol.job-listings li {
   background:url(/images/remove.png) no-repeat top right;
 }
 
+ul#careers {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul#careers li a{
+  text-transform: none;
+}
+
 #smart-filter {
   display:block;
 }

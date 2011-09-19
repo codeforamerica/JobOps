@@ -1,25 +1,34 @@
 %h3 - Education
-.tab-add-edit
-  %span= link_to 'Add Education', new_education_path, :class => "add_edu"
-  %span= link_to 'Edit Education', educations_path, :class => "edit_edu"
-.tab_form
-  -@education = current_user.educations.new
-  .add_education_form
-    =render "educations/form"
--Education.where(:user_id => current_user.id).each do |education|
+.ive-got-a-button-wrapper
+  .tab-add-edit
+    %span= link_to 'Add Education', new_education_path, :class => "add_edu add_form_button"
+  %br.clearit
   .tab_form
-    .saved-edu
-      %h4 
-        =education.school_name
-      %span.tab_function
-        %a{ :class=> 'edit_education', :data => "education_#{education.id}"} Edit
-        =link_to '', education, :confirm => 'Are you sure?', :method => :delete, :remote => true, :html => {:class=>"delete_education", :data=>"education_#{education.id}"}, :class => "remove"
-      %br.clearit      
-      %ul
-        %li.dates
-          =education.start_date.strftime("%m/%d/%y") unless education.start_date.nil?
-          to
-          =education.end_date.strftime("%m/%d/%y")  unless education.start_date.nil?
-        %li.study
-          ="#{education.degree} in #{education.study_field}"
-          
+    %ul.education
+      -Education.where(:user_id => current_user.id).each do |education|
+        %li
+          %div{ :class=>"education_#{education.id} display_wrapper"}
+            %span
+              =education.school_name
+            %span.tab_function
+              %a{ :class=> 'edit_education edit_link', :data => "education_#{education.id}"} Edit
+              =link_to 'Destroy', education, :confirm => 'Are you sure?', :class => 'delete_link'
+            %br.clearit
+            %ul
+              %li.dates
+                =education.start_date.strftime("%Y") unless education.start_date.nil?
+                to
+                =education.end_date.strftime("%Y")  unless education.start_date.nil?
+              %li.study
+                ="#{education.degree} in #{education.study_field}"
+          %div{ :class=>'edit_form' }
+            -@education = education
+            =render "educations/form"
+            %a{:class => 'cancel_edit_button', :href => '#'}Cancel
+          %br.clearit
+    .inline_form
+      -@education = current_user.educations.new
+      =render "educations/form"
+      %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var education_meta = { display: ['school_name','start_date','end_date','degree','study_field'] };

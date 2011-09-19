@@ -7,17 +7,29 @@
     %ul.skill
       -current_user.skills.each do |skill|
         %li
+<<<<<<< HEAD
           %span{:class=>"skill_#{skill.id}"}
             =skill.skill
             %span.tab_function
               %a{:class=>"skill_#{skill.id} edit_skill"} Edit
               =link_to '', skill, :confirm => 'Are you sure?', :class=>"delete_link remove"
           %span{:class=>"edit_skill_#{skill.id} edit_skill_form"}
+=======
+          %div{:class=>"skill_#{skill.id} display_wrapper"}
+            %span
+              =skill.skill
+            %a{:class=>"skill_#{skill.id} edit_link"} Edit
+            =link_to 'Destroy', skill, :confirm => 'Are you sure?', :class=>"delete_link"
+          %div{:class=>"edit_skill_#{skill.id} edit_form"}
+>>>>>>> c4bc033e2a3889d095b08565cbdf4381737bce4c
             =form_for skill, :remote => true, :html => {:class => "edit_skill"} do |f|
               =f.text_field :skill
-              =f.submit :value=>"Edit Skill", :class => "green-btn"
+              =f.submit :value=>"Save", :class => "green-btn"
+              %a{:class => 'cancel_edit_button', :href => '#'}Cancel
     .inline_form
       =form_for @user.skills.new, :remote => true do |f|
         =f.text_field :skill
         =f.submit :value=>"Add Skill", :class => "green-btn"
         %a{:class=>"cancel_form_button", :href => "#"} Cancel
+  %script
+    var skill_meta = { display: ['skill'] };

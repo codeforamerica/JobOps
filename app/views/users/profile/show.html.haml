@@ -73,107 +73,78 @@
         %h3 - Education
         %br.clearit
         .tab_form
-          .label
-            School Name:
-          .label            
-            Degree:
-          .label            
-            Study Field:
-          .label
-            Start Date:
-          .label
-            End Date:
-          .label
-            Activities:
-          .label
-            Notes:
-          %br.clearit
-            
           - @user.educations.each do |education|
             .label
-              .value= education.school_name
-              .value= education.degree
-              .value= education.study_field
-              .value= education.start_date
-              .value= check_present(education.end_date)
-              .value= education.activities
-              .value= education.notes
-              .value= link_to 'Show', education
-              .value= link_to 'Edit', edit_education_path(education)
-              .value= link_to 'Destroy', education, :confirm => 'Are you sure?', :method => :delete
+              School Name:
+            .value= education.school_name
+            .label            
+              Degree:
+            .value= education.degree
+            .label            
+              Study Field:          
+            .value= education.study_field
+            .label
+              Start Date:          
+            .value= education.start_date
+            .label
+              End Date:          
+            .value= check_present(education.end_date)
+            .label
+              Activities:          
+            .value= education.activities
+            .label
+              Notes:          
+            .value= education.notes
+          %br.clearit            
 
         %h3 - Skills
-        %br.clearit
-        - @user.skills.each do |skills|
-          = skills.skill
+        .tab_form
+          .label        
+            Skills:
+          .value=@user.skills.map(&:skill).to_sentence
+          %br.clearit
 
         %h3 - Languages
-        %br.clearit
-        - @user.languages.each do |languages|
-          = languages.language
+        .tab_form
+          .label        
+            Languages:
+          .value=@user.languages.map(&:language).to_sentence
+          %br.clearit
 
         %h3 - Trainings
-        %br.clearit
         .tab_form
-          .label
-            Training:
-          .label            
-            Training Date:
-          %br.clearit
-
           - @user.trainings.each do |training|
             .label
-              .value= training.training
-              .value= training.training_date
-              .value= link_to 'Show', training
-              .value= link_to 'Edit', edit_training_path(training)
-              .value= link_to 'Destroy', training, :confirm => 'Are you sure?', :method => :delete
-
-        %h3 - Certifications
-        %br.clearit
-        .tab_form
-          .label
-            Name:
-          .label
-            Institution:
-          .label
-            Date Acquired:
+              Training:
+            .value="#{training.training} on #{training.training_date.strftime('%Y')}"
           %br.clearit
 
+        %h3 - Certifications
+        .tab_form
           - @user.certifications.each do |certification|
             .label
-              .value= certification.name
-              .value= certification.institution
-              .value= certification.date_acquired
-              .value= link_to 'Show', certification
-              .value= link_to 'Edit', edit_certification_path(certification)
-              .value= link_to 'Destroy', certification, :confirm => 'Are you sure?', :method => :delete
+              Certification:
+            .value= "#{certification.name} at #{certification.institution} on #{certification.date_acquired.strftime('%Y')}"
+          %br.clearit            
 
       #exp.tab_content
         %h2 Experience
-        %br.clearit
         .tab_form
-          .label
-            Org Name:
-          .label
-            Title:
-          .label
-            Start Date:
-          .label
-            End Date:
-          .label
-            Summary:
-          %br.clearit
-
           - @user.job_histories.each do |job_history|
             .label
-              .value= job_history.org_name
-              .value= job_history.title
-              .value= job_history.start_date
-              .value= check_present(job_history.end_date)
-              .value= job_history.summary
-              .value= link_to 'Show', job_history
-              .value= link_to 'Edit', edit_job_history_path(job_history)
-              .value= link_to 'Destroy', job_history, :confirm => 'Are you sure?', :method => :delete
-
-    %br.clearit
+              Company:
+            .value= job_history.org_name
+            .label
+              Title:
+            .value= job_history.title
+            .label
+              Start:
+            .value= job_history.start_date
+            .label
+              End:
+            .value= check_present(job_history.end_date)
+            .label
+              Summary:
+            .value=job_history.summary
+    %br.clearit           
+          
