@@ -3,13 +3,16 @@ module UsersHelper
     "This field will be used in help focus your job search to jobs within your proximity."
   end
   def profile_phone_tip
+    "e.g. (555) 555-5555"
   end
   def profile_goal_tip
+    "A quick overview of your employment goals."
   end
   def profile_relocate_tip
-    "Are you willing to move to a new location for a job?"
+    "Are you considering a new location for employment?"
   end
   def profile_desired_salary_tip
+    "In dollars, the median amount you are seeking."
   end
   def linkedin_tip
   "some content here"
