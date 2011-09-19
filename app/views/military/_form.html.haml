@@ -9,30 +9,44 @@
   .field
     = f.label :military_status
     = f.text_field :military_status
+    .helpful_info
+      = profile_military_status_tip
 
   .field
     = f.label :service_branch
     = f.text_field :service_branch
+    .helpful_info
+      = profile_service_branch_tip
 
   .field
     = f.label :moc
     = f.text_field :moc
+    .helpful_info
+      = profile_moc_tip
 
   .field
     = f.label :rank
     = f.text_field :rank
+    .helpful_info
+      = profile_rank_tip
 
   .field
     = f.label :unit
     = f.text_field :unit
+    .helpful_info
+      = profile_unit_tip
 
   .field
     = f.label :disability
     = f.text_field :disability
+    .helpful_info
+      = profile_disability_tip
 
   .field
-    = f.label :security_clearnace
+    = f.label :security_clearance
     = f.text_field :security_clearance
+    .helpful_info
+      = profile_security_clearance_tip
 
   .actions
     =f.submit "Submit", :value=>"Save", :class => "green-btn"
