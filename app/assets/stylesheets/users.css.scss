@@ -136,7 +136,9 @@ ul.profile_nav li a:hover, ul.profile_nav li a.active, ul.profile_nav li a:activ
 #new_education .notes,
 #new_education .activities,
 .edit_education .activities,
-.edit_education .notes {
+.edit_education .notes,
+#new_job_history .summary,
+.edit_job_history .summary {
   clear:both;
   height:200px;
   overflow:hidden;
