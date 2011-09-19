@@ -11,7 +11,8 @@
             %span
               =certification.name
               =certification.institution
-              =certification.date_acquired.strftime("%Y")
+              - unless certification.date_acquired.nil?
+                =certification.date_acquired.strftime("%Y")
 
             %a{:class=>"certification_#{certification.id} edit_link"} Edit
             =link_to 'Destroy', certification, :confirm => 'Are you sure?', :class=>"delete_link"

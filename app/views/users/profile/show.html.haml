@@ -127,7 +127,10 @@
           - @user.certifications.each do |certification|
             .label
               Certification:
-            .value= "#{certification.name} at #{certification.institution} on #{certification.date_acquired.strftime('%Y')}"
+            .value
+              = "#{certification.name} at #{certification.institution} "
+              - unless certification.date_acquired.nil?
+                "on #{certification.date_acquired.strftime('%Y')}"
           %br.clearit
 
       #exp.tab_content
