@@ -36,6 +36,7 @@ $(document).ready(function() {
 
         // If there are no flagged jobs, show the tip
         if($('.flagged-jobs li').length == 0) {
+          $('.flagged-jobs .fixed-height').scrollbar('unscrollbar');
           $('.flagged-jobs .blank_search').show();
         }
       }
@@ -78,6 +79,7 @@ $(document).ready(function() {
 
       // If there are no flagged jobs, show the tip
       if($('.saved-searches li').length == 0) {
+        $('.saved-searches .fixed-height').scrollbar('unscrollbar');
         $('.saved-searches .blank_search').show();
       }
 
