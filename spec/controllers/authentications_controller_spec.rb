@@ -11,25 +11,6 @@ describe AuthenticationsController do
     end
   end
 
-  describe "#create using Twitter"  do
-    before do
-      request.env["devise.mapping"] = Devise.mappings[:user]
-      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
-    end
-
-    it 'should login an existing user using Twitter' do
-      @auth = Factory(:authentication)
-      @user = Factory(:user)
-      get :create, :provider => 'twitter'
-      flash[:notice].should == "Signed in successfully."
-      response.should redirect_to(root_url)
-    end
-
-    it "should create a new user using Twitter" do
-      get :create, :provider => 'twitter'
-      response.should redirect_to(new_user_registration_url)
-    end
-  end
 
   describe "#create new authentication using current_user" do
     login_user
@@ -156,6 +137,27 @@ describe AuthenticationsController do
       @user.certifications.should be_empty
       @user.phone.should be_nil
       @user.dob.should be_nil
+    end
+  end
+
+  describe "#create using Twitter"  do
+    before do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+    end
+
+    it 'should login an existing user using Twitter' do
+      @auth = Factory(:authentication)
+      @user = Factory(:user)
+      get :create, :provider => 'twitter'
+      flash[:notice].should == "Signed in successfully."
+      response.should redirect_to(root_url)
+    end
+
+    it "should create a new user using Twitter" do
+      get :create, :provider => 'twitter'
+      @user = User.last
+      @user.email.should == "change-me-12345@jobops.us"
     end
   end
 
