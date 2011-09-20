@@ -5,7 +5,12 @@
     =render 'users/profile/sidebar_nav'
     .tab_container
       #basic_info.tab_content
-        %h2 Basic Info
+        %h2 General Info
+        %h3 Connect Your Accounts
+        %br.clearit
+        = link_to 'Facebook', '#'
+        = link_to 'Twitter', '#'
+        = link_to 'LinkedIn', '#'
         %br.clearit
         .tab_form
           =render 'users/profile/form'
@@ -19,7 +24,7 @@
         =render 'users/profile/award'
 
       #skills_edu.tab_content
-        %h2 Skills & Education
+        %h2 Skills &amp; Education
         =render "users/profile/education"
         =render "users/profile/skills"
         =render "users/profile/languages"
