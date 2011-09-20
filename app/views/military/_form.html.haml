@@ -8,7 +8,7 @@
 
   .field
     = f.label :military_status
-    = f.text_field :military_status
+    = f.select(:military_status, options_for_select([['Active', 'Active'],['Reserve', 'Reserve'],['Separated','Separated'],['Retired','Retired']]), :prompt => true)
     .helpful_info
       = profile_military_status_tip
 
