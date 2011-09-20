@@ -26,6 +26,8 @@ class AuthenticationsController < ApplicationController
           user.add_facebook_info
         when 'linked_in'
           user.add_linked_in_info
+        when 'twitter'
+          user.add_twitter_info
       end
         flash[:notice] = "Signed in successfully."
         sign_in_and_redirect(:user, user)

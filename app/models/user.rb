@@ -234,7 +234,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   def twitter_user
     if not authentications.where(:provider => "twitter").first.nil?
       twitter_client

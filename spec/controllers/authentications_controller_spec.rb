@@ -153,12 +153,6 @@ describe AuthenticationsController do
       flash[:notice].should == "Signed in successfully."
       response.should redirect_to(root_url)
     end
-
-    it "should create a new user using Twitter" do
-      get :create, :provider => 'twitter'
-      @user = User.last
-      @user.email.should == "change-me-12345@jobops.us"
-    end
   end
 
   describe "auth_failure action should render authentication failure template" do
