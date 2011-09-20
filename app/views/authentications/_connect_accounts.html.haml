@@ -1,0 +1,10 @@
+%h3 Connect Your Accounts
+%br.clearit
+
+- if @user.authentications.facebook.empty?
+  = link_to 'Facebook', '/auth/facebook'
+- if @user.authentications.twitter.empty?
+  = link_to 'Twitter', '/auth/twitter'
+- if @user.authentications.linked_in.empty?
+  = link_to 'LinkedIn', '/auth/linked_in'
+

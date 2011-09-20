@@ -1,0 +1,35 @@
+%h2 Account Connections
+%p
+  Facebook
+  - if @authentications.facebook.empty?
+    Not Connected
+  - else
+    Connected
+  - if @authentications.facebook.empty?
+    = link_to 'Connect', 'auth/facebook'
+  - else
+    = link_to 'Disconnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+
+%p
+  Twitter
+  - if @authentications.twitter.empty?
+    Not Connected
+  - else
+    Connected
+  - if @authentications.twitter.empty?
+    = link_to 'Connect', 'auth/twitter'
+  - else
+    = link_to 'Disconnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+
+%p
+  LinkedIn
+  - if @authentications.linked_in.empty?
+    Not Connected
+  - else
+    Connected
+  - if @authentications.linked_in.empty?
+    = link_to 'Connect', 'auth/linked_in'
+  - else
+    = link_to 'Disonnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+
+
