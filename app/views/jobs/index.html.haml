@@ -68,11 +68,15 @@
             Sort by:
             %select
               %option{ :value => '1' }
-                Relevance
+                Date (newest)
               %option{ :value => '2' }
-                Distance
+                Date (oldest)
               %option{ :value => '3' }
-                Salary
+                Flagged
+              %option{ :value => '4' }
+                Company
+              %option{ :title => '5' }
+                Title
         %ol.job-listings
           = render 'joblisting'
 
