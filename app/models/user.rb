@@ -84,7 +84,9 @@ class User < ActiveRecord::Base
       when 'facebook'
         self.apply_facebook(omniauth)
       when 'linked_in'
-        self.apply_linked_in(omniauth)
+        self.apply_email(omniauth)
+      when 'twitter'
+        self.apply_email(omniauth)
       end
     self.email = omniauth['user_info']['email'] if email.blank?
     build_authentications(omniauth, save_it)
@@ -248,7 +250,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def apply_linked_in(omniauth)
+  def apply_email(omniauth)
     #Create a fake email address using LinkedIn uid
     self.email = "change-me-#{omniauth['uid']}@jobops.us"
     self.password = Devise.friendly_token[0,20]
