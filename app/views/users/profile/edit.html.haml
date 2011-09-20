@@ -6,11 +6,7 @@
     .tab_container
       #basic_info.tab_content
         %h2 General Info
-        %h3 Connect Your Accounts
-        %br.clearit
-        = link_to 'Facebook', '#'
-        = link_to 'Twitter', '#'
-        = link_to 'LinkedIn', '#'
+        = render 'users/profile/connect_accounts'
         %br.clearit
         .tab_form
           =render 'users/profile/form'
