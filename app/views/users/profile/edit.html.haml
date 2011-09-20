@@ -6,7 +6,8 @@
     .tab_container
       #basic_info.tab_content
         %h2 General Info
-        = render 'users/profile/connect_accounts'
+        - unless @user.authentications.empty?
+          = render 'authentications/connect_accounts'
         %br.clearit
         .tab_form
           =render 'users/profile/form'
