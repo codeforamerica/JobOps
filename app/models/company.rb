@@ -1,3 +1,5 @@
+require 'places'
+
 class Company < ActiveRecord::Base
   has_many :jobs
   validates_presence_of :name
@@ -5,18 +7,23 @@ class Company < ActiveRecord::Base
   geocoded_by :location, :latitude => :lat, :longitude => :long
   after_validation do
     self.geocode unless !lat.nil?
-  end 
-  
+  end
+
+  geocoded_by :address
+  after_validation :geocode
+
+  def address
+    self.location
+  end
+
   def update_location_if_found_in_google_places
     @client = Places::Client.new(:api_key => ENV['PLACES'])
-    search = @client.search(:lat => self.lat, :lng => self.long, :name => self.name)
-    geometry = search.results.first.geometry
-    if geometry.first.last
-      self.lat = geometry.first.last.lat
-      self.long = geometry.first.last.lng
+    search = @client.search(:lat => lat, :lng => long, :name => name)
+    if !search.results.empty?
+      geometry = search.results.first.geometry.first.last
+      self.lat = geometry.lat
+      self.long = geometry.lng
       self.save
     end
   end
-  
-  
 end
