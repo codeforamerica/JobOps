@@ -34,7 +34,7 @@ end
   ruby_search = Factory(:job_search, :keyword => "ruby", :location => @location.location, :search_params => {"date_acquired_greater_than"=>"", "job_searches_keyword_contains"=>"21b", "job_searches_location_contains"=>"San Francisco, CA", "title_contains"=>"", "company_name_contains"=>""})
 
   puts "adding jobs to job searches"
-  JobSearch.all.each { |search| 100.times {search.jobs << Factory(:job, :location => @location, :company => Factory(:company, :location => @location.location), :job_source => ["Indeed", "Direct_Employers"].shuffle[0])}
+  JobSearch.all.each { |search| 100.times {search.jobs << Factory(:job, :location => @location, :company => Factory(:company, :location => @location.location), :job_source => ["Indeed", "Direct_Employers"].shuffle[0], :date_acquired => Time.at(Time.local(2010,1,1) + rand * (Time.now - Time.local(2011,12,31))))}
   }
 
   puts "flagging jobs"
