@@ -30,13 +30,13 @@ class JobsController < ApplicationController
 
   def index
     @counter = 0
-    if !params[:search].nil?
+    if params[:search].nil?
+      @jobs = []
+      @search = Job.search(params[:search])
+    else
       job_search = get_job_search
       @search = job_search.reload.jobs.search(params[:search])
       @jobs = @search.paginate(:page => params[:page], :per_page => 25)
-    else
-      @jobs = []
-      @search = Job.search(params[:search])
     end
     get_user_variables
   end
