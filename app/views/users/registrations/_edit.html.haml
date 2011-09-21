@@ -9,9 +9,9 @@
   .field
     = f.label :email
     -if current_user.email.include?('change-me')
-      = f.email_field :email, :value => ""
+      = f.email_field :email, :value => "", :class => 'required'
     -else
-      = f.email_field :email
+      = f.email_field :email, :class => 'required'
 
   .field
     = f.label :new_password
@@ -21,7 +21,7 @@
     = f.password_field :confirm
   .field
     = f.label :current_password
-    = f.password_field :current_password
+    = f.password_field :current_password, :class => 'required'
 
   .actions
     =f.submit "Submit", :value=>"Save", :class => "green-btn"
