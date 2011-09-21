@@ -78,7 +78,7 @@ GEM
     erubis (2.7.0)
     eventmachine (0.12.10)
     eventmachine (0.12.10-java)
-    execjs (1.2.7)
+    execjs (1.2.8)
       multi_json (~> 1.0)
     factory_girl (2.1.0)
     factory_girl_rails (1.2.0)

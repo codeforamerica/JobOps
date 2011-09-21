@@ -6,7 +6,7 @@
   - else
     Connected
   - if @authentications.facebook.empty?
-    = link_to 'Connect', 'auth/facebook'
+    = link_to 'Connect', '/auth/facebook'
   - else
     = link_to 'Disconnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 
@@ -17,7 +17,7 @@
   - else
     Connected
   - if @authentications.twitter.empty?
-    = link_to 'Connect', 'auth/twitter'
+    = link_to 'Connect', '/auth/twitter'
   - else
     = link_to 'Disconnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 
@@ -28,7 +28,7 @@
   - else
     Connected
   - if @authentications.linked_in.empty?
-    = link_to 'Connect', 'auth/linked_in'
+    = link_to 'Connect', '/auth/linked_in'
   - else
     = link_to 'Disonnect', authentication_path(@authentications), :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 
