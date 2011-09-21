@@ -1,7 +1,7 @@
 .job-search-box
   =form_for @search do |f|
     .search-block
-      %label{ :for =>'q' }
+      %label{ :for =>'search[job_searches_keyword_contains]' }
         Search for
         %span
           (job title, skills, keywords)
@@ -10,7 +10,7 @@
       -else
         =f.text_field :job_searches_keyword_contains
     .search-block
-      %label{ :for => 'near' }
+      %label{ :for => 'search[job_searches_location_contains]' }
         Near
         %span
           (address, city, state, or zip code)
