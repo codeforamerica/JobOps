@@ -64,19 +64,23 @@
           %span
             =@jobs.total_entries unless @jobs.blank?
           Jobs Found
-          .search-result-sortby
-            Sort by:
-            %select
-              %option{ :value => '1' }
-                Date (newest)
-              %option{ :value => '2' }
-                Date (oldest)
-              %option{ :value => '3' }
-                Flagged
-              %option{ :value => '4' }
-                Company
-              %option{ :title => '5' }
-                Title
+          =form_for @search do |f|
+            - params[:search].each do |search|
+              = hidden_field_tag "search[#{search[0]}]", search[1]
+            =f.submit "Submit", :value=>"Search", :class => "green-btn"
+            .search-result-sortby
+              Sort by:
+              %select{:name =>'sortby'}
+                %option{ :value => '1' }
+                  Date (newest)
+                %option{ :value => '2' }
+                  Date (oldest)
+                %option{ :value => '3' }
+                  Flagged
+                %option{ :value => '4' }
+                  Company
+                %option{ :value => '5' }
+                  Title
         %ol.job-listings
           = render 'joblisting'
 
