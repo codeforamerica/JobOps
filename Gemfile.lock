@@ -80,7 +80,8 @@ GEM
     eventmachine (0.12.10-java)
     execjs (1.2.8)
       multi_json (~> 1.0)
-    factory_girl (2.1.0)
+    factory_girl (2.1.2)
+      activesupport
     factory_girl_rails (1.2.0)
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
