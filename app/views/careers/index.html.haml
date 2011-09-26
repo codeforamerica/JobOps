@@ -14,10 +14,13 @@
     %table
       %tr
         %th Title
+        %th Flag
 
       - @careers.each do |career|
         %tr
           %td= link_to career.title, career_path(career.api_safe_onet_soc_code)
+          %td= link_to 'Flag', 'careers/flag/'+career.api_safe_onet_soc_code
+
 
   - unless  params[:moc].nil?
     %p Page
