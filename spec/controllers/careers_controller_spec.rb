@@ -48,4 +48,19 @@ describe CareersController do
     end
   end
 
+  describe "#flag" do
+    before do
+      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
+        to_return(:status => 200, :body => "", :headers => {})
+      @user = Factory(:user)
+      sign_in(@user)
+      @career = Factory(:career)
+    end
+
+    it "should flag a career" do
+      lambda {
+      get :flag, :id => @career.api_safe_onet_code
+      }.should change(CareerUser, :count).by(1)
+    end
+  end
 end
