@@ -37,8 +37,13 @@ end
   JobSearch.all.each { |search| 100.times {search.jobs << Factory(:job, :location => @location, :company => Factory(:company, :location => @location.location), :job_source => ["Indeed", "Direct_Employers"].shuffle[0], :date_acquired => Time.at(Time.local(2010,1,1) + rand * (Time.now - Time.local(2011,12,31))))}
   }
 
+  career = Factory(:career)
+
   puts "flagging jobs"
   User.all.each { |user|  user.jobs << Job.all.shuffle[0..10]}
+
+  puts "flagging careers"
+  User.all.each { |user| user.careers << Career.all.shuffle[0..10]}
 
 
 end
