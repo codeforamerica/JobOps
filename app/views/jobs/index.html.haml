@@ -70,8 +70,7 @@
             .search-result-sortby
               Sort by:
               = select_tag "sortby", options_for_select([['Date (newest)', 'date_desc'],['Date (oldest)', 'date_asc'],['Company', 'company'],['Title','title']],:selected => params[:sortby]), :onchange => "this.form.submit();"
-        %ol.job-listings
-          = render 'joblisting'
+        = render 'joblisting'
 
     =will_paginate @jobs unless @jobs.blank?
 
