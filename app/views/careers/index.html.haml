@@ -15,15 +15,13 @@
       %tr
         %th Title
         %th Average National Salary
-        %th ONet SOC Code
 
       - @careers.each do |career|
         %tr
-          %td= career.title
+          %td= link_to career.title, career_path(career.api_safe_onet_soc_code)
           %td= number_to_currency(career.average_national_salary)
-          %td= link_to career.onet_soc_code, career_path(career.api_safe_onet_soc_code)
 
-  - if params[:moc].nil?
+  - unless  params[:moc].nil?
     %p Page
     =link_to '<', careers_path({:page => @prev_page})
     =link_to '>', careers_path({:page => @next_page})
