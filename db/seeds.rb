@@ -17,7 +17,7 @@ end
 
   WebMock.stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
     to_return(:status => 200, :body => fixture("futures_11b.json"))
-  WebMock.stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
+  WebMock.stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
      with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
      to_return(:status => 200, :body => fixture("google_map_location_sfca.json"), :headers => {})
 
