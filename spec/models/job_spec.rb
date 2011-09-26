@@ -14,7 +14,7 @@ describe Job do
       @job.title = nil
       @job.should have(1).error_on(:title)
     end
-    
+
     it 'presence of job_source' do
       @job.job_source = nil
       @job.should have(1).error_on(:job_source)
@@ -63,6 +63,6 @@ describe Job do
   context "job specific checks" do
       it 'doesnt error out on improper redirect' do
         @job.follow_and_update_redirect
-      end 
+      end
   end
 end

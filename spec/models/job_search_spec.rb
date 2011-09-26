@@ -89,7 +89,7 @@ describe JobSearch do
     it 'processes jobs for moc' do
       job_search = Factory(:job_search, :keyword => "11b")
       stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11b").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
-      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11b&zc=San%20Francisco,%20CA").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))      
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&moc=11b&zc=San%20Francisco,%20CA").to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
       @direct = SearchDirectEmployers.new.direct_client
       jobs = @direct.search({:moc => job_search.keyword}).api.jobs.job
       lambda {

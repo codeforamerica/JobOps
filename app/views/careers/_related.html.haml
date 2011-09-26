@@ -4,4 +4,4 @@
     %ul{:id=>"careers"}
       -@careers.each do |career|
         %li= link_to career.title, :search => {"job_searches_keyword_contains"=> career.title, "job_searches_location_contains" => params[:search]["job_searches_location_contains"]}
-      
+
