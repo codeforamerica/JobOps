@@ -62,5 +62,13 @@ describe CareersController do
       get :flag, :id => @career.api_safe_onet_code
       }.should change(CareerUser, :count).by(1)
     end
+
+    it "should deflag a career" do
+      @user.careers << @career
+      lambda {
+      get :flag, :id => @career.api_safe_onet_code
+      }.should change(CareerUser, :count).by(-1)
+    end
+
   end
 end
