@@ -53,8 +53,13 @@ class CareersController < ApplicationController
       @career = Career.create(:title => @onet_info.title, :onet_code => @onet_info.onet_soc_code, :api_safe_onet_code => @onet_info.api_safe_onet_soc_code)
     end
 
-    message = {"message" => "#{@career.title} flagged." }
-    current_user.careers << @career
+    if current_user.careers.include?(@career)
+      message = {"message" => "Flag for #{@career.title} removed." }
+      current_user.career_users.where(:career_id => @career.id).first.delete
+    else
+      message = {"message" => "#{@career.title} flagged." }
+      current_user.careers << @career
+    end
 
     respond_to do |format|
       format.json {render :json => message }
