@@ -4,6 +4,6 @@ class Location < ActiveRecord::Base
   validates_presence_of :location
   validates_uniqueness_of :location
   geocoded_by :location, :latitude => :lat, :longitude => :long
-  after_validation :geocode 
-  
+  after_validation :geocode
+
 end

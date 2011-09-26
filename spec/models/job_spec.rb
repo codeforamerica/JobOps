@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Job do
   before do
-    stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
+    stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
       to_return(:status => 200, :body => fixture("google_map_location_sfca.json"), :headers => {})
     @company = Factory(:company, :location => "San Francisco, CA")
     @location = Factory(:location, :location => "San Francisco, CA")
@@ -14,7 +14,7 @@ describe Job do
       @job.title = nil
       @job.should have(1).error_on(:title)
     end
-    
+
     it 'presence of job_source' do
       @job.job_source = nil
       @job.should have(1).error_on(:job_source)
@@ -63,6 +63,6 @@ describe Job do
   context "job specific checks" do
       it 'doesnt error out on improper redirect' do
         @job.follow_and_update_redirect
-      end 
+      end
   end
 end

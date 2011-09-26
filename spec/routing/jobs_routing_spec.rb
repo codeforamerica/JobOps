@@ -10,7 +10,7 @@ describe JobsController do
     it "routes to #show" do
       get("/jobs/1").should route_to("jobs#show", :id => "1")
     end
-    
+
     it "routes to #flag" do
       get("/jobs/flag/1").should route_to("jobs#flag", :id => "1", :format => "json")
     end
