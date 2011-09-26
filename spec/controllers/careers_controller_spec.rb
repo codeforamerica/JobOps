@@ -18,10 +18,24 @@ describe CareersController do
     end
 
     it "should return related careers for a MOC" do
-      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11b").
+      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
         to_return(:status => 200, :body => fixture("futures_11b.json"))
-      get 'index', :moc => '11b'
+      get 'index', :moc => '11B'
       response.should be_success
+    end
+  end
+
+  describe "GET 'index' for a logged in user" do
+    before do
+      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
+        to_return(:status => 200, :body => fixture("futures_11b.json"))
+      @user = Factory(:user)
+    end
+
+    it "should render the careers template" do
+      sign_in(@user)
+      get :index
+      response.should render_template("careers/index")
     end
   end
 
