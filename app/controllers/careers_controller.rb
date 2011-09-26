@@ -8,8 +8,12 @@ class CareersController < ApplicationController
   def index
 
     if current_user
-      unless current_user.moc.blank?
-        @careers = @futures_careers.search(current_user.moc)
+      if params[:moc].nil?
+        unless current_user.moc.blank?
+          @careers = @futures_careers.search(current_user.moc)
+        end
+      else
+        @careers = @futures_careers.search(params[:moc])
       end
     else
       if params[:moc]
