@@ -14,12 +14,10 @@
     %table
       %tr
         %th Title
-        %th Average National Salary
 
       - @careers.each do |career|
         %tr
           %td= link_to career.title, career_path(career.api_safe_onet_soc_code)
-          %td= number_to_currency(career.average_national_salary)
 
   - unless  params[:moc].nil?
     %p Page
