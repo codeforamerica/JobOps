@@ -57,6 +57,15 @@ describe CareersController do
       @career = Factory(:career)
     end
 
+    it "should add a new career into the database" do
+      stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/11-1021-00.json").
+        to_return(:status => 200, :body => fixture("futures_career.json"))
+
+      get :flag, :id => '11-1021-00'
+      @last_career = Career.last
+      @last_career.title.should == "General and Operations Managers"
+    end
+
     it "should flag a career" do
       lambda {
       get :flag, :id => @career.api_safe_onet_code
