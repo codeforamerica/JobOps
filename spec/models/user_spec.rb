@@ -119,6 +119,10 @@ describe User do
       @user.respond_to?(:job_users).should be_true
       @user.respond_to?(:jobs).should be_true
     end
+
+    it 'has many career flags' do
+      @user.respond_to?(:careers).should be_true
+    end
   end
 
 end
