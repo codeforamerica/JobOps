@@ -1,6 +1,4 @@
 class Job < ActiveRecord::Base
-  default_scope order('date_acquired desc')
-
   belongs_to :location
   belongs_to :company
   has_many :job_searches_jobs
@@ -17,14 +15,14 @@ class Job < ActiveRecord::Base
       link = RedirectFollower('http://is.gd/bNZYZ')
     rescue
     end
-    
+
     if link
       self.url = link unless link==self.url
-      self.save 
+      self.save
     end
-    
+
   end
-  
+
   def process_checks
     follow_and_update_redirect
   end

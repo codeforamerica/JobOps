@@ -35,8 +35,24 @@ class JobsController < ApplicationController
       @search = Job.search(params[:search])
     else
       job_search = get_job_search
-      @search = job_search.reload.jobs.search(params[:search])
-      @jobs = @search.paginate(:page => params[:page], :per_page => 25)
+      @search = job_search.reload.jobs.includes(:company).search(params[:search])
+
+      if params[:sortby].nil?
+        @jobs = @search.order('date_acquired desc')
+      else
+        case params[:sortby]
+        when 'date_desc'
+          @jobs = @search.order('date_acquired desc')
+        when 'date_asc'
+          @jobs = @search.order('date_acquired asc')
+        when 'company'
+          @jobs = @search.order('companies.name asc')
+        when 'title'
+          @jobs = @search.order('title asc')
+        end
+      end
+
+      @jobs = @jobs.paginate(:page => params[:page], :per_page => 25)
     end
     get_user_variables
   end
