@@ -34,6 +34,7 @@ $(document).ready(function() {
     submitHandler : function() { return true; }
   });
 
+  // Blanket hide of all inline forms on the page
   $('.inline_form').hide();
 
   // Inline form handlers
@@ -208,4 +209,22 @@ $(document).ready(function() {
     return { display_text: display_arr[0], content: $li };
   }
 
+  $('.recommended').live('keyup', function(ev) {
+    var $theRents = $(this).parents('.field');
+    var $tooltip = ($theRents.find('.helpful_info').length) ? $theRents.find('.helpful_info') : $theRents.find('.tooltip-content');
+
+    if($(this).val().length == 0) {
+      if($tooltip.hasClass('helpful_info')) {
+        $tooltip.addClass('tooltip-content').removeClass('helpful_info');
+        $tooltip.wrap('<div class="tooltip-yellow-lt" />');
+      }
+    } else {
+      if($tooltip.hasClass('tooltip-content')) {
+        $tooltip.addClass('helpful_info').removeClass('tooltip-content');
+        $tooltip.unwrap();
+      }
+    }
+  });
+  
+  $('.recommended').keyup();
 });

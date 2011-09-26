@@ -173,6 +173,14 @@ Changelog:
             return this.each(function(){
                 this.scrollbar.scrollto(to);
             });
+        },
+
+        unscrollbar: function() {
+          return this.each(function() {
+            if(this.scrollbar) {
+              this.scrollbar.unscrollbar();
+            }
+          });
         }
     }
 
@@ -357,7 +365,7 @@ Changelog:
                 'position': 'absolute',
                 'cursor':   'pointer'
             });
-
+            
             // Custom hack
             this.container.parent('.cta-box').addClass('scroll-on');
 
@@ -478,6 +486,16 @@ Changelog:
             this.handle.top = distance;
             this.setHandlePosition();
             this.setContentPosition();
+        },
+
+        //
+        // Remove scrollbar dom elements
+        //
+        unscrollbar: function() {
+          var holder = this.container.find('.scrollbar-pane').find('*');
+          this.container.empty();
+          this.container.append(holder);
+          this.container.attr('style','');
         },
 
 
