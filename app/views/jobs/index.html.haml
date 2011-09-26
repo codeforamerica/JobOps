@@ -69,7 +69,7 @@
               = hidden_field_tag "search[#{search[0]}]", search[1]
             .search-result-sortby
               Sort by:
-              = select_tag "sortby", options_for_select([['Date (newest)', 'date_desc'],['Date (oldest)', 'date_asc'],['Flagged', 'flagged'],['Company', 'company'],['Title','title']],:selected => params[:sortby]), :onchange => "this.form.submit();"
+              = select_tag "sortby", options_for_select([['Date (newest)', 'date_desc'],['Date (oldest)', 'date_asc'],['Company', 'company'],['Title','title']],:selected => params[:sortby]), :onchange => "this.form.submit();"
         %ol.job-listings
           = render 'joblisting'
 

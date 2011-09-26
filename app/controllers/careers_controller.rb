@@ -1,4 +1,5 @@
 class CareersController < ApplicationController
+  before_filter :authenticate_user!, :only => :flag
   before_filter :get_career
 
   def get_career
@@ -41,6 +42,29 @@ class CareersController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @careers }
     end
+  end
+
+  # Flag responds only to json requests
+  def flag
+    @career = Career.find_by_api_safe_onet_code(params[:id])
+
+    if @career.blank?
+      @onet_info = @futures_careers.career(params[:id])
+      @career = Career.create(:title => @onet_info.title, :onet_code => @onet_info.onet_soc_code, :api_safe_onet_code => @onet_info.api_safe_onet_soc_code)
+    end
+
+    if current_user.careers.include?(@career)
+      message = {"message" => "Flag for #{@career.title} removed." }
+      current_user.career_users.where(:career_id => @career.id).first.delete
+    else
+      message = {"message" => "#{@career.title} flagged." }
+      current_user.careers << @career
+    end
+
+    respond_to do |format|
+      format.json {render :json => message }
+    end
+
   end
 
 end

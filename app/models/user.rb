@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_many :awards
   has_many :authentications
+  has_many :careers, :through => :career_users
+  has_many :career_users
   has_many :certifications
   has_many :job_histories
   has_many :educations

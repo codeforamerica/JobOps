@@ -9,6 +9,7 @@ JobOps::Application.routes.draw do
   get "/jobs/flag/:id", :controller => :jobs, :action => :flag, :defaults => { :format => 'json' }, :as => :flag_job
 
   resources :careers, :only => [:index, :show]
+  get "/careers/flag/:id", :controller => :careers, :action => :flag, :defaults => { :format => 'json' }, :as => :flag_career
 
   resources :authentications
 
