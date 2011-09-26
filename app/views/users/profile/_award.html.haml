@@ -11,15 +11,15 @@
             %span
               =award.award
             =link_to ' ', award, :confirm => 'Are you sure?', :class=>"delete_link"
-            %a{:class=>"award_#{award.id} edit_link"} Edit 
+            %a{:class=>"award_#{award.id} edit_link"} Edit
           %div{:class=>"edit_award_#{award.id} edit_form"}
             =form_for award, :remote => true, :html => {:class => "edit_award"} do |f|
-              =f.text_field :award 
+              =f.text_field :award
               =f.submit :value=>"Save", :class => "green-btn"
               %a{:class => 'cancel_edit_button', :href => '#'}Cancel
     .inline_form
       =form_for @user.awards.new, :remote => true do |f|
-        =f.text_field :award 
+        =f.text_field :award
         =f.submit :value=>"Add Award", :class => "green-btn"
         %a{:class=>"cancel_form_button", :href => "#"} Cancel
   %script

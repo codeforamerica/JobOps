@@ -37,8 +37,8 @@
         %br.clearit
 -if flash[:notice]
   %script{:type => "text/javascript"}
-    ="$(document).ready(function() {$.flashmessage('#{flash[:notice]}', { type: 'success'} );});"  
+    ="$(document).ready(function() {$.flashmessage('#{flash[:notice]}', { type: 'success'} );});"
 -elsif flash[:alert]
   %script{:type => "text/javascript"}
-    ="$(document).ready(function() {$.flashmessage('#{flash[:alert]}', { type: 'error'} );});" 
+    ="$(document).ready(function() {$.flashmessage('#{flash[:alert]}', { type: 'error'} );});"
 

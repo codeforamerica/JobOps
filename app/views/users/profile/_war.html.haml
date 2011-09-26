@@ -11,15 +11,15 @@
             %span
               =war.war
             =link_to ' ', war, :confirm => 'Are you sure?', :class=>"delete_link"
-            %a{:class=>"war_#{war.id} edit_link"} Edit 
+            %a{:class=>"war_#{war.id} edit_link"} Edit
           %div{:class=>"edit_war_#{war.id} edit_form"}
             =form_for war, :remote => true, :html => {:class => "edit_war"} do |f|
-              =f.text_field :war 
+              =f.text_field :war
               =f.submit :value=>"Save", :class => "green-btn"
               %a{:class => 'cancel_edit_button', :href => '#'}Cancel
     .inline_form
       =form_for @user.wars.new, :remote => true do |f|
-        =f.text_field :war 
+        =f.text_field :war
         =f.submit :value=>"Add War", :class => "green-btn"
         %a{:class=>"cancel_form_button", :href => "#"} Cancel
   %script

@@ -6,9 +6,9 @@ describe Award do
   end
   context "relationships" do
     it 'belongs' do
-      @award.respond_to?(:user).should be_true      
+      @award.respond_to?(:user).should be_true
     end
   end
 
-  
+
 end
