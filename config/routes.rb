@@ -1,6 +1,6 @@
 JobOps::Application.routes.draw do
 
-  resources :industry, :only => [:index]
+  resources :industry, :only => [:index, :show]
 
   get "job_searches_user/new/", :controller => :job_searches_user, :action => :new, :defaults => { :format => 'json' }
   get "job_searches_user/:id", :controller => :job_searches_user, :action => :destroy, :defaults => {:format => 'json'}
