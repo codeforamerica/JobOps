@@ -45,6 +45,9 @@
   color:#666;
   line-height:110%;
 }
+#reg_right p a {
+  font-size:1.0em;
+}
 #sign_in label, #sign_up label {
   float:left;
   color:#999;
@@ -70,17 +73,27 @@
   font-size:0.6em;
   width:270px;
 }
+#auth_menu {
+  float:right;
+  margin-right:33px;
+}
+#auth_menu a {
+  float:right;
+}
 #sign_in img, #sign_up img {
-  float:left;
-  margin:0 10px 0 0;
+  margin:0 0 10px 0;
+}
+#auth_menu a + a {
+  padding-top:10px;
+  border-top:1px dotted #CCC;
 }
 a.sign_up, a.sign_in, a.forgot_password {
   display: block;
   float: left;
   font-size: 0.75em;
   line-height: 100%;
-  width: 130px;
-  text-align:right;
+  text-align:left;
+  margin:12px 15px 0 0;
 }
 a.sign_up, a.sign_in {
   margin-bottom:10px;

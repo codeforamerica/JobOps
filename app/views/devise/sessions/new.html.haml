@@ -18,10 +18,12 @@
         = f.label :password
         = f.password_field :password
         - if devise_mapping.rememberable?
-          = f.check_box :remember_me
+          %br.clearit
           = f.label :remember_me
+          = f.check_box :remember_me
+          %br.clearit
         %p
-          =f.submit "Submit", :value=>"Sign in", :class => "green-btn"
           = render :partial => "devise/shared/links"
+          =f.submit "Submit", :value=>"Sign in", :class => "green-btn"
 
     %br.clearit
