@@ -1,3 +1,31 @@
+
+puts "Add Industry Data"
+[
+  {:name => "Accommodation and Food Services"},
+  {:name => "Administrative and Support Services"},
+  {:name => "Agriculture, Forestry, Fishing, and Hunting"},
+  {:name => "Arts, Entertainment, and Recreation"},
+  {:name => "Construction"},
+  {:name => "Educational Services"},
+  {:name => "Finance and Insurance"},
+  {:name => "Government"},
+  {:name => "Health Care and Social Assistance"},
+  {:name => "Information"},
+  {:name => "Management of Companies and Enterprises"},
+  {:name => "Manufacturing"},
+  {:name => "Mining, Quarrying, and Oil and Gas Extraction"},
+  {:name => "Other Services (Except Public Administration)"},
+  {:name => "Professional, Scientific, and Technical Services"},
+  {:name => "Real Estate and Rental and Leasing"},
+  {:name => "Retail Trade"},
+  {:name => "Self-Employed"},
+  {:name => "Transportation and Warehousing"},
+  {:name => "Utilities"},
+  {:name => "Wholesale Trade"},
+].each do |attributes|
+  Industry.find_or_create_by_name(attributes)
+end
+
 if Rails.env != 'production'
 
 

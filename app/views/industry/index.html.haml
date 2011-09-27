@@ -1,0 +1,5 @@
+%h1 Industry
+%br
+- @industry.each do |industry|
+  %br
+  = link_to industry.name, industry_path(industry.id)

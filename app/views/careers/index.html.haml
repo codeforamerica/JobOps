@@ -6,6 +6,12 @@
     = text_field_tag :moc, params[:moc]
     = submit_tag "Search"
 
+  %h1 Industry
+  - @industry.each do |industry|
+    %br
+    = link_to industry.name, industry_path(industry.id)
+
+
   %br
 
   - if @careers.empty?
