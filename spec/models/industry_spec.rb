@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe Industry do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @industry = Factory(:industry)
+  end
+
+  context "relationships" do
+    it 'has many job searches' do
+      @industry.respond_to?(:industry_lookups).should be_true
+    end
+  end
+
 end
