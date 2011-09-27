@@ -5,24 +5,45 @@
 /** LOG IN PAGE **/
 
 #sign_in_wrapper, #sign_up_wrapper {
-  width:300px;
+  width:700px;
   position:relative;
   left:50%;
-  margin-left:-180px;
+  margin-left:-350px;
   top:15px;
-  background:url(/images/box.png) repeat;
   padding: 15px;
+}
+#sign_in_wrapper h2, #sign_up_wrapper h2 {
+  font-size:1.25em;
+  font-weight:normal;
+  color:#315924;
+  margin-bottom: 15px;
 }
 #sign_in, #sign_up {
   background-color:#FFF;
   padding:15px;
+  border:1px solid #CCC;
 }
-#sign_in h2, #sign_up h2 {
-  font-size:1.25em;
-  background:url("/images/footer_bg.png") repeat-x;
-  color:#FFF;
-  margin:-15px -15px 15px -15px;
-  padding:5px 15px;
+#reg_left {
+  float:left;
+  width:260px;
+  padding:15px 30px;
+  margin-right:10px;
+  background:#f7fbff;
+  font-size:0.7em;
+  color:#666;
+  border:2px solid #e1eaf2;
+  border-radius: 5px;
+  line-height:110%;
+}
+#reg_right {
+  float:left;
+  width:260px;
+  padding:15px 30px;
+  margin-left:10px;
+  background: #f7f7f7;
+  font-size:0.7em;
+  color:#666;
+  line-height:110%;
 }
 #sign_in label, #sign_up label {
   float:left;
