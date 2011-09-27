@@ -6,7 +6,7 @@ describe Industry do
   end
 
   context "relationships" do
-    it 'has many job searches' do
+    it 'has many industrty lookups' do
       @industry.respond_to?(:industry_lookups).should be_true
     end
   end
