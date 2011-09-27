@@ -8,6 +8,8 @@ class CareersController < ApplicationController
 
   def index
 
+    @industry = Industry.all
+
     if current_user
       if params[:moc].nil?
         unless current_user.moc.blank?
