@@ -1,29 +1,27 @@
 #sign_in_wrapper
+  %h2 Sign in
   #sign_in
-    %h2 Sign in
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-      %p
+      #reg_left
+        Sign in with one click if your Facebook, LinkedIn, or Twitter account is connected (if it’s not, we’ll connect it for you and sign you in).
+        %br.clearit
+        %br
+        %br
+        = render 'authentications/auth_menu'
+      #reg_right
+        or sign in with your email address and password.
+        %br.clearit
+        %br
+        %br
         = f.label :email
         = f.email_field :email
-      %br.clearit
-      %p
         = f.label :password
         = f.password_field :password
-      %br.clearit
-      - if devise_mapping.rememberable?
-        %p
+        - if devise_mapping.rememberable?
           = f.check_box :remember_me
           = f.label :remember_me
-
-      %p=f.submit "Submit", :value=>"Sign in", :class => "green-btn"
-      %br.clearit
-
-
-    %p
-      %strong Or sign in through one of these services:
-
-    = render 'authentications/auth_menu'
-
-    = render :partial => "devise/shared/links"
+        %p
+          =f.submit "Submit", :value=>"Sign in", :class => "green-btn"
+          = render :partial => "devise/shared/links"
 
     %br.clearit
