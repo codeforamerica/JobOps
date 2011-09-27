@@ -7,8 +7,9 @@ class CareersController < ApplicationController
   end
 
   def index
-
+    @counter = 0
     if current_user
+      @flagged_careers = current_user.careers
       if params[:moc].nil?
         unless current_user.moc.blank?
           @careers = @futures_careers.search(current_user.moc)
@@ -17,6 +18,7 @@ class CareersController < ApplicationController
         @careers = @futures_careers.search(params[:moc])
       end
     else
+      @flagged_careers = []
       if params[:moc]
         @careers = @futures_careers.search(params[:moc])
       else
@@ -36,6 +38,7 @@ class CareersController < ApplicationController
   end
 
   def show
+    @counter = 0
     @careers = @futures_careers.career(params[:id])
 
     respond_to do |format|

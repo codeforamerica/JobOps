@@ -1,29 +1,32 @@
 #home
-  %h1 Careers
+  %h1 Explore Industries and Careers
 
-  = form_tag('/careers', :method => :get) do
-    MOC:
-    = text_field_tag :moc, params[:moc]
-    = submit_tag "Search"
+  .career-search
+    = form_tag('/careers', :method => :get) do
+      MOC:
+      = text_field_tag :moc, params[:moc]
+      = submit_tag "Search"
 
-  %br
-
-  - if @careers.empty?
-    No Careers Found
-  - else
-    %table
-      %tr
-        %th Title
-        %th Flag
-
-      - @careers.each do |career|
-        %tr
-          %td= link_to career.title, career_path(career.api_safe_onet_soc_code)
-          %td= link_to 'Flag', 'careers/flag/'+career.api_safe_onet_soc_code
+  .wide-column
+    .white-box
+      .recommended-career-title
+        Recommended Careers
+      .notification
+        These career suggestions are based on your answers to the Career Survey you took 2 weeks ago. You can update your survey answers whenever you like or find other careers by searching or browsing the industries and categories above.
+      - if @careers.empty?
+        No Careers Found
+      - else
+        = render 'careerlisting'
 
 
-  - unless  params[:moc].nil?
-    %p Page
-    =link_to '<', careers_path({:page => @prev_page})
-    =link_to '>', careers_path({:page => @next_page})
+      - unless  params[:moc].nil?
+        %p Page
+        =link_to '<', careers_path({:page => @prev_page})
+        =link_to '>', careers_path({:page => @next_page})
 
+  #sidebar
+    .cta-box.flagged-careers
+      here are the flagged careers
+
+    .cta-box.vet-friendly
+      here are the vet friendly careers
