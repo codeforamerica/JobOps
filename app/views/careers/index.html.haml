@@ -9,7 +9,7 @@
   %h1 Industry
   - @industry.each do |industry|
     %br
-    = link_to industry.name, '#'
+    = link_to industry.name, industry_path(industry.id)
 
 
   %br
