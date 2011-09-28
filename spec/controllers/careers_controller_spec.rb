@@ -20,7 +20,7 @@ describe CareersController do
     it "should return related careers for a MOC" do
       stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/search.json?moc=11B").
         to_return(:status => 200, :body => fixture("futures_11b.json"))
-      get 'index', :moc => '11B'
+      get 'index', :search => '11B'
       response.should be_success
     end
   end
@@ -50,7 +50,7 @@ describe CareersController do
     it "should render the careers template for a logged in user searching by MOC" do
       @user = Factory(:user, :moc => "")
       sign_in(@user)
-      get :index, :moc => "11B"
+      get :index, :search => "11B"
       response.should render_template("careers/index")
     end
 
