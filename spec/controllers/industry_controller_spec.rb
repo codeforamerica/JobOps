@@ -10,6 +10,10 @@ describe IndustryController do
   end
 
   describe "#show" do
+    before do
+      @industry = Factory(:industry)
+    end
+
     it "should return the show template" do
       get 'show', :id => 1
       response.should render_template('industry/show')
