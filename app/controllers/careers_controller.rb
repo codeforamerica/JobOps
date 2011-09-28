@@ -11,18 +11,18 @@ class CareersController < ApplicationController
     @industry = Industry.all
 
     if current_user
-      if params[:moc].nil?
+      if params[:search].nil?
         if current_user.moc.blank?
           @careers = @futures_careers.careers
         else
           @careers = @futures_careers.search(current_user.moc)
         end
       else
-        @careers = @futures_careers.search(params[:moc])
+        @careers = @futures_careers.search(params[:search])
       end
     else
-      if params[:moc]
-        @careers = @futures_careers.search(params[:moc])
+      if params[:search]
+        @careers = @futures_careers.search(params[:search])
       else
         @careers = @futures_careers.careers({:page => params[:page]})
         @next_page = params[:page].to_i + 1
