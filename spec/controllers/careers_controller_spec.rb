@@ -23,6 +23,12 @@ describe CareersController do
       get 'index', :search => '11B'
       response.should be_success
     end
+
+    it "should return careers based on a search" do
+      get 'index', :search => 'computer'
+      response.should be_success
+    end
+
   end
 
   describe "GET 'index' for a logged in user" do
