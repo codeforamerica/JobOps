@@ -1,7 +1,7 @@
 #home
   .career-search
     = form_tag('/careers', :method => :get) do
-      = text_field_tag :moc, params[:moc]
+    = text_field_tag :search, params[:search]
       = submit_tag "Search"
 
   %h2.page-title Explore Industries and Careers
@@ -34,7 +34,6 @@
 
     .cta-box.vet-friendly
       here are the vet friendly careers
-
 
   - unless  params[:moc].nil?
     %p Page

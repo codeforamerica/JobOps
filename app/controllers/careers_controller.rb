@@ -12,19 +12,23 @@ class CareersController < ApplicationController
 
     if current_user
       @flagged_careers = current_user.careers
-      if params[:moc].nil?
+      if params[:search].nil?
         if current_user.moc.blank?
           @careers = @futures_careers.careers
         else
           @careers = @futures_careers.search(current_user.moc)
         end
       else
-        @careers = @futures_careers.search(params[:moc])
+        if(params[:search] =~ /^\d/)
+          @careers = @futures_careers.search(params[:search])
+        else
+          @careers = IndustryLookup.where("title like ?", "%#{params[:search]}%")
+        end
       end
     else
       @flagged_careers = []
-      if params[:moc]
-        @careers = @futures_careers.search(params[:moc])
+      if params[:search]
+        @careers = @futures_careers.search(params[:search])
       else
         @careers = @futures_careers.careers({:page => params[:page]})
         @next_page = params[:page].to_i + 1
