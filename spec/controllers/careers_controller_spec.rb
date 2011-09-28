@@ -54,6 +54,12 @@ describe CareersController do
       response.should render_template("careers/index")
     end
 
+    it "should render the careers template for a logged in user searching by career" do
+      @user = Factory(:user, :moc => "")
+      sign_in(@user)
+      get :index, :search => "computer"
+      response.should render_template("careers/index")
+    end
   end
 
   describe "#show" do
