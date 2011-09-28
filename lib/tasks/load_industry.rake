@@ -70,7 +70,7 @@ end
 def load_csv(file, industry)
   CSV.foreach("data/industry/#{file}", {:headers => true}) do |row|
       if row[1].present?
-        IndustryLookup.create(:industry_id => industry, :onet_code => row[1], :api_safe_onet_code => row[1].tr('.','-'), :title => row[2])
+        IndustryLookup.create(:industry_id => industry, :onet_code => row[1], :api_safe_onet_soc_code => row[1].tr('.','-'), :title => row[2])
       end
   end
 end
