@@ -8,6 +8,8 @@ class CareersController < ApplicationController
 
   def index
     @counter = 0
+    @industry = Industry.all
+
     if current_user
       @flagged_careers = current_user.careers
       if params[:moc].nil?

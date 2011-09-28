@@ -13,6 +13,12 @@ Installation
     $ bundle install
     $ rake db:migrate
 
+Load Industry Data
+------------------
+Industry data is located in csv files in \data\industry\csv
+Load this by using the Rake task
+    $ rake industry
+
 Contributing
 ------------
 In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.

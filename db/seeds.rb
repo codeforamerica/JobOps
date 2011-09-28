@@ -1,3 +1,31 @@
+
+puts "Add Industry Data"
+[
+  {:name => "Accommodation and Food Services"},
+  {:name => "Administrative and Support Services"},
+  {:name => "Agriculture, Forestry, Fishing, and Hunting"},
+  {:name => "Arts, Entertainment, and Recreation"},
+  {:name => "Construction"},
+  {:name => "Educational Services"},
+  {:name => "Finance and Insurance"},
+  {:name => "Government"},
+  {:name => "Health Care and Social Assistance"},
+  {:name => "Information"},
+  {:name => "Management of Companies and Enterprises"},
+  {:name => "Manufacturing"},
+  {:name => "Mining, Quarrying, and Oil and Gas Extraction"},
+  {:name => "Other Services (Except Public Administration)"},
+  {:name => "Professional, Scientific, and Technical Services"},
+  {:name => "Real Estate and Rental and Leasing"},
+  {:name => "Retail Trade"},
+  {:name => "Self-Employed"},
+  {:name => "Transportation and Warehousing"},
+  {:name => "Utilities"},
+  {:name => "Wholesale Trade"},
+].each do |attributes|
+  Industry.find_or_create_by_name(attributes)
+end
+
 if Rails.env != 'production'
 
 
@@ -37,8 +65,13 @@ end
   JobSearch.all.each { |search| 100.times {search.jobs << Factory(:job, :location => @location, :company => Factory(:company, :location => @location.location), :job_source => ["Indeed", "Direct_Employers"].shuffle[0], :date_acquired => Time.at(Time.local(2010,1,1) + rand * (Time.now - Time.local(2011,12,31))))}
   }
 
+  career = Factory(:career)
+
   puts "flagging jobs"
   User.all.each { |user|  user.jobs << Job.all.shuffle[0..10]}
+
+  puts "flagging careers"
+  User.all.each { |user| user.careers << Career.all.shuffle[0..10]}
 
 
 end
