@@ -30,7 +30,13 @@
 
   #sidebar
     .cta-box.flagged-careers
-      here are the flagged careers
+      = render 'flagged_careers'
 
     .cta-box.vet-friendly
       here are the vet friendly careers
+
+
+  - unless  params[:moc].nil?
+    %p Page
+    =link_to '<', careers_path({:page => @prev_page})
+    =link_to '>', careers_path({:page => @next_page})
