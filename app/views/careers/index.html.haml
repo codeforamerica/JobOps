@@ -1,7 +1,7 @@
 #home
   .career-search
     = form_tag('/careers', :method => :get) do
-    = text_field_tag :search, params[:search]
+      = text_field_tag :search, params[:search]
       = submit_tag "Search"
 
   %h2.page-title Explore Industries and Careers
