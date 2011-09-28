@@ -1,18 +1,16 @@
 #home
-  %h1 Explore Industries and Careers
-
   .career-search
     = form_tag('/careers', :method => :get) do
-      MOC:
       = text_field_tag :moc, params[:moc]
       = submit_tag "Search"
 
-  %h1 Industry
-  - @industry.each do |industry|
-    %br
-    = link_to industry.name, industry_path(industry.id)
+  %h2.page-title Explore Industries and Careers
 
-  %br
+  .industry-box-wrapper
+    - @industry.each do |industry|
+      .industry-box
+        = link_to industry.name, industry_path(industry.id)
+    %br.clearit
 
   .wide-column
     .white-box
@@ -24,7 +22,6 @@
         No Careers Found
       - else
         = render 'careerlisting'
-
 
       - unless  params[:moc].nil?
         %p Page

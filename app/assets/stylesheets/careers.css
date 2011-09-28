@@ -1,0 +1,25 @@
+.industry-box {
+  width: 234px;
+  margin: 5px;
+  float: left;
+  height: 45px;
+  font-size: 0.75em;
+  font-weight: bold;
+  border-right: 1px groove #eee;
+  border-bottom: 1px groove #eee;
+}
+.industry-box-wrapper {
+  background-color: #ebebeb;
+  margin-bottom: 30px;
+}
+
+h2.page-title {
+  color:#315924;
+  font-weight:normal;
+  line-height:100%;
+  margin-bottom:15px;
+}
+
+.career-search {
+  float: right;
+}
