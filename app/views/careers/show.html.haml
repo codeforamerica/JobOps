@@ -1,20 +1,15 @@
 #home
   %h1= @careers.title
+  %br
   %p= @careers.description
   %p Average National Salary
   = number_to_currency(@careers.average_national_salary)
 
-  %p Related Skills:
-
-  %table
-    %tr
-      %th Title
-      %th Onet SOC Code
-
-      - @careers.related_careers.each do |related|
-        %tr
-          %td= related.title
-          %td= link_to related.onet_soc_code, related.api_safe_onet_soc_code
+  %h2 Related Careers:
+  %ul
+    - @careers.related_careers.each do |related|
+      %li
+        = link_to related.title, related.api_safe_onet_soc_code
 
   %p Knowledge:
 
