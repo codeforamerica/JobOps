@@ -14,7 +14,7 @@
 
   %br
 
-  - if @careers.empty?
+  - if @careers.nil?
     No Careers Found
   - else
     %table
@@ -33,3 +33,4 @@
     =link_to '<', careers_path({:page => @prev_page})
     =link_to '>', careers_path({:page => @next_page})
 
+  = render 'flagged_careers'
