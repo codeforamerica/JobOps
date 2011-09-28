@@ -7,7 +7,7 @@
         -if @flagged_careers.include?(career)
           %a.unflag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :careerid => career.api_safe_onet_soc_code }}
         -else
-          %a.flag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :jocareeridbid => career.api_safe_onet_soc_code }}
+          %a.flag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :careeridid => career.api_safe_onet_soc_code }}
         %span.job-title-wrapper
           =link_to career.title, career_path(career.api_safe_onet_soc_code), {:target => '_blank', :class => 'job-title' }
       %br.clearit
