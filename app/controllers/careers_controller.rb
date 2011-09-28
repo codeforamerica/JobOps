@@ -12,7 +12,9 @@ class CareersController < ApplicationController
 
     if current_user
       if params[:moc].nil?
-        unless current_user.moc.blank?
+        if current_user.moc.blank?
+          @careers = @futures_careers.careers
+        else
           @careers = @futures_careers.search(current_user.moc)
         end
       else
