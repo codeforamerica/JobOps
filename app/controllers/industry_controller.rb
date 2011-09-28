@@ -4,6 +4,6 @@ class IndustryController < ApplicationController
   end
 
   def show
-    @industry = IndustryLookup.where(:industry_id => params[:id]).order('title')
+    @careers = IndustryLookup.where(:industry_id => params[:id]).order('title')
   end
 end
