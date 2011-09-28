@@ -18,7 +18,11 @@ class CareersController < ApplicationController
           @careers = @futures_careers.search(current_user.moc)
         end
       else
-        @careers = @futures_careers.search(params[:search])
+        if(params[:search] =~ /^\d/)
+          @careers = @futures_careers.search(params[:search])
+        else
+          @careers = IndustryLookup.where("title like ?", "%#{params[:search]}%")
+        end
       end
     else
       if params[:search]
