@@ -4,7 +4,7 @@
 
 /** LOG IN PAGE **/
 
-#sign_in_wrapper, #sign_up_wrapper {
+#sign_in_wrapper {
   width:700px;
   position:relative;
   left:50%;
@@ -12,13 +12,13 @@
   top:15px;
   padding: 15px;
 }
-#sign_in_wrapper h2, #sign_up_wrapper h2 {
+#sign_in_wrapper h2 {
   font-size:1.25em;
   font-weight:normal;
   color:#315924;
   margin-bottom: 15px;
 }
-#sign_in, #sign_up {
+#sign_in {
   background-color:#FFF;
   padding:15px;
   border:1px solid #CCC;
@@ -48,23 +48,23 @@
 #reg_right p a {
   font-size:1.0em;
 }
-#sign_in label, #sign_up label {
+#sign_in label {
   float:left;
   color:#999;
   margin:0 10px 5px 0;
 }
-#sign_in input[type="email"], #sign_in input[type="password"], #sign_up input[type="email"], #sign_up input[type="password"], #sign_up input[type="text"] {
+#sign_in input[type="email"], #sign_in input[type="password"] {
   float:left;
   margin-bottom:15px;
   padding:5px 5px;
   width:250px;
 }
-#sign_in .green-btn, #sign_up .green-btn {
+#sign_in .green-btn {
   float:right;
   margin-bottom:25px;
   font-size:1.0em;
 }
-#sign_in strong, #sign_up strong {
+#sign_in strong {
   display:block;
   margin:0 -15px 15px -15px;
   padding:0 15px;
@@ -88,7 +88,7 @@
   padding-top:10px;
   border-top:1px dotted #CCC;
 }
-a.sign_up, a.sign_in, a.forgot_password {
+a.sign_in, a.forgot_password {
   display: block;
   float: left;
   font-size: 0.75em;
@@ -96,6 +96,104 @@ a.sign_up, a.sign_in, a.forgot_password {
   text-align:left;
   margin:12px 15px 0 0;
 }
-a.sign_up, a.sign_in {
+a.sign_in {
+  margin-bottom:10px;
+}
+
+/***  SIGN UP PAGE  ***/
+
+#sign_up_wrapper {
+  width:700px;
+  position:relative;
+  left:50%;
+  margin-left:-350px;
+  top:15px;
+  padding: 15px;
+}
+#sign_up_wrapper h2 {
+  font-size:1.25em;
+  font-weight:normal;
+  color:#315924;
+  margin-bottom: 15px;
+}
+#sign_up {
+  background-color:#FFF;
+  padding:15px;
+  border:1px solid #CCC;
+}
+#reg_left {
+  float:left;
+  width:260px;
+  padding:15px 30px;
+  margin-right:10px;
+  background:#f7fbff;
+  font-size:0.7em;
+  color:#666;
+  border:2px solid #e1eaf2;
+  border-radius: 5px;
+  line-height:110%;
+}
+#reg_right {
+  float:left;
+  width:260px;
+  padding:15px 30px;
+  margin-left:10px;
+  background: #f7f7f7;
+  font-size:0.7em;
+  color:#666;
+  line-height:110%;
+}
+#reg_right p a {
+  font-size:1.0em;
+}
+#sign_in label {
+  float:left;
+  color:#999;
+  margin:0 10px 5px 0;
+}
+#sign_up input[type="email"], #sign_up input[type="password"], #sign_up input[type="text"] {
+  float:left;
+  margin-bottom:15px;
+  padding:5px 5px;
+  width:250px;
+}
+#sign_up .green-btn {
+  float:right;
+  margin-bottom:25px;
+  font-size:1.0em;
+}
+#sign_up strong {
+  display:block;
+  margin:0 -15px 15px -15px;
+  padding:0 15px;
+  text-transform:uppercase;
+  background:url("/images/footer_bg.png") repeat-x;
+  color:#FFF;
+  font-size:0.6em;
+  width:270px;
+}
+#auth_menu {
+  float:right;
+  margin-right:33px;
+}
+#auth_menu a {
+  float:right;
+}
+#sign_in img, #sign_up img {
+  margin:0 0 10px 0;
+}
+#auth_menu a + a {
+  padding-top:10px;
+  border-top:1px dotted #CCC;
+}
+a.sign_up {
+  display: block;
+  float: left;
+  font-size: 0.75em;
+  line-height: 100%;
+  text-align:left;
+  margin:12px 15px 0 0;
+}
+a.sign_up {
   margin-bottom:10px;
 }
