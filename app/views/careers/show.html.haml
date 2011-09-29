@@ -52,5 +52,5 @@
     %p No jobs found
   - else
     = render 'jobs/joblisting'
-
+    =will_paginate @jobs unless @jobs.blank?
 
