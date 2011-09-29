@@ -7,7 +7,6 @@
       %li= active_link_to 'Find Jobs', jobs_dashboard_path, :wrap_tag => :li
     - else
       %li= active_link_to 'Find Jobs', jobs_path, :wrap_tag => :li
-    %li
-      %a{:href => '#'} Communities
+    %li= active_link_to 'Communities', communities_path, :wrap_tag => :li
     %li
       %a{:href => '#'} Advice
