@@ -50,8 +50,20 @@ class CareersController < ApplicationController
   end
 
   def show
+    if current_user
+      @flagged_jobs = current_user.jobs
+    else
+      @flagged_jobs = []
+    end
+
     @counter = 0
     @careers = @futures_careers.career(params[:id])
+
+    job_search = get_job_search(@careers.title)
+    @search = job_search.reload.jobs.includes(:company).search("job_searches_keyword_contains" => @careers.title)
+
+    @jobs = @search.order('date_acquired desc')
+    @jobs = @jobs.paginate(:page => params[:page], :per_page => 25)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,6 +92,26 @@ class CareersController < ApplicationController
       format.json {render :json => message }
     end
 
+  end
+
+protected
+  def get_job_search(career)
+    job_search =  JobSearch.where(:keyword => career)
+
+    if job_search.blank?
+      job_search = JobSearch.create(:keyword => career)
+      job_search.search
+    else
+      if job_search.first.updated_at < 1.hour.ago
+        job_search = job_search.first
+      else
+        job_search = job_search.first
+        job_search.touch
+        job_search.search
+      end
+    end
+
+    job_search
   end
 
 end
