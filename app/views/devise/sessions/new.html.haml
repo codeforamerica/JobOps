@@ -1,8 +1,9 @@
 #sign_in_wrapper
   %h2 Sign in
   .did-you-mean-sign-in
-    Need and account?
     = link_to "Create one here", new_registration_path(resource_name), {:class => 'sign_up'}
+    Need and account?
+  %br.clearit
   #sign_in
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       #reg_left

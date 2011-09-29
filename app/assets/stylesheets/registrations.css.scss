@@ -17,6 +17,8 @@
   font-weight:normal;
   color:#315924;
   margin-bottom: 15px;
+  float:left;
+  width:400px;
 }
 #sign_in {
   background-color:#FFF;
@@ -118,12 +120,12 @@ a.sign_in {
   float:left;
   width:450px;
 }
-#sign_up_wrapper .did-you-mean-sign-in {
+#sign_in_wrapper .did-you-mean-sign-in, #sign_up_wrapper .did-you-mean-sign-in {
   float:right;
   color:#666;
   font-size:1.0em;
 }
-#sign_up_wrapper .did-you-mean-sign-in .sign_in {
+#sign_up_wrapper .did-you-mean-sign-in .sign_in, #sign_in_wrapper .did-you-mean-sign-in .sign_up {
   font-size:1.0em;
   float:right;
   margin: 5px 0 0 10px;
