@@ -74,17 +74,17 @@
   font-size:0.6em;
   width:270px;
 }
-#auth_menu {
+#sign_in #auth_menu {
   float:right;
   margin-right:33px;
 }
-#auth_menu a {
+#sign_in #auth_menu a {
   float:right;
 }
-#sign_in img, #sign_up img {
+#sign_in img {
   margin:0 0 10px 0;
 }
-#auth_menu a + a {
+#sign_in #auth_menu a + a {
   padding-top:10px;
   border-top:1px dotted #CCC;
 }
@@ -121,11 +121,11 @@ a.sign_in {
   padding:15px;
   border:1px solid #CCC;
 }
-#reg_left {
+#reg_top {
   float:left;
-  width:260px;
-  padding:15px 30px;
-  margin-right:10px;
+  width:630px;
+  padding:15px 15px;
+  margin-bottom:20px;
   background:#f7fbff;
   font-size:0.7em;
   color:#666;
@@ -133,27 +133,45 @@ a.sign_in {
   border-radius: 5px;
   line-height:110%;
 }
-#reg_right {
+#reg_mid {
+  text-align:center;
+  border-top:1px dotted #CCC;
+  padding:15px 0;
+  color:#999;
+}
+#reg_btm {
   float:left;
-  width:260px;
+  width:610px;
   padding:15px 30px;
-  margin-left:10px;
-  background: #f7f7f7;
-  font-size:0.7em;
+  background: #EEE;
+  font-size:1.0em;
   color:#666;
   line-height:110%;
 }
-#reg_right p a {
-  font-size:1.0em;
+.reg_field {
+  border-bottom:1px solid #CCC;
 }
-#sign_in label {
+.reg_field span {
+  display:block;
   float:left;
   color:#999;
-  margin:0 10px 5px 0;
+  font-size:0.7em;
+  width:180px;
+  line-height:150%;
+  margin-top:15px;
+}
+#sign_up label {
+  float:left;
+  color:#333;
+  font-weight:bold;
+  text-align:right;
+  margin:20px 10px 5px 0;
+  width:135px;
+  font-size:0.75em;
 }
 #sign_up input[type="email"], #sign_up input[type="password"], #sign_up input[type="text"] {
   float:left;
-  margin-bottom:15px;
+  margin: 15px 10px 15px 0;
   padding:5px 5px;
   width:250px;
 }
@@ -172,19 +190,15 @@ a.sign_in {
   font-size:0.6em;
   width:270px;
 }
-#auth_menu {
-  float:right;
-  margin-right:33px;
+#sign_up#auth_menu {
+  float:left;
 }
-#auth_menu a {
-  float:right;
+#sign_up #auth_menu a {
+  float:left;
+  margin-right:20px;
 }
-#sign_in img, #sign_up img {
+#sign_up img {
   margin:0 0 10px 0;
-}
-#auth_menu a + a {
-  padding-top:10px;
-  border-top:1px dotted #CCC;
 }
 a.sign_up {
   display: block;
