@@ -51,6 +51,9 @@
   - if @jobs.blank?
     %p No jobs found
   - else
+    %span
+      =@jobs.total_entries unless @jobs.blank?
+      Jobs Found
     = render 'jobs/joblisting'
     =will_paginate @jobs unless @jobs.blank?
 
