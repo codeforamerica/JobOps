@@ -22,26 +22,27 @@ $(document).ready(function() {
   $('.flag-item, .unflag-item').live('click',function(ev) {
     ev.preventDefault();
     var $target = $(ev.target);
-    var theId = $target.attr('data-jobid');
-    var jobLink = $target.parents('li').find('.job-title').first().attr('href');
+    var flagType = ($target.hasAttr('data-jobid')) ? 'job' : 'career';
+    var theId = $target.attr('data-'+flagType+'id');
+    var jobLink = $target.parents('li').find('.'+flagType+'-title').first().attr('href');
     $.getJSON($target.attr('href'), function(resp){
       $.flashmessage(resp.message);
       if($target.hasClass('flag-item')) {
-        $(".flagged-jobs .blank_search").hide();
+        $(".flagged-"+flagType+"s .blank_search").hide();
         $target.removeClass('flag-item').addClass('unflag-item');
-        $('.flagged-jobs ul').prepend($('<li id="flagged-job-'+theId+'"><a class="unflag-item" data-jobid="'+theId+'" href="/jobs/flag/'+theId+'"></a><a target="_blank" href="'+jobLink+'">'+$target.next().text()+'</a></li>'));
+        $('.flagged-'+flagType+'s ul').prepend($('<li id="flagged-'+flagType+'-'+theId+'"><a class="unflag-item" data-'+flagType+'id="'+theId+'" href="/'+flagType+'s/flag/'+theId+'"></a><a target="_blank" href="'+jobLink+'">'+$target.next().text()+'</a></li>'));
       } else {
-        $('.job-listing a[data-jobid="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
-        $('#flagged-job-'+theId).fadeOut().remove();
+        $('.'+flagType+'-listing a[data-'+flagType+'id="'+theId+'"]').removeClass('unflag-item').addClass('flag-item');
+        $('#flagged-'+flagType+'-'+theId).fadeOut().remove();
 
         // If there are no flagged jobs, show the tip
-        if($('.flagged-jobs li').length == 0) {
-          $('.flagged-jobs .fixed-height').scrollbar('unscrollbar');
-          $('.flagged-jobs .blank_search').show();
+        if($('.flagged-'+flagType+'s li').length == 0) {
+          $('.flagged-'+flagType+'s .fixed-height').scrollbar('unscrollbar');
+          $('.flagged-'+flagType+'s .blank_search').show();
         }
       }
-      if(!$('.flagged-jobs .scoll-pane').length) {
-        $('.flagged-jobs .fixed-height').scrollbar();
+      if(!$('.flagged-'+flagType+'s .scoll-pane').length) {
+        $('.flagged-'+flagType+'s .fixed-height').scrollbar();
       }
 
       $('.fixed-height').scrollbar('repaint');
@@ -159,3 +160,9 @@ function setupMap(jobs) {
     map.fitBounds(bounds);
   }
 }
+
+// This is a quick plugin to determine if an object has an attribute
+// http://stackoverflow.com/questions/1318076/jquery-hasattr-checking-to-see-if-there-is-an-attribute-on-an-element
+$.fn.hasAttr = function(name) {  
+   return this.attr(name) !== undefined;
+};
