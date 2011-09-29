@@ -1,12 +1,13 @@
 #sign_up_wrapper
   %h2 Create an account
   .did-you-mean-sign-in
-    Already have an account?
     = link_to "Sign in", new_session_path(resource_name), {:class => 'sign_in'}
+    Already have an account?
+  %br.clearit
   #sign_up
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       #reg_top
-        %h2
+        %h3
           Use one of your existing accounts
         %span
           You can sign in to JobOps using an existing Facebook, LinkedIn, or Twitter account. It is highly recommended that you use one of these accounts to sign in.

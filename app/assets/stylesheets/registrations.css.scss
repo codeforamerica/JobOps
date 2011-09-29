@@ -115,6 +115,18 @@ a.sign_in {
   font-weight:normal;
   color:#315924;
   margin-bottom: 15px;
+  float:left;
+  width:450px;
+}
+#sign_up_wrapper .did-you-mean-sign-in {
+  float:right;
+  color:#666;
+  font-size:1.0em;
+}
+#sign_up_wrapper .did-you-mean-sign-in .sign_in {
+  font-size:1.0em;
+  float:right;
+  margin: 5px 0 0 10px;
 }
 #sign_up {
   background-color:#FFF;
