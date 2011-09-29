@@ -101,7 +101,7 @@ describe AuthenticationsController do
 
     it "should create a new user using LinkedIn" do
       stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,phone-numbers,positions,picture-url,skills,summary)").
-        to_return(:status => 200, :body => fixture("linked_in_profile.xml"))
+        to_return(:status => 200, :body => fixture("linked_in_profile.json"))
       get :create, :provider => 'linked_in'
       @user = User.last
       @user.email.should == "change-me-12345@jobops.us"
@@ -126,7 +126,7 @@ describe AuthenticationsController do
 
     it "should create a new user using basic LinkedIn info" do
       stub_request(:get, "https://api.linkedin.com/v1/people/~:(certifications,date-of-birth,educations,phone-numbers,positions,picture-url,skills,summary)").
-        to_return(:status => 200, :body => fixture("linked_in_basic.xml"))
+        to_return(:status => 200, :body => fixture("linked_in_basic.json"))
       get :create, :provider => 'linked_in'
       @user = User.last
       @user.email.should == "change-me-12345@jobops.us"
