@@ -1,25 +1,91 @@
 .industry-box {
-  width: 234px;
-  margin: 5px;
-  float: left;
-  height: 45px;
-  font-size: 0.75em;
-  font-weight: bold;
-  border-right: 1px groove #eee;
-  border-bottom: 1px groove #eee;
+	width: 218px;
+	float: left;
+	font-size: 0.75em;
+	font-weight: bold;
+	line-height:100%;
+	padding:10px;
+	color:#666;
+}
+.left {
+	border-right: 1px dotted #999;
+	border-bottom: 1px dotted #999;
+}
+.middle, .center {
+	border-right: 1px dotted #999;
+	border-bottom: 1px dotted #999;
+}
+.right{
+	border-bottom: 1px dotted #999;
+}
+.orphan {
+	border-right: 1px dotted #999;
+	border-bottom:0;
+}
+
+#footer .left, #footer .right {
+	border:0;
+}
+.industry-box img {
+	float:left;
+	margin-right:15px;
+}
+.industry-box a {
+	line-height:100%;
+	color:#666 !important;
 }
 .industry-box-wrapper {
-  background-color: #ebebeb;
-  margin-bottom: 30px;
+	border-width:2px 2px 2px 2px;
+	-moz-border-image: url("/images/nav-border2.png") 2 repeat stretch;
+	-webkit-border-image:url("/images/nav-border2.png") 2 repeat stretch;
+	border-image:url("/images/nav-border2.png") 2 repeat stretch;
+ 	margin-bottom: 30px;
+	background:transparent !important;
+	padding:10px;
+}
+.flagged-careers {
+	padding:20px;
+}
+.flagged-careers a {
+	font-size:0.75em;
+	border-top:1px dotted #999;
+	padding-top:10px;
+	width:100%;
+	display:block;
+}
+.flagged-careers ul {
+	list-style:none;
+	margin:0 0 0 -40px;
+}
+.flagged-careers ul li {
+	border-top:1px dotted #999;
+	padding:10px 0;
+	margin-top:10px;
+}
+.flagged-careers ul li a {
+	background: url('/images/flagged.png') no-repeat;
+	background-position: 0 0;
+	padding: 0 0 0 27px;
+	height:13px;
+	overflow:hidden;
+	font-size:0.75em;
+	display:block;
+	line-height:100%;
+	border:0;
 }
 
 h2.page-title {
-  color:#315924;
-  font-weight:normal;
-  line-height:100%;
-  margin-bottom:15px;
+	 color:#315924;
+	 font-weight:normal;
+	 line-height:100%;
+	 margin-bottom:15px;
 }
 
 .career-search {
-  float: right;
+	 float: right;
+}
+.recommended-career-title {
+	font-weight:bold;
+	color:#333;
+	margin-bottom:15px;
 }

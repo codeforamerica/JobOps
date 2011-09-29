@@ -2,7 +2,8 @@ Flagged Careers
 
 - if current_user
   %ul
-  - current_user.careers.each do |career|
-    %li
-      %a{ :href => '/careers/flag/'+career.id.to_s, :data => { :careerid => career.id.to_s} }
-      =link_to career.title, career_path(career.api_safe_onet_code)
+    - current_user.careers.each do |career|
+      %li
+        =link_to career.title, career_path(career.api_safe_onet_code)
+
+=link_to 'Compare flagged careers', #

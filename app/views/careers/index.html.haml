@@ -9,6 +9,7 @@
   .industry-box-wrapper
     - @industry.each do |industry|
       .industry-box
+        =link_to image_tag("/images/i01.png",:title => "Career"),"#"
         = link_to industry.name, industry_path(industry.id)
     %br.clearit
 
