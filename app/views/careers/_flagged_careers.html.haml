@@ -5,8 +5,8 @@
     -if current_user
       %ul
         - current_user.careers.each do |career|
-          %li{ :id => 'flagged-career-'+career.id.to_s }
-            %a.unflag-item{ :href => '/careers/flag/'+career.api_safe_onet_code.to_s, :data => { :careerid => career.id.to_s} }
+          %li{ :id => 'flagged-career-'+career.api_safe_onet_code.to_s }
+            %a.unflag-item{ :href => '/careers/flag/'+career.api_safe_onet_code.to_s, :data => { :careerid => career.api_safe_onet_code.to_s} }
             =link_to career.title, career_path(career.api_safe_onet_code)
   .cta-footer
     =link_to 'Compare flagged careers', #
