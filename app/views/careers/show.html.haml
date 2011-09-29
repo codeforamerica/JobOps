@@ -47,5 +47,10 @@
           %td= abilities.title
           %td= abilities.stars
 
+  %br
+  - if @jobs.blank?
+    %p No jobs found
+  - else
+    = render 'jobs/joblisting'
 
 
