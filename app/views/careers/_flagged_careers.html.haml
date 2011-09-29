@@ -1,8 +1,12 @@
-Flagged Careers
-
-- if current_user
-  %ul
-  - current_user.careers.each do |career|
-    %li
-      %a{ :href => '/careers/flag/'+career.id.to_s, :data => { :careerid => career.id.to_s} }
-      =link_to career.title, career_path(career.api_safe_onet_code)
+.cta-box.flagged-careers
+  .cta-title
+    Flagged Careers
+  .fixed-height
+    -if current_user
+      %ul
+        - current_user.careers.each do |career|
+          %li{ :id => 'flagged-job-'+career.id.to_s }
+            %a.unflag-item{ :href => '/careers/flag/'+career.id.to_s, :data => { :careerid => career.id.to_s} }
+            =link_to career.title, career_path(career.api_safe_onet_code)
+  .cta-footer
+    &nbsp;
