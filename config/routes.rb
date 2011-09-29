@@ -1,6 +1,6 @@
 JobOps::Application.routes.draw do
 
-  get "communities/index"
+  resources :communities, :only => [:index]
 
   resources :industry, :only => [:index, :show]
 
