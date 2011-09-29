@@ -173,66 +173,76 @@ class User < ActiveRecord::Base
     @linked_in_profile = linked_in_client.profile
 
     #Basic Information
-    self.phone = @linked_in_profile.phone_numbers.first.phone_number if !@linked_in_profile.phone_numbers.empty?
+    self.phone = @linked_in_profile.phone_numbers.all.first.phone_number unless @linked_in_profile.phone_numbers.nil?
 
-    if @linked_in_profile.birthdate.day == 0
+    if @linked_in_profile.dateOfBirth.nil?
       self.dob = nil
     else
-      self.dob = Date.new(@linked_in_profile.birthdate.year,
-                        @linked_in_profile.birthdate.month,
-                        @linked_in_profile.birthdate.day)
+      self.dob = Date.new(@linked_in_profile.dateOfBirth.year,
+                        @linked_in_profile.dateOfBirth.month,
+                        @linked_in_profile.dateOfBirth.day)
     end
 
     #Pull work history
     @work = @linked_in_profile.positions
-    @work.each do |work|
-      job_history = job_histories.new
-      job_history.org_name = work.company.name
-      job_history.title = work.title
-      job_history.summary = work.summary
-      job_history.start_date = Date.new(work.start_year,work.start_month)
-      unless work.end_year == 0
-        job_history.end_date = Date.new(work.end_year,work.end_month)
+    unless @work.nil?
+      @work.all.each do |work|
+        job_history = job_histories.new
+        job_history.org_name = work.company.name
+        job_history.title = work.title
+        job_history.summary = work.summary
+        job_history.start_date = Date.new(work.start_date.year,work.start_date.month)
+        unless work.end_date.nil?
+          job_history.end_date = Date.new(work.end_date.year,work.end_date.month)
+        end
+        job_history.save
       end
-      job_history.save
     end
 
     #Pull Education history
     @education = @linked_in_profile.educations
-    @education.each do |edu|
-      education = educations.new
-      education.school_name = edu.school_name
-      education.degree = edu.degree
-      education.study_field = edu.field_of_study
-      education.start_date = Date.new(edu.start_year)
-      education.end_date = Date.new(edu.end_year)
-      education.activities = edu.activities
-      education.notes = edu.notes
-      education.save
+    unless @education.nil?
+      @education.all.each do |edu|
+        education = educations.new
+        education.school_name = edu.school_name
+        education.degree = edu.degree
+        education.study_field = edu.field_of_study
+        education.start_date = Date.new(edu.start_date.year)
+        education.end_date = Date.new(edu.end_date.year)
+        education.activities = edu.activities
+        education.notes = edu.notes
+        education.save
+      end
     end
 
     #Pull Certifications
     @cert = @linked_in_profile.certifications
-    @cert.each do |certification|
-      cert = certifications.new
-      cert.name = certification.name
-      cert.save
+    unless @cert.nil?
+      @cert.all.each do |certification|
+        cert = certifications.new
+        cert.name = certification.certification.name
+        cert.save
+      end
     end
 
     #Pull Languages
     @language = @linked_in_profile.languages
-    @language.each do |linked_in_language|
-      language = languages.new
-      language.language = linked_in_language.name
-      language.save
+    unless @language.nil?
+      @language.all.each do |linked_in_language|
+        language = languages.new
+        language.language = linked_in_language.language.name
+        language.save
+      end
     end
 
     #Pull Skills
     @skill = @linked_in_profile.skills
-    @skill.each do |linked_in_skill|
-      user_skill = skills.new
-      user_skill.skill = linked_in_skill.name
-      user_skill.save
+    unless @skill.nil?
+      @skill.all.each do |linked_in_skill|
+        user_skill = skills.new
+        user_skill.skill = linked_in_skill.skill.name
+        user_skill.save
+      end
     end
   end
 
