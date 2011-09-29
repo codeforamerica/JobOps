@@ -184,10 +184,11 @@ ol.job-listings li {
   clear: both;
   color: #333;
 }
-.job-title {
-  font-size:1.0em;
+a.job-title {
+  font-size:0.9em;
   font-weight: bold;
   display:inline;
+  line-height: 100% !important;
 }
 .job-meta {
   font-size:0.75em;
@@ -213,6 +214,9 @@ ol.job-listings li {
   float: left;
   width: 100%;
   color: #666;
+  line-height:110%;
+  font-size:0.9em;
+  margin-top:10px;
 }
 
 .job-listing .job-title-wrapper {
@@ -346,16 +350,27 @@ display:block;
   margin-left: 15px;
 }
 .pagination a:link, .pagination a:visited {
-  padding: 5px 7px;
+  padding: 3px 7px;
+  background: #EFEFEF;
   color: #0073e6
 }
 .pagination a:hover, .pagination a:active, em.current {
-  padding: 5px 7px;
+  padding: 3px 7px;
   background: #0073e6;
   color: #FFF;
   text-decoration: none;
 }
-
+.pagination a.previous_page, .pagination a.next_page {
+  background:#FFF;
+  
+}
+.pagination .previous_page:hover, .pagination .next_page:active, .pagination .next_page:hover, .pagination .previous_page:active {
+  color:#0073e6;
+}
+.pagination .disabled {
+  color:#CCC;
+  background:#FFF;
+}
 .inner-sidebar {
   float:left;
   width: 200px;
