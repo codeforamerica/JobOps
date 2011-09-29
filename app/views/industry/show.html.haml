@@ -1,6 +1,13 @@
 %h1 Industry
+%br
+%br
+%h2
+  = @industry.name
+
+%p
+  = @industry.description
 
 %h2 Related Careers
-- @industry.each do |industry|
+- @careers.each do |career|
   %br
-  = link_to industry.occupation, career_path(industry.api_safe_onet_code)
+  = link_to career.title, career_path(career.api_safe_onet_soc_code)

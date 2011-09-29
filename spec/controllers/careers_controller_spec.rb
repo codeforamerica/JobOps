@@ -23,6 +23,12 @@ describe CareersController do
       get 'index', :search => '11B'
       response.should be_success
     end
+
+    it "should return careers based on a search" do
+      get 'index', :search => 'computer'
+      response.should be_success
+    end
+
   end
 
   describe "GET 'index' for a logged in user" do
@@ -54,12 +60,29 @@ describe CareersController do
       response.should render_template("careers/index")
     end
 
+    it "should render the careers template for a logged in user searching by career" do
+      @user = Factory(:user, :moc => "")
+      sign_in(@user)
+      get :index, :search => "computer"
+      response.should render_template("careers/index")
+    end
   end
 
   describe "#show" do
-    it "should render the show template" do
+    before do
       stub_request(:get, "http://militarydemo.pipelinenc.com/api/v1/careers/11-1021-00.json").
-        to_return(:status => 200, :body => fixture("futures_career.json"))
+        to_return(:status => 200, :body => fixture("futures_11-1021-00.json"))
+      stub_request(:get, "http://www.jobcentral.com/api.asp?key=abc123&kw=General%20and%20Operations%20Managers").
+        to_return(:status => 200, :body => fixture("direct_employers_11b.xml"))
+      stub_request(:get, "http://api.indeed.com/ads/apisearch?co=us&filter=1&format=json&fromage=1&highlight=0&jt=&latlong=1&limit=30&publisher=xyz456&q=General%20and%20Operations%20Managers&radius=25&sort=relevance&st=&useragent=Mozilla/4.0%20Firefox&userip=77.88.216.22&v=2").
+        to_return(:status => 200, :body => fixture("indeed_ruby.json"))
+      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA&language=en&sensor=false").
+        to_return(:status => 200, :body => "", :headers => {})
+      Factory(:job_search, :keyword => "General Operations Managers")
+      Factory(:job, :location => Factory(:location, :location => "San Francisco, CA"), :company => Factory(:company, :location => "San Francisco, CA") )
+    end
+
+    it "should render the show template" do
       get 'show', :id => '11-1021-00'
       response.should render_template("careers/show")
     end
