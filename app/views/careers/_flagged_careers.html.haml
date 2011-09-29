@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .cta-box.flagged-careers
   .cta-title
     Flagged Careers
@@ -9,4 +10,4 @@
             %a.unflag-item{ :href => '/careers/flag/'+career.id.to_s, :data => { :careerid => career.id.to_s} }
             =link_to career.title, career_path(career.api_safe_onet_code)
   .cta-footer
-    &nbsp;
+    =link_to 'Compare flagged careers', #
