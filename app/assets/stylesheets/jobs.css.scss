@@ -174,14 +174,16 @@
   font-size:0.75em;
   margin-bottom: 15px;
 }
-ol.job-listings {
+ol.job-listings,
+ol.career-listings {
   color: #FFF;
   /*margin-left: -35px;*/
   margin:0;
   padding: 0;
   list-style: none;
 }
-ol.job-listings li {
+ol.job-listings li,
+ol.career-listings li {
   border-top: 1px dashed #CCC;
   padding:15px 0 15px 30px;
   background:url(/images/ol-marker.png) no-repeat 0 20px;
@@ -205,7 +207,8 @@ a.job-title {
 .job-aquire {
   color: #333;
 }
-.job-number {
+.job-number,
+.career-number {
   float: left;
   color: #FFF;
   display: block;
@@ -224,12 +227,14 @@ a.job-title {
   margin-top:10px;
 }
 
-.job-listing .job-title-wrapper {
+.job-listing .job-title-wrapper,
+.career-listing .career-title-wrapper {
   float: left;
   width:360px;
 }
 
-.job-listing .flag-item, .job-listing .unflag-item {
+.job-listing .flag-item, .job-listing .unflag-item,
+.career-listing .flag-item, .career-listing .unflag-item {
   background: url('/images/flagged.png');
   background-position: 0 -12px;
   width: 12px;
@@ -237,14 +242,16 @@ a.job-title {
   float: right;
 }
 
-.job-listing .unflag-item {
+.job-listing .unflag-item,
+.career-listing .unflag-item {
   background-position: 0 0;
 }
 
-.job-listing .flag-item:hover { background-position: 0 0; }
-.job-listing .unflag-item:hover { background-position: 0 -12px; }
+.job-listing .flag-item:hover, .career-listing .flag-item:hover { background-position: 0 0; }
+.job-listing .unflag-item:hover, .career-listing .unflag-item:hover { background-position: 0 -12px; }
 
-.job-listing .flag-item  a {
+.job-listing .flag-item  a,
+.career-listing .flag-item a {
   display: block;
 }
 
