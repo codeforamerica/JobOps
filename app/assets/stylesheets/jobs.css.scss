@@ -94,27 +94,32 @@
   width: 293px;
   padding: 10px;
 }
-.flagged-jobs ul {
+.flagged-jobs ul,
+.flagged-careers ul {
   list-style: none;
   padding: 0 15px 0 0;
   margin: 0;
 }
 
-.flagged-jobs ul li {
+.flagged-jobs ul li,
+.flagged-careers ul li {
   background:url(/images/flag.png) no-repeat 0 10px;
   font-size: 0.7em;
   border-bottom: 1px dotted #999999;
   padding: 5px 10px 5px 20px;
   clear: both;
 }
-.flagged-jobs ul li a {
+.flagged-jobs ul li a,
+.flagged-careers ul li a {
   line-height: 100%;
 }
-.flagged-jobs ul li:first-child {
+.flagged-jobs ul li:first-child,
+.flagged-careers ul li:first-child {
   border-top: 1px dotted #999999;
 }
 
-.flagged-jobs .unflag-item, .delete-search {
+.flagged-jobs .unflag-item, .delete-search,
+.flagged-careers .unflag-item {
   background: url(/images/remove.png) no-repeat right top;
   height:8px;
   width:8px;

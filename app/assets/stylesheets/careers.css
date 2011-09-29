@@ -43,36 +43,6 @@
 	background:transparent !important;
 	padding:10px;
 }
-.flagged-careers {
-	padding:20px;
-}
-.flagged-careers a {
-	font-size:0.75em;
-	border-top:1px dotted #999;
-	padding-top:10px;
-	width:100%;
-	display:block;
-}
-.flagged-careers ul {
-	list-style:none;
-	margin:0 0 0 -40px;
-}
-.flagged-careers ul li {
-	border-top:1px dotted #999;
-	padding:10px 0;
-	margin-top:10px;
-}
-.flagged-careers ul li a {
-	background: url('/images/flagged.png') no-repeat;
-	background-position: 0 0;
-	padding: 0 0 0 27px;
-	height:13px;
-	overflow:hidden;
-	font-size:0.75em;
-	display:block;
-	line-height:100%;
-	border:0;
-}
 
 h2.page-title {
 	 color:#315924;
