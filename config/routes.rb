@@ -1,5 +1,7 @@
 JobOps::Application.routes.draw do
 
+  get "communities/index"
+
   resources :industry, :only => [:index, :show]
 
   get "job_searches_user/new/", :controller => :job_searches_user, :action => :new, :defaults => { :format => 'json' }
