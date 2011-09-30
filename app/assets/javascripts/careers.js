@@ -8,6 +8,7 @@ $(document).ready(function() {
 
   var there_are_orphans = (industry_boxes.length % boxes_per_row !== 0)
 
+  // Calculate and apply the right css classes for the table of industries.
   $.each(industry_boxes, function(idx, el) {
     current_classes = [];
 
@@ -27,10 +28,8 @@ $(document).ready(function() {
         current_classes.push('center');
       }
     }
-
-
+    
     $(el).addClass(current_classes.join(' '));
     counter += 1;
   });
-
 });

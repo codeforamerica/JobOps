@@ -1,14 +1,14 @@
-%ol.job-listings
+%ol.career-listings
   - @careers.each do |career|
-    %li.job-listing
-      %span.job-number
+    %li.career-listing
+      %span.career-number
         = @counter = @counter + 1
       .job-heading
-        -if @flagged_careers.include?(career)
+        -if @flagged_careers.map{|x| x.api_safe_onet_code }.include?(career.api_safe_onet_soc_code)
           %a.unflag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :careerid => career.api_safe_onet_soc_code }}
         -else
-          %a.flag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :careeridid => career.api_safe_onet_soc_code }}
-        %span.job-title-wrapper
-          =link_to career.title, career_path(career.api_safe_onet_soc_code), {:class => 'job-title' }
+          %a.flag-item{ :href => '/careers/flag/'+career.api_safe_onet_soc_code, :title => flag_tip, :data => { :careerid => career.api_safe_onet_soc_code }}
+        %span.career-title-wrapper
+          =link_to career.title, career_path(career.api_safe_onet_soc_code), {:class => 'career-title' }
       %br.clearit
 
