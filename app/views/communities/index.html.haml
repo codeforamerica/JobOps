@@ -14,6 +14,7 @@
 or
 %a{:href => "http://www.facebook.com", :target => "_blank"} sign up for a Facebook Account
 
+
 %p LinkedIn
 - if current_user
   - if @authentications.linked_in.empty?
@@ -24,6 +25,7 @@ or
   = link_to 'Connect with LinkedIn', '/auth/linked_in'
 or
 %a{:href => "http://www.linkedin.com", :target => "_blank"} sign up for a LinkedIn Account
+%br
 
 %p Twitter
 - if current_user
@@ -35,4 +37,6 @@ or
   = link_to 'Connect with Twitter', 'auth/twitter'
 or
 %a{:href => "http://www.twitter.com", :target => "_blank"} sign up for a Twitter Account
-
+%br
+Matt Lewis (@mattlewissf)
+= link_to 'Follow', 'communities/twitter/mattlewissf'
