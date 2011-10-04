@@ -84,3 +84,30 @@ h2.page-title {
   background: none;
   border: none;
 }
+.career-actions {
+  background: none;
+  border: none;
+}
+.career-actions ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+#sidebar .top-companies ul li {
+  font-style: normal;
+}
+
+.social-networking ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  font-size: 0.75em;
+}
+
+.social-networking ul li {
+  border-bottom: 1px dotted #999999;
+  padding: 5px 0;
+  min-width: 260px;
+  clear: both;
+}

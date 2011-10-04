@@ -56,7 +56,7 @@ class CareersController < ApplicationController
 
     @jobs = @search.order('date_acquired desc')
     @jobs = @jobs.paginate(:page => params[:page], :per_page => 25)
-
+    @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.company.location}", "latitude" => "#{job.company.lat}", "longitude" => "#{job.company.long}", "company" => job.company.name}}
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @careers }

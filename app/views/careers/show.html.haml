@@ -1,3 +1,8 @@
+%script{:type => "text/javascript"}
+  var jobs =
+  =raw @jobs_json.to_json
+  ;
+  $(document).ready(function() {setupMap(jobs);});
 .breadcrumbs
   = link_to 'Career Research', careers_path
 .wide-column
@@ -11,10 +16,10 @@
     %ul
       %li
         Average salary:
-        %strong 
+        %strong
           =number_to_currency(@career.average_national_salary)
       %li
-        Required education: 
+        Required education:
         %strong
           I've got no idea, bro.
     %a{ :href => '#' } Learn more about this career
@@ -41,7 +46,7 @@
         Compare with flagged careers
       %li.share-this-page
         Share this page
-    
+
   .cta-box.related-careers
     .cta-title
       Related Careers
@@ -49,5 +54,41 @@
       - @career.related_careers.each do |related|
         %li
           = link_to related.title, related.api_safe_onet_soc_code
-  
+
+  = render 'jobs/jobmap'
+
+  .cta-box.top-companies
+    .cta-title
+      Top Companies
+    %p
+      Based on the number of open jobs and veteran friendliness.
+    .fixed-height
+      %ul
+        %li
+          %span.result-count
+            125
+          .search-wrapper
+            = link_to "Kaiser Permanente"
+        %li
+          %span.result-count
+            11
+          .search-wrapper
+            = link_to "Sutter Health"
+        %li
+          %span.result-count
+            2
+          .search-wrapper
+            = link_to "Maxim Healthcare Services"
+
+  .cta-box.social-networking
+    .cta-title
+      Social Networking
+    %ul
+      %li.facebook-group
+        = link_to "Nurses Organization of Veterans Affairs"
+      %li.twitter-group
+        = link_to "@Podmedic"
+        %span.green-btn
+          Follow
+
 %br.clearit
