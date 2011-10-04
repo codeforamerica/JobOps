@@ -1,6 +1,7 @@
 JobOps::Application.routes.draw do
 
   resources :communities, :only => [:index]
+  get "/communities/twitter/:id", :controller => :communities, :action => :twitter_follow,:defaults => {:format => 'json'}, :as => :twitter_follow
 
   resources :industry, :only => [:index, :show]
 
