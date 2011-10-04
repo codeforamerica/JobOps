@@ -34,17 +34,7 @@ class CareersController < ApplicationController
           @careers = IndustryLookup.where("title like ?", "%#{params[:search]}%")
         end
       else
-        @careers = @futures_careers.careers({:page => params[:page]})
-        @next_page = params[:page].to_i + 1
-        @prev_page = params[:page].to_i - 1
-
-        if @next_page == 1
-          @next_page = 2
-        end
-
-        if @prev_page == -1
-          @prev_page = 1
-        end
+        @careers = []
       end
     end
   end

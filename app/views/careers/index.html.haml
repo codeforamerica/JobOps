@@ -24,11 +24,6 @@
       - else
         = render 'careerlisting'
 
-      - unless  params[:moc].nil?
-        %p Page
-        =link_to '<', careers_path({:page => @prev_page})
-        =link_to '>', careers_path({:page => @next_page})
-
   #sidebar
     = render 'flagged_careers'
 
