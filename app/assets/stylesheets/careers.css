@@ -59,3 +59,28 @@ h2.page-title {
 	color:#333;
 	margin-bottom:15px;
 }
+
+.details-box {
+  font-size: 12px;
+}
+.details-header {
+  font-size: 18px;
+  color: #315924;
+}
+
+.breadcrumbs {
+  font-style: italic;
+  font-size: 11px;
+}
+
+.related-careers ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+.related-careers {
+  background: none;
+  border: none;
+}

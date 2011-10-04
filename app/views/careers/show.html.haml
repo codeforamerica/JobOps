@@ -1,59 +1,53 @@
-#home
-  %h1= @careers.title
-  %br
-  %p= @careers.description
-  %p Average National Salary
-  = number_to_currency(@careers.average_national_salary)
-
-  %h2 Related Careers:
-  %ul
-    - @careers.related_careers.each do |related|
+.breadcrumbs
+  = link_to 'Career Research', careers_path
+.wide-column
+  .badges
+    %span.stem
+    %span.top100
+  .details-box
+    .details-header
+      = @career.title
+    %p= @career.description
+    %ul
       %li
-        = link_to related.title, related.api_safe_onet_soc_code
+        Average salary:
+        %strong 
+          =number_to_currency(@career.average_national_salary)
+      %li
+        Required education: 
+        %strong
+          I've got no idea, bro.
+    %a{ :href => '#' } Learn more about this career
 
-  %p Knowledge:
+  %br.clearit
 
-  %table
-    %tr
-      %th Title
-      %th Stars
-
-      - @careers.knowledge.each do |knowledge|
-        %tr
-          %td= knowledge.title
-          %td= knowledge.stars
-
-  %p Skills:
-
-  %table
-    %tr
-      %th Title
-      %th Stars
-
-      - @careers.skills.each do |skills|
-        %tr
-          %td= skills.title
-          %td= skills.stars
-
-  %p Abilities
-
-  %table
-    %tr
-      %th Title
-      %th Stars
-
-      - @careers.abilities.each do |abilities|
-        %tr
-          %td= abilities.title
-          %td= abilities.stars
-
-  %br
-  - if @jobs.blank?
-    %p No jobs found
-  - else
-    %span
-      =@jobs.total_entries unless @jobs.blank?
-      Jobs Found
+  .white-box.recommended-jobs
+    .recommended-jobs-title
+      - if @jobs.blank?
+        %p No jobs found
+      - else
+        %span
+          =@jobs.total_entries unless @jobs.blank?
+          Open Jobs
     = render 'jobs/joblisting'
     =will_paginate @jobs unless @jobs.blank?
 
+#sidebar
+  .cta-box.career-actions
+    %ul
+      %li.flag-item.big-flag
+        Flag this career
+      %li.compare-careers
+        Compare with flagged careers
+      %li.share-this-page
+        Share this page
+    
+  .cta-box.related-careers
+    .cta-title
+      Related Careers
+    %ul
+      - @career.related_careers.each do |related|
+        %li
+          = link_to related.title, related.api_safe_onet_soc_code
+  
+%br.clearit

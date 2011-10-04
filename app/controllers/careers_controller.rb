@@ -41,16 +41,18 @@ class CareersController < ApplicationController
 
   def show
     if current_user
+      @flagged_careers = current_user.careers
       @flagged_jobs = current_user.jobs
     else
+      @flagged_careers = []
       @flagged_jobs = []
     end
 
     @counter = 0
-    @careers = @futures_careers.career(params[:id])
+    @career = @futures_careers.career(params[:id])
 
-    job_search = get_job_search(@careers.title)
-    @search = job_search.reload.jobs.includes(:company).search("job_searches_keyword_contains" => @careers.title)
+    job_search = get_job_search(@career.title)
+    @search = job_search.reload.jobs.includes(:company).search("job_searches_keyword_contains" => @career.title)
 
     @jobs = @search.order('date_acquired desc')
     @jobs = @jobs.paginate(:page => params[:page], :per_page => 25)
