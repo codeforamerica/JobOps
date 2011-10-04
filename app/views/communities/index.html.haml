@@ -4,26 +4,35 @@
   %a{:href => "http://www.iava.org"} Join IAVA
 
 %p Facebook
-- if @authentications.facebook.empty?
-  = link_to 'Connect with Facebook', '/auth/facebook'
+- if current_user
+  - if @authentications.facebook.empty?
+    = link_to 'Connect with Facebook', '/auth/facebook'
+  - else
+    = link_to 'Disconnect from Facebook', 'authentications/' + @authentications.facebook.first.id.to_s , :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 - else
-  = link_to 'Disconnect from Facebook', 'authentications/' + @authentications.facebook.first.id.to_s , :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+  = link_to 'Connect with Facebook', '/auth/facebook'
 or
 %a{:href => "http://www.facebook.com", :target => "_blank"} sign up for a Facebook Account
 
 %p LinkedIn
-- if @authentications.linked_in.empty?
-  = link_to 'Connect with LinkedIn', '/auth/linked_in'
+- if current_user
+  - if @authentications.linked_in.empty?
+    = link_to 'Connect with LinkedIn', '/auth/linked_in'
+  - else
+    = link_to 'Disconnect from LinkedIn', 'authentications/' + @authentications.linked_in.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 - else
-  = link_to 'Disconnect from LinkedIn', 'authentications/' + @authentications.linked_in.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+  = link_to 'Connect with LinkedIn', '/auth/linked_in'
 or
 %a{:href => "http://www.linkedin.com", :target => "_blank"} sign up for a LinkedIn Account
 
 %p Twitter
-- if @authentications.twitter.empty?
-  = link_to 'Connect with Twitter', 'auth/twitter'
+- if current_user
+  - if @authentications.twitter.empty?
+    = link_to 'Connect with Twitter', 'auth/twitter'
+  - else
+    = link_to 'Disconnect from Twitter', 'authentications/' + @authentications.twitter.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
 - else
-  = link_to 'Disconnect from Twitter', 'authentications/' + @authentications.twitter.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+  = link_to 'Connect with Twitter', 'auth/twitter'
 or
 %a{:href => "http://www.twitter.com", :target => "_blank"} sign up for a Twitter Account
 
