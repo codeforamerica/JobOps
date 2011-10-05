@@ -2,21 +2,29 @@
   = render 'users/profile/nav_profile'
   %br.clearit
   #user-main
-    = render 'users/profile/sidebar_nav'
+    .show_profile_sidebar
+      - if not @facebook_user.nil?
+        = image_tag @facebook_user.picture
+      - if not @twitter_user.nil?
+        = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
+      - unless @user.linked_in_user.nil?
+        = image_tag @user.linked_in_user.profile.picture_url
     .tab_container
-      #basic_info.tab_content
-        %h2 Basic Info
+      #connect_accounts
+        .connect_title
+          Connect Your Accounts
+        Pandas and gradient backgrounds increase transparency in local government through Twitter and #gov20. Oswald font is great for communication through scotch and San Francisco.
+        .connect_icons
+          Connect your accounts now:
+          %span.fb_link
+            = link_to "Facebook"
+          %span.twit_link
+            = link_to "Twitter"
+          %span.li_link
+            = link_to "LinkedIn"
+      #basic_info
+        %h2 General Info
         .tab_form
-          - if not @facebook_user.nil?
-            = image_tag @facebook_user.picture
-          - if not @twitter_user.nil?
-            = image_tag "http://img.tweetimag.es/i/#{@twitter_user.user.screen_name}_b"
-          - unless @user.linked_in_user.nil?
-            = image_tag @user.linked_in_user.profile.picture_url
-
-          .label
-            Name:
-          .value= @user.name
           .label
             Location:
           .value= @user.location
@@ -34,29 +42,23 @@
           .value= @user.desired_salary
           %br.clearit
 
-      #military_info.tab_content
+      #military_info
         %h2 Military Info
         .tab_form
           .label
-            Military Status:
+            Current Status:
           .value= @user.military_status
           .label
             Service Branch:
           .value= @user.service_branch
           .label
-            MOC:
-          .value= @user.moc
-          .label
-            Rank:
+            Rank/Pay grade:
           .value= @user.rank
           .label
-            Unit:
+            Last Unit:
           .value= @user.unit
           .label
-            Disability:
-          .value= @user.disability
-          .label
-            Wars:
+            Veteran of:
           .value
             - @user.wars.each do |wars|
               = wars.war
@@ -65,9 +67,17 @@
           .value
             - @user.awards.each do |awards|
               = awards.award
+          .label
+            Disability:
+          .value= @user.disability
+          .label
+            MOC:
+          .value= @user.moc
+
+
           %br.clearit
 
-      #skills_edu.tab_content
+      #skills_edu
         %h2 Skills &amp; Education
         %br.clearit
         %h3 - Education
@@ -133,7 +143,7 @@
                 "on #{certification.date_acquired.strftime('%Y')}"
           %br.clearit
 
-      #exp.tab_content
+      #exp
         %h2 Experience
         .tab_form
           - @user.job_histories.each do |job_history|
