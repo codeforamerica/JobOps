@@ -25,10 +25,11 @@
       The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to
       %a{:href=>'#'}My Profile
       to complete your profile.
+    = render 'jobs/jobmap'
     %ol.job-listings
-      = render './jobs/joblisting'
+      = render 'jobs/joblisting'
     =will_paginate @jobs
 
   #sidebar
-    = render 'jobmap'
+    
   %br
