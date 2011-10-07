@@ -209,7 +209,7 @@ ul.tabs {
   float:left;
 }
 ul.tabs li {
-  margin:0 0 5px 0;
+  margin:0 0 0 0;
 }
 ul.tabs li.user-basic a, ul.tabs li.account-info a {
   background:url(/images/user-basic.png) no-repeat 5px center;
@@ -239,12 +239,12 @@ ul.tabs li a {
   width:160px;
   border-bottom:1px dotted #CCC;
   color:#3d5266;
-  margin:0 0 5px 0;
+  margin:0 0 0 0;
 }
 ul.tabs li a:hover, ul.tabs li a:active, ul.tabs li.active a:link, ul.tabs li.active a:visited {
   color:#333;
-  border-radius: 8px;
-  border:1px inset #999;
+  border-radius: 3px;
+  border:1px inset #bbb;
   background-color:#ECECEC;
   background-position: 4px center;
   text-decoration:none;

@@ -1,10 +1,42 @@
 %h1 Communities
 
+%h2
+  %a{:href => "http://www.iava.org"} Join IAVA
+
 %p Facebook
-Connect with Facebook
+- if current_user
+  - if @authentications.facebook.empty?
+    = link_to 'Connect with Facebook', '/auth/facebook'
+  - else
+    = link_to 'Disconnect from Facebook', 'authentications/' + @authentications.facebook.first.id.to_s , :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+- else
+  = link_to 'Connect with Facebook', '/auth/facebook'
+or
+%a{:href => "http://www.facebook.com", :target => "_blank"} sign up for a Facebook Account
+
 
 %p LinkedIn
-Connect with LinkedIn
+- if current_user
+  - if @authentications.linked_in.empty?
+    = link_to 'Connect with LinkedIn', '/auth/linked_in'
+  - else
+    = link_to 'Disconnect from LinkedIn', 'authentications/' + @authentications.linked_in.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+- else
+  = link_to 'Connect with LinkedIn', '/auth/linked_in'
+or
+%a{:href => "http://www.linkedin.com", :target => "_blank"} sign up for a LinkedIn Account
+%br
 
 %p Twitter
-Connect with Twitter
+- if current_user
+  - if @authentications.twitter.empty?
+    = link_to 'Connect with Twitter', 'auth/twitter'
+  - else
+    = link_to 'Disconnect from Twitter', 'authentications/' + @authentications.twitter.first.id.to_s, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete
+- else
+  = link_to 'Connect with Twitter', 'auth/twitter'
+or
+%a{:href => "http://www.twitter.com", :target => "_blank"} sign up for a Twitter Account
+%br
+Matt Lewis (@mattlewissf)
+= link_to 'Follow', 'communities/twitter/mattlewissf'

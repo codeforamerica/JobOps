@@ -10,12 +10,14 @@ $(document).ready(function() {
     ev.preventDefault();
     var targetClass = this.href.split('#').pop();
     var $target = $('#'+targetClass);
+    $('ul.tabs li').removeClass('active');
+    $(this).parent().addClass('active');
     if($target.length) {
       if($('.tab_content:visible').attr('id') !== targetClass) {
         $('.tab_content:visible').fadeOut(function() { $target.fadeIn() });
       }
     }
-  });
+  }).first().trigger('click');
 
   // Profile information validation
   $('.edit_user').ipValidate( {
