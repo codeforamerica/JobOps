@@ -8,7 +8,7 @@
 }
 
 .home-welcome {
-  width: 645px;
+  width: 615px;
   float: left;
   margin: 0 25px 20px 0;
   background:#f7fbff;
@@ -26,4 +26,12 @@
 }
 .home-welcome p {
   margin-bottom:10px;
+}
+div.map {
+  width:200px;
+  height:200px;
+  float:right;
+}
+#map-canvas {
+  height:200px;
 }

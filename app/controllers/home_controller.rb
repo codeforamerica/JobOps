@@ -13,18 +13,20 @@ class HomeController < ApplicationController
 
       @jobs = @search.paginate(:page => params[:page], :per_page => 25)
       @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.company.location}", "latitude" => "#{job.company.lat}", "longitude" => "#{job.company.long}", "company" => job.company.name}}
+
+      get_user_variables
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render :json => @jobs }
+      end
     else
-      @search = Job.includes(:location,:job_searches_jobs).search(params[:search])
-    end
-
-    get_user_variables
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @jobs }
+      # @jobs = Job.includes(:location,:job_searches_jobs).search(params[:search])
+      redirect_to new_user_session_path
     end
   end
-  protected
+
+protected
 
   #Load the related careers based on Fututures API
   def careers(moc)
