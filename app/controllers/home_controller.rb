@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
+
+    @counter = 0
     if current_user
-      @counter = 0
       job_search_ids = current_user.job_searches.map(&:id)
 
       if job_search_ids.blank?
