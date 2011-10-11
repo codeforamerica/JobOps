@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
+
+    @counter = 0
     if current_user
-      @counter = 0
       job_search_ids = current_user.job_searches.map(&:id)
 
       if job_search_ids.blank?
@@ -15,6 +16,8 @@ class HomeController < ApplicationController
       @jobs_json = @jobs.map { |job| {"id" => job.id, "location" => "#{job.company.location}", "latitude" => "#{job.company.lat}", "longitude" => "#{job.company.long}", "company" => job.company.name}}
     else
       @search = Job.includes(:location,:job_searches_jobs).search(params[:search])
+      @jobs = @search
+      @jobs = @jobs.paginate(:page => params[:page], :per_page => 25)
     end
 
     get_user_variables
