@@ -1,9 +1,35 @@
+%script{:type => "text/javascript"}
+  var jobs =
+  =raw @jobs_json.to_json
+  ;
+  $(document).ready(function() {setupMap(jobs);});
 #home
-  - if user_signed_in?
-    %h1
-      Welcome
-      = resource.name
-  - else
-    %h1 Welcome!
+  .home-welcome
+    - if user_signed_in?
+      %h2
+        Welcome
+        = resource.name
+      %p
+        Why not take a couple minutes to update your profile with your work experience? You can enter both civilian and military experience. When you’re ready to work on your resume, your work experience will be included automatically.
 
-  %p Let's find some jobs!
+      Enter your work experience now
+    - else
+      %h1 Welcome!
+  %br.clearit
+
+  .wide-column
+    .white-box.recommended-jobs
+    .recommended-jobs-title
+      Recommended Jobs
+    .notification
+      The more complete your profile is, the more relevant the Recommended Jobs shown below will be.  Go to
+      %a{:href=>'#'}My Profile
+      to complete your profile.
+    = render 'jobs/jobmap'
+    %ol.job-listings
+      = render 'jobs/joblisting'
+    =will_paginate @jobs
+
+  #sidebar
+
+  %br

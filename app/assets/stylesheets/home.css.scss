@@ -6,3 +6,24 @@
   // Add the home class to your body tag
   // Then, place scoped styles here.
 }
+
+.home-welcome {
+  width: 645px;
+  float: left;
+  margin: 0 25px 20px 0;
+  background:#f7fbff;
+  font-size:0.8em;
+  color:#333;
+  border:2px solid #e1eaf2;
+  border-radius: 5px;
+  line-height:150%;
+  padding:15px;
+  
+}
+.home-welcome h2 {
+  margin-bottom:10px;
+  font-size:1.25em;
+}
+.home-welcome p {
+  margin-bottom:10px;
+}

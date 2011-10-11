@@ -49,7 +49,8 @@
   font-size: 0.75em;
 }
 
-#sidebar .saved-searches, #sidebar .flagged-jobs  {
+#sidebar .saved-searches, 
+#sidebar .flagged-jobs {
   float: left;
   width: 283px;
   padding: 10px;
@@ -59,12 +60,14 @@
 #sidebar .scroll-on {
   width: 283px;
 }
-.saved-searches ul {
+.saved-searches ul,
+.top-companies ul {
   list-style: none;
   padding: 0 15px 0 0;
   margin: 0;
 }
-.saved-searches ul li {
+.saved-searches ul li,
+.top-companies ul li {
   font-size: 0.7em;
   font-style: italic;
   border-bottom: 1px dotted #999999;
@@ -73,10 +76,13 @@
   min-width: 260px;
   clear: both;
 }
-.saved-searches ul li a {
+.saved-searches ul li a,
+.top-companies ul li a {
   line-height: 100%;
 }
-.saved-searches ul li:first-child {
+.saved-searches ul li:first-child,
+.top-companies ul li:first-child,
+.social-networking li:first-child {
   border-top: 1px dotted #999999;
 }
 .result-count {
