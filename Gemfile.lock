@@ -111,7 +111,7 @@ GEM
       bouncy-castle-java
     json (1.6.1)
     json (1.6.1-java)
-    linkedin (0.3.2)
+    linkedin (0.3.3)
       hashie (~> 1.1.0)
       multi_json (~> 1.0.3)
       oauth (~> 0.4.5)
