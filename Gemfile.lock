@@ -191,7 +191,7 @@ GEM
       json (~> 1.4)
     redirect_follower (0.1.1)
     rgeo (0.3.2)
-    rgeo-activerecord (0.4.0)
+    rgeo-activerecord (0.4.1)
       activerecord (>= 3.0.3)
       arel (>= 2.0.6)
       rgeo (>= 0.3.2)
