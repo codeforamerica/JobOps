@@ -242,7 +242,7 @@ GEM
       multi_json (~> 1.0)
       simple_oauth (~> 0.1)
       twitter-text (~> 1.4)
-    twitter-text (1.4.12)
+    twitter-text (1.4.13)
       activesupport
     tzinfo (0.3.30)
     uglifier (1.0.4)
