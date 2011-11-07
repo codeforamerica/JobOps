@@ -244,7 +244,7 @@ GEM
       twitter-text (~> 1.4)
     twitter-text (1.4.13)
       activesupport
-    tzinfo (0.3.30)
+    tzinfo (0.3.31)
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
