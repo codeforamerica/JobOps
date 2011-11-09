@@ -259,7 +259,7 @@ GEM
       rack-test (>= 0.5.3)
     will_paginate (3.0.2)
     xml-simple (1.1.1)
-    yajl-ruby (1.0.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   java
