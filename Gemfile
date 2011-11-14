@@ -28,7 +28,7 @@ gem 'redirect_follower'
 
 gem 'fb_graph'
 gem 'linkedin'
-gem 'twitter', '~> 2.0.0.rc.1'
+gem 'twitter', '~> 2.0.0.rc.3'
 
 platforms :jruby do
   gem 'jruby-openssl'
