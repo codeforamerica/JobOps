@@ -235,7 +235,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    twitter (2.0.0.rc.3)
+    twitter (2.0.0)
       activesupport (~> 3.0)
       faraday (~> 0.7)
       multi_json (~> 1.0)
@@ -299,7 +299,7 @@ DEPENDENCIES
   sqlite3
   therubyrhino
   thin
-  twitter (~> 2.0.0.rc.3)
+  twitter
   uglifier
   webmock
   webrat
